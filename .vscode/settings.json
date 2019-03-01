@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "node_modules/": true,
+        "out/": true
+    },
+    "search.exclude": {
+        "out": true
+    },
+    // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
+    "typescript.tsc.autoDetect": "off"
+}

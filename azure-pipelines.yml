@@ -1,0 +1,35 @@
+# Azure DevOps
+# Build pipeline for PSRule-vscode
+
+strategy:
+  matrix:
+    Windows:
+      imageName: 'vs2017-win2016'
+      publish: true
+
+variables:
+  buildConfiguration: 'Release'
+  version: '0.1.0'
+
+# Use build number format, i.e. 0.1.0-B181101
+name: $(version)-B$(date:yyMM)$(rev:rr)
+
+trigger:
+- master
+
+pool:
+  vmImage: $(imageName)
+
+steps:
+
+# Install pipeline dependencies and build extension
+- powershell: ./scripts/pipeline.ps1 -File ./pipeline.build.ps1 -Configuration $(buildConfiguration) -Build $(Build.BuildNumber) -ReleaseVersion "$(Release.Version)"
+  displayName: 'Build extension'
+
+# Generate artifacts
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish extension'
+  inputs:
+    PathtoPublish: out/package
+    ArtifactName: extension
+  condition: and(succeeded(), eq(variables['publish'], 'true'))

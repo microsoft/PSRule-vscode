@@ -1,0 +1,17 @@
+.vscode-test/**
+.vscode/**
+typings/**
+out/test/**
+out/packages/**
+test/**
+src/**
+scripts/**
+reports/**
+pipeline.build.ps1
+**/*.map
+.gitignore
+tsconfig.json
+tslint.json
+*.vsix
+*.yml
+*.yaml
