@@ -8,12 +8,27 @@
             "type": "shell",
             "command": "Invoke-Build Build",
             "group": "build",
+            "presentation": {
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            },
             "problemMatcher": []
         },
         {
             "label": "Install",
             "type": "shell",
             "command": "Invoke-Build Install",
+            "presentation": {
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "compile",
             "problemMatcher": []
         }
     ]
