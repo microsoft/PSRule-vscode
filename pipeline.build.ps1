@@ -60,6 +60,7 @@ task PackageExtension {
     Pop-Location;
 }
 
+# Synopsis: Install the extension in Visual Studio Code
 task InstallExtension {
     Write-Host "> Installing PSRule-vscode" -ForegroundColor Green
     exec { & code --install-extension ./out/package/psrule-vscode-preview.vsix }
@@ -110,7 +111,14 @@ task Clean {
     Remove-Item -Path out,reports -Recurse -Force -ErrorAction Ignore;
 }
 
-task Build Clean, CopyExtension, BuildExtension, PackageExtension
+# Synopsis: Restore NPM packages
+task PackageRestore {
+    exec {
+        npm install;
+    }
+}
+
+task Build Clean, PackageRestore, CopyExtension, BuildExtension, PackageExtension
 
 task Install Build, InstallExtension
 
