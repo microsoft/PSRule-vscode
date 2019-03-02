@@ -115,6 +115,7 @@ task Clean {
 task PackageRestore {
     exec {
         npm install;
+        npm install -g vsce;
     }
 }
 
