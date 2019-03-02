@@ -21,7 +21,10 @@ param (
     [String]$Configuration = 'Debug',
 
     [Parameter(Mandatory = $False)]
-    [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/package)
+    [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/package),
+
+    [Parameter(Mandatory = $False)]
+    [String]$ApiKey
 )
 
 if ($Null -eq (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {

@@ -12,7 +12,10 @@ param (
     [String]$Configuration = 'Debug',
 
     [Parameter(Mandatory = $False)]
-    [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/package)
+    [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/package),
+
+    [Parameter(Mandatory = $False)]
+    [String]$ApiKey
 )
 
 task CopyExtension {
@@ -113,10 +116,15 @@ task Clean {
 
 # Synopsis: Restore NPM packages
 task PackageRestore {
-    exec {
-        npm install;
-        npm install -g vsce;
-    }
+    exec { & npm install }
+    exec { npm install -g vsce }
+}
+
+task ReleaseExtension {
+    $packagePath = Join-Path -Path $ArtifactPath -ChildPath 'extension/psrule-vscode-preview.vsix';
+
+    exec { & npm install -g vsce }
+    exec { & vsce publish --packagePath $packagePath --pat $ApiKey }
 }
 
 task Build Clean, PackageRestore, CopyExtension, BuildExtension, PackageExtension
@@ -124,3 +132,5 @@ task Build Clean, PackageRestore, CopyExtension, BuildExtension, PackageExtensio
 task Install Build, InstallExtension
 
 task . Build
+
+task Release ReleaseExtension
