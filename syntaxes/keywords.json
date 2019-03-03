@@ -1,0 +1,15 @@
+{
+    "scopeName": "PSRule-powershell-keywords",
+    "injectionSelector": "L:meta.scriptblock.powershell",
+    "patterns": [
+        {
+            "include": "#built-in-keyword"
+        }
+    ],
+    "repository": {
+        "built-in-keyword": {
+            "match": "(?<!\\w|-|\\.)((?i:AllOf|AnyOf|Exists|Match|Within|TypeOf)|%|\\?)(?!\\w)",
+            "name": "keyword.control.powershell"
+        }
+    }
+}

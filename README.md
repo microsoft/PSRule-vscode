@@ -8,7 +8,7 @@ This **preview** extension for Visual Studio Code adds convenience features for 
 
 Features include:
 
-- Snippets for built-in keywords.
+- Snippets and syntax highlighting for built-in keywords.
 - YAML schema validation for options.
 
 ## Disclaimer

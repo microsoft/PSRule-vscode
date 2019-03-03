@@ -55,6 +55,29 @@
                 "path": "./snippets/PSRule.json"
             }
         ],
+        "grammars": [
+            {
+                "path": "./syntaxes/comments.json",
+                "scopeName": "PSRule-powershell-comments",
+                "injectTo": [
+                    "source.powershell"
+                ]
+            },
+            {
+                "path": "./syntaxes/keywords.json",
+                "scopeName": "PSRule-powershell-keywords",
+                "injectTo": [
+                    "source.powershell"
+                ]
+            },
+            {
+                "path": "./syntaxes/rule.json",
+                "scopeName": "PSRule-powershell-rule",
+                "injectTo": [
+                    "source.powershell"
+                ]
+            }
+        ],
         "yamlValidation": [
             {
                 "fileMatch": "PSRule.yaml",

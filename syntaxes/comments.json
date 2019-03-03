@@ -1,0 +1,15 @@
+{
+    "scopeName": "PSRule-powershell-comments",
+    "injectionSelector": "L:comment.line.powershell",
+    "patterns": [
+        {
+            "include": "#description-comment"
+        }
+    ],
+    "repository": {
+        "description-comment": {
+            "match": "Description:",
+            "name": "keyword.operator.documentation.powershell"
+        }
+    }
+}

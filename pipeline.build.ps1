@@ -24,6 +24,14 @@ task CopyExtension {
         $Null = New-Item -Path out/extension/schemas -ItemType Directory -Force;
     }
 
+    if (!(Test-Path -Path out/extension/snippets)) {
+        $Null = New-Item -Path out/extension/snippets -ItemType Directory -Force;
+    }
+
+    if (!(Test-Path -Path out/extension/syntaxes)) {
+        $Null = New-Item -Path out/extension/syntaxes -ItemType Directory -Force;
+    }
+
     if (!(Test-Path -Path out/extension/out)) {
         $Null = New-Item -Path out/extension/out -ItemType Directory -Force;
     }
@@ -38,7 +46,13 @@ task CopyExtension {
     # Copy-Item -Path ThirdPartyNotices.txt -Destination out/extension/;
 
     # Copy schemas
-    Copy-Item -Path schemas/* -Destination out/extension/schemas;
+    Copy-Item -Path schemas/* -Destination out/extension/schemas/;
+
+    # Copy snippets
+    Copy-Item -Path snippets/* -Destination out/extension/snippets/;
+
+    # Copy syntaxes
+    Copy-Item -Path syntaxes/* -Destination out/extension/syntaxes/;
 }
 
 task BuildExtension {
@@ -127,7 +141,7 @@ task ReleaseExtension {
     exec { & vsce publish --packagePath $packagePath --pat $ApiKey }
 }
 
-task Build Clean, PackageRestore, CopyExtension, BuildExtension, PackageExtension
+task Build Clean, PackageRestore, CopyExtension, BuildExtension, VersionExtension, PackageExtension
 
 task Install Build, InstallExtension
 
