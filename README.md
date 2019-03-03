@@ -2,7 +2,7 @@
 
 An extension for IT Pros using the PSRule PowerShell module.
 
-![ci-badge]
+![ci-badge] ![ext-version-badge] ![ext-installs-badge]
 
 This **preview** extension for Visual Studio Code adds convenience features for IT Pros using PSRule.
 
@@ -29,7 +29,7 @@ Install-Module -Name PSRule -Scope CurrentUser;
 
 ## Installing the extension
 
-You can install the latest release of the extension by following the steps in the [Visual Studio Code documentation][vscode-ext-gallery]. In the Extensions pane, search for _PSRule_ extension and install it there. You will get notified automatically about any future extension updates!
+You can install the latest release of the extension by following the steps in the [Visual Studio Code documentation][vscode-ext-gallery]. In the Extensions pane, search for _PSRule_ extension and install it there. You will get notified automatically about any future extension updates.
 
 ```text
 code --install-extension bewhite.psrule-vscode-preview
