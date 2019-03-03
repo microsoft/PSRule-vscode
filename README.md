@@ -2,13 +2,13 @@
 
 An extension for IT Pros using the PSRule PowerShell module.
 
-![ci-badge]
+![ci-badge] ![ext-version-badge] ![ext-installs-badge]
 
 This **preview** extension for Visual Studio Code adds convenience features for IT Pros using PSRule.
 
 Features include:
 
-- Snippets for built-in keywords.
+- Snippets and syntax highlighting for built-in keywords.
 - YAML schema validation for options.
 
 ## Disclaimer
@@ -19,7 +19,7 @@ If you have any problems please check our GitHub [issues](https://github.com/Ber
 
 ## Installing PSRule module
 
-PSRule is available from the PowerShell Gallery.
+PSRule is available from the PowerShell Gallery and is required for this extension to work.
 
 To install the module use the following command from PowerShell prompt.
 
@@ -29,7 +29,7 @@ Install-Module -Name PSRule -Scope CurrentUser;
 
 ## Installing the extension
 
-You can install the latest release of the extension by following the steps in the [Visual Studio Code documentation][vscode-ext-gallery]. In the Extensions pane, search for _PSRule_ extension and install it there. You will get notified automatically about any future extension updates!
+You can install the latest release of the extension by following the steps in the [Visual Studio Code documentation][vscode-ext-gallery]. In the Extensions pane, search for _PSRule_ extension and install it there. You will get notified automatically about any future extension updates.
 
 ```text
 code --install-extension bewhite.psrule-vscode-preview

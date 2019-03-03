@@ -35,24 +35,35 @@
     "activationEvents": [
         "onLanguage:powershell"
     ],
-    "badges": [
-        {
-            "description": "PSRule extension version",
-            "href": "https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview",
-            "url": "https://vsmarketplacebadge.apphb.com/version/bewhite.psrule-vscode-preview.svg"
-        },
-        {
-            "description": "PSRule extension installs",
-            "href": "https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview",
-            "url": "https://vsmarketplacebadge.apphb.com/installs-short/bewhite.psrule-vscode-preview.svg"
-        }
-    ],
     "main": "./out/extension/extension.js",
     "contributes": {
         "snippets": [
             {
                 "language": "powershell",
                 "path": "./snippets/PSRule.json"
+            }
+        ],
+        "grammars": [
+            {
+                "path": "./syntaxes/comments.json",
+                "scopeName": "PSRule-powershell-comments",
+                "injectTo": [
+                    "source.powershell"
+                ]
+            },
+            {
+                "path": "./syntaxes/keywords.json",
+                "scopeName": "PSRule-powershell-keywords",
+                "injectTo": [
+                    "source.powershell"
+                ]
+            },
+            {
+                "path": "./syntaxes/rule.json",
+                "scopeName": "PSRule-powershell-rule",
+                "injectTo": [
+                    "source.powershell"
+                ]
             }
         ],
         "yamlValidation": [
