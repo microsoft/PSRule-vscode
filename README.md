@@ -19,7 +19,7 @@ If you have any problems please check our GitHub [issues](https://github.com/Ber
 
 ## Installing PSRule module
 
-PSRule is available from the PowerShell Gallery.
+PSRule is available from the PowerShell Gallery and is required for this extension to work.
 
 To install the module use the following command from PowerShell prompt.
 
