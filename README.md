@@ -45,7 +45,7 @@ code --install-extension bewhite.psrule-vscode-preview
 
 This project is [licensed under the MIT License](LICENSE).
 
-[ci-badge]: https://bewhite.visualstudio.com/PSRule-vscode/_apis/build/status/PSRule-vscode-CI?branchName=master
+[ci-badge]: https://dev.azure.com/bewhite/PSRule-vscode/_apis/build/status/PSRule-vscode-CI?branchName=master
 [vscode-ext-gallery]: https://code.visualstudio.com/docs/editor/extension-gallery
 [ext]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview
 [ext-version-badge]: https://vsmarketplacebadge.apphb.com/version/bewhite.psrule-vscode-preview.svg
