@@ -80,7 +80,7 @@ task PackageExtension {
 # Synopsis: Install the extension in Visual Studio Code
 task InstallExtension {
     Write-Host "> Installing PSRule-vscode" -ForegroundColor Green
-    exec { & code --install-extension ./out/package/psrule-vscode-preview.vsix }
+    exec { & code --install-extension ./out/package/psrule-vscode-preview.vsix --force }
 }
 
 task VersionExtension {

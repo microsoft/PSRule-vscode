@@ -69,19 +69,19 @@
         "yamlValidation": [
             {
                 "fileMatch": "PSRule.yaml",
-                "url": "./schemas/PSRule-options-0.3.0.schema.json"
+                "url": "./schemas/PSRule-options.schema.json"
             },
             {
                 "fileMatch": "PSRule.yml",
-                "url": "./schemas/PSRule-options-0.3.0.schema.json"
+                "url": "./schemas/PSRule-options.schema.json"
             },
             {
                 "fileMatch": "psrule.yml",
-                "url": "./schemas/PSRule-options-0.3.0.schema.json"
+                "url": "./schemas/PSRule-options.schema.json"
             },
             {
                 "fileMatch": "psrule.yaml",
-                "url": "./schemas/PSRule-options-0.3.0.schema.json"
+                "url": "./schemas/PSRule-options.schema.json"
             }
         ]
     },
