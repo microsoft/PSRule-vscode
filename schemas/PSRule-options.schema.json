@@ -3,11 +3,17 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "oneOf": [
         {
+            "$ref": "#/definitions/options-v0.4.0"
+        },
+        {
             "$ref": "#/definitions/options-v0.3.0"
+        },
+        {
+            "$ref": "#/definitions/options-v0.2.0"
         }
     ],
     "definitions": {
-        "baseline": {
+        "baseline-v0.2.0": {
             "type": "object",
             "description": "Options that include/ exclude and configure rules.",
             "properties": {
@@ -34,7 +40,21 @@
             },
             "additionalProperties": false
         },
-        "binding": {
+        "binding-v0.2.0": {
+            "type": "object",
+            "description": "Configure property/ object binding options.",
+            "properties": {
+                "targetName": {
+                    "type": "array",
+                    "description": "Specifies one or more property names to bind TargetName to.",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "binding-v0.3.0": {
             "type": "object",
             "description": "Configure property/ object binding options.",
             "properties": {
@@ -86,8 +106,9 @@
             },
             "additionalProperties": false
         },
-        "input": {
+        "input-v0.3.0": {
             "type": "object",
+            "description": "Options that affect how input types are processed.",
             "properties": {
                 "format": {
                     "type": "string",
@@ -106,9 +127,86 @@
             },
             "additionalProperties": false
         },
-        "suppression": {
+        "input-v0.4.0": {
+            "type": "object",
+            "description": "Options that affect how input types are processed.",
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "description": "The input string format.",
+                    "enum": [
+                        "None",
+                        "Yaml",
+                        "Json",
+                        "Detect"
+                    ],
+                    "default": "Detect"
+                },
+                "objectPath": {
+                    "type": "string",
+                    "description": "The object path to a property to use instead of the pipeline object."
+                }
+            },
+            "additionalProperties": false
+        },
+        "logging-v0.4.0": {
+            "type": "object",
+            "description": "Options for logging outcomes to a informational streams.",
+            "properties": {
+                "ruleFail": {
+                    "type": "string",
+                    "description": "Log fail outcomes for each rule to a specific informational stream.",
+                    "enum": [
+                        "None",
+                        "Error",
+                        "Warning",
+                        "Information"
+                    ],
+                    "default": "None"
+                },
+                "rulePass": {
+                    "type": "string",
+                    "description": "Log pass outcomes for each rule to a specific informational stream.",
+                    "enum": [
+                        "None",
+                        "Error",
+                        "Warning",
+                        "Information"
+                    ],
+                    "default": "None"
+                },
+                "additionalProperties": false
+            }
+        },
+        "suppression-v0.2.0": {
             "type": "object",
             "description": "Specifies suppression rules."
+        },
+        "output-v0.4.0": {
+            "type": "object",
+            "description": "Options that affect how output is generated.",
+            "properties": {
+                "as": {
+                    "type": "string",
+                    "description": "Determine if detailed or summary results are generated.",
+                    "enum": [
+                        "Detail",
+                        "Summary"
+                    ],
+                    "default": "Detail"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The output format.",
+                    "enum": [
+                        "None",
+                        "Yaml",
+                        "Json"
+                    ],
+                    "default": "None"
+                }
+            },
+            "additionalProperties": false
         },
         "options-v0.2.0": {
             "properties": {
@@ -116,7 +214,7 @@
                     "type": "object",
                     "oneOf": [
                         {
-                            "$ref": "#/definitions/baseline"
+                            "$ref": "#/definitions/baseline-v0.2.0"
                         }
                     ]
                 },
@@ -124,7 +222,7 @@
                     "type": "object",
                     "oneOf": [
                         {
-                            "$ref": "#/definitions/binding"
+                            "$ref": "#/definitions/binding-v0.2.0"
                         }
                     ]
                 },
@@ -140,7 +238,7 @@
                     "type": "object",
                     "oneOf": [
                         {
-                            "$ref": "#/definitions/suppression"
+                            "$ref": "#/definitions/suppression-v0.2.0"
                         }
                     ]
                 }
@@ -153,7 +251,7 @@
                     "type": "object",
                     "oneOf": [
                         {
-                            "$ref": "#/definitions/baseline"
+                            "$ref": "#/definitions/baseline-v0.2.0"
                         }
                     ]
                 },
@@ -161,7 +259,7 @@
                     "type": "object",
                     "oneOf": [
                         {
-                            "$ref": "#/definitions/binding"
+                            "$ref": "#/definitions/binding-v0.3.0"
                         }
                     ]
                 },
@@ -177,7 +275,7 @@
                     "type": "object",
                     "oneOf": [
                         {
-                            "$ref": "#/definitions/input"
+                            "$ref": "#/definitions/input-v0.3.0"
                         }
                     ]
                 },
@@ -185,7 +283,68 @@
                     "type": "object",
                     "oneOf": [
                         {
-                            "$ref": "#/definitions/suppression"
+                            "$ref": "#/definitions/suppression-v0.2.0"
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
+        "options-v0.4.0": {
+            "properties": {
+                "baseline": {
+                    "type": "object",
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/baseline-v0.2.0"
+                        }
+                    ]
+                },
+                "binding": {
+                    "type": "object",
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/binding-v0.3.0"
+                        }
+                    ]
+                },
+                "execution": {
+                    "type": "object",
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/execution"
+                        }
+                    ]
+                },
+                "input": {
+                    "type": "object",
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/input-v0.4.0"
+                        }
+                    ]
+                },
+                "logging": {
+                    "type": "object",
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/logging-v0.4.0"
+                        }
+                    ]
+                },
+                "output": {
+                    "type": "object",
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/output-v0.4.0"
+                        }
+                    ]
+                },
+                "suppression": {
+                    "type": "object",
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/suppression-v0.2.0"
                         }
                     ]
                 }
