@@ -1,14 +1,18 @@
 {
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "scopeName": "PSRule-powershell-keywords",
-    "injectionSelector": "L:meta.scriptblock.powershell",
+    "injectionSelector": "meta.scriptblock.powershell",
     "patterns": [
+        {
+            "include": "source.powershell#commentLine"
+        },
         {
             "include": "#built-in-keyword"
         }
     ],
     "repository": {
         "built-in-keyword": {
-            "match": "(?<!\\w|-|\\.)((?i:AllOf|AnyOf|Exists|Match|Within|TypeOf)|%|\\?)(?!\\w)",
+            "match": "(?>^\\s*|\\|\\s*)\\b(?i:AllOf|AnyOf|Exists|Match|Within|TypeOf)\\b",
             "name": "keyword.control.powershell"
         }
     }

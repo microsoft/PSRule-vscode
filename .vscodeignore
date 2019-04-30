@@ -1,6 +1,7 @@
 .vscode-test/**
 .vscode/**
 .github/**
+docs/**
 typings/**
 out/test/**
 out/packages/**
