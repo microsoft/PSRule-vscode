@@ -1,0 +1,14 @@
+#
+# Example validation rules
+#
+
+# Description: Redis Cache should only accept secure connections
+Rule 'redis.NonSslPort' -If { ResourceType 'Microsoft.Cache/Redis' } {
+    $TargetObject.properties.enableNonSslPort -eq $False
+}
+
+# Description: Redis Cache should reject TLS versions older then 1.2
+Rule 'redis.MinTLS' -If { ResourceType 'Microsoft.Cache/Redis' } {
+    # Check that TLS is within range
+    Within 'properties.minimumTlsVersion' '1.2'
+}
