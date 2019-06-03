@@ -3,12 +3,19 @@
     "injectionSelector": "L:comment.line.powershell",
     "patterns": [
         {
+            "include": "#synopsis-comment"
+        },
+        {
             "include": "#description-comment"
         }
     ],
     "repository": {
         "description-comment": {
             "match": "Description:",
+            "name": "keyword.operator.documentation.powershell"
+        },
+        "synopsis-comment": {
+            "match": "Synopsis:",
             "name": "keyword.operator.documentation.powershell"
         }
     }
