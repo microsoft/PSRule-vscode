@@ -1,6 +1,9 @@
 
 ## Unreleased
 
+- Add highlighting for `Synopsis:` metadata in comments. [#16](https://github.com/BernieWhite/PSRule-vscode/issues/16)
+- Add syntax highlighting and snippet for `Recommend` keyword. [#17](https://github.com/BernieWhite/PSRule-vscode/issues/17)
+
 ## v0.2.0
 
 What's changed since v0.1.0:
