@@ -45,44 +45,6 @@ if ($version -like '*-*') {
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
 
-
-task CopyExtension {
-
-    if (!(Test-Path -Path out/extension/schemas)) {
-        $Null = New-Item -Path out/extension/schemas -ItemType Directory -Force;
-    }
-
-    if (!(Test-Path -Path out/extension/snippets)) {
-        $Null = New-Item -Path out/extension/snippets -ItemType Directory -Force;
-    }
-
-    if (!(Test-Path -Path out/extension/syntaxes)) {
-        $Null = New-Item -Path out/extension/syntaxes -ItemType Directory -Force;
-    }
-
-    if (!(Test-Path -Path out/extension/out)) {
-        $Null = New-Item -Path out/extension/out -ItemType Directory -Force;
-    }
-
-    Copy-Item -Path package.json -Destination out/extension/;
-    Copy-Item -Path package-lock.json -Destination out/extension/;
-    Copy-Item -Path *.md -Destination out/extension/;
-    Copy-Item -Path LICENSE -Destination out/extension/;
-    Copy-Item -Path node_modules -Destination out/extension/node_modules -Recurse -Force;
-
-    # Copy third party notices
-    # Copy-Item -Path ThirdPartyNotices.txt -Destination out/extension/;
-
-    # Copy schemas
-    Copy-Item -Path schemas/* -Destination out/extension/schemas/;
-
-    # Copy snippets
-    Copy-Item -Path snippets/* -Destination out/extension/snippets/;
-
-    # Copy syntaxes
-    Copy-Item -Path syntaxes/* -Destination out/extension/syntaxes/;
-}
-
 task BuildExtension {
     Write-Host "> Building extension" -ForegroundColor Green
     exec { & npm run compile }
@@ -98,11 +60,7 @@ task PackageExtension {
     $workingPath = $PWD;
     $packagePath = Join-Path -Path $workingPath -ChildPath 'out/package/psrule-vscode-preview.vsix';
 
-    # Push-Location out/extension;
-
     exec { & npm run pack -- --out $packagePath }
-
-    Pop-Location;
 }
 
 # Synopsis: Install the extension in Visual Studio Code
@@ -126,7 +84,7 @@ task VersionExtension {
     }
 }
 
-# Synopsis: Remove temp files.
+# Synopsis: Remove temp files
 task Clean {
     Remove-Item -Path out,reports -Recurse -Force -ErrorAction Ignore;
 }

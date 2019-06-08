@@ -53,7 +53,7 @@ stages:
     - task: PublishPipelineArtifact@0
       displayName: 'Publish extension'
       inputs:
-        artifactName: PSRule-extension
+        artifactName: extension
         targetPath: out/package
       condition: and(succeeded(), eq(variables['publish'], 'true'))
 
@@ -71,7 +71,7 @@ stages:
     - task: DownloadPipelineArtifact@1
       displayName: 'Download extension'
       inputs:
-        artifactName: PSRule-extension
+        artifactName: extension
         downloadPath: $(Build.SourcesDirectory)/out/package
     # Install pipeline dependencies
     - powershell: ./.azure-pipelines/pipeline-deps.ps1
