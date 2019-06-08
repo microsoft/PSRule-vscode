@@ -131,6 +131,7 @@ task Clean {
 # Synopsis: Restore NPM packages
 task PackageRestore {
     exec { & npm install }
+    exec { npm install vsce }
 }
 
 task ReleaseExtension {
