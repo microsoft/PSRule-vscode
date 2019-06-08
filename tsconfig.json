@@ -2,7 +2,8 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es6",
-        "outDir": "out/extension/out",
+        "rootDir": "src",
+        "outDir": "out/dist",
         "lib": [
             "es6"
         ]

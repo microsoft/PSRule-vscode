@@ -98,9 +98,9 @@ task PackageExtension {
     $workingPath = $PWD;
     $packagePath = Join-Path -Path $workingPath -ChildPath 'out/package/psrule-vscode-preview.vsix';
 
-    Push-Location out/extension;
+    # Push-Location out/extension;
 
-    exec { & vsce package --out $packagePath }
+    exec { & npm run pack -- --out $packagePath }
 
     Pop-Location;
 }
@@ -116,9 +116,12 @@ task VersionExtension {
         # Update extension version
         if (![String]::IsNullOrEmpty($version)) {
             Write-Verbose -Message "[VersionExtension] -- Updating extension version";
-            $package = Get-Content ./out/extension/package.json -Raw | ConvertFrom-Json;
-            $package.version = $version;
-            $package | ConvertTo-Json -Depth 99 | Set-Content ./out/extension/package.json;
+            $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
+
+            if ($package.version -ne $version) {
+                $package.version = $version;
+                $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
+            }
         }
     }
 }
@@ -130,18 +133,17 @@ task Clean {
 
 # Synopsis: Restore NPM packages
 task PackageRestore {
-    exec { & npm install }
-    exec { npm install vsce }
+    exec { & npm install --no-save }
 }
 
 task ReleaseExtension {
     $packagePath = Join-Path -Path $ArtifactPath -ChildPath 'extension/psrule-vscode-preview.vsix';
 
-    exec { & npm install -g vsce }
-    exec { & vsce publish --packagePath $packagePath --pat $ApiKey }
+    exec { & npm install vsce --no-save }
+    exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
 }
 
-task Build Clean, PackageRestore, CopyExtension, BuildExtension, VersionExtension, PackageExtension
+task Build Clean, PackageRestore, BuildExtension, VersionExtension, PackageExtension
 
 task Install Build, InstallExtension
 
