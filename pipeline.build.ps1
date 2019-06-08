@@ -1,12 +1,10 @@
-#Requires -Modules @{ ModuleName = "InvokeBuild"; ModuleVersion = "5.4.0" }
+# Invoke-Build
+# CI pipeline script for PSRule-vscode
 
+[CmdletBinding()]
 param (
     [Parameter(Mandatory = $False)]
-    [String]$Build,
-
-    [Parameter(Mandatory = $False)]
-    [AllowNull()]
-    [String]$ReleaseVersion,
+    [String]$Build = '0.0.1',
 
     [Parameter(Mandatory = $False)]
     [String]$Configuration = 'Debug',
@@ -18,45 +16,37 @@ param (
     [String]$ApiKey
 )
 
-task CopyExtension {
+Write-Host -Object "[Pipeline] -- PWD: $PWD" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- ArtifactPath: $ArtifactPath" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- BuildNumber: $($Env:BUILD_BUILDNUMBER)" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- SourceBranch: $($Env:BUILD_SOURCEBRANCH)" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- SourceBranchName: $($Env:BUILD_SOURCEBRANCHNAME)" -ForegroundColor Green;
 
-    if (!(Test-Path -Path out/extension/schemas)) {
-        $Null = New-Item -Path out/extension/schemas -ItemType Directory -Force;
-    }
-
-    if (!(Test-Path -Path out/extension/snippets)) {
-        $Null = New-Item -Path out/extension/snippets -ItemType Directory -Force;
-    }
-
-    if (!(Test-Path -Path out/extension/syntaxes)) {
-        $Null = New-Item -Path out/extension/syntaxes -ItemType Directory -Force;
-    }
-
-    if (!(Test-Path -Path out/extension/out)) {
-        $Null = New-Item -Path out/extension/out -ItemType Directory -Force;
-    }
-
-    Copy-Item -Path package.json -Destination out/extension/;
-    Copy-Item -Path package-lock.json -Destination out/extension/;
-    Copy-Item -Path *.md -Destination out/extension/;
-    Copy-Item -Path LICENSE -Destination out/extension/;
-    Copy-Item -Path node_modules -Destination out/extension/node_modules -Recurse -Force;
-
-    # Copy third party notices
-    # Copy-Item -Path ThirdPartyNotices.txt -Destination out/extension/;
-
-    # Copy schemas
-    Copy-Item -Path schemas/* -Destination out/extension/schemas/;
-
-    # Copy snippets
-    Copy-Item -Path snippets/* -Destination out/extension/snippets/;
-
-    # Copy syntaxes
-    Copy-Item -Path syntaxes/* -Destination out/extension/syntaxes/;
+if ($Env:SYSTEM_DEBUG -eq 'true') {
+    $VerbosePreference = 'Continue';
 }
 
+if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v0.*') {
+    $Build = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
+}
+
+$version = $Build;
+$versionSuffix = [String]::Empty;
+
+if ($version -like '*-*') {
+    [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
+    $version = $versionParts[0];
+
+    if ($versionParts.Length -eq 2) {
+        $versionSuffix = $versionParts[1];
+    }
+}
+
+Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
+
 task BuildExtension {
-    Write-Host "> Building PSRule-vscode" -ForegroundColor Green
+    Write-Host "> Building extension" -ForegroundColor Green
     exec { & npm run compile }
 }
 
@@ -70,11 +60,7 @@ task PackageExtension {
     $workingPath = $PWD;
     $packagePath = Join-Path -Path $workingPath -ChildPath 'out/package/psrule-vscode-preview.vsix';
 
-    Push-Location out/extension;
-
-    exec { & vsce package --out $packagePath }
-
-    Pop-Location;
+    exec { & npm run pack -- --out $packagePath }
 }
 
 # Synopsis: Install the extension in Visual Studio Code
@@ -84,64 +70,38 @@ task InstallExtension {
 }
 
 task VersionExtension {
-
-    if (![String]::IsNullOrEmpty($ReleaseVersion)) {
-        Write-Verbose -Message "[VersionExtension] -- ReleaseVersion: $ReleaseVersion";
-        $Build = $ReleaseVersion;
-    }
-
     if (![String]::IsNullOrEmpty($Build)) {
-        Write-Verbose -Message "[VersionExtension] -- ModuleVersion: $Build";
-
-        $version = $Build;
-        $revision = [String]::Empty;
-
-        Write-Verbose -Message "[VersionExtension] -- Using Version: $version";
-        Write-Verbose -Message "[VersionExtension] -- Using Revision: $revision";
-
-        if ($version -like '*-*') {
-            [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
-            $version = $versionParts[0];
-
-            if ($versionParts.Length -eq 2) {
-                $revision = $versionParts[1];
-            }
-        }
-
         # Update extension version
         if (![String]::IsNullOrEmpty($version)) {
             Write-Verbose -Message "[VersionExtension] -- Updating extension version";
-            $package = Get-Content ./out/extension/package.json -Raw | ConvertFrom-Json;
-            $package.version = $version;
-            $package | ConvertTo-Json -Depth 99 | Set-Content ./out/extension/package.json;
-        }
+            $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
 
-        # Update pre-release version
-        if (![String]::IsNullOrEmpty($revision)) {
-            # Write-Verbose -Message "[VersionExtension] -- Updating extension Prerelease";
+            if ($package.version -ne $version) {
+                $package.version = $version;
+                $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
+            }
         }
     }
 }
 
-# Synopsis: Remove temp files.
+# Synopsis: Remove temp files
 task Clean {
     Remove-Item -Path out,reports -Recurse -Force -ErrorAction Ignore;
 }
 
 # Synopsis: Restore NPM packages
 task PackageRestore {
-    exec { & npm install }
-    exec { npm install -g vsce }
+    exec { & npm install --no-save }
 }
 
 task ReleaseExtension {
     $packagePath = Join-Path -Path $ArtifactPath -ChildPath 'extension/psrule-vscode-preview.vsix';
 
-    exec { & npm install -g vsce }
-    exec { & vsce publish --packagePath $packagePath --pat $ApiKey }
+    exec { & npm install vsce --no-save }
+    exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
 }
 
-task Build Clean, PackageRestore, CopyExtension, BuildExtension, VersionExtension, PackageExtension
+task Build Clean, PackageRestore, BuildExtension, VersionExtension, PackageExtension
 
 task Install Build, InstallExtension
 

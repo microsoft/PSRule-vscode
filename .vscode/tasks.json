@@ -27,6 +27,18 @@
             "problemMatcher": []
         },
         {
+            "label": "Clean",
+            "type": "shell",
+            "command": "Invoke-Build Clean",
+            "presentation": {
+                "reveal": "never",
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
             "type": "npm",
             "script": "compile",
             "problemMatcher": []

@@ -1,0 +1,81 @@
+# Azure DevOps
+# CI pipeline for PSRule-vscode
+
+variables:
+  version: '0.4.0'
+  buildConfiguration: 'Release'
+
+ # Use build number format, i.e. 0.1.0-B181101
+name: $(version)-B$(date:yyMM)$(rev:rr)
+
+trigger:
+  branches:
+    include:
+    - 'master'
+  tags:
+    include:
+    - 'v0.*'
+
+pr:
+  branches:
+    include:
+    - 'master'
+
+stages:
+
+# Build pipeline
+- stage: Build
+  displayName: Build
+  jobs:
+  - job:
+    strategy:
+      matrix:
+        Linux:
+          imageName: 'ubuntu-16.04'
+        MacOS:
+          imageName: 'macos-10.13'
+        Windows:
+          imageName: 'vs2017-win2016'
+          publish: true
+    pool:
+      vmImage: $(imageName)
+    steps:
+
+    # Install pipeline dependencies
+    - powershell: ./.azure-pipelines/pipeline-deps.ps1
+      displayName: 'Install dependencies'
+
+    # Build extension
+    - powershell: Invoke-Build -Configuration $(buildConfiguration) -Build $(Build.BuildNumber)
+      displayName: 'Build extension'
+
+    # Generate artifacts
+    - task: PublishPipelineArtifact@0
+      displayName: 'Publish extension'
+      inputs:
+        artifactName: extension
+        targetPath: out/package
+      condition: and(succeeded(), eq(variables['publish'], 'true'))
+
+# Release pipeline
+- stage: Release
+  displayName: Release
+  dependsOn: Build
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v0.')
+  jobs:
+  - job:
+    displayName: Live
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+    - task: DownloadPipelineArtifact@1
+      displayName: 'Download extension'
+      inputs:
+        artifactName: extension
+        downloadPath: $(Build.SourcesDirectory)/out/package
+    # Install pipeline dependencies
+    - powershell: ./.azure-pipelines/pipeline-deps.ps1
+      displayName: 'Install dependencies'
+    # Install pipeline dependencies and build module
+    - powershell: Invoke-Build Release -ApiKey $(apiKey)
+      displayName: 'Publish extension'
