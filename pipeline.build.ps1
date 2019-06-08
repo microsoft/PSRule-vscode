@@ -101,10 +101,17 @@ task ReleaseExtension {
     exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
 }
 
+# Synopsis: Add shipit build tag
+task TagBuild {
+    if ($Null -ne $Env:BUILD_DEFINITIONNAME) {
+        Write-Host "`#`#vso[build.addbuildtag]shipit";
+    }
+}
+
 task Build Clean, PackageRestore, BuildExtension, VersionExtension, PackageExtension
 
 task Install Build, InstallExtension
 
 task . Build
 
-task Release ReleaseExtension
+task Release ReleaseExtension, TagBuild
