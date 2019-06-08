@@ -1,12 +1,10 @@
-#Requires -Modules @{ ModuleName = "InvokeBuild"; ModuleVersion = "5.4.0" }
+# Invoke-Build
+# CI pipeline script for PSRule-vscode
 
+[CmdletBinding()]
 param (
     [Parameter(Mandatory = $False)]
-    [String]$Build,
-
-    [Parameter(Mandatory = $False)]
-    [AllowNull()]
-    [String]$ReleaseVersion,
+    [String]$Build = '0.0.1',
 
     [Parameter(Mandatory = $False)]
     [String]$Configuration = 'Debug',
@@ -17,6 +15,36 @@ param (
     [Parameter(Mandatory = $False)]
     [String]$ApiKey
 )
+
+Write-Host -Object "[Pipeline] -- PWD: $PWD" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- ArtifactPath: $ArtifactPath" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- BuildNumber: $($Env:BUILD_BUILDNUMBER)" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- SourceBranch: $($Env:BUILD_SOURCEBRANCH)" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- SourceBranchName: $($Env:BUILD_SOURCEBRANCHNAME)" -ForegroundColor Green;
+
+if ($Env:SYSTEM_DEBUG -eq 'true') {
+    $VerbosePreference = 'Continue';
+}
+
+if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v0.*') {
+    $Build = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
+}
+
+$version = $Build;
+$versionSuffix = [String]::Empty;
+
+if ($version -like '*-*') {
+    [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
+    $version = $versionParts[0];
+
+    if ($versionParts.Length -eq 2) {
+        $versionSuffix = $versionParts[1];
+    }
+}
+
+Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
+
 
 task CopyExtension {
 
@@ -56,7 +84,7 @@ task CopyExtension {
 }
 
 task BuildExtension {
-    Write-Host "> Building PSRule-vscode" -ForegroundColor Green
+    Write-Host "> Building extension" -ForegroundColor Green
     exec { & npm run compile }
 }
 
@@ -84,41 +112,13 @@ task InstallExtension {
 }
 
 task VersionExtension {
-
-    if (![String]::IsNullOrEmpty($ReleaseVersion)) {
-        Write-Verbose -Message "[VersionExtension] -- ReleaseVersion: $ReleaseVersion";
-        $Build = $ReleaseVersion;
-    }
-
     if (![String]::IsNullOrEmpty($Build)) {
-        Write-Verbose -Message "[VersionExtension] -- ModuleVersion: $Build";
-
-        $version = $Build;
-        $revision = [String]::Empty;
-
-        Write-Verbose -Message "[VersionExtension] -- Using Version: $version";
-        Write-Verbose -Message "[VersionExtension] -- Using Revision: $revision";
-
-        if ($version -like '*-*') {
-            [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
-            $version = $versionParts[0];
-
-            if ($versionParts.Length -eq 2) {
-                $revision = $versionParts[1];
-            }
-        }
-
         # Update extension version
         if (![String]::IsNullOrEmpty($version)) {
             Write-Verbose -Message "[VersionExtension] -- Updating extension version";
             $package = Get-Content ./out/extension/package.json -Raw | ConvertFrom-Json;
             $package.version = $version;
             $package | ConvertTo-Json -Depth 99 | Set-Content ./out/extension/package.json;
-        }
-
-        # Update pre-release version
-        if (![String]::IsNullOrEmpty($revision)) {
-            # Write-Verbose -Message "[VersionExtension] -- Updating extension Prerelease";
         }
     }
 }
