@@ -39,9 +39,17 @@
             "problemMatcher": []
         },
         {
+            "label": "Compile",
             "type": "npm",
             "script": "compile",
-            "problemMatcher": []
+            "presentation": {
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": [
+                "$tsc"
+            ]
         }
     ]
 }
