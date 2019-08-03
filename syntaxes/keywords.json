@@ -12,7 +12,7 @@
     ],
     "repository": {
         "built-in-keyword": {
-            "match": "(?>^\\s*|\\|\\s*)\\b(?i:AllOf|AnyOf|Exists|Match|Within|TypeOf|Recommend)\\b",
+            "match": "(?>^\\s*|\\|\\s*)\\b(?i:AllOf|AnyOf|Exists|Match|Within|TypeOf|Recommend|Reason)\\b",
             "name": "keyword.control.powershell"
         }
     }

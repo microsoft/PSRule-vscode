@@ -8,7 +8,7 @@
         "name": "Bernie White"
     },
     "engines": {
-        "vscode": "^1.35.0"
+        "vscode": "^1.36.0"
     },
     "license": "SEE LICENSE IN LICENSE",
     "homepage": "https://github.com/BernieWhite/PSRule-vscode/blob/master/README.md",
@@ -93,8 +93,7 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pack": "vsce package",
-        "publish": "vsce publish",
-        "postinstall": "node ./node_modules/vscode/bin/install"
+        "publish": "vsce publish"
     },
     "dependencies": {
         "vscode-languageclient": "^5.2.1"
@@ -105,9 +104,10 @@
     ],
     "devDependencies": {
         "@types/node": "~11.13.8",
+        "@types/vscode": "1.36.0",
         "tslint": "~5.16.0",
         "typescript": "^3.4.5",
-        "vsce": "~1.64.0",
-        "vscode": "^1.1.35"
+        "vsce": "~1.66.0",
+        "vscode-test": "^1.0.2"
     }
 }
