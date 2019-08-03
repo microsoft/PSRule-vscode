@@ -84,5 +84,12 @@
         "body": [
             "Recommend '$0'"
         ]
+    },
+    "reason": {
+        "prefix": "reason",
+        "description": "Reason message",
+        "body": [
+            "Reason '$0'"
+        ]
     }
 }
