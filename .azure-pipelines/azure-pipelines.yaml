@@ -68,6 +68,8 @@ stages:
     pool:
       vmImage: 'ubuntu-16.04'
     steps:
+
+    # Download extension
     - task: DownloadPipelineArtifact@1
       displayName: 'Download extension'
       inputs:
@@ -81,3 +83,17 @@ stages:
     # Install pipeline dependencies and build module
     - powershell: Invoke-Build Release -ApiKey $(apiKey)
       displayName: 'Publish extension'
+
+    # Update GitHub release
+    - task: GitHubRelease@0
+      displayName: 'GitHub release'
+      inputs:
+        gitHubConnection: 'AzureDevOps-PSRule-vscode'
+        repositoryName: '$(Build.Repository.Name)'
+        action: edit
+        tag: '$(Build.SourceBranchName)'
+        releaseNotesSource: input
+        releaseNotes: 'See [change log](https://github.com/BernieWhite/PSRule-vscode/blob/master/CHANGELOG.md)'
+        assetUploadMode: replace
+        addChangeLog: false
+        isPreRelease: false
