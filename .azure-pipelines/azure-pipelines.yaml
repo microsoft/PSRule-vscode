@@ -73,9 +73,11 @@ stages:
       inputs:
         artifactName: extension
         downloadPath: $(Build.SourcesDirectory)/out/package
+
     # Install pipeline dependencies
     - powershell: ./.azure-pipelines/pipeline-deps.ps1
       displayName: 'Install dependencies'
+
     # Install pipeline dependencies and build module
     - powershell: Invoke-Build Release -ApiKey $(apiKey)
       displayName: 'Publish extension'

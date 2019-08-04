@@ -10,14 +10,14 @@ param (
     [String]$Configuration = 'Debug',
 
     [Parameter(Mandatory = $False)]
-    [String]$ArtifactPath = (Join-Path -Path $PWD -ChildPath out/package),
+    [String]$OutputPath = (Join-Path -Path $PWD -ChildPath out),
 
     [Parameter(Mandatory = $False)]
     [String]$ApiKey
 )
 
 Write-Host -Object "[Pipeline] -- PWD: $PWD" -ForegroundColor Green;
-Write-Host -Object "[Pipeline] -- ArtifactPath: $ArtifactPath" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- OutputPath: $OutputPath" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- BuildNumber: $($Env:BUILD_BUILDNUMBER)" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- SourceBranch: $($Env:BUILD_SOURCEBRANCH)" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- SourceBranchName: $($Env:BUILD_SOURCEBRANCHNAME)" -ForegroundColor Green;
@@ -45,28 +45,26 @@ if ($version -like '*-*') {
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
 
+$packageRoot = Join-Path -Path $OutputPath -ChildPath 'package';
+$packagePath = Join-Path -Path $packageRoot -ChildPath 'psrule-vscode-preview.vsix';
+
 task BuildExtension {
-    Write-Host "> Building extension" -ForegroundColor Green
+    Write-Host '> Building extension' -ForegroundColor Green;
     exec { & npm run compile }
 }
 
 task PackageExtension {
-    Write-Host "> Packaging PSRule-vscode" -ForegroundColor Green
-
-    if (!(Test-Path -Path out/package)) {
-        $Null = New-Item -Path out/package -ItemType Directory -Force;
+    Write-Host '> Packaging PSRule-vscode' -ForegroundColor Green;
+    if (!(Test-Path -Path $packageRoot)) {
+        $Null = New-Item -Path $packageRoot -ItemType Directory -Force;
     }
-
-    $workingPath = $PWD;
-    $packagePath = Join-Path -Path $workingPath -ChildPath 'out/package/psrule-vscode-preview.vsix';
-
     exec { & npm run pack -- --out $packagePath }
 }
 
 # Synopsis: Install the extension in Visual Studio Code
 task InstallExtension {
-    Write-Host "> Installing PSRule-vscode" -ForegroundColor Green
-    exec { & code --install-extension ./out/package/psrule-vscode-preview.vsix --force }
+    Write-Host '> Installing PSRule-vscode' -ForegroundColor Green;
+    exec { & code --install-extension $packagePath --force }
 }
 
 task VersionExtension {
@@ -95,8 +93,6 @@ task PackageRestore {
 }
 
 task ReleaseExtension {
-    $packagePath = Join-Path -Path $ArtifactPath -ChildPath 'extension/psrule-vscode-preview.vsix';
-
     exec { & npm install vsce --no-save }
     exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
 }
