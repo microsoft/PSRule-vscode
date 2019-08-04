@@ -1,6 +1,10 @@
 
 ## Unreleased
 
+## v0.5.0
+
+What's changed since v0.4.0:
+
 - Add snippet and syntax support for Reason keyword. [#32](https://github.com/BernieWhite/PSRule-vscode/issues/32)
 - Updated PSRule options schema to v0.8.0. [#31](https://github.com/BernieWhite/PSRule-vscode/issues/31)
 
