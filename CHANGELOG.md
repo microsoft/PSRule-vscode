@@ -1,6 +1,11 @@
 
 ## Unreleased
 
+- Added PSRule resource schema. [#39](https://github.com/BernieWhite/PSRule-vscode/issues/39)
+- Updated PSRule options schema to v0.9.0. [#38](https://github.com/BernieWhite/PSRule-vscode/issues/38)
+- Added snippet for baseline resource. [#40](https://github.com/BernieWhite/PSRule-vscode/issues/40)
+- Added highlighting for `Synopsis:` resource comments. [#41](https://github.com/BernieWhite/PSRule-vscode/issues/41)
+
 ## v0.5.0
 
 What's changed since v0.4.0:

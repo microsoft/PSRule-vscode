@@ -1,0 +1,15 @@
+{
+    "baseline": {
+        "prefix": "baseline",
+        "description": "Baseline spec",
+        "body": [
+            "---",
+            "# Synopsis: ${2}",
+            "kind: Baseline",
+            "metadata:",
+            "  name: ${1}",
+            "spec:",
+            "  ${3}"
+        ]
+    }
+}

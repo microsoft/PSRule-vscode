@@ -45,6 +45,10 @@
             {
                 "language": "markdown",
                 "path": "./snippets/markdown.json"
+            },
+            {
+                "language": "yaml",
+                "path": "./snippets/yaml.json"
             }
         ],
         "grammars": [
@@ -68,6 +72,13 @@
                 "injectTo": [
                     "source.powershell"
                 ]
+            },
+            {
+                "path": "./syntaxes/yaml-comments.json",
+                "scopeName": "PSRule-yaml-comments",
+                "injectTo": [
+                    "source.yaml"
+                ]
             }
         ],
         "yamlValidation": [
@@ -86,6 +97,10 @@
             {
                 "fileMatch": "psrule.yml",
                 "url": "./schemas/PSRule-options.schema.json"
+            },
+            {
+                "fileMatch": "**/*.Rule.yaml",
+                "url": "./schemas/PSRule-language.schema.json"
             }
         ]
     },
