@@ -1,6 +1,10 @@
 
 ## Unreleased
 
+## v0.6.0
+
+What's changed since v0.5.0:
+
 - Added PSRule resource schema. [#39](https://github.com/BernieWhite/PSRule-vscode/issues/39)
 - Updated PSRule options schema to v0.9.0. [#38](https://github.com/BernieWhite/PSRule-vscode/issues/38)
 - Added snippet for baseline resource. [#40](https://github.com/BernieWhite/PSRule-vscode/issues/40)
@@ -10,7 +14,7 @@
 
 What's changed since v0.4.0:
 
-- Add snippet and syntax support for Reason keyword. [#32](https://github.com/BernieWhite/PSRule-vscode/issues/32)
+- Added snippet and syntax support for Reason keyword. [#32](https://github.com/BernieWhite/PSRule-vscode/issues/32)
 - Updated PSRule options schema to v0.8.0. [#31](https://github.com/BernieWhite/PSRule-vscode/issues/31)
 
 ## v0.4.0
