@@ -1,0 +1,10 @@
+
+---
+# Synopsis: This is an example baseline
+kind: Baseline
+metadata:
+  name: ExampleBaseline
+spec:
+  rule:
+    exclude:
+    - Rule1
