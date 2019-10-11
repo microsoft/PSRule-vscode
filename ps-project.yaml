@@ -1,0 +1,8 @@
+
+
+tasks:
+  clear:
+    steps:
+    - gitPrune:
+        name: origin
+        removeGone: true
