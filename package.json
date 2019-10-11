@@ -8,7 +8,7 @@
         "name": "Bernie White"
     },
     "engines": {
-        "vscode": "^1.36.0"
+        "vscode": "^1.39.0"
     },
     "license": "SEE LICENSE IN LICENSE",
     "homepage": "https://github.com/BernieWhite/PSRule-vscode/blob/master/README.md",
