@@ -2,7 +2,7 @@
 # CI pipeline for PSRule-vscode
 
 variables:
-  version: '0.9.0'
+  version: '0.10.0'
   buildConfiguration: 'Release'
 
  # Use build number format, i.e. 0.1.0-B181101
