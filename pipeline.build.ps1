@@ -4,7 +4,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Mandatory = $False)]
-    [String]$Build = '0.0.1',
+    [String]$Build,
 
     [Parameter(Mandatory = $False)]
     [String]$Configuration = 'Debug',
