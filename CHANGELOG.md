@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.10.0
+
+What's changed since v0.9.0:
+
 - Updated markdown snippet to include links section and online version. [#60](https://github.com/BernieWhite/PSRule-vscode/issues/60)
 - Updated PSRule options schema to v0.13.0. [#59](https://github.com/BernieWhite/PSRule-vscode/issues/59)
 
