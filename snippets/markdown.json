@@ -3,7 +3,7 @@
         "prefix": "rule",
         "description": "Rule documentation",
         "body": [
-            "# ${1:Rule name}",
+            "# ${1:Name of rule}",
             "",
             "## SYNOPSIS",
             "",
@@ -24,9 +24,10 @@
         "description": "Extended rule documentation",
         "body": [
             "---",
-            "",
+            "online version:",
             "---",
-            "# ${1:Rule name}",
+            "",
+            "# ${1:Name of rule}",
             "",
             "## SYNOPSIS",
             "",
@@ -42,7 +43,11 @@
             "",
             "## NOTES",
             "",
-            "{{ Additional information or background }}",
+            "{{ Additional information or configuration options }}",
+            "",
+            "## LINKS",
+            "",
+            "{{ Links to external references }}",
             ""
         ]
     }

@@ -23,6 +23,7 @@
         "color": "#0072c6",
         "theme": "dark"
     },
+    "icon": "images/icon128.png",
     "repository": {
         "type": "git",
         "url": "https://github.com/BernieWhite/PSRule-vscode.git"
@@ -112,7 +113,7 @@
     },
     "dependencies": {
         "vscode-languageclient": "^5.2.1",
-        "lodash": "^4.17.12"
+        "lodash": "^4.17.15"
     },
     "extensionDependencies": [
         "vscode.powershell",
@@ -122,7 +123,7 @@
         "@types/node": "~11.13.8",
         "@types/vscode": "1.41.0",
         "tslint": "^5.20.1",
-        "typescript": "^3.7.3",
+        "typescript": "^3.7.4",
         "vsce": "^1.71.0",
         "vscode-test": "^1.3.0"
     }
