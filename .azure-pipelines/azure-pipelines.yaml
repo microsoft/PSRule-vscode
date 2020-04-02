@@ -2,10 +2,10 @@
 # CI pipeline for PSRule-vscode
 
 variables:
-  version: '0.10.0'
+  version: '0.12.0'
   buildConfiguration: 'Release'
 
- # Use build number format, i.e. 0.1.0-B1811001
+ # Use build number format, i.e. 0.12.0-B2011001
 name: $(version)-B$(date:yyMM)$(rev:rrr)
 
 trigger:
@@ -31,9 +31,9 @@ stages:
     strategy:
       matrix:
         Linux:
-          imageName: 'ubuntu-16.04'
+          imageName: 'ubuntu-18.04'
         MacOS:
-          imageName: 'macos-10.13'
+          imageName: 'macOS-10.15'
         Windows:
           imageName: 'vs2017-win2016'
           publish: true
@@ -66,7 +66,7 @@ stages:
   - job:
     displayName: Live
     pool:
-      vmImage: 'ubuntu-16.04'
+      vmImage: 'ubuntu-18.04'
     steps:
 
     # Download extension
