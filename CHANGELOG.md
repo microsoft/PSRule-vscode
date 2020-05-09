@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Updated PSRule resource schema to v0.17.0. [#73](https://github.com/BernieWhite/PSRule-vscode/issues/73)
+- Added snippet for ModuleConfig resource. [#75](https://github.com/BernieWhite/PSRule-vscode/issues/75)
 
 ## v0.12.0
 
