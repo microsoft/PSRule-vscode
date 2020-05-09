@@ -11,5 +11,18 @@
             "spec:",
             "  ${3}"
         ]
+    },
+    "moduleConfig": {
+        "prefix": "moduleConfig",
+        "description": "Module Config spec",
+        "body": [
+            "---",
+            "# Synopsis: ${2}",
+            "kind: ModuleConfig",
+            "metadata:",
+            "  name: ${1}",
+            "spec:",
+            "  ${3}"
+        ]
     }
 }
