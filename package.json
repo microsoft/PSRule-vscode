@@ -11,7 +11,7 @@
         "vscode": "^1.47.0"
     },
     "license": "SEE LICENSE IN LICENSE",
-    "homepage": "https://github.com/BernieWhite/PSRule-vscode/blob/master/README.md",
+    "homepage": "https://github.com/BernieWhite/PSRule-vscode/blob/main/README.md",
     "categories": [
         "Other",
         "Snippets"

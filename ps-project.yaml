@@ -1,4 +1,16 @@
 
+info:
+  name: PSRule
+  description: |
+    Visual Studio Code extension for PSRule.
+  url: https://github.com/BernieWhite/PSRule-vscode
+
+repository:
+  type: git
+  url: https://github.com/BernieWhite/PSRule-vscode.git
+
+bugs:
+  url: https://github.com/BernieWhite/PSRule-vscode/issues
 
 tasks:
   clear:
