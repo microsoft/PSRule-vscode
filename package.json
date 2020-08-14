@@ -124,7 +124,7 @@
         "@typescript-eslint/eslint-plugin": "^2.34.0",
         "@typescript-eslint/parser": "^2.34.0",
         "eslint": "^6.8.0",
-        "lodash": ">=4.17.19",
+        "lodash": ">=4.17.20",
         "markdown-it": "^11.0.0",
         "minimist": ">=1.2.5",
         "typescript": "^3.9.7",
