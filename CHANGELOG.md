@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Updated PSRule options schema to v0.21.0. [#135](https://github.com/BernieWhite/PSRule-vscode/issues/135)
+- Updated PSRule resource schema to v0.21.0. [#134](https://github.com/BernieWhite/PSRule-vscode/issues/134)
+
 ## v0.15.0
 
 What's changed since v0.14.0:
