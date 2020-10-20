@@ -1,0 +1,18 @@
+#
+# PSRule configuration for repository analysis
+#
+
+# GitHub Actions: https://github.com/marketplace/actions/psrule
+# PSRule options: https://github.com/microsoft/PSRule#concepts
+output:
+  culture:
+  - en-US
+
+input:
+  pathIgnore:
+  - '*.md'
+  - 'schemas/*.json'
+  - 'syntaxes/*.json'
+  - 'snippets/*.json'
+  - '.vscode/'
+  - '**/node_modules/'

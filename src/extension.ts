@@ -1,6 +1,5 @@
-/*---------------------------------------------------------
- * Copyright (C) Bernie White. All rights reserved.
- *--------------------------------------------------------*/
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 "use strict";
 
