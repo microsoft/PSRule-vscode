@@ -50,6 +50,19 @@
             "problemMatcher": [
                 "$tsc"
             ]
+        },
+        {
+            "label": "Analyze repository",
+            "detail": "Run analysis on files within the repository.",
+            "type": "shell",
+            "command": "Invoke-Build Rules -AssertStyle Client",
+            "group": "build",
+            "presentation": {
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": []
         }
     ]
 }

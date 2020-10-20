@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 # Invoke-Build
 # CI pipeline script for PSRule-vscode
 
@@ -13,7 +16,10 @@ param (
     [String]$OutputPath = (Join-Path -Path $PWD -ChildPath out),
 
     [Parameter(Mandatory = $False)]
-    [String]$ApiKey
+    [String]$ApiKey,
+
+    [Parameter(Mandatory = $False)]
+    [String]$AssertStyle = 'AzurePipelines'
 )
 
 Write-Host -Object "[Pipeline] -- PWD: $PWD" -ForegroundColor Green;
@@ -48,6 +54,44 @@ Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -Foregrou
 $packageRoot = Join-Path -Path $OutputPath -ChildPath 'package';
 $packagePath = Join-Path -Path $packageRoot -ChildPath 'psrule-vscode-preview.vsix';
 
+function Get-RepoRuleData {
+    [CmdletBinding()]
+    param (
+        [Parameter(Position = 0, Mandatory = $False)]
+        [String]$Path = $PWD
+    )
+    process {
+        GetPathInfo -Path $Path -Verbose:$VerbosePreference;
+    }
+}
+
+function GetPathInfo {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $True)]
+        [String]$Path
+    )
+    begin {
+        $items = New-Object -TypeName System.Collections.ArrayList;
+    }
+    process {
+        $Null = $items.Add((Get-Item -Path $Path));
+        $files = @(Get-ChildItem -Path $Path -File -Recurse -Include *.ps1,*.psm1,*.psd1,*.cs | Where-Object {
+            !($_.FullName -like "*.Designer.cs") -and
+            !($_.FullName -like "*/bin/*") -and
+            !($_.FullName -like "*/obj/*") -and
+            !($_.FullName -like "*\obj\*") -and
+            !($_.FullName -like "*\bin\*") -and
+            !($_.FullName -like "*\out\*") -and
+            !($_.FullName -like "*/out/*")
+        });
+        $Null = $items.AddRange($files);
+    }
+    end {
+        $items;
+    }
+}
+
 task BuildExtension {
     Write-Host '> Building extension' -ForegroundColor Green;
     exec { & npm run compile }
@@ -80,6 +124,32 @@ task VersionExtension {
             }
         }
     }
+}
+
+# Synopsis: Install NuGet provider
+task NuGet {
+    if ($Null -eq (Get-PackageProvider -Name NuGet -ErrorAction Ignore)) {
+        Install-PackageProvider -Name NuGet -Force -Scope CurrentUser;
+    }
+}
+
+# Synopsis: Install PSRule
+task PSRule NuGet, {
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.21.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.21.0 -Scope CurrentUser -Force;
+    }
+    Import-Module -Name PSRule -Verbose:$False;
+}
+
+# Synopsis: Run validation
+task Rules PSRule, {
+    $assertParams = @{
+        Path = './.ps-rule/'
+        Style = $AssertStyle
+        OutputFormat = 'NUnit3'
+        ErrorAction = 'Stop'
+    }
+    Assert-PSRule @assertParams -InputPath $PWD -Format File -OutputPath reports/ps-rule-file.xml;
 }
 
 # Synopsis: Remove temp files
