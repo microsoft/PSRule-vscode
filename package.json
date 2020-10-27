@@ -127,7 +127,7 @@
         "lodash": ">=4.17.20",
         "markdown-it": "^12.0.2",
         "minimist": ">=1.2.5",
-        "typescript": "^4.0.3",
+        "typescript": "^4.0.5",
         "vsce": "^1.81.1",
         "vscode-test": "^1.4.0"
     }
