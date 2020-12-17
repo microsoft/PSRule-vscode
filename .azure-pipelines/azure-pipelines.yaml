@@ -93,7 +93,7 @@ stages:
         action: edit
         tag: '$(Build.SourceBranchName)'
         releaseNotesSource: input
-        releaseNotes: 'See [change log](https://github.com/BernieWhite/PSRule-vscode/blob/main/CHANGELOG.md)'
+        releaseNotes: 'See [change log](https://github.com/Microsoft/PSRule-vscode/blob/main/CHANGELOG.md)'
         assetUploadMode: replace
         addChangeLog: false
         isPreRelease: false

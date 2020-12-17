@@ -12,11 +12,17 @@ Features include:
 - Snippets for rule documentation.
 - YAML schema validation for options.
 
-## Disclaimer
+## Support
 
-This project is to be considered a **proof-of-concept** and **not a supported product**.
+This project uses GitHub Issues to track bugs and feature requests.
+Please search the existing issues before filing new issues to avoid duplicates.
 
-If you have any problems please check our GitHub [issues](https://github.com/BernieWhite/PSRule-vscode/issues) page. If you do not see your problem captured, please file a new issue and follow the provided template.
+- For new issues, file your bug or feature request as a new [Issue][issues].
+- For help and questions about using this project, we have a Gitter room which you can join below.
+
+[![Join the chat][chat-badge]][chat]
+
+Support for this project/ product is limited to the resources listed above.
 
 ## Installing PSRule module
 
@@ -38,16 +44,33 @@ code --install-extension bewhite.psrule-vscode-preview
 
 > NOTE: If you are using VS Code Insiders, the command will be `code-insiders`.
 
+## Contributing
+
+This project welcomes contributions and suggestions.
+If you are ready to contribute, please visit the [contribution guide].
+
+## Code of Conduct
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
 ## Maintainers
 
 - [Bernie White](https://github.com/BernieWhite)
 
 ## License
 
-This project is [licensed under the MIT License](LICENSE).
+This project is [licensed under the MIT License][license].
 
+[issues]: https://github.com/Microsoft/PSRule-vscode/issues
 [ci-badge]: https://dev.azure.com/bewhite/PSRule-vscode/_apis/build/status/PSRule-vscode-CI?branchName=main
 [vscode-ext-gallery]: https://code.visualstudio.com/docs/editor/extension-gallery
 [ext]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview
 [ext-version-badge]: https://vsmarketplacebadge.apphb.com/version/bewhite.psrule-vscode-preview.svg
 [ext-installs-badge]: https://vsmarketplacebadge.apphb.com/installs-short/bewhite.psrule-vscode-preview.svg
+[contribution guide]: https://github.com/Microsoft/PSRule-vscode/blob/main/CONTRIBUTING.md
+[change log]: https://github.com/Microsoft/PSRule-vscode/blob/main/CHANGELOG.md
+[license]: https://github.com/Microsoft/PSRule-vscode/blob/main/LICENSE
+[chat]: https://gitter.im/PSRule/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+[chat-badge]: https://img.shields.io/static/v1.svg?label=chat&message=on%20gitter&color=informational&logo=gitter

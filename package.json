@@ -11,7 +11,7 @@
         "vscode": "^1.51.0"
     },
     "license": "SEE LICENSE IN LICENSE",
-    "homepage": "https://github.com/BernieWhite/PSRule-vscode/blob/main/README.md",
+    "homepage": "https://github.com/Microsoft/PSRule-vscode/blob/main/README.md",
     "categories": [
         "Other",
         "Snippets"
@@ -26,10 +26,10 @@
     "icon": "images/icon128.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/BernieWhite/PSRule-vscode.git"
+        "url": "https://github.com/Microsoft/PSRule-vscode.git"
     },
     "bugs": {
-        "url": "https://github.com/BernieWhite/PSRule-vscode/issues"
+        "url": "https://github.com/Microsoft/PSRule-vscode/issues"
     },
     "private": true,
     "preview": true,
