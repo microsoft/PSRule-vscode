@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.17.0
+
+What's changed since v0.16.0:
+
 - General improvements:
   - Migrate repository to Microsoft GitHub org. [#152](https://github.com/Microsoft/PSRule-vscode/issues/152)
 - Engineering:
