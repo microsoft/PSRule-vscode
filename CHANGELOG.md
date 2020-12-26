@@ -2,8 +2,10 @@
 
 ## Unreleased
 
+- General improvements:
+  - Migrate repository to Microsoft GitHub org. [#152](https://github.com/Microsoft/PSRule-vscode/issues/152)
 - Engineering:
-  - Bump vscode engine to v1.51.0.
+  - Bump vscode engine to v1.52.0.
 
 ## v0.16.0
 
