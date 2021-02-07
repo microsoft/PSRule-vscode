@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Engineering:
+  - Bump vscode engine to v1.53.0.
+
 ## v0.17.0
 
 What's changed since v0.16.0:
