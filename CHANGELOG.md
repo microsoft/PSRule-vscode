@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Engineering:
-  - Bump vscode engine to v1.53.0.
+  - Bump vscode engine to v1.54.0. [#193](https://github.com/microsoft/PSRule-vscode/pull/193)
 
 ## v0.17.0
 
