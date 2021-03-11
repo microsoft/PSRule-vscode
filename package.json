@@ -128,7 +128,7 @@
         "markdown-it": "^12.0.4",
         "minimist": ">=1.2.5",
         "typescript": "^4.2.3",
-        "vsce": "^1.85.1",
+        "vsce": "^1.86.0",
         "vscode-test": "^1.5.1"
     }
 }
