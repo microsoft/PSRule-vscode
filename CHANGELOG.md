@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- General improvements:
+  - Updated PSRule options schema to support conventions. [#199](https://github.com/Microsoft/PSRule-vscode/issues/199)
 - Engineering:
   - Bump vscode engine to v1.54.0. [#193](https://github.com/microsoft/PSRule-vscode/pull/193)
 
