@@ -1,6 +1,7 @@
 
 ---
-# Synopsis: This is an example baseline
+# Synopsis: An example baseline
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: ExampleBaseline
@@ -8,3 +9,32 @@ spec:
   rule:
     exclude:
     - Rule1
+
+---
+# Synopsis: An example module configuration
+apiVersion: github.com/microsoft/PSRule/v1
+kind: ModuleConfig
+metadata:
+  name: ExampleConfiguration
+spec:
+  binding: { }
+  configuration: { }
+  output:
+    culture:
+    - en-US
+
+---
+# Synopsis: An example selector
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: ExampleSelector
+spec:
+  if:
+    allOf:
+    - field: Name
+      equals: TargetObject1
+    - field: Value
+      equals: value1
+
+
