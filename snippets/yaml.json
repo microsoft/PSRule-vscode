@@ -1,10 +1,11 @@
 {
-    "baseline": {
+    "Baseline": {
         "prefix": "baseline",
-        "description": "Baseline spec",
+        "description": "PSRule Baseline resource",
         "body": [
             "---",
             "# Synopsis: ${2}",
+            "apiVersion: github.com/microsoft/PSRule/v1",
             "kind: Baseline",
             "metadata:",
             "  name: ${1}",
@@ -12,17 +13,33 @@
             "  ${3}"
         ]
     },
-    "moduleConfig": {
+    "ModuleConfig": {
         "prefix": "moduleConfig",
-        "description": "Module Config spec",
+        "description": "PSRule Module Config resource",
         "body": [
             "---",
             "# Synopsis: ${2}",
+            "apiVersion: github.com/microsoft/PSRule/v1",
             "kind: ModuleConfig",
             "metadata:",
             "  name: ${1}",
             "spec:",
             "  ${3}"
+        ]
+    },
+    "Selector": {
+        "prefix": "selector",
+        "description": "PSRule Selector resource",
+        "body": [
+            "---",
+            "# Synopsis: ${2}",
+            "apiVersion: github.com/microsoft/PSRule/v1",
+            "kind: Selector",
+            "metadata:",
+            "  name: ${1}",
+            "spec:",
+            "  if:",
+            "    ${3}"
         ]
     }
 }
