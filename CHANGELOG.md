@@ -8,7 +8,7 @@
   - Updated options and language schema to support `binding.preferTargetInfo` option. [#207](https://github.com/Microsoft/PSRule-vscode/issues/207)
   - Updated language schema to add `apiVersion` property. [#208](https://github.com/Microsoft/PSRule-vscode/issues/208)
 - Engineering:
-  - Bump vscode engine to v1.54.0. [#193](https://github.com/microsoft/PSRule-vscode/pull/193)
+  - Bump vscode engine to v1.55.0. [#204](https://github.com/microsoft/PSRule-vscode/pull/204)
 
 ## v0.17.0
 
