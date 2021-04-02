@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.18.0
+
+What's changed since v0.17.0:
+
 - General improvements:
   - Added support for configuring conventions. [#199](https://github.com/Microsoft/PSRule-vscode/issues/199)
   - Added support for selectors. [#206](https://github.com/Microsoft/PSRule-vscode/issues/206)
