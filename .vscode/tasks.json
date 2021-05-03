@@ -4,9 +4,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build",
+            "label": "Build: canary",
+            "detail": "Locally build the extension as the 'canary' channel.",
             "type": "shell",
-            "command": "Invoke-Build Build",
+            "command": "Invoke-Build Build -Channel canary",
             "group": "build",
             "presentation": {
                 "focus": false,
@@ -16,7 +17,8 @@
             "problemMatcher": []
         },
         {
-            "label": "Install",
+            "label": "Install: preview",
+            "detail": "Build and install the extension as the 'preview' channel.",
             "type": "shell",
             "command": "Invoke-Build Install",
             "presentation": {
@@ -27,7 +29,32 @@
             "problemMatcher": []
         },
         {
+            "label": "Install: stable",
+            "detail": "Build and install the extension as the 'stable' channel.",
+            "type": "shell",
+            "command": "Invoke-Build Install -Channel stable",
+            "presentation": {
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Install: canary",
+            "detail": "Build and install the extension as the 'canary' channel.",
+            "type": "shell",
+            "command": "Invoke-Build Install -Channel canary",
+            "presentation": {
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "Clean",
+            "detail": "Remove temporary working files and directories.",
             "type": "shell",
             "command": "Invoke-Build Clean",
             "presentation": {
@@ -47,9 +74,7 @@
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": [
-                "$tsc"
-            ]
+            "problemMatcher": ["$tsc"]
         },
         {
             "label": "Analyze repository",
@@ -63,6 +88,19 @@
                 "clear": true
             },
             "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "watch",
+            "problemMatcher": "$tsc-watch",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "never"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

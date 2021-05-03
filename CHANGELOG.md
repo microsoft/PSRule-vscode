@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+What's changed since v0.18.0:
+
+- Engineering:
+  - Split extension into two release channels, _preview_ and _stable_. [#150](https://github.com/microsoft/PSRule-vscode/issues/150)
+
 ## v0.18.0
 
 What's changed since v0.17.0:

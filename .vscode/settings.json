@@ -1,7 +1,6 @@
 {
     "files.exclude": {
-        "node_modules/": true,
-        "out/": true
+        "node_modules/": true
     },
     "search.exclude": {
         "out": true
@@ -13,6 +12,18 @@
     },
     "[markdown]": {
         "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
     "typescript.tsc.autoDetect": "off"

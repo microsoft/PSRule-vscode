@@ -10,6 +10,10 @@ param (
     [String]$Build,
 
     [Parameter(Mandatory = $False)]
+    [ValidateSet('preview', 'stable', 'canary')]
+    [String]$Channel,
+
+    [Parameter(Mandatory = $False)]
     [String]$Configuration = 'Debug',
 
     [Parameter(Mandatory = $False)]
@@ -45,14 +49,32 @@ if ($version -like '*-*') {
 
     if ($versionParts.Length -eq 2) {
         $versionSuffix = $versionParts[1];
+        $Channel = 'preview';
+    }
+    else {
+        $Channel = 'stable';
     }
 }
 
+# Handle channel
+if ([String]::IsNullOrEmpty('Channel')) {
+    $Channel = 'preview';
+}
+$channelSuffix = '-preview';
+switch ($Channel) {
+    'canary' { $channelSuffix = '-canary' }
+    'stable' { $channelSuffix = '' }
+    default { $channelSuffix = '-preview' }
+}
+
+Write-Host -Object "[Pipeline] -- Using channel: $Channel" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- Using channelSuffix: $channelSuffix" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
 
 $packageRoot = Join-Path -Path $OutputPath -ChildPath 'package';
-$packagePath = Join-Path -Path $packageRoot -ChildPath 'psrule-vscode-preview.vsix';
+$packageName = "psrule-vscode$channelSuffix";
+$packagePath = Join-Path -Path $packageRoot -ChildPath "$packageName.vsix";
 
 function Get-RepoRuleData {
     [CmdletBinding()]
@@ -112,6 +134,13 @@ task InstallExtension {
 }
 
 task VersionExtension {
+    # Update channel
+    $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
+    if ($package.name -ne $packageName) {
+        $package.name = $packageName;
+        $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
+    }
+
     if (![String]::IsNullOrEmpty($Build)) {
         # Update extension version
         if (![String]::IsNullOrEmpty($version)) {
@@ -135,8 +164,8 @@ task NuGet {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 0.21.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 0.21.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 1.3.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 1.3.0 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -148,6 +177,7 @@ task Rules PSRule, {
         Style = $AssertStyle
         OutputFormat = 'NUnit3'
         ErrorAction = 'Stop'
+        As = 'Summary'
     }
     Assert-PSRule @assertParams -InputPath $PWD -Format File -OutputPath reports/ps-rule-file.xml;
 }

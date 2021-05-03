@@ -178,7 +178,7 @@
                 "rules": {
                     "file-header": [
                         true,
-                        "Copyright \\(C\\) Bernie White. All rights reserved."
+                        "Copyright \\(c\\) Microsoft Corporation."
                     ],
                     "import-spacing": true,
                     "jsdoc-format": true,
