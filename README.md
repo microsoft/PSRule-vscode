@@ -1,10 +1,9 @@
 # PSRule
 
-An extension for IT Pros using the PSRule PowerShell module.
+Validate infrastructure as code (IaC) and DevOps repositories using the PSRule PowerShell module.
+PSRule is powerful, feature rich, and highly customizable to meet your needs.
 
-![ci-badge] ![ext-version-badge] ![ext-installs-badge]
-
-This **preview** extension for Visual Studio Code adds convenience features for IT Pros using PSRule.
+![ext-stable-version-badge] ![ext-stable-installs-badge] ![module-version-badge]
 
 Features include:
 
@@ -12,15 +11,20 @@ Features include:
 - Snippets for rule documentation.
 - YAML schema validation for options.
 
+This extension is available in two release channels:
+
+Channel | Description | Version/ downloads
+------- | ----------- | ---
+[Preview][ext-preview] | More frequent releases but more likely to contain bugs. | [![Preview][ext-preview-version-badge]][ext-preview] ![ext-preview-installs-badge]
+[Stable][ext-stable] (**coming soon**) | Less frequent releases, with more user testing, experimental features are disabled. | [![Stable][ext-stable-version-badge]][ext-stable] ![ext-stable-installs-badge]
+
 ## Support
 
 This project uses GitHub Issues to track bugs and feature requests.
 Please search the existing issues before filing new issues to avoid duplicates.
 
-- For new issues, file your bug or feature request as a new [Issue][issues].
-- For help and questions about using this project, we have a Gitter room which you can join below.
-
-[![Join the chat][chat-badge]][chat]
+- For new issues, file your bug or feature request as a new [issue].
+- For help, discussion, and support questions about using this project, join or start a [discussion].
 
 Support for this project/ product is limited to the resources listed above.
 
@@ -28,7 +32,7 @@ Support for this project/ product is limited to the resources listed above.
 
 PSRule is available from the PowerShell Gallery and is required for this extension to work.
 
-To install the module use the following command from PowerShell prompt.
+To install the module use the following command from a PowerShell prompt.
 
 ```powershell
 Install-Module -Name PSRule -Scope CurrentUser;
@@ -36,7 +40,9 @@ Install-Module -Name PSRule -Scope CurrentUser;
 
 ## Installing the extension
 
-You can install the latest release of the extension by following the steps in the [Visual Studio Code documentation][vscode-ext-gallery]. In the Extensions pane, search for _PSRule_ extension and install it there. You will get notified automatically about any future extension updates.
+You can install the latest release of the extension by following the steps in the [Visual Studio Code documentation][vscode-ext-gallery].
+In the Extensions pane, search for _PSRule_ extension and install it there.
+You will get notified automatically about any future extension updates.
 
 ```text
 code --install-extension bewhite.psrule-vscode-preview
@@ -63,12 +69,17 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 
 This project is [licensed under the MIT License][license].
 
-[issues]: https://github.com/Microsoft/PSRule-vscode/issues
+[issue]: https://github.com/Microsoft/PSRule-vscode/issues
+[discussion]: https://github.com/microsoft/PSRule-vscode/discussions
 [ci-badge]: https://dev.azure.com/bewhite/PSRule-vscode/_apis/build/status/PSRule-vscode-CI?branchName=main
 [vscode-ext-gallery]: https://code.visualstudio.com/docs/editor/extension-gallery
-[ext]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview
-[ext-version-badge]: https://vsmarketplacebadge.apphb.com/version/bewhite.psrule-vscode-preview.svg
-[ext-installs-badge]: https://vsmarketplacebadge.apphb.com/installs-short/bewhite.psrule-vscode-preview.svg
+[ext-preview]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview
+[ext-preview-version-badge]: https://vsmarketplacebadge.apphb.com/version/bewhite.psrule-vscode-preview.svg
+[ext-preview-installs-badge]: https://vsmarketplacebadge.apphb.com/installs-short/bewhite.psrule-vscode-preview.svg
+[ext-stable]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode
+[ext-stable-version-badge]: https://vsmarketplacebadge.apphb.com/version/bewhite.psrule-vscode.svg
+[ext-stable-installs-badge]: https://vsmarketplacebadge.apphb.com/installs-short/bewhite.psrule-vscode.svg
+[module-version-badge]: https://img.shields.io/powershellgallery/v/PSRule.svg?label=PowerShell%20Gallery&color=brightgreen
 [contribution guide]: https://github.com/Microsoft/PSRule-vscode/blob/main/CONTRIBUTING.md
 [change log]: https://github.com/Microsoft/PSRule-vscode/blob/main/CHANGELOG.md
 [license]: https://github.com/Microsoft/PSRule-vscode/blob/main/LICENSE

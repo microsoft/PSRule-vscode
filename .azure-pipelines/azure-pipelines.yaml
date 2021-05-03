@@ -60,8 +60,35 @@ stages:
       condition: and(succeeded(), eq(variables['publish'], 'true'))
 
 # Release pipeline
-- stage: Release
-  displayName: Release
+- stage: Preview
+  displayName: Preview
+  dependsOn: Build
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.')
+  jobs:
+  - job:
+    displayName: Live
+    pool:
+      vmImage: 'ubuntu-18.04'
+    steps:
+
+    # Download extension
+    - task: DownloadPipelineArtifact@1
+      displayName: 'Download extension'
+      inputs:
+        artifactName: extension
+        downloadPath: $(Build.SourcesDirectory)/out/package
+
+    # Install pipeline dependencies
+    - powershell: ./.azure-pipelines/pipeline-deps.ps1
+      displayName: 'Install dependencies'
+
+    # Install pipeline dependencies and build module
+    - powershell: Invoke-Build Release -ApiKey $(apiKey)
+      displayName: 'Publish extension'
+
+# Release pipeline
+- stage: Stable
+  displayName: Stable
   dependsOn: Build
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.')
   jobs:

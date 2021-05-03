@@ -1,21 +1,58 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-"use strict";
+'use strict';
 
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-// import fs = require("fs");
-// import path = require("path");
-import vscode = require("vscode");
+import * as path from 'path';
+import * as vscode from 'vscode';
+import { logger } from './logger';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+/**
+ * Activate PSRule extension.
+ * @param context An extension context.
+ */
 export function activate(context: vscode.ExtensionContext): void {
-    // Do nothing
+    // Check the extension
+    checkExtension(context);
 }
 
-// this method is called when your extension is deactivated
+/**
+ * Deactivate PSRule extension.
+ */
 export function deactivate(): void {
-    // Do nothing
+    if (logger) {
+        logger.dispose();
+    }
+}
+
+/**
+ * Check channel and version of the extension activated.
+ * @param context An extension context.
+ */
+function checkExtension(context: vscode.ExtensionContext): void {
+    const extensionVersionKey = 'ps-rule-extension-version';
+
+    // Get channel
+    let extensionId = 'bewhite.psrule-vscode';
+    let extensionChannel = 'stable';
+    if (path.basename(context.globalStorageUri.fsPath) === 'bewhite.psrule-vscode-preview') {
+        extensionId = 'bewhite.psrule-vscode-preview';
+        extensionChannel = 'preview';
+    }
+    if (path.basename(context.globalStorageUri.fsPath) === 'bewhite.psrule-vscode-canary') {
+        extensionId = 'bewhite.psrule-vscode-canary';
+        extensionChannel = 'canary';
+    }
+    logger.verbose(`Running extension channel: ${extensionChannel}`);
+
+    // Get current version
+    const extension = vscode.extensions.getExtension(extensionId)!;
+    const extensionVersion: string = extension.packageJSON.version;
+    logger.verbose(`Running extension version: ${extensionVersion}`);
+
+    // Get last version
+    const lastVersion = context.globalState.get(extensionVersionKey);
+
+    // Save the extension version
+    context.globalState.update(extensionVersionKey, extensionVersion);
 }
