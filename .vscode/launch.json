@@ -12,7 +12,7 @@
             "runtimeExecutable": "${execPath}",
             "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
             "outFiles": ["${workspaceFolder}/out/**/*.js"],
-            "preLaunchTask": "Build: canary"
+            "preLaunchTask": "Compile"
         },
         {
             "name": "Extension Tests",
@@ -30,7 +30,7 @@
                 "--extensionTestsPath=${workspaceFolder}/out/dist/test/suite/index"
             ],
             "outFiles": ["${workspaceFolder}/out/dist/test/**/*.js"],
-            "preLaunchTask": "Build: canary"
+            "preLaunchTask": "Compile"
         }
     ]
 }

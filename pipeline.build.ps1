@@ -204,7 +204,7 @@ task TagBuild {
     }
 }
 
-task Build Clean, PackageRestore, BuildExtension, VersionExtension, PackageExtension
+task Build Clean, PackageRestore, VersionExtension, PackageExtension
 
 task Install Build, InstallExtension
 
