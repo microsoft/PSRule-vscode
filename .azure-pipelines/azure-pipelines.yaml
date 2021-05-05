@@ -1,9 +1,11 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 # Azure DevOps
 # CI pipeline for PSRule-vscode
 
 variables:
   version: '1.0.0'
-  buildConfiguration: 'Release'
 
  # Use build number format, i.e. 1.0.0-B2105001
 name: $(version)-B$(date:yyMM)$(rev:rrr)
@@ -28,41 +30,44 @@ stages:
 # Build pipeline
 - stage: Build
   displayName: Build
+  dependsOn: []
   jobs:
-  - job:
-    strategy:
-      matrix:
-        Linux:
-          imageName: 'ubuntu-18.04'
-        MacOS:
-          imageName: 'macOS-10.15'
-        Windows:
-          imageName: 'vs2017-win2016'
-          publish: true
-    pool:
-      vmImage: $(imageName)
+  - template: jobs/build-channel.yaml
+    parameters:
+      channel: preview
+
+# Analysis pipeline
+- stage: Analysis
+  displayName: Analysis
+  dependsOn: []
+  variables:
+    # Already done in build
+    skipComponentGovernanceDetection: true
+  jobs:
+  - job: Secret_Scan
+    pool: 'Hosted VS2017'
+    displayName: Secret scan
     steps:
-
-    # Install pipeline dependencies
-    - powershell: ./.azure-pipelines/pipeline-deps.ps1
-      displayName: 'Install dependencies'
-
-    # Build extension
-    - powershell: Invoke-Build -Configuration $(buildConfiguration) -Build $(Build.BuildNumber)
-      displayName: 'Build extension'
-
-    # Generate artifacts
-    - task: PublishPipelineArtifact@0
-      displayName: 'Publish extension'
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+      displayName: 'Scan for secrets'
       inputs:
-        artifactName: extension
-        targetPath: out/package
-      condition: and(succeeded(), eq(variables['publish'], 'true'))
+        debugMode: false
+        toolMajorVersion: V2
+
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
+      displayName: 'Publish scan logs'
+      continueOnError: true
+
+    - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
+      displayName: 'Check for failures'
+      inputs:
+        CredScan: true
+        ToolLogsNotFoundAction: Error
 
 # Release pipeline
 - stage: Preview
   displayName: Preview
-  dependsOn: Build
+  dependsOn: [ 'Build', 'Analysis' ]
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.')
   jobs:
   - job:
@@ -89,7 +94,7 @@ stages:
 # Release pipeline
 - stage: Stable
   displayName: Stable
-  dependsOn: Build
+  dependsOn: [ 'Build', 'Analysis' ]
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.')
   jobs:
   - job:

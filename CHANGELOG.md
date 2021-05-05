@@ -1,11 +1,25 @@
 # Change log
 
+<!--
+All notable changes to this extension will be documented in this file.
+This extension is available in two release channels for Visual Studio Code from the Visual Studio Marketplace.
+
+- [Preview][ext-preview] - More frequent releases but more likely to contain bugs.
+  - _Preview_ is where updates are available before they released to _Stable_.
+  - This channel includes changes listed in the _Unreleased_ heading.
+  - Versioning for _Preview_ follows an `yyyy.MM.rrrr` that increments for each release.
+- [Stable][ext-stable] (**coming soon**) - Less frequent releases, with more user testing, experimental features are disabled.
+  - Uses [semantic versioning](http://semver.org/) to declare changes.
+Continue reading to see the changes included in the latest version.
+-->
+
 ## Unreleased
 
 What's changed since v0.18.0:
 
 - Engineering:
-  - Split extension into two release channels, _preview_ and _stable_. [#150](https://github.com/microsoft/PSRule-vscode/issues/150)
+  - Split extension into two release channels, _Preview_ and _Stable_. [#150](https://github.com/microsoft/PSRule-vscode/issues/150)
+  - Improved extension performance and size by bundling. [#222](https://github.com/microsoft/PSRule-vscode/issues/222)
 
 ## v0.18.0
 
@@ -156,3 +170,6 @@ What's changed since v0.1.0:
 ## v0.1.0
 
 - Initial release.
+
+[ext-preview]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview
+[ext-stable]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode

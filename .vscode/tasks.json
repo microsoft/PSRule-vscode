@@ -101,6 +101,17 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Compile",
+            "type": "npm",
+            "script": "compile",
+            "presentation": {
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": ["$tsc"]
         }
     ]
 }

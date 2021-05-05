@@ -113,7 +113,11 @@
         "publish": "vsce publish",
         "lint": "eslint . --ext .ts,.tsx",
         "pretest": "npm run compile",
-        "test": "node ./out/dist/test/runTest.js"
+        "test": "node ./out/dist/test/runTest.js",
+        "vscode:prepublish": "npm run -S esbuild-base -- --minify",
+        "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/dist/extension.js --external:vscode --format=cjs --platform=node",
+        "esbuild": "npm run -S esbuild-base -- --sourcemap",
+        "esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch"
     },
     "dependencies": {
         "vscode-languageclient": "^7.0.0"
@@ -129,6 +133,7 @@
         "@types/vscode": "1.55.0",
         "@typescript-eslint/eslint-plugin": "^2.34.0",
         "@typescript-eslint/parser": "^2.34.0",
+        "esbuild": "^0.11.18",
         "eslint": "^6.8.0",
         "glob": "^7.1.6",
         "lodash": ">=4.17.21",
