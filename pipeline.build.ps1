@@ -7,7 +7,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Mandatory = $False)]
-    [String]$Build,
+    [String]$Build = '0.0.1',
 
     [Parameter(Mandatory = $False)]
     [ValidateSet('preview', 'stable', 'canary')]
@@ -36,25 +36,11 @@ if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
 }
 
-if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v0.*') {
+if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v1.*') {
     $Build = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
 }
 
 $version = $Build;
-$versionSuffix = [String]::Empty;
-
-if ($version -like '*-*') {
-    [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
-    $version = $versionParts[0];
-
-    if ($versionParts.Length -eq 2 -and $Channel -eq 'preview') {
-        $version = [String]::Concat($version.Split('.')[0], '.', $versionParts[1].Substring(1, 4), '.0');
-        $Channel = 'preview';
-    }
-    else {
-        $Channel = 'stable';
-    }
-}
 
 # Handle channel
 if ([String]::IsNullOrEmpty('Channel')) {
