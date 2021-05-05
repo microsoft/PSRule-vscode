@@ -32,9 +32,44 @@ stages:
   displayName: Build
   dependsOn: []
   jobs:
+
   - template: jobs/build-channel.yaml
     parameters:
       channel: preview
+
+  - template: jobs/build-channel.yaml
+    parameters:
+      channel: stable
+
+# Test pipeline
+- stage: Test
+  dependsOn: [ 'Build' ]
+  jobs:
+
+  - template: jobs/test.yaml
+    parameters:
+      name: macOS_10_15
+      displayName: 'PowerShell 7.1 - macOS-10.15'
+      imageName: 'macOS-10.15'
+
+  - template: jobs/test.yaml
+    parameters:
+      name: windows
+      displayName: 'PowerShell 5.1 - win2016'
+      imageName: 'vs2017-win2016'
+
+  - template: jobs/test.yaml
+    parameters:
+      name: windows_2019
+      displayName: 'PowerShell 7.1 - Windows 2019'
+      imageName: 'windows-2019'
+
+  - template: jobs/testContainer.yaml
+    parameters:
+      name: ps_7_1_ubuntu_20_04
+      displayName: 'PowerShell 7.1 - ubuntu-20.04'
+      imageName: mcr.microsoft.com/powershell
+      imageTag: 7.1.3-ubuntu-20.04
 
 # Analysis pipeline
 - stage: Analysis
@@ -70,26 +105,9 @@ stages:
   dependsOn: [ 'Build', 'Analysis' ]
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.')
   jobs:
-  - job:
-    displayName: Live
-    pool:
-      vmImage: 'ubuntu-18.04'
-    steps:
-
-    # Download extension
-    - task: DownloadPipelineArtifact@1
-      displayName: 'Download extension'
-      inputs:
-        artifactName: extension
-        downloadPath: $(Build.SourcesDirectory)/out/package
-
-    # Install pipeline dependencies
-    - powershell: ./.azure-pipelines/pipeline-deps.ps1
-      displayName: 'Install dependencies'
-
-    # Install pipeline dependencies and build module
-    - powershell: Invoke-Build Release -ApiKey $(apiKey)
-      displayName: 'Publish extension'
+  - template: jobs/publish-channel.yaml
+    parameters:
+      channel: preview
 
 # Release pipeline
 - stage: Stable
@@ -97,26 +115,15 @@ stages:
   dependsOn: [ 'Build', 'Analysis' ]
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.')
   jobs:
-  - job:
-    displayName: Live
+  - template: jobs/publish-channel.yaml
+    parameters:
+      channel: stable
+    
+  - job: update_github_release
+    displayName: Update GitHub release
     pool:
-      vmImage: 'ubuntu-18.04'
+      vmImage: 'ubuntu-20.04'
     steps:
-
-    # Download extension
-    - task: DownloadPipelineArtifact@1
-      displayName: 'Download extension'
-      inputs:
-        artifactName: extension
-        downloadPath: $(Build.SourcesDirectory)/out/package
-
-    # Install pipeline dependencies
-    - powershell: ./.azure-pipelines/pipeline-deps.ps1
-      displayName: 'Install dependencies'
-
-    # Install pipeline dependencies and build module
-    - powershell: Invoke-Build Release -ApiKey $(apiKey)
-      displayName: 'Publish extension'
 
     # Update GitHub release
     - task: GitHubRelease@0

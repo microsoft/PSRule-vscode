@@ -1,0 +1,42 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+# Notes:
+# Test Visual Studio Code extension.
+
+parameters:
+- name: name
+  type: string
+- name: displayName
+  type: string
+- name: channel
+  type: string
+- name: buildConfiguration
+  type: string
+  default: 'Release'
+- name: imageName
+  type: string
+
+jobs:
+- job: '${{ parameters.name }}'
+  displayName: '${{ parameters.displayName }}'
+  pool:
+    vmImage: '${{ parameters.imageName }}'
+  variables:
+    skipComponentGovernanceDetection: true
+  steps:
+
+  # Install pipeline dependencies
+  - powershell: ./.azure-pipelines/pipeline-deps.ps1
+    displayName: 'Install dependencies'
+
+  # Download module
+  - task: DownloadPipelineArtifact@2
+    displayName: 'Download module'
+    inputs:
+      artifact: 'extension-${{ parameters.channel }}'
+      path: $(Build.SourcesDirectory)/out/package
+
+  # Run tests
+  - powershell: npm test
+    displayName: 'Test extension'
