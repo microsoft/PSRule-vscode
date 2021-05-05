@@ -48,7 +48,8 @@ if ($version -like '*-*') {
     $version = $versionParts[0];
 
     if ($versionParts.Length -eq 2) {
-        $versionSuffix = $versionParts[1];
+        # $versionSuffix = $versionParts[1];
+        $version = [String]::Concat($version.Split('.')[0], '.', $versionParts[1].Substring(1, 4), '.0');
         $Channel = 'preview';
     }
     else {
@@ -70,7 +71,6 @@ switch ($Channel) {
 Write-Host -Object "[Pipeline] -- Using channel: $Channel" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using channelSuffix: $channelSuffix" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
-Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
 
 $packageRoot = Join-Path -Path $OutputPath -ChildPath 'package';
 $packageName = "psrule-vscode$channelSuffix";
@@ -194,7 +194,13 @@ task PackageRestore {
 
 task ReleaseExtension {
     exec { & npm install vsce --no-save }
-    exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
+
+    if ($Channel -eq 'preview') {
+        exec { & npm run publish -- patch --packagePath $packagePath --pat $ApiKey }
+    }
+    if ($Channel -eq 'stable') {
+        exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
+    }
 }
 
 # Synopsis: Add shipit build tag
