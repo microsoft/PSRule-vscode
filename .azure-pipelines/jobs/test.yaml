@@ -48,3 +48,5 @@ jobs:
       npm install
       npm test
     displayName: 'Test extension'
+    env:
+      DISPLAY: ':99.0'
