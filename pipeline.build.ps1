@@ -7,7 +7,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Mandatory = $False)]
-    [String]$Build,
+    [String]$Build = '0.0.1',
 
     [Parameter(Mandatory = $False)]
     [ValidateSet('preview', 'stable', 'canary')]
@@ -36,25 +36,11 @@ if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
 }
 
-if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v0.*') {
+if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v1.*') {
     $Build = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
 }
 
 $version = $Build;
-$versionSuffix = [String]::Empty;
-
-if ($version -like '*-*') {
-    [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
-    $version = $versionParts[0];
-
-    if ($versionParts.Length -eq 2) {
-        $versionSuffix = $versionParts[1];
-        $Channel = 'preview';
-    }
-    else {
-        $Channel = 'stable';
-    }
-}
 
 # Handle channel
 if ([String]::IsNullOrEmpty('Channel')) {
@@ -70,7 +56,6 @@ switch ($Channel) {
 Write-Host -Object "[Pipeline] -- Using channel: $Channel" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using channelSuffix: $channelSuffix" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
-Write-Host -Object "[Pipeline] -- Using versionSuffix: $versionSuffix" -ForegroundColor Green;
 
 $packageRoot = Join-Path -Path $OutputPath -ChildPath 'package';
 $packageName = "psrule-vscode$channelSuffix";
@@ -194,7 +179,13 @@ task PackageRestore {
 
 task ReleaseExtension {
     exec { & npm install vsce --no-save }
-    exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
+
+    if ($Channel -eq 'preview') {
+        exec { & npm run publish -- patch --packagePath $packagePath --pat $ApiKey }
+    }
+    if ($Channel -eq 'stable') {
+        exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
+    }
 }
 
 # Synopsis: Add shipit build tag

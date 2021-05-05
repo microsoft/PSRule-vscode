@@ -33,5 +33,5 @@ jobs:
   - task: PublishPipelineArtifact@0
     displayName: 'Publish extension'
     inputs:
-      artifactName: extension
+      artifactName: 'extension-${{ parameters.channel }}'
       targetPath: out/package
