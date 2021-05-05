@@ -47,8 +47,7 @@ if ($version -like '*-*') {
     [String[]]$versionParts = $version.Split('-', [System.StringSplitOptions]::RemoveEmptyEntries);
     $version = $versionParts[0];
 
-    if ($versionParts.Length -eq 2) {
-        # $versionSuffix = $versionParts[1];
+    if ($versionParts.Length -eq 2 -and $Channel -eq 'preview') {
         $version = [String]::Concat($version.Split('.')[0], '.', $versionParts[1].Substring(1, 4), '.0');
         $Channel = 'preview';
     }
