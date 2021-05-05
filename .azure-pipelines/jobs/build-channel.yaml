@@ -15,7 +15,7 @@ parameters:
   default: 'ubuntu-20.04'
 
 jobs:
-- job: 'build-${{ parameters.channel }}'
+- job: 'build_${{ parameters.channel }}'
   displayName: 'Build ${{ parameters.channel }}'
   pool:
     vmImage: '${{ parameters.vmImage }}'
