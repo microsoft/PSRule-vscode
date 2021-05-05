@@ -69,7 +69,7 @@ stages:
 
   - template: jobs/test.yaml
     parameters:
-      name: windows_2019
+      name: ubuntu_20_04
       displayName: 'PowerShell 7.1 - ubuntu-20.04'
       imageName: 'ubuntu-20.04'
       channel: preview
