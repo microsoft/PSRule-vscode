@@ -10,7 +10,7 @@ parameters:
 - name: buildConfiguration
   type: string
   default: 'Release'
-- name: imageName
+- name: vmImage
   type: string
   default: 'ubuntu-20.04'
 
