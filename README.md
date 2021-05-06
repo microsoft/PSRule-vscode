@@ -10,7 +10,7 @@ This extension is available in two release channels:
 Channel | Description | Version/ downloads
 ------- | ----------- | ---
 [Preview][ext-preview] | More frequent releases but more likely to contain bugs. | [![Preview][ext-preview-version-badge]][ext-preview] ![ext-preview-installs-badge]
-[Stable][ext-stable] (**coming soon**) | Less frequent releases, with more user testing, experimental features are disabled. | [![Stable][ext-stable-version-badge]][ext-stable] ![ext-stable-installs-badge]
+[Stable][ext-stable] | Less frequent releases, with more user testing, experimental features are disabled. | [![Stable][ext-stable-version-badge]][ext-stable] ![ext-stable-installs-badge]
 
 ## Features
 
