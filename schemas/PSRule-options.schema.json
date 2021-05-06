@@ -116,10 +116,7 @@
                     "title": "Language mode",
                     "description": "The PowerShell language mode to use for rule execution. The default is FullLanguage.",
                     "markdownDescription": "The PowerShell language mode to use for rule execution. The default is `FullLanguage`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#executionlanguagemode)",
-                    "enum": [
-                        "FullLanguage",
-                        "ConstrainedLanguage"
-                    ],
+                    "enum": ["FullLanguage", "ConstrainedLanguage"],
                     "default": "FullLanguage"
                 },
                 "inconclusiveWarning": {
@@ -159,6 +156,13 @@
                         "Detect"
                     ],
                     "default": "Detect"
+                },
+                "ignoreGitPath": {
+                    "type": "boolean",
+                    "title": "Ignore .git path",
+                    "description": "Determine if files within the .git path are ignored when the -InputPath parameter is used.",
+                    "markdownDescription": "Determine if files within the `.git` path are ignored when the `-InputPath` parameter is used. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#ignoregitpath)",
+                    "default": true
                 },
                 "objectPath": {
                     "type": "string",
@@ -219,12 +223,7 @@
                     "title": "Report fail to stream",
                     "description": "Log fail outcomes for each rule to a specific informational stream. The default is None.",
                     "markdownDescription": "Log fail outcomes for each rule to a specific informational stream. The default is `None`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#loggingrulefail)",
-                    "enum": [
-                        "None",
-                        "Error",
-                        "Warning",
-                        "Information"
-                    ],
+                    "enum": ["None", "Error", "Warning", "Information"],
                     "default": "None"
                 },
                 "rulePass": {
@@ -232,12 +231,7 @@
                     "title": "Report pass to stream",
                     "description": "Log pass outcomes for each rule to a specific informational stream. The default is None.",
                     "markdownDescription": "Log pass outcomes for each rule to a specific informational stream. The default is `None`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#loggingrulepass)",
-                    "enum": [
-                        "None",
-                        "Error",
-                        "Warning",
-                        "Information"
-                    ],
+                    "enum": ["None", "Error", "Warning", "Information"],
                     "default": "None"
                 }
             },
@@ -282,9 +276,7 @@
                             }
                         },
                         "additionalProperties": false,
-                        "required": [
-                            "targetName"
-                        ]
+                        "required": ["targetName"]
                     }
                 ]
             }
@@ -299,10 +291,7 @@
                     "title": "Result type",
                     "description": "Determine if detailed or summary results are generated. The default is Detail.",
                     "markdownDescription": "Determine if detailed or summary results are generated. The default is `Detail`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputas)",
-                    "enum": [
-                        "Detail",
-                        "Summary"
-                    ],
+                    "enum": ["Detail", "Summary"],
                     "default": "Detail"
                 },
                 "culture": {
@@ -319,21 +308,15 @@
                     "defaultSnippets": [
                         {
                             "label": "en-AU",
-                            "bodyText": [
-                                "en-AU"
-                            ]
+                            "bodyText": ["en-AU"]
                         },
                         {
                             "label": "en-US",
-                            "bodyText": [
-                                "en-US"
-                            ]
+                            "bodyText": ["en-US"]
                         },
                         {
                             "label": "en-GB",
-                            "bodyText": [
-                                "en-GB"
-                            ]
+                            "bodyText": ["en-GB"]
                         }
                     ]
                 },
@@ -342,14 +325,7 @@
                     "title": "Encoding",
                     "description": "The encoding to use when writing results to file. The default is Default, UTF-8 without BOM.",
                     "markdownDescription": "The encoding to use when writing results to file. The default is `Default`, UTF-8 without BOM. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputencoding)",
-                    "enum": [
-                        "Default",
-                        "UTF8",
-                        "UTF7",
-                        "Unicode",
-                        "UTF32",
-                        "ASCII"
-                    ],
+                    "enum": ["Default", "UTF8", "UTF7", "Unicode", "UTF32", "ASCII"],
                     "default": "Default"
                 },
                 "format": {
@@ -357,15 +333,7 @@
                     "title": "Output format",
                     "description": "The output format to use when returning results. The default is None.",
                     "markdownDescription": "The output format to use when returning results. The default is `None`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputformat)",
-                    "enum": [
-                        "None",
-                        "Yaml",
-                        "Json",
-                        "Markdown",
-                        "NUnit3",
-                        "Csv",
-                        "Wide"
-                    ],
+                    "enum": ["None", "Yaml", "Json", "Markdown", "NUnit3", "Csv", "Wide"],
                     "default": "None"
                 },
                 "outcome": {
@@ -373,14 +341,7 @@
                     "title": "Output outcome",
                     "description": "The outcome of rule results to return. The default is Processed.",
                     "markdownDescription": "The outcome of rule results to return. The default is `Processed`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputoutcome)",
-                    "enum": [
-                        "None",
-                        "Fail",
-                        "Pass",
-                        "Error",
-                        "Processed",
-                        "All"
-                    ],
+                    "enum": ["None", "Fail", "Pass", "Error", "Processed", "All"],
                     "default": "Processed"
                 },
                 "path": {
@@ -394,12 +355,7 @@
                     "title": "Output Style",
                     "description": "The style that results will be presented in. The default is Client.",
                     "markdownDescription": "The style that results will be presented in. The default is `Client`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputstyle)",
-                    "enum": [
-                        "Client",
-                        "Plain",
-                        "AzurePipelines",
-                        "GitHubActions"
-                    ],
+                    "enum": ["Client", "Plain", "AzurePipelines", "GitHubActions"],
                     "default": "Client"
                 }
             },
