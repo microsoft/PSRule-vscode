@@ -29,7 +29,7 @@ Capture any error messages and or terminal output.
 
 **Extension version:**
 
-- Version: **[e.g. 0.1.0]**
+- Version: **[e.g. 1.0.0]**
 
 **PSRule module version:**
 
