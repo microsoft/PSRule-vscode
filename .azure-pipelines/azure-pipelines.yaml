@@ -121,7 +121,7 @@ stages:
   - template: jobs/publish-channel.yaml
     parameters:
       channel: stable
-    
+
   - job: update_github_release
     displayName: Update GitHub release
     pool:

@@ -19,6 +19,7 @@ What's changed since v0.18.0:
 
 - General improvements:
   - Added support for `input.ignoreGitPath` option. [#231](https://github.com/microsoft/PSRule-vscode/issues/231)
+  - Added feature documentation. [#151](https://github.com/microsoft/PSRule-vscode/issues/151)
 - Engineering:
   - Split extension into two release channels, _Preview_ and _Stable_. [#150](https://github.com/microsoft/PSRule-vscode/issues/150)
     - Preview channel appears as _PSRule (Preview)_, with stable appearing as _PSRule_. [#229](https://github.com/microsoft/PSRule-vscode/issues/229)
