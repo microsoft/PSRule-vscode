@@ -217,4 +217,4 @@ task Install Build, InstallExtension
 
 task . Build
 
-task Release ReleaseExtension, TagBuild
+task Release VersionExtension, ReleaseExtension, TagBuild

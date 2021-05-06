@@ -106,7 +106,7 @@ stages:
 - stage: Preview
   displayName: Preview
   dependsOn: [ 'Build', 'Analysis', 'Test' ]
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
   jobs:
   - template: jobs/publish-channel.yaml
     parameters:
