@@ -28,9 +28,7 @@
                     "title": "Annotations"
                 }
             },
-            "required": [
-                "name"
-            ]
+            "required": ["name"]
         },
         "baseline-v1": {
             "type": "object",
@@ -42,18 +40,14 @@
                     "type": "string",
                     "title": "API Version",
                     "description": "The API Version for the PSRule resources.",
-                    "enum": [
-                        "github.com/microsoft/PSRule/v1"
-                    ]
+                    "enum": ["github.com/microsoft/PSRule/v1"]
                 },
                 "kind": {
                     "type": "string",
                     "title": "Kind",
                     "description": "A PSRule Baseline resource.",
                     "markdownDescription": "A PSRule Baseline resource. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Baseline.html)",
-                    "enum": [
-                        "Baseline"
-                    ]
+                    "enum": ["Baseline"]
                 },
                 "metadata": {
                     "type": "object",
@@ -64,12 +58,7 @@
                     "$ref": "#/definitions/baselineSpec"
                 }
             },
-            "required": [
-                "apiVersion",
-                "kind",
-                "metadata",
-                "spec"
-            ],
+            "required": ["apiVersion", "kind", "metadata", "spec"],
             "additionalProperties": false
         },
         "baselineSpec": {
@@ -140,17 +129,13 @@
                     "type": "string",
                     "title": "API Version",
                     "description": "The API Version for the PSRule resources.",
-                    "enum": [
-                        "github.com/microsoft/PSRule/v1"
-                    ]
+                    "enum": ["github.com/microsoft/PSRule/v1"]
                 },
                 "kind": {
                     "type": "string",
                     "title": "Kind",
                     "description": "A PSRule ModuleConfig resource.",
-                    "enum": [
-                        "ModuleConfig"
-                    ]
+                    "enum": ["ModuleConfig"]
                 },
                 "metadata": {
                     "type": "object",
@@ -161,12 +146,7 @@
                     "$ref": "#/definitions/moduleConfigSpec"
                 }
             },
-            "required": [
-                "apiVersion",
-                "kind",
-                "metadata",
-                "spec"
-            ],
+            "required": ["apiVersion", "kind", "metadata", "spec"],
             "additionalProperties": false
         },
         "moduleConfigSpec": {
@@ -202,21 +182,15 @@
                             "defaultSnippets": [
                                 {
                                     "label": "en-AU",
-                                    "bodyText": [
-                                        "en-AU"
-                                    ]
+                                    "bodyText": ["en-AU"]
                                 },
                                 {
                                     "label": "en-US",
-                                    "bodyText": [
-                                        "en-US"
-                                    ]
+                                    "bodyText": ["en-US"]
                                 },
                                 {
                                     "label": "en-GB",
-                                    "bodyText": [
-                                        "en-GB"
-                                    ]
+                                    "bodyText": ["en-GB"]
                                 }
                             ]
                         }
@@ -351,17 +325,13 @@
                     "type": "string",
                     "title": "API Version",
                     "description": "The API Version for the PSRule resources.",
-                    "enum": [
-                        "github.com/microsoft/PSRule/v1"
-                    ]
+                    "enum": ["github.com/microsoft/PSRule/v1"]
                 },
                 "kind": {
                     "type": "string",
                     "title": "Kind",
                     "description": "A PSRule Selector resource.",
-                    "enum": [
-                        "Selector"
-                    ]
+                    "enum": ["Selector"]
                 },
                 "metadata": {
                     "type": "object",
@@ -372,12 +342,7 @@
                     "$ref": "#/definitions/selectorSpec"
                 }
             },
-            "required": [
-                "apiVersion",
-                "kind",
-                "metadata",
-                "spec"
-            ]
+            "required": ["apiVersion", "kind", "metadata", "spec"]
         },
         "selectorSpec": {
             "type": "object",
@@ -389,9 +354,7 @@
                     "$ref": "#/definitions/selectorExpression"
                 }
             },
-            "required": [
-                "if"
-            ],
+            "required": ["if"],
             "additionalProperties": false
         },
         "selectorExpression": {
@@ -471,9 +434,7 @@
                             "markdownDescription": "The path of the field. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#field)"
                         }
                     },
-                    "required": [
-                        "field"
-                    ]
+                    "required": ["field"]
                 }
             ]
         },
@@ -490,9 +451,7 @@
                     }
                 }
             },
-            "required": [
-                "allOf"
-            ],
+            "required": ["allOf"],
             "additionalProperties": false
         },
         "selectorOperatorAnyOf": {
@@ -508,9 +467,7 @@
                     }
                 }
             },
-            "required": [
-                "anyOf"
-            ],
+            "required": ["anyOf"],
             "additionalProperties": false
         },
         "selectorOperatorNot": {
@@ -524,9 +481,7 @@
                     "$ref": "#/definitions/selectorExpression"
                 }
             },
-            "required": [
-                "not"
-            ]
+            "required": ["not"]
         },
         "selectorConditionExists": {
             "type": "object",
@@ -544,10 +499,7 @@
                     "markdownDescription": "The path of the field. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#field)"
                 }
             },
-            "required": [
-                "exists",
-                "field"
-            ]
+            "required": ["exists", "field"]
         },
         "selectorConditionEquals": {
             "type": "object",
@@ -575,9 +527,7 @@
                     ]
                 }
             },
-            "required": [
-                "equals"
-            ],
+            "required": ["equals"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -610,9 +560,7 @@
                     ]
                 }
             },
-            "required": [
-                "notEquals"
-            ],
+            "required": ["notEquals"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -629,9 +577,7 @@
                     "markdownDescription": "Must have a non-empty value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#hasvalue)"
                 }
             },
-            "required": [
-                "hasValue"
-            ],
+            "required": ["hasValue"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -648,9 +594,7 @@
                     "markdownDescription": "Must match the regular expression. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#match)"
                 }
             },
-            "required": [
-                "match"
-            ],
+            "required": ["match"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -667,9 +611,7 @@
                     "markdownDescription": "Must not match the regular expression. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#notmatch)"
                 }
             },
-            "required": [
-                "notMatch"
-            ],
+            "required": ["notMatch"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -686,9 +628,7 @@
                     "markdownDescription": "Must equal one the values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#in)"
                 }
             },
-            "required": [
-                "in"
-            ],
+            "required": ["in"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -705,9 +645,7 @@
                     "markdownDescription": "Must not equal one the values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#notin)"
                 }
             },
-            "required": [
-                "notIn"
-            ],
+            "required": ["notIn"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -724,9 +662,7 @@
                     "markdownDescription": "Must be less then the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#less)"
                 }
             },
-            "required": [
-                "less"
-            ],
+            "required": ["less"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -743,9 +679,7 @@
                     "markdownDescription": "Must be less or equal to the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#lessorequals)"
                 }
             },
-            "required": [
-                "lessOrEquals"
-            ],
+            "required": ["lessOrEquals"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -762,9 +696,7 @@
                     "markdownDescription": "Must be greater then the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#greater)"
                 }
             },
-            "required": [
-                "greater"
-            ],
+            "required": ["greater"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -781,9 +713,7 @@
                     "markdownDescription": "Must be greater or equal to the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#greaterorequals)"
                 }
             },
-            "required": [
-                "greaterOrEquals"
-            ],
+            "required": ["greaterOrEquals"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
