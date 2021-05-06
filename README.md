@@ -5,18 +5,43 @@ PSRule is powerful, feature rich, and highly customizable to meet your needs.
 
 ![ext-stable-version-badge] ![ext-stable-installs-badge] ![module-version-badge]
 
-Features include:
-
-- Snippets and syntax highlighting for built-in keywords.
-- Snippets for rule documentation.
-- YAML schema validation for options.
-
 This extension is available in two release channels:
 
 Channel | Description | Version/ downloads
 ------- | ----------- | ---
 [Preview][ext-preview] | More frequent releases but more likely to contain bugs. | [![Preview][ext-preview-version-badge]][ext-preview] ![ext-preview-installs-badge]
 [Stable][ext-stable] (**coming soon**) | Less frequent releases, with more user testing, experimental features are disabled. | [![Stable][ext-stable-version-badge]][ext-stable] ![ext-stable-installs-badge]
+
+## Features
+
+### IntelliSense
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/microsoft/PSRule-vscode/main/docs/images/options-schema-flyout.png" alt="Options suggestion context menu" />
+</p>
+
+- Adds IntelliSense and validation support for configuring options and resources.
+  - **Workspace options** &mdash; use IntelliSense to configure options for the workspace.
+    - Type or trigger IntelliSense with `Ctrl+Space` from `ps-rule.yaml`.
+  - **Create resources** &mdash; define _baselines_ and _selectors_ by using pre-built snippets and IntelliSense.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/microsoft/PSRule-vscode/main/docs/images/snippet-rule-type.png" alt="Rule definition snippet" />
+</p>
+
+- Adds snippets for defining new rules.
+  - **Define rules** with snippets and IntelliSense support.
+    - Trigger IntelliSense by typing `rule` in a `.Rule.ps1` file.
+    IntelliSense can also be triggered by using the shortcut `Ctrl+Space`.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/microsoft/PSRule-vscode/main/docs/images/snippet-markdown.png" alt="Rule markdown documentation snippet" />
+</p>
+
+- Adds snippets for creating markdown documentation.
+  - **Quick documentation**  &mdash; create rule documentation to provide rule recommendations and examples.
+    - Trigger IntelliSense by typing `rule` in a `.md` file.
+    IntelliSense can also be triggered by using the shortcut `Ctrl+Space`.
 
 ## Support
 
