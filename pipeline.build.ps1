@@ -197,7 +197,7 @@ task ReleaseExtension {
     exec { & npm install vsce --no-save }
 
     if ($Channel -eq 'preview') {
-        exec { & npm run publish -- patch --packagePath $packagePath --pat $ApiKey }
+        exec { & npm run publish -- patch --pat $ApiKey }
     }
     if ($Channel -eq 'stable') {
         exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
