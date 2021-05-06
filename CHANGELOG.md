@@ -19,6 +19,7 @@ What's changed since v0.18.0:
 
 - Engineering:
   - Split extension into two release channels, _Preview_ and _Stable_. [#150](https://github.com/microsoft/PSRule-vscode/issues/150)
+    - Preview channel appears as _PSRule (Preview)_, with stable appearing as _PSRule_. [#229](https://github.com/microsoft/PSRule-vscode/issues/229)
   - Improved extension performance and size by bundling. [#222](https://github.com/microsoft/PSRule-vscode/issues/222)
 
 ## v0.18.0

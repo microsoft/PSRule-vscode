@@ -4,17 +4,33 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build: canary",
-            "detail": "Locally build the extension as the 'canary' channel.",
+            "label": "Build: dev",
+            "detail": "Locally build the extension as the 'dev' channel.",
             "type": "shell",
-            "command": "Invoke-Build Build -Channel canary",
+            "command": "Invoke-Build Build -Channel dev",
             "group": "build",
             "presentation": {
                 "focus": false,
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "osx": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            },
+            "linux": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            }
         },
         {
             "label": "Install: preview",
@@ -26,7 +42,23 @@
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "osx": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            },
+            "linux": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            }
         },
         {
             "label": "Install: stable",
@@ -38,19 +70,51 @@
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "osx": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            },
+            "linux": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            }
         },
         {
-            "label": "Install: canary",
-            "detail": "Build and install the extension as the 'canary' channel.",
+            "label": "Install: dev",
+            "detail": "Build and install the extension as the 'dev' channel.",
             "type": "shell",
-            "command": "Invoke-Build Install -Channel canary",
+            "command": "Invoke-Build Install -Channel dev",
             "presentation": {
                 "focus": false,
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "osx": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            },
+            "linux": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            }
         },
         {
             "label": "Clean",
@@ -63,10 +127,27 @@
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "osx": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            },
+            "linux": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            }
         },
         {
             "label": "Compile",
+            "detail": "Run TypeScript compile.",
             "type": "npm",
             "script": "compile",
             "presentation": {
@@ -87,10 +168,27 @@
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "osx": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            },
+            "linux": {
+                "options": {
+                    "shell": {
+                        "executable": "pwsh",
+                        "args": ["-c"]
+                    }
+                }
+            }
         },
         {
             "type": "npm",
+            "detail": "Run TypeScript compile and watch for changes.",
             "script": "watch",
             "problemMatcher": "$tsc-watch",
             "isBackground": true,

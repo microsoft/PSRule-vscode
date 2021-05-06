@@ -39,9 +39,9 @@ function checkExtension(context: vscode.ExtensionContext): void {
         extensionId = 'bewhite.psrule-vscode-preview';
         extensionChannel = 'preview';
     }
-    if (path.basename(context.globalStorageUri.fsPath) === 'bewhite.psrule-vscode-canary') {
-        extensionId = 'bewhite.psrule-vscode-canary';
-        extensionChannel = 'canary';
+    if (path.basename(context.globalStorageUri.fsPath) === 'bewhite.psrule-vscode-dev') {
+        extensionId = 'bewhite.psrule-vscode-dev';
+        extensionChannel = 'dev';
     }
     logger.verbose(`Running extension channel: ${extensionChannel}`);
 
