@@ -1,6 +1,6 @@
 {
-    "name": "psrule-vscode-canary",
-    "displayName": "PSRule",
+    "name": "psrule-vscode-dev",
+    "displayName": "PSRule (Dev)",
     "version": "0.0.1",
     "publisher": "bewhite",
     "description": "Validate infrastructure as code (IaC) and DevOps repositories using PSRule.",

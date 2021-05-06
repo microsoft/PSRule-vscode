@@ -10,7 +10,7 @@ param (
     [String]$Build = '0.0.1',
 
     [Parameter(Mandatory = $False)]
-    [ValidateSet('preview', 'stable', 'canary')]
+    [ValidateSet('preview', 'stable', 'dev')]
     [String]$Channel,
 
     [Parameter(Mandatory = $False)]
@@ -47,10 +47,11 @@ if ([String]::IsNullOrEmpty('Channel')) {
     $Channel = 'preview';
 }
 $channelSuffix = '-preview';
+$channelDisplayName = 'PSRule (Preview)';
 switch ($Channel) {
-    'canary' { $channelSuffix = '-canary' }
-    'stable' { $channelSuffix = '' }
-    default { $channelSuffix = '-preview' }
+    'dev' { $channelSuffix = '-dev'; $channelDisplayName = 'PSRule (Dev)'; }
+    'stable' { $channelSuffix = ''; $channelDisplayName = 'PSRule'; }
+    default { $channelSuffix = '-preview'; $channelDisplayName = 'PSRule (Preview)'; }
 }
 
 Write-Host -Object "[Pipeline] -- Using channel: $Channel" -ForegroundColor Green;
@@ -119,10 +120,25 @@ task InstallExtension {
 }
 
 task VersionExtension {
-    # Update channel
+    # Update channel name
     $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
     if ($package.name -ne $packageName) {
         $package.name = $packageName;
+        $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
+    }
+
+    # Update channel flag
+    $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
+    $previewFlag = $Channel -ne 'stable';
+    if ($package.preview -ne $previewFlag) {
+        $package.preview = $previewFlag;
+        $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
+    }
+
+    # Update channel display name
+    $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
+    if ($package.displayName -ne $channelDisplayName) {
+        $package.displayName = $channelDisplayName;
         $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
     }
 
