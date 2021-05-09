@@ -55,4 +55,42 @@ function checkExtension(context: vscode.ExtensionContext): void {
 
     // Save the extension version
     context.globalState.update(extensionVersionKey, extensionVersion);
+
+    // Determine if the channel upgrade message is shown
+    const showChannelUpgrade: boolean = vscode.workspace
+        .getConfiguration('PSRule.notifications')
+        .get('showChannelUpgrade', true);
+
+    if ((extensionChannel === 'preview' || extensionChannel === 'dev') && showChannelUpgrade) {
+        const showReleaseNotes = 'Show Release Notes';
+        const showExtension = 'Show Extension';
+        const alwaysIgnore = 'Always Ignore';
+
+        vscode.window
+            .showInformationMessage(
+                `You are running the ${extensionChannel} version of PSRule. A stable version is available.`,
+                showReleaseNotes,
+                showExtension,
+                alwaysIgnore
+            )
+            .then((choice) => {
+                if (choice === showReleaseNotes) {
+                    vscode.commands.executeCommand(
+                        'markdown.showPreview',
+                        vscode.Uri.file(path.resolve(__dirname, '../../CHANGELOG.md'))
+                    );
+                }
+                if (choice === showExtension) {
+                    vscode.commands.executeCommand(
+                        'workbench.extensions.search',
+                        'bewhite.psrule-vscode'
+                    );
+                }
+                if (choice === alwaysIgnore) {
+                    vscode.workspace
+                        .getConfiguration('PSRule.notifications')
+                        .update('showChannelUpgrade', false, vscode.ConfigurationTarget.Global);
+                }
+            });
+    }
 }

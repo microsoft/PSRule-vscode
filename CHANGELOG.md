@@ -13,6 +13,8 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+- General improvements:
+  - Preview channel will notify that a stable version is available. [#235](https://github.com/microsoft/PSRule-vscode/issues/235)
 - Engineering:
   - Bump vscode engine to v1.55.0. [#241](https://github.com/microsoft/PSRule-vscode/pull/241)
 
