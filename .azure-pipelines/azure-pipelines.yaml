@@ -8,7 +8,7 @@ variables:
   version: '1'
 
  # Use build number format, i.e. 2021.5.10
-name: $(date:yyyy).$(date:MM).$(rev:r)
+name: $(date:yyyy).$(date:M).$(rev:r)
 
 trigger:
   branches:
