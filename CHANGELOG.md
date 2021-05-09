@@ -6,7 +6,7 @@ This extension is available in two release channels for Visual Studio Code from 
 - [Preview][ext-preview] - More frequent releases but more likely to contain bugs.
   - _Preview_ is where updates are available before they released to _Stable_.
   - This channel includes changes listed in the _Unreleased_ heading.
-  - Versioning for _Preview_ follows an `yyyy.MM.rrrr` that increments for each release.
+  - Versioning for _Preview_ follows an `year.month.revision` that increments for each release.
 - [Stable][ext-stable] - Less frequent releases, with more user testing, experimental features are disabled.
   - Uses [semantic versioning](http://semver.org/) to declare changes.
 Continue reading to see the changes included in the latest version.

@@ -26,9 +26,12 @@ param (
     [String]$AssertStyle = 'AzurePipelines'
 )
 
+$commitId = git log --format="%H" -n 1;
+
 Write-Host -Object "[Pipeline] -- PWD: $PWD" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- OutputPath: $OutputPath" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- BuildNumber: $($Env:BUILD_BUILDNUMBER)" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- CommitId: $($commitId)" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- SourceBranch: $($Env:BUILD_SOURCEBRANCH)" -ForegroundColor Green;
 Write-Host -Object "[Pipeline] -- SourceBranchName: $($Env:BUILD_SOURCEBRANCHNAME)" -ForegroundColor Green;
 
@@ -195,13 +198,7 @@ task PackageRestore {
 
 task ReleaseExtension {
     exec { & npm install vsce --no-save }
-
-    if ($Channel -eq 'preview') {
-        exec { & npm run publish -- patch --pat $ApiKey }
-    }
-    if ($Channel -eq 'stable') {
-        exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
-    }
+    exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
 }
 
 # Synopsis: Add shipit build tag
