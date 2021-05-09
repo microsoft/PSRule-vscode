@@ -39,6 +39,19 @@
     ],
     "main": "./out/dist/extension.js",
     "contributes": {
+        "configuration": [
+            {
+                "title": "PSRule",
+                "properties": {
+                    "PSRule.notifications.showChannelUpgrade": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Specifies if a notification to switch to the stable channel is shown on start up.",
+                        "scope": "application"
+                    }
+                }
+            }
+        ],
         "snippets": [
             {
                 "language": "powershell",
