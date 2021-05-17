@@ -146,7 +146,7 @@
         "@types/vscode": "1.56.0",
         "@typescript-eslint/eslint-plugin": "^4.23.0",
         "@typescript-eslint/parser": "^4.23.0",
-        "esbuild": "^0.11.20",
+        "esbuild": "^0.11.23",
         "eslint": "^7.26.0",
         "glob": "^7.1.7",
         "lodash": ">=4.17.21",
