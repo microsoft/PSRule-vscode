@@ -13,10 +13,14 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+- New features:
+  - Added `PSRule: Run analysis` quick task to call `Assert-PSRule` for the current workspace. [#226](https://github.com/microsoft/PSRule-vscode/issues/226)
+    - To configure set `path`, `inputPath`, `baseline`, `module`, and `outcome` per task.
+    - The default task will run analysis in the current workspace using rules in `.ps-rule/`.
 - General improvements:
   - Preview channel will notify that a stable version is available. [#235](https://github.com/microsoft/PSRule-vscode/issues/235)
 - Engineering:
-  - Bump vscode engine to v1.55.0. [#241](https://github.com/microsoft/PSRule-vscode/pull/241)
+  - Bump vscode engine to v1.56.0. [#241](https://github.com/microsoft/PSRule-vscode/pull/241)
 
 ## v1.0.0
 
