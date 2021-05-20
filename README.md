@@ -3,7 +3,7 @@
 Validate infrastructure as code (IaC) and DevOps repositories using the PSRule PowerShell module.
 PSRule is powerful, feature rich, and highly customizable to meet your needs.
 
-![ext-stable-version-badge] ![ext-stable-installs-badge] ![module-version-badge]
+![module-version-badge]
 
 This extension is available in two release channels:
 
@@ -39,9 +39,32 @@ Channel | Description | Version/ downloads
 </p>
 
 - Adds snippets for creating markdown documentation.
-  - **Quick documentation**  &mdash; create rule documentation to provide rule recommendations and examples.
+  - **Quick documentation** &mdash; create rule documentation to provide rule recommendations and examples.
     - Trigger IntelliSense by typing `rule` in a `.md` file.
     IntelliSense can also be triggered by using the shortcut `Ctrl+Space`.
+
+### Quick tasks
+
+<p align="center">
+  <img src="./docs/images/tasks-provider.png" alt="Built-in tasks shown in task list" />
+</p>
+
+- Adds quick tasks for analysis directly from Visual Studio Code.
+  - **Run analysis** &mdash; Runs rules against files in the current workspace.
+    - _Input path_, _Baseline_, _Modules_, and _Outcome_ options can be configured per task.
+    - _Output as_, and showing a _Not processed warning_ options can be configured by workspace or user.
+    - Rule stored in `.ps-rule/` are automatically used by default.
+
+## Configuration
+
+In addition to configuring the [ps-rule.yaml] options file, the following settings are available.
+
+Name                                      | Description
+----                                      | -----------
+`PSRule.execution.notProcessedWarning`    | Warn when objects are not processed by any rule.
+`PSRule.experimental.enabled`             | Enables experimental features in the PSRule extension.
+`PSRule.notifications.showChannelUpgrade` | Specifies if a notification to switch to the stable channel is shown on start up.
+`PSRule.output.as`                        | Configures the output of analysis tasks, either summary or detailed.
 
 ## Support
 
@@ -110,3 +133,4 @@ This project is [licensed under the MIT License][license].
 [license]: https://github.com/Microsoft/PSRule-vscode/blob/main/LICENSE
 [chat]: https://gitter.im/PSRule/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [chat-badge]: https://img.shields.io/static/v1.svg?label=chat&message=on%20gitter&color=informational&logo=gitter
+[ps-rule.yaml]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html
