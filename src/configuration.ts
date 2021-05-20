@@ -6,7 +6,10 @@
 import { ConfigurationChangeEvent, ExtensionContext, workspace } from 'vscode';
 import { configurationItemPrefix } from './consts';
 
-enum OutputAs {
+/**
+ * The output of analysis tasks.
+ */
+export enum OutputAs {
     Detail = 0,
     Summary = 1,
 }
