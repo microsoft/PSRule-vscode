@@ -21,6 +21,10 @@ Continue reading to see the changes included in the latest version.
     - Source locations for rules failures are detected when using the `VisualStudioCode` style.
 - General improvements:
   - Preview channel will notify that a stable version is available. [#235](https://github.com/microsoft/PSRule-vscode/issues/235)
+  - Added PSRule options schema support updates.
+    - Added `Output.Banner` option. [#264](https://github.com/microsoft/PSRule-vscode/issues/264)
+    - Improved validation for the requires option. [#265](https://github.com/microsoft/PSRule-vscode/issues/265)
+    - Added support for new style options `VisualStudioCode` and `Detect`. [#266](https://github.com/microsoft/PSRule-vscode/issues/266)
 - Engineering:
   - Bump vscode engine to v1.56.0. [#241](https://github.com/microsoft/PSRule-vscode/pull/241)
 

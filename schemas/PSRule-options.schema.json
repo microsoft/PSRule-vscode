@@ -294,6 +294,28 @@
                     "enum": ["Detail", "Summary"],
                     "default": "Detail"
                 },
+                "banner": {
+                    "title": "Banner format",
+                    "description": "The information displayed for Assert-PSRule banner. The default is Default which includes Title, Source, and SupportLinks.",
+                    "markdownDescription": "The information displayed for Assert-PSRule banner. The default is `Default` which includes `Title`, `Source`, and `SupportLinks`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputbanner)",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "None",
+                                "Title",
+                                "Source",
+                                "SupportLinks",
+                                "Default",
+                                "Minimal"
+                            ]
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": "Default"
+                },
                 "culture": {
                     "type": "array",
                     "title": "Culture",
@@ -353,10 +375,17 @@
                 "style": {
                     "type": "string",
                     "title": "Output Style",
-                    "description": "The style that results will be presented in. The default is Client.",
-                    "markdownDescription": "The style that results will be presented in. The default is `Client`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputstyle)",
-                    "enum": ["Client", "Plain", "AzurePipelines", "GitHubActions"],
-                    "default": "Client"
+                    "description": "The style that results will be presented in. The default is Detect.",
+                    "markdownDescription": "The style that results will be presented in. The default is `Detect`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputstyle)",
+                    "enum": [
+                        "Client",
+                        "Plain",
+                        "AzurePipelines",
+                        "GitHubActions",
+                        "VisualStudioCode",
+                        "Detect"
+                    ],
+                    "default": "Detect"
                 }
             },
             "additionalProperties": false
@@ -440,8 +469,20 @@
             "description": "Specifies the required version of a module to use.",
             "markdownDescription": "Specifies the required version of a module to use. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#requires)",
             "additionalProperties": {
-                "type": "string"
-            }
+                "type": "string",
+                "title": "Version constraint",
+                "description": "Specifies a module to constrain to a specific version.",
+                "markdownDescription": "Specifies a module to constrain to a specific version. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#requires)",
+                "pattern": "^(@pre|@prerelease )?(((?:^|~|\\>=|\\>|=|\\<=|\\<)?v?(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)(?:\\s|\\s?\\|\\|\\s?)?){1,}$"
+            },
+            "defaultSnippets": [
+                {
+                    "label": "Version constraint",
+                    "body": {
+                        "${1:Module}": "${2:'>=1.0.0'}"
+                    }
+                }
+            ]
         },
         "rule-option": {
             "type": "object",
