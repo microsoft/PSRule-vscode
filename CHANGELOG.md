@@ -17,6 +17,8 @@ Continue reading to see the changes included in the latest version.
   - Added `PSRule: Run analysis` quick task to call `Assert-PSRule` for the current workspace. [#226](https://github.com/microsoft/PSRule-vscode/issues/226)
     - To configure set `path`, `inputPath`, `baseline`, `module`, and `outcome` per task.
     - The default task will run analysis in the current workspace using rules in `.ps-rule/`.
+  - Added `$PSRule` problem matcher for analysis tasks. [#234](https://github.com/microsoft/PSRule-vscode/issues/234)
+    - Source locations for rules failures are detected when using the `VisualStudioCode` style.
 - General improvements:
   - Preview channel will notify that a stable version is available. [#235](https://github.com/microsoft/PSRule-vscode/issues/235)
 - Engineering:

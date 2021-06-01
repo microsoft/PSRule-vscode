@@ -182,6 +182,42 @@
                 "fileMatch": "**/*.Rule.yaml",
                 "url": "./schemas/PSRule-language.schema.json"
             }
+        ],
+        "problemMatchers": [
+            {
+                "name": "PSRule",
+                "label": "PSRule",
+                "owner": "PSRule",
+                "source": "PSRule",
+                "severity": "error",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": [
+                    {
+                        "regexp": "^\\s+(FAIL)\\s+(.*)$",
+                        "code": 2
+                    },
+                    {
+                        "regexp": "^$"
+                    },
+                    {
+                        "regexp": "^\\s+(.*)$",
+                        "message": 1
+                    },
+                    {
+                        "regexp": "^$"
+                    },
+                    {
+                        "regexp": "^\\s+(.*): (.*):(\\d+):(\\d+)$",
+                        "file": 2,
+                        "line": 3,
+                        "column": 4,
+                        "loop": true
+                    }
+                ]
+            }
         ]
     },
     "scripts": {
@@ -210,8 +246,8 @@
         "@types/mocha": "^8.2.2",
         "@types/node": "^15.6.1",
         "@types/vscode": "1.56.0",
-        "@typescript-eslint/eslint-plugin": "^4.25.0",
-        "@typescript-eslint/parser": "^4.25.0",
+        "@typescript-eslint/eslint-plugin": "^4.26.0",
+        "@typescript-eslint/parser": "^4.26.0",
         "esbuild": "^0.12.5",
         "eslint": "^7.27.0",
         "glob": "^7.1.7",
@@ -220,7 +256,7 @@
         "minimist": ">=1.2.5",
         "mocha": "^8.4.0",
         "typescript": "^4.3.2",
-        "vsce": "^1.88.0",
+        "vsce": "^1.91.0",
         "vscode-test": "^1.5.2"
     }
 }
