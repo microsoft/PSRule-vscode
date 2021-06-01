@@ -204,6 +204,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         if (definition === undefined) {
             definition = {
                 type: PSRuleTaskProvider.taskType,
+                matcher: '$PSRule',
             };
         }
 
@@ -273,7 +274,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
                 executable: pwsh.path,
                 shellArgs: ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command'],
                 env: {
-                    PSRULE_OUTPUT_STYLE: 'Client',
+                    PSRULE_OUTPUT_STYLE: 'VisualStudioCode',
                     PSRULE_OUTPUT_AS: outputAs.toString(),
                     PSRULE_OUTPUT_CULTURE: vscode.env.language,
                     PSRULE_OUTPUT_BANNER: 'Minimal',
