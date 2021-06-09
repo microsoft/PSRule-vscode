@@ -246,17 +246,17 @@
         "@types/mocha": "^8.2.2",
         "@types/node": "^15.12.0",
         "@types/vscode": "1.56.0",
-        "@typescript-eslint/eslint-plugin": "^4.26.0",
-        "@typescript-eslint/parser": "^4.26.0",
-        "esbuild": "^0.12.5",
-        "eslint": "^7.27.0",
+        "@typescript-eslint/eslint-plugin": "^4.26.1",
+        "@typescript-eslint/parser": "^4.26.1",
+        "esbuild": "^0.12.8",
+        "eslint": "^7.28.0",
         "glob": "^7.1.7",
         "lodash": ">=4.17.21",
         "markdown-it": "^12.0.6",
         "minimist": ">=1.2.5",
         "mocha": "^8.4.0",
         "typescript": "^4.3.2",
-        "vsce": "^1.91.0",
+        "vsce": "^1.93.0",
         "vscode-test": "^1.5.2"
     }
 }
