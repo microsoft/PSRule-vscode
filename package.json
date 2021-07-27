@@ -247,7 +247,7 @@
         "@types/node": "^16.4.3",
         "@types/vscode": "1.58.1",
         "@typescript-eslint/eslint-plugin": "^4.28.4",
-        "@typescript-eslint/parser": "^4.28.4",
+        "@typescript-eslint/parser": "^4.28.5",
         "esbuild": "^0.12.16",
         "eslint": "^7.31.0",
         "glob": "^7.1.7",
