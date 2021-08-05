@@ -13,17 +13,19 @@
     "license": "SEE LICENSE IN LICENSE",
     "homepage": "https://github.com/Microsoft/PSRule-vscode/blob/main/README.md",
     "categories": [
-        "Other",
+        "Programming Languages",
         "Snippets"
     ],
     "keywords": [
-        "PowerShell"
+        "PowerShell",
+        "json",
+        "yaml"
     ],
     "galleryBanner": {
         "color": "#0072c6",
         "theme": "dark"
     },
-    "icon": "images/icon128.png",
+    "icon": "images/icon256.png",
     "repository": {
         "type": "git",
         "url": "https://github.com/Microsoft/PSRule-vscode.git"
