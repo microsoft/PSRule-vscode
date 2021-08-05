@@ -16,6 +16,7 @@ Continue reading to see the changes included in the latest version.
 What's changed since v1.1.0:
 
 - General improvements:
+  - Updated extension to latest icon. [#356](https://github.com/microsoft/PSRule-vscode/issues/356)
   - Added string selector support to language schema. [#327](https://github.com/microsoft/PSRule-vscode/issues/327)
   - Updated options schema to support PSRule v1.5.0. [#328](https://github.com/microsoft/PSRule-vscode/issues/328)
 - Engineering:
