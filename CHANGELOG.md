@@ -15,6 +15,10 @@ Continue reading to see the changes included in the latest version.
 
 What's changed since v1.2.0:
 
+- General improvements:
+  - Added YAML Rule support to language schema. [#361](https://github.com/microsoft/PSRule-vscode/issues/361)
+  - Added starter snippet for GitHub Actions workflow. [#362](https://github.com/microsoft/PSRule-vscode/issues/362)
+  - Updated options schema to support `include` option within PSRule v1.6.0. [#363](https://github.com/microsoft/PSRule-vscode/issues/363)
 - Engineering:
   - Bump vscode engine to v1.59.0. [#358](https://github.com/microsoft/PSRule-vscode/pull/358)
 

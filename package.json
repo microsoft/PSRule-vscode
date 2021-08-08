@@ -131,6 +131,10 @@
             {
                 "language": "yaml",
                 "path": "./snippets/yaml.json"
+            },
+            {
+                "language": "yaml",
+                "path": "./snippets/github-actions.json"
             }
         ],
         "grammars": [

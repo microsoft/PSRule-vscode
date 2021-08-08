@@ -41,5 +41,39 @@
             "  if:",
             "    ${3}"
         ]
+    },
+    "Rule with Type": {
+        "prefix": "rule-with-type",
+        "description": "PSRule Rule resource with Type pre-condition",
+        "body": [
+            "---",
+            "# Synopsis: ${2}",
+            "apiVersion: github.com/microsoft/PSRule/v1",
+            "kind: Rule",
+            "metadata:",
+            "  name: ${1}",
+            "spec:",
+            "  type:",
+            "  - ${3}",
+            "  condition:",
+            "    ${4}"
+        ]
+    },
+    "Rule with Selector": {
+        "prefix": "rule-with-selector",
+        "description": "PSRule Rule resource with Selector pre-condition",
+        "body": [
+            "---",
+            "# Synopsis: ${2}",
+            "apiVersion: github.com/microsoft/PSRule/v1",
+            "kind: Rule",
+            "metadata:",
+            "  name: ${1}",
+            "spec:",
+            "  selector:",
+            "  - ${3}",
+            "  condition:",
+            "    ${4}"
+        ]
     }
 }
