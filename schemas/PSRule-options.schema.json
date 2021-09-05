@@ -195,7 +195,14 @@
                     "type": "boolean",
                     "title": "Ignore .git path",
                     "description": "Determine if files within the .git path are ignored when the -InputPath parameter is used.",
-                    "markdownDescription": "Determine if files within the `.git` path are ignored when the `-InputPath` parameter is used. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#ignoregitpath)",
+                    "markdownDescription": "Determine if files within the `.git` path are ignored when the `-InputPath` parameter is used. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#inputignoregitpath)",
+                    "default": true
+                },
+                "ignoreRepositoryCommon": {
+                    "type": "boolean",
+                    "title": "Ignore common files",
+                    "description": "Determine if common repository files are ignored when the -InputPath parameter is used.",
+                    "markdownDescription": "Determine if common repository files are ignored when the `-InputPath` parameter is used. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#inputignorerepositorycommon)",
                     "default": true
                 },
                 "objectPath": {
@@ -384,6 +391,21 @@
                     "enum": ["Default", "UTF8", "UTF7", "Unicode", "UTF32", "ASCII"],
                     "default": "Default"
                 },
+                "footer": {
+                    "title": "Footer format",
+                    "description": "The information displayed for Assert-PSRule footer. The default is Default which includes RuleCount, and RunInfo.",
+                    "markdownDescription": "The information displayed for Assert-PSRule footer. The default is `Default` which includes `RuleCount`, and `RunInfo`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputfooter)",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "enum": ["None", "RuleCount", "RunInfo", "Default"]
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "default": "Default"
+                },
                 "format": {
                     "type": "string",
                     "title": "Output format",
@@ -533,6 +555,13 @@
                     "description": "Optionally filter to rules by name.",
                     "markdownDescription": "Optionally filter to rules by name. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#ruleinclude)",
                     "$ref": "#/definitions/rule-names"
+                },
+                "includeLocal": {
+                    "type": "boolean",
+                    "title": "Include local",
+                    "description": "Automatically include all local rules in the search path unless they have been explicitly excluded.",
+                    "markdownDescription": "Automatically include all local rules in the search path unless they have been explicitly excluded. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#ruleincludelocal)",
+                    "default": false
                 },
                 "exclude": {
                     "type": "array",
