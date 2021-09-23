@@ -256,7 +256,7 @@
         "@typescript-eslint/parser": "^4.31.2",
         "esbuild": "^0.12.29",
         "eslint": "^7.32.0",
-        "glob": "^7.1.7",
+        "glob": "^7.2.0",
         "lodash": ">=4.17.21",
         "markdown-it": "^12.2.0",
         "minimist": ">=1.2.5",
