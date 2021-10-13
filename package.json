@@ -261,7 +261,7 @@
         "markdown-it": "^12.2.0",
         "minimist": ">=1.2.5",
         "mocha": "^9.1.2",
-        "typescript": "^4.4.3",
+        "typescript": "^4.4.4",
         "vsce": "^1.100.1",
         "vscode-test": "^1.6.1",
         "nth-check": ">=2.0.1",
