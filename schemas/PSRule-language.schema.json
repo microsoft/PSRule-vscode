@@ -480,6 +480,15 @@
                     "$ref": "#/definitions/selectorConditionNotIn"
                 },
                 {
+                    "$ref": "#/definitions/selectorConditionSetOf"
+                },
+                {
+                    "$ref": "#/definitions/selectorConditionSubset"
+                },
+                {
+                    "$ref": "#/definitions/selectorConditionCount"
+                },
+                {
                     "$ref": "#/definitions/selectorConditionLess"
                 },
                 {
@@ -514,17 +523,57 @@
         "selectorProperties": {
             "oneOf": [
                 {
-                    "properties": {
-                        "field": {
-                            "type": "string",
-                            "title": "Field",
-                            "description": "The path of the field.",
-                            "markdownDescription": "The path of the field. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#field)"
-                        }
-                    },
-                    "required": ["field"]
+                    "$ref": "#/definitions/selectorPropertyField"
                 }
             ]
+        },
+        "selectorPropertiesString": {
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertyField"
+                },
+                {
+                    "$ref": "#/definitions/selectorPropertyType"
+                },
+                {
+                    "$ref": "#/definitions/selectorPropertyName"
+                }
+            ]
+        },
+        "selectorPropertyField": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "title": "Field",
+                    "description": "The path of the field.",
+                    "markdownDescription": "The path of the field. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#field)"
+                }
+            },
+            "required": ["field"]
+        },
+        "selectorPropertyType": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "title": "Type",
+                    "description": "The target type of the object.",
+                    "markdownDescription": "The target type of the object. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#type)",
+                    "default": "."
+                }
+            },
+            "required": ["type"]
+        },
+        "selectorPropertyName": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "The target name of the object.",
+                    "markdownDescription": "The target name of the object. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#name)",
+                    "default": "."
+                }
+            },
+            "required": ["name"]
         },
         "selectorOperatorAllOf": {
             "type": "object",
@@ -618,7 +667,7 @@
             "required": ["equals"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -651,7 +700,7 @@
             "required": ["notEquals"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -668,7 +717,7 @@
             "required": ["hasValue"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -685,7 +734,7 @@
             "required": ["match"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -702,7 +751,7 @@
             "required": ["notMatch"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -719,7 +768,7 @@
             "required": ["in"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -734,6 +783,79 @@
                 }
             },
             "required": ["notIn"],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertiesString"
+                }
+            ]
+        },
+        "selectorConditionSetOf": {
+            "type": "object",
+            "properties": {
+                "setOf": {
+                    "type": "array",
+                    "title": "SetOf",
+                    "description": "Must include all of but only specified values.",
+                    "markdownDescription": "Must include all of but only values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#setof)"
+                },
+                "caseSensitive": {
+                    "type": "boolean",
+                    "title": "Case sensitive",
+                    "description": "Determines comparing values is case-sensitive.",
+                    "markdownDescription": "Determines comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#setof)",
+                    "default": false
+                }
+            },
+            "required": ["setOf"],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorProperties"
+                }
+            ]
+        },
+        "selectorConditionSubset": {
+            "type": "object",
+            "properties": {
+                "subset": {
+                    "type": "array",
+                    "title": "Subset",
+                    "description": "Must include all of the specified values.",
+                    "markdownDescription": "Must include all of the specified values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#subset)"
+                },
+                "caseSensitive": {
+                    "type": "boolean",
+                    "title": "Case sensitive",
+                    "description": "Determines comparing values is case-sensitive.",
+                    "markdownDescription": "Determines comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#subset)",
+                    "default": false
+                },
+                "unique": {
+                    "type": "boolean",
+                    "title": "Unique",
+                    "description": "Determines each of the field values must be unique.",
+                    "markdownDescription": "Determines each of the field values must be unique. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#subset)",
+                    "default": false
+                }
+            },
+            "required": ["subset"],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorProperties"
+                }
+            ]
+        },
+        "selectorConditionCount": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "title": "Count",
+                    "description": "Must include all of the specified values.",
+                    "markdownDescription": "Must include all of the specified values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#count)",
+                    "minimum": 0
+                }
+            },
+            "required": ["count"],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -753,7 +875,7 @@
             "required": ["less"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -770,7 +892,7 @@
             "required": ["lessOrEquals"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -787,7 +909,7 @@
             "required": ["greater"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -804,7 +926,7 @@
             "required": ["greaterOrEquals"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -821,7 +943,7 @@
             "required": ["startsWith"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -838,7 +960,7 @@
             "required": ["endsWith"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -855,7 +977,7 @@
             "required": ["contains"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -872,7 +994,7 @@
             "required": ["isString"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -889,7 +1011,7 @@
             "required": ["isLower"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
@@ -906,7 +1028,7 @@
             "required": ["isUpper"],
             "oneOf": [
                 {
-                    "$ref": "#/definitions/selectorProperties"
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },

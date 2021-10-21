@@ -16,8 +16,11 @@ Continue reading to see the changes included in the latest version.
 What's changed since v1.3.0:
 
 - General improvements:
-  - Added options schema to support options introduced in PSRule v1.7.0. [#395](https://github.com/microsoft/PSRule-vscode/issues/395)
-    - Added support for `Input.IgnoreRepositoryCommon`, `Output.Footer`, and `Rule.IncludeLocal`.
+  - Added options schema to support additional options. [#395](https://github.com/microsoft/PSRule-vscode/issues/395) [#451](https://github.com/microsoft/PSRule-vscode/issues/451)
+    - Added support for `Input.IgnoreRepositoryCommon`, `Output.Footer`, `Output.JsonIndent`, and `Rule.IncludeLocal`.
+  - Added expressions improvements: [#452](https://github.com/microsoft/PSRule-vscode/issues/452)
+    - Added `SetOf`, `Subset`, and `Count` set conditions.
+    - Added `name`, and `type` properties to `Expression` objects.
 - Engineering:
   - Bump vscode engine to v1.61.0. [#432](https://github.com/microsoft/PSRule-vscode/pull/432)
 
