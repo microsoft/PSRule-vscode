@@ -19,7 +19,7 @@ What's changed since v1.3.0:
   - Added options schema to support options introduced in PSRule v1.7.0. [#395](https://github.com/microsoft/PSRule-vscode/issues/395)
     - Added support for `Input.IgnoreRepositoryCommon`, `Output.Footer`, and `Rule.IncludeLocal`.
 - Engineering:
-  - Bump vscode engine to v1.60.0. [#393](https://github.com/microsoft/PSRule-vscode/pull/393)
+  - Bump vscode engine to v1.61.0. [#432](https://github.com/microsoft/PSRule-vscode/pull/432)
 
 ## v1.3.0
 
