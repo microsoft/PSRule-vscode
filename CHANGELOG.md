@@ -15,6 +15,11 @@ Continue reading to see the changes included in the latest version.
 
 What's changed since v1.4.0:
 
+- General improvements:
+  - Added `Rule.Baseline` option configuration the default baseline with module configuration. [#475](https://github.com/microsoft/PSRule-vscode/issues/475)
+  - Added support for resources within `.Rule.json`, `.Rule.jsonc`, and `.Rule.yml` files. [#476](https://github.com/microsoft/PSRule-vscode/issues/476)
+  - Configured workspace trust. [#304](https://github.com/microsoft/PSRule-vscode/issues/304)
+    - Currently the extension relies on PowerShell which only works when the workspace is trusted.
 - Engineering:
   - Bump vscode engine to v1.62.0. [#473](https://github.com/microsoft/PSRule-vscode/pull/473)
 
