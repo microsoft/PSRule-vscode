@@ -39,10 +39,18 @@
         "onLanguage:powershell",
         "workspaceContains:/ps-rule.yaml",
         "workspaceContains:**/*.Rule.yaml",
+        "workspaceContains:**/*.Rule.yml",
+        "workspaceContains:**/*.Rule.json",
+        "workspaceContains:**/*.Rule.jsonc",
         "workspaceContains:**/*.Rule.ps1",
         "onCommand:workbench.action.tasks.runTask"
     ],
     "main": "./out/dist/main.js",
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "supported": false
+        }
+    },
     "contributes": {
         "configuration": [
             {
@@ -187,6 +195,20 @@
             {
                 "fileMatch": "**/*.Rule.yaml",
                 "url": "./schemas/PSRule-language.schema.json"
+            },
+            {
+                "fileMatch": "**/*.Rule.yml",
+                "url": "./schemas/PSRule-language.schema.json"
+            }
+        ],
+        "jsonValidation": [
+            {
+                "fileMatch": "*.Rule.json",
+                "url": "./schemas/PSRule-resources.schema.json"
+            },
+            {
+                "fileMatch": "*.Rule.jsonc",
+                "url": "./schemas/PSRule-resources.schema.json"
             }
         ],
         "problemMatchers": [
