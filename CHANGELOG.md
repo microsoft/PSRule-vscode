@@ -13,6 +13,8 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+## v1.5.0
+
 What's changed since v1.4.0:
 
 - General improvements:
