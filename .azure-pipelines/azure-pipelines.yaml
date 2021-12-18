@@ -49,28 +49,29 @@ stages:
   - template: jobs/test.yaml
     parameters:
       name: macOS_10_15
-      displayName: 'PowerShell 7.1 - macOS-10.15'
+      displayName: 'PowerShell 7.2 - macOS-10.15'
       imageName: 'macOS-10.15'
       channel: preview
 
   - template: jobs/test.yaml
     parameters:
-      name: windows
-      displayName: 'PowerShell 5.1 - win2016'
-      imageName: 'vs2017-win2016'
+      name: ps_5_1_windows_2019
+      displayName: 'PowerShell 5.1 - Windows 2019'
+      imageName: 'windows-2019'
       channel: preview
-
+      pwsh: 'true'
+  
   - template: jobs/test.yaml
     parameters:
-      name: windows_2019
-      displayName: 'PowerShell 7.1 - Windows 2019'
+      name: ps_7_2_windows_2019
+      displayName: 'PowerShell 7.2 - Windows 2019'
       imageName: 'windows-2019'
       channel: preview
 
   - template: jobs/test.yaml
     parameters:
       name: ubuntu_20_04
-      displayName: 'PowerShell 7.1 - ubuntu-20.04'
+      displayName: 'PowerShell 7.2 - ubuntu-20.04'
       imageName: 'ubuntu-20.04'
       channel: preview
 
@@ -83,7 +84,8 @@ stages:
     skipComponentGovernanceDetection: true
   jobs:
   - job: Secret_Scan
-    pool: 'Hosted VS2017'
+    pool:
+      vmImage: 'windows-2019'
     displayName: Secret scan
     steps:
     - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
