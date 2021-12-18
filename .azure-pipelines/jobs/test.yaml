@@ -16,6 +16,9 @@ parameters:
   default: 'Release'
 - name: imageName
   type: string
+- name: pwsh
+  type: string
+  default: 'true'
 
 jobs:
 - job: '${{ parameters.name }}'
@@ -44,9 +47,13 @@ jobs:
       path: $(Build.SourcesDirectory)/out/package
 
   # Run tests
-  - powershell: |-
-      npm install
-      npm test
+  - task: PowerShell@2
+    inputs:
+      targetType: inline
+      script: |-
+        npm install
+        npm test
+      pwsh: ${{ eq(parameters.pwsh, 'true') }}
     displayName: 'Test extension'
     env:
       DISPLAY: ':99.0'
