@@ -13,6 +13,10 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+## v1.6.0
+
+What's changed since v1.5.0:
+
 - General improvements:
   - Added `hasSchema` language expression. [#520](https://github.com/microsoft/PSRule-vscode/issues/520)
 - Engineering:
