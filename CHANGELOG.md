@@ -13,6 +13,12 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+What's changed since v1.6.0:
+
+- General improvements:
+  - Added `version` language expression. [#539](https://github.com/microsoft/PSRule-vscode/issues/539)
+  - Added `hasDefault` language expression. [#540](https://github.com/microsoft/PSRule-vscode/issues/540)
+
 ## v1.6.0
 
 What's changed since v1.5.0:
