@@ -1,7 +1,7 @@
 {
-    "Baseline": {
-        "prefix": "baseline",
-        "description": "PSRule Baseline resource",
+    "Baseline Yaml": {
+        "prefix": "baseline-yaml",
+        "description": "PSRule Baseline YAML resource",
         "body": [
             "---",
             "# Synopsis: ${2}",
@@ -13,9 +13,9 @@
             "  ${3}"
         ]
     },
-    "ModuleConfig": {
-        "prefix": "moduleConfig",
-        "description": "PSRule Module Config resource",
+    "ModuleConfig Yaml": {
+        "prefix": "moduleConfig-yaml",
+        "description": "PSRule Module Config YAML resource",
         "body": [
             "---",
             "# Synopsis: ${2}",
@@ -27,9 +27,9 @@
             "  ${3}"
         ]
     },
-    "Selector": {
-        "prefix": "selector",
-        "description": "PSRule Selector resource",
+    "Selector Yaml": {
+        "prefix": "selector-yaml",
+        "description": "PSRule Selector YAML resource",
         "body": [
             "---",
             "# Synopsis: ${2}",
@@ -42,9 +42,9 @@
             "    ${3}"
         ]
     },
-    "Rule with Type": {
-        "prefix": "rule-with-type",
-        "description": "PSRule Rule resource with Type pre-condition",
+    "Rule with Type Yaml": {
+        "prefix": "rule-with-type-yaml",
+        "description": "PSRule Rule YAML resource with Type pre-condition",
         "body": [
             "---",
             "# Synopsis: ${2}",
@@ -59,9 +59,9 @@
             "    ${4}"
         ]
     },
-    "Rule with Selector": {
-        "prefix": "rule-with-selector",
-        "description": "PSRule Rule resource with Selector pre-condition",
+    "Rule with Selector Yaml": {
+        "prefix": "rule-with-selector-yaml",
+        "description": "PSRule Rule YAML resource with Selector pre-condition",
         "body": [
             "---",
             "# Synopsis: ${2}",
@@ -70,7 +70,7 @@
             "metadata:",
             "  name: ${1}",
             "spec:",
-            "  selector:",
+            "  with:",
             "  - ${3}",
             "  condition:",
             "    ${4}"
