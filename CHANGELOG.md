@@ -13,6 +13,9 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+- General improvements:
+  - Added resources snippets for JSON and JSONC files. [#477](https://github.com/microsoft/PSRule-vscode/issues/477)
+
 ## v1.7.0
 
 What's changed since v1.6.0:
