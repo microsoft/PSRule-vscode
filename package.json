@@ -143,6 +143,14 @@
             {
                 "language": "yaml",
                 "path": "./snippets/github-actions.json"
+            },
+            {
+                "language": "json",
+                "path": "./snippets/json.json"
+            },
+            {
+                "language": "jsonc",
+                "path": "./snippets/json.json"
             }
         ],
         "grammars": [
