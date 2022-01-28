@@ -292,7 +292,7 @@
         "minimist": ">=1.2.5",
         "mocha": "^9.2.0",
         "typescript": "^4.5.5",
-        "vsce": "^2.6.4",
+        "vsce": "^2.6.5",
         "vscode-test": "^1.6.1",
         "nth-check": ">=2.0.1",
         "ansi-regex": ">=5.0.1"
