@@ -15,6 +15,7 @@ Continue reading to see the changes included in the latest version.
 
 - General improvements:
   - Added resources snippets for JSON and JSONC files. [#477](https://github.com/microsoft/PSRule-vscode/issues/477)
+  - Update schema for suppression groups. [#574](https://github.com/microsoft/PSRule-vscode/issues/574)
 
 ## v1.7.0
 
