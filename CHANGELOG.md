@@ -24,6 +24,8 @@ What's changed since v1.6.0:
 - General improvements:
   - Added `version` language expression. [#539](https://github.com/microsoft/PSRule-vscode/issues/539)
   - Added `hasDefault` language expression. [#540](https://github.com/microsoft/PSRule-vscode/issues/540)
+- Engineering:
+  - Bump vscode engine to v1.64.0. [#586](https://github.com/microsoft/PSRule-vscode/pull/586)
 
 ## v1.6.0
 
