@@ -95,5 +95,27 @@
             "    }",
             "}"
         ]
+    },
+    "Suppression Group Json": {
+        "prefix": "suppression-group-json",
+        "description": "PSRule Suppression Group JSON resource",
+        "body": [
+            "{",
+            "    // Synopsis: ${2}",
+            "    \"apiVersion\": \"github.com/microsoft/PSRule/v1\",",
+            "    \"kind\": \"SuppressionGroup\",",
+            "    \"metadata\": {",
+            "        \"name\": \"${1}\"",
+            "    },",
+            "    \"spec\": {",
+            "        \"rule\": [",
+            "            \"${3}\"",
+            "        ],",
+            "        \"if\": {",
+            "            ${4}",
+            "        }",
+            "    }",
+            "}"
+        ]
     }
 }
