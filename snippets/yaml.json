@@ -75,5 +75,22 @@
             "  condition:",
             "    ${4}"
         ]
+    },
+    "Suppression Group Yaml": {
+        "prefix": "suppression-group-yaml",
+        "description": "PSRule Suppression Group YAML resource",
+        "body": [
+            "---",
+            "# Synopsis: ${2}",
+            "apiVersion: github.com/microsoft/PSRule/v1",
+            "kind: SuppressionGroup",
+            "metadata:",
+            "  name: ${1}",
+            "spec:",
+            "  rule: ",
+            "  - ${3}",
+            "  if:",
+            "    ${4}"
+        ]
     }
 }
