@@ -284,7 +284,7 @@
         "@types/vscode": "1.64.0",
         "@typescript-eslint/eslint-plugin": "^5.11.0",
         "@typescript-eslint/parser": "^5.11.0",
-        "esbuild": "^0.14.20",
+        "esbuild": "^0.14.21",
         "eslint": "^8.8.0",
         "glob": "^7.2.0",
         "lodash": ">=4.17.21",
