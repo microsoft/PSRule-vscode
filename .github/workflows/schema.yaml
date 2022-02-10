@@ -1,0 +1,48 @@
+name: SyncPSRuleSchema
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # At 12:00 AM, only on Monday
+  workflow_dispatch:
+    
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    if: github.repository == 'microsoft/PSRule-vscode'
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+
+      - name: Checkout PSRule
+        uses: actions/checkout@v2.4.0
+        with:
+          repository: microsoft/PSRule
+          path: PSRule
+
+      - name: Configure
+        run: |
+          git config user.name github-actions
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Copy Schemas
+        run: |
+          $sourceSchemaDirectory = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, 'PSRule', 'schemas')
+          $sourceSchemaFiles = Get-ChildItem -Path $sourceSchemaDirectory -File -Filter *.schema.json
+          $sourceSchemaFiles | ForEach-Object { Copy-Item -Path $_.FullName -Destination schemas }
+        shell: pwsh
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.12.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Sync PSRule Schema
+          title: Sync PSRule Schema
+          body: 'Updates to JSON schema files'
+          delete-branch: true
