@@ -27,40 +27,60 @@
                     "type": "string",
                     "title": "Name",
                     "description": "The name of the resource. This must be unique.",
-                    "minLength": 3
+                    "$ref": "#/definitions/resourceName"
                 },
                 "annotations": {
                     "type": "object",
-                    "title": "Annotations"
+                    "title": "Annotations",
+                    "description": "Additional annotations for the resource.",
+                    "properties": {
+                        "obsolete": {
+                            "type": "boolean",
+                            "title": "Obsolete",
+                            "description": "A common annotation that flags the resource as obsolete.",
+                            "default": false
+                        }
+                    },
+                    "additionalProperties": true,
+                    "defaultSnippets": [
+                        {
+                            "label": "Annotation key/ value",
+                            "body": {
+                                "${1:Key}": "${2:Value}"
+                            }
+                        }
+                    ]
                 },
                 "tags": {
-                    "type": "object",
-                    "title": "Tags",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/resourceTags"
                 }
             },
-            "required": ["name"]
+            "required": [
+                "name"
+            ]
         },
         "baseline-v1": {
             "type": "object",
             "title": "Baseline",
             "description": "A PSRule Baseline.",
-            "markdownDescription": "A PSRule Baseline. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Baseline.html)",
+            "markdownDescription": "A PSRule Baseline. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Baseline/)",
             "properties": {
                 "apiVersion": {
                     "type": "string",
                     "title": "API Version",
                     "description": "The API Version for the PSRule resources.",
-                    "enum": ["github.com/microsoft/PSRule/v1"]
+                    "enum": [
+                        "github.com/microsoft/PSRule/v1"
+                    ]
                 },
                 "kind": {
                     "type": "string",
                     "title": "Kind",
                     "description": "A PSRule Baseline resource.",
-                    "markdownDescription": "A PSRule Baseline resource. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Baseline.html)",
-                    "enum": ["Baseline"]
+                    "markdownDescription": "A PSRule Baseline resource. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Baseline/)",
+                    "enum": [
+                        "Baseline"
+                    ]
                 },
                 "metadata": {
                     "type": "object",
@@ -71,14 +91,19 @@
                     "$ref": "#/definitions/baselineSpec"
                 }
             },
-            "required": ["apiVersion", "kind", "metadata", "spec"],
+            "required": [
+                "apiVersion",
+                "kind",
+                "metadata",
+                "spec"
+            ],
             "additionalProperties": false
         },
         "baselineSpec": {
             "type": "object",
             "title": "Spec",
             "description": "A specification for a baseline.",
-            "markdownDescription": "A specification for a baseline. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Baseline.html)",
+            "markdownDescription": "A specification for a baseline. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Baseline/)",
             "properties": {
                 "binding": {
                     "$ref": "#/definitions/binding-option"
@@ -95,21 +120,29 @@
                             "type": "array",
                             "title": "Include rules",
                             "description": "Rules to include by name in the baseline.",
-                            "markdownDescription": "Rules to include by name in the baseline. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#ruleinclude)",
-                            "$ref": "#/definitions/rule-names"
+                            "markdownDescription": "Rules to include by name in the baseline. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#ruleinclude)",
+                            "items": {
+                                "type": "string",
+                                "$ref": "#/definitions/resourceName"
+                            },
+                            "uniqueItems": true
                         },
                         "exclude": {
                             "type": "array",
                             "title": "Exclude rules",
                             "description": "Rules to exclude by name from the baseline.",
-                            "markdownDescription": "Rules to exclude by name from the baseline. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#ruleexclude)",
-                            "$ref": "#/definitions/rule-names"
+                            "markdownDescription": "Rules to exclude by name from the baseline. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#ruleexclude)",
+                            "items": {
+                                "type": "string",
+                                "$ref": "#/definitions/resourceName"
+                            },
+                            "uniqueItems": true
                         },
                         "tag": {
                             "type": "object",
                             "title": "Tags",
                             "description": "Require rules to have the following tags.",
-                            "markdownDescription": "Require rules to have the following tags. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#ruletag)",
+                            "markdownDescription": "Require rules to have the following tags. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#ruletag)",
                             "additionalProperties": {
                                 "oneOf": [
                                     {
@@ -142,13 +175,17 @@
                     "type": "string",
                     "title": "API Version",
                     "description": "The API Version for the PSRule resources.",
-                    "enum": ["github.com/microsoft/PSRule/v1"]
+                    "enum": [
+                        "github.com/microsoft/PSRule/v1"
+                    ]
                 },
                 "kind": {
                     "type": "string",
                     "title": "Kind",
                     "description": "A PSRule ModuleConfig resource.",
-                    "enum": ["ModuleConfig"]
+                    "enum": [
+                        "ModuleConfig"
+                    ]
                 },
                 "metadata": {
                     "type": "object",
@@ -159,7 +196,12 @@
                     "$ref": "#/definitions/moduleConfigSpec"
                 }
             },
-            "required": ["apiVersion", "kind", "metadata", "spec"],
+            "required": [
+                "apiVersion",
+                "kind",
+                "metadata",
+                "spec"
+            ],
             "additionalProperties": false
         },
         "moduleConfigSpec": {
@@ -185,7 +227,7 @@
                             "type": "array",
                             "title": "Culture",
                             "description": "One or more cultures to use for generating output. When multiple cultures are specified, the first matching culture will be used. By default, the current PowerShell culture is used.",
-                            "markdownDescription": "One or more cultures to use for generating output. When multiple cultures are specified, the first matching culture will be used. By default, the current PowerShell culture is used. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#outputculture)",
+                            "markdownDescription": "One or more cultures to use for generating output. When multiple cultures are specified, the first matching culture will be used. By default, the current PowerShell culture is used. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#outputculture)",
                             "items": {
                                 "type": "string",
                                 "description": "A culture for generating output.",
@@ -195,15 +237,21 @@
                             "defaultSnippets": [
                                 {
                                     "label": "en-AU",
-                                    "bodyText": ["en-AU"]
+                                    "bodyText": [
+                                        "en-AU"
+                                    ]
                                 },
                                 {
                                     "label": "en-US",
-                                    "bodyText": ["en-US"]
+                                    "bodyText": [
+                                        "en-US"
+                                    ]
                                 },
                                 {
                                     "label": "en-GB",
-                                    "bodyText": ["en-GB"]
+                                    "bodyText": [
+                                        "en-GB"
+                                    ]
                                 }
                             ]
                         }
@@ -219,8 +267,8 @@
                             "type": "string",
                             "title": "Baseline",
                             "description": "The name of a baseline to use.",
-                            "markdownDescription": "The name of a baseline to use. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#rulebaseline)",
-                            "$ref": "#/definitions/rule-names"
+                            "markdownDescription": "The name of a baseline to use. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#rulebaseline)",
+                            "$ref": "#/definitions/resourceName"
                         }
                     },
                     "additionalProperties": false
@@ -228,17 +276,25 @@
             },
             "additionalProperties": false
         },
-        "rule-names": {
-            "type": "array",
-            "items": {
-                "type": "string",
-                "$ref": "#/definitions/rule-name"
-            },
-            "uniqueItems": true
-        },
-        "rule-name": {
+        "resourceName": {
             "type": "string",
             "minLength": 3
+        },
+        "resourceTags": {
+            "type": "object",
+            "title": "Tags",
+            "description": "Additional indexed key/ value pairs for the resource.",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "defaultSnippets": [
+                {
+                    "label": "Tag key/ value",
+                    "body": {
+                        "${1:Key}": "${2:Value}"
+                    }
+                }
+            ]
         },
         "binding-option": {
             "type": "object",
@@ -249,11 +305,11 @@
                     "type": "object",
                     "title": "Field",
                     "description": "Custom fields to bind.",
-                    "markdownDescription": "Custom fields to bind. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#bindingfield)",
+                    "markdownDescription": "Custom fields to bind. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#bindingfield)",
                     "additionalProperties": {
                         "type": "array",
                         "description": "A custom field to bind.",
-                        "markdownDescription": "Custom field to bind. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#bindingfield)",
+                        "markdownDescription": "Custom field to bind. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#bindingfield)",
                         "items": {
                             "type": "string"
                         },
@@ -264,28 +320,28 @@
                     "type": "boolean",
                     "title": "Ignore case",
                     "description": "Determines if custom binding uses ignores case when matching properties. The default is true.",
-                    "markdownDescription": "Determines if custom binding uses ignores case when matching properties. The default is `true`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#bindingignorecase)",
+                    "markdownDescription": "Determines if custom binding uses ignores case when matching properties. The default is `true`. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#bindingignorecase)",
                     "default": true
                 },
                 "nameSeparator": {
                     "type": "string",
                     "title": "Name separator",
                     "description": "Configures the separator to use for building a qualified name. The default is '/'.",
-                    "markdownDescription": "Configures the separator to use for building a qualified name. The default is `/`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#bindingnameseparator)",
+                    "markdownDescription": "Configures the separator to use for building a qualified name. The default is `/`. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#bindingnameseparator)",
                     "default": "/"
                 },
                 "preferTargetInfo": {
                     "type": "boolean",
                     "title": "Prefer target info",
                     "description": "Determines if binding prefers target info provided by the object over custom configuration. The default is false.",
-                    "markdownDescription": "Determines if binding prefers target info provided by the object over custom configuration. The default is `false`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#bindingprefertargetinfo)",
+                    "markdownDescription": "Determines if binding prefers target info provided by the object over custom configuration. The default is `false`. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#bindingprefertargetinfo)",
                     "default": false
                 },
                 "targetName": {
                     "type": "array",
                     "title": "Bind TargetName",
                     "description": "Specifies one or more property names to bind TargetName to.",
-                    "markdownDescription": "Specifies one or more property names to bind TargetName to. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#bindingtargetname)",
+                    "markdownDescription": "Specifies one or more property names to bind TargetName to. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#bindingtargetname)",
                     "items": {
                         "type": "string"
                     },
@@ -295,7 +351,7 @@
                     "type": "array",
                     "title": "Bind TargetType",
                     "description": "Specifies one or more property names to bind TargetType to.",
-                    "markdownDescription": "Specifies one or more property names to bind TargetType to. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#bindingtargettype)",
+                    "markdownDescription": "Specifies one or more property names to bind TargetType to. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#bindingtargettype)",
                     "items": {
                         "type": "string"
                     },
@@ -305,7 +361,7 @@
                     "type": "boolean",
                     "title": "Use qualified name",
                     "description": "Determines if a qualified TargetName is used. The default is false.",
-                    "markdownDescription": "Determines if a qualified TargetName is used. The default is `false`. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#bindingusequalifiedname)",
+                    "markdownDescription": "Determines if a qualified TargetName is used. The default is `false`. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#bindingusequalifiedname)",
                     "default": false
                 }
             },
@@ -315,7 +371,7 @@
             "type": "object",
             "title": "Configuration values",
             "description": "A set of key/ value configuration options for rules.",
-            "markdownDescription": "A set of key/ value configuration options for rules. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#configuration)",
+            "markdownDescription": "A set of key/ value configuration options for rules. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#configuration)",
             "defaultSnippets": [
                 {
                     "label": "Configuration value",
@@ -334,7 +390,7 @@
                     "type": "array",
                     "title": "Include conventions",
                     "description": "An ordered list of conventions to include.",
-                    "markdownDescription": "An ordered list of conventions to include. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html#conventioninclude)",
+                    "markdownDescription": "An ordered list of conventions to include. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#conventioninclude)",
                     "items": {
                         "type": "string"
                     },
@@ -346,20 +402,24 @@
         "selector-v1": {
             "type": "object",
             "title": "Selector",
-            "description": "A PSRule Selector.",
-            "markdownDescription": "A PSRule Selector. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html)",
+            "description": "A selector resource.",
+            "markdownDescription": "A selector resource. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Selectors/)",
             "properties": {
                 "apiVersion": {
                     "type": "string",
                     "title": "API Version",
                     "description": "The API Version for the PSRule resources.",
-                    "enum": ["github.com/microsoft/PSRule/v1"]
+                    "enum": [
+                        "github.com/microsoft/PSRule/v1"
+                    ]
                 },
                 "kind": {
                     "type": "string",
                     "title": "Kind",
                     "description": "A PSRule Selector resource.",
-                    "enum": ["Selector"]
+                    "enum": [
+                        "Selector"
+                    ]
                 },
                 "metadata": {
                     "type": "object",
@@ -370,19 +430,30 @@
                     "$ref": "#/definitions/selectorSpec"
                 }
             },
-            "required": ["apiVersion", "kind", "metadata", "spec"]
+            "required": [
+                "apiVersion",
+                "kind",
+                "metadata",
+                "spec"
+            ]
         },
         "selectorSpec": {
             "type": "object",
             "title": "Spec",
-            "description": "PSRule selector specification.",
+            "description": "The specification for a selector.",
+            "markdownDescription": "The specification for a selector. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Selectors/)",
             "properties": {
                 "if": {
                     "type": "object",
+                    "title": "If",
+                    "description": "A condition is made up of one or more expressions that will determine if an object is selected by the selector.",
+                    "markdownDescription": "A condition is made up of one or more [expressions](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/) that will determine if an object is selected by the selector. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Selectors/)",
                     "$ref": "#/definitions/selectorExpression"
                 }
             },
-            "required": ["if"],
+            "required": [
+                "if"
+            ],
             "additionalProperties": false
         },
         "suppressionGroup-v1": {
@@ -395,13 +466,17 @@
                     "type": "string",
                     "title": "API Version",
                     "description": "The API Version for the PSRule resources.",
-                    "enum": ["github.com/microsoft/PSRule/v1"]
+                    "enum": [
+                        "github.com/microsoft/PSRule/v1"
+                    ]
                 },
                 "kind": {
                     "type": "string",
                     "title": "Kind",
                     "description": "A PSRule SuppressionGroup resource.",
-                    "enum": ["SuppressionGroup"]
+                    "enum": [
+                        "SuppressionGroup"
+                    ]
                 },
                 "metadata": {
                     "type": "object",
@@ -412,7 +487,12 @@
                     "$ref": "#/definitions/suppressionGroupSpec"
                 }
             },
-            "required": ["apiVersion", "kind", "metadata", "spec"]
+            "required": [
+                "apiVersion",
+                "kind",
+                "metadata",
+                "spec"
+            ]
         },
         "suppressionGroupSpec": {
             "type": "object",
@@ -433,46 +513,74 @@
                     "$ref": "#/definitions/selectorExpression"
                 }
             },
-            "required": ["if"],
+            "required": [
+                "if"
+            ],
             "additionalProperties": false
         },
         "rule-v1": {
             "type": "object",
             "title": "Rule",
-            "description": "A PSRule Rule.",
-            "markdownDescription": "A PSRule Rule. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Rules.html)",
+            "description": "A rule resource.",
+            "markdownDescription": "A rule resource. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Rules/)",
             "properties": {
                 "apiVersion": {
                     "type": "string",
                     "title": "API Version",
                     "description": "The API Version for the PSRule resources.",
-                    "enum": ["github.com/microsoft/PSRule/v1"]
+                    "enum": [
+                        "github.com/microsoft/PSRule/v1"
+                    ]
                 },
                 "kind": {
                     "type": "string",
                     "title": "Kind",
-                    "description": "A PSRule Rule resource.",
-                    "enum": ["Rule"]
+                    "description": "A rule resource.",
+                    "markdownDescription": "A rule resource. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Rules/)",
+                    "enum": [
+                        "Rule"
+                    ]
                 },
                 "metadata": {
                     "type": "object",
-                    "$ref": "#/definitions/resource-metadata"
+                    "$ref": "#/definitions/ruleMetadata"
                 },
                 "spec": {
                     "type": "object",
                     "$ref": "#/definitions/ruleSpec"
                 }
             },
-            "required": ["apiVersion", "kind", "metadata", "spec"]
+            "required": [
+                "apiVersion",
+                "kind",
+                "metadata",
+                "spec"
+            ]
         },
         "ruleSpec": {
             "type": "object",
             "title": "Spec",
-            "description": "PSRule rule specification.",
+            "description": "The specification for the rule.",
+            "markdownDescription": "The specification for the rule. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Rules/)",
             "properties": {
                 "condition": {
                     "type": "object",
+                    "title": "Condition",
+                    "description": "A condition is made up of one or more expressions that will determine if the rule passes or fails.",
+                    "markdownDescription": "A condition is made up of one or more [expressions](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/) that will determine if the rule passes or fails. [See help](https://microsoft.github.io/PSRule/v2/authoring/writing-rules/)",
                     "$ref": "#/definitions/selectorExpression"
+                },
+                "level": {
+                    "type": "string",
+                    "title": "Level",
+                    "description": "If the rule fails, how serious is the result. By default this is set to Error.",
+                    "markdownDescription": "If the rule fails, how serious is the result. By default this is set to `Error`. [See help](https://microsoft.github.io/PSRule/v2/authoring/writing-rules/)",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information"
+                    ],
+                    "default": "Error"
                 },
                 "type": {
                     "type": "array",
@@ -493,8 +601,60 @@
                     "uniqueItems": true
                 }
             },
-            "required": ["condition"],
+            "required": [
+                "condition"
+            ],
             "additionalProperties": false
+        },
+        "ruleMetadata": {
+            "type": "object",
+            "title": "Metadata",
+            "description": "Additional information to identify the resource.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "The name of the resource. This must be unique.",
+                    "$ref": "#/definitions/resourceName"
+                },
+                "ref": {
+                    "title": "Reference",
+                    "description": "An optional stable opaque identifier of this resource for lookup. This must be unique if set.",
+                    "$ref": "#/definitions/resourceName"
+                },
+                "annotations": {
+                    "type": "object",
+                    "title": "Annotations",
+                    "description": "Additional annotations for the resource.",
+                    "additionalProperties": true,
+                    "defaultSnippets": [
+                        {
+                            "label": "Annotation key/ value",
+                            "body": {
+                                "${1:Key}": "${2:Value}"
+                            }
+                        }
+                    ]
+                },
+                "alias": {
+                    "type": "array",
+                    "title": "Aliases",
+                    "description": "Alternative names this resource is known by.",
+                    "items": {
+                        "type": "string",
+                        "title": "Alias",
+                        "description": "An alternative name.",
+                        "$ref": "#/definitions/resourceName"
+                    },
+                    "uniqueItems": true
+                },
+                "tags": {
+                    "$ref": "#/definitions/resourceTags"
+                }
+            },
+            "required": [
+                "name"
+            ]
         },
         "selectorExpression": {
             "type": "object",
@@ -585,6 +745,21 @@
                     "$ref": "#/definitions/selectorConditionIsLower"
                 },
                 {
+                    "$ref": "#/definitions/selectorConditionIsArray"
+                },
+                {
+                    "$ref": "#/definitions/selectorConditionIsBoolean"
+                },
+                {
+                    "$ref": "#/definitions/selectorConditionIsDateTime"
+                },
+                {
+                    "$ref": "#/definitions/selectorConditionIsInteger"
+                },
+                {
+                    "$ref": "#/definitions/selectorConditionIsNumeric"
+                },
+                {
                     "$ref": "#/definitions/selectorConditionIsUpper"
                 },
                 {
@@ -595,6 +770,12 @@
                 },
                 {
                     "$ref": "#/definitions/selectorConditionHasDefault"
+                },
+                {
+                    "$ref": "#/definitions/selectorConditionWithinPath"
+                },
+                {
+                    "$ref": "#/definitions/selectorConditionNotWithinPath"
                 }
             ]
         },
@@ -615,6 +796,9 @@
                 },
                 {
                     "$ref": "#/definitions/selectorPropertyName"
+                },
+                {
+                    "$ref": "#/definitions/selectorPropertySource"
                 }
             ]
         },
@@ -623,12 +807,14 @@
                 "field": {
                     "type": "string",
                     "title": "Field",
-                    "description": "The path of the field.",
-                    "markdownDescription": "The path of the field. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#field)",
+                    "description": "The object path of a field to compare.",
+                    "markdownDescription": "The object path of a field to compare. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#field)",
                     "default": "."
                 }
             },
-            "required": ["field"]
+            "required": [
+                "field"
+            ]
         },
         "selectorPropertyType": {
             "properties": {
@@ -636,11 +822,13 @@
                     "type": "string",
                     "title": "Type",
                     "description": "The target type of the object.",
-                    "markdownDescription": "The target type of the object. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#type)",
+                    "markdownDescription": "The target type of the object. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#type)",
                     "default": "."
                 }
             },
-            "required": ["type"]
+            "required": [
+                "type"
+            ]
         },
         "selectorPropertyName": {
             "properties": {
@@ -648,11 +836,26 @@
                     "type": "string",
                     "title": "Name",
                     "description": "The target name of the object.",
-                    "markdownDescription": "The target name of the object. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#name)",
+                    "markdownDescription": "The target name of the object. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#name)",
                     "default": "."
                 }
             },
-            "required": ["name"]
+            "required": [
+                "name"
+            ]
+        },
+        "selectorPropertySource": {
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "title": "Source",
+                    "description": "The source of the object currently being processed by the pipeline.",
+                    "markdownDescription": "The source of the object currently being processed by the pipeline. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#source)"
+                }
+            },
+            "required": [
+                "source"
+            ]
         },
         "selectorOperatorAllOf": {
             "type": "object",
@@ -661,13 +864,15 @@
                     "type": "array",
                     "title": "All Of",
                     "description": "All of the expressions must be true.",
-                    "markdownDescription": "All of the expressions must be true. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#allof)",
+                    "markdownDescription": "All of the expressions must be true. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#allof)",
                     "items": {
                         "$ref": "#/definitions/selectorExpression"
                     }
                 }
             },
-            "required": ["allOf"],
+            "required": [
+                "allOf"
+            ],
             "additionalProperties": false
         },
         "selectorOperatorAnyOf": {
@@ -677,13 +882,15 @@
                     "type": "array",
                     "title": "Any Of",
                     "description": "One of the expressions must be true.",
-                    "markdownDescription": "All of the expressions must be true. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#anyof)",
+                    "markdownDescription": "All of the expressions must be true. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#anyof)",
                     "items": {
                         "$ref": "#/definitions/selectorExpression"
                     }
                 }
             },
-            "required": ["anyOf"],
+            "required": [
+                "anyOf"
+            ],
             "additionalProperties": false
         },
         "selectorOperatorNot": {
@@ -693,11 +900,13 @@
                     "type": "object",
                     "title": "Not",
                     "description": "The nested expression must not be true.",
-                    "markdownDescription": "The nested expression must not be true. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#not)",
+                    "markdownDescription": "The nested expression must not be true. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#not)",
                     "$ref": "#/definitions/selectorExpression"
                 }
             },
-            "required": ["not"]
+            "required": [
+                "not"
+            ]
         },
         "selectorConditionExists": {
             "type": "object",
@@ -706,16 +915,19 @@
                     "type": "boolean",
                     "title": "Exists",
                     "description": "Must have the named field.",
-                    "markdownDescription": "Must have the named field. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#exists)"
+                    "markdownDescription": "Must have the named field. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#exists)"
                 },
                 "field": {
                     "type": "string",
                     "title": "Field",
                     "description": "The path of the field.",
-                    "markdownDescription": "The path of the field. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#field)"
+                    "markdownDescription": "The path of the field. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#field)"
                 }
             },
-            "required": ["exists", "field"]
+            "required": [
+                "exists",
+                "field"
+            ]
         },
         "selectorConditionEquals": {
             "type": "object",
@@ -723,11 +935,13 @@
                 "equals": {
                     "title": "Equals",
                     "description": "Must have the specified value.",
-                    "markdownDescription": "Must have the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#equals)",
+                    "markdownDescription": "Must have the specified value. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#equals)",
                     "$ref": "#/definitions/selectorExpressionValue"
                 }
             },
-            "required": ["equals"],
+            "required": [
+                "equals"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -740,11 +954,13 @@
                 "notEquals": {
                     "title": "Not Equals",
                     "description": "Must not have the specified value.",
-                    "markdownDescription": "Must not have the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#notequals)",
+                    "markdownDescription": "Must not have the specified value. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#notequals)",
                     "$ref": "#/definitions/selectorExpressionValue"
                 }
             },
-            "required": ["notEquals"],
+            "required": [
+                "notEquals"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -758,10 +974,12 @@
                     "type": "boolean",
                     "title": "Has Value",
                     "description": "Must have a non-empty value.",
-                    "markdownDescription": "Must have a non-empty value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#hasvalue)"
+                    "markdownDescription": "Must have a non-empty value. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#hasvalue)"
                 }
             },
-            "required": ["hasValue"],
+            "required": [
+                "hasValue"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -775,10 +993,12 @@
                     "type": "string",
                     "title": "Match",
                     "description": "Must match the regular expression.",
-                    "markdownDescription": "Must match the regular expression. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#match)"
+                    "markdownDescription": "Must match the regular expression. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#match)"
                 }
             },
-            "required": ["match"],
+            "required": [
+                "match"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -792,10 +1012,12 @@
                     "type": "string",
                     "title": "Not Match",
                     "description": "Must not match the regular expression.",
-                    "markdownDescription": "Must not match the regular expression. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#notmatch)"
+                    "markdownDescription": "Must not match the regular expression. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#notmatch)"
                 }
             },
-            "required": ["notMatch"],
+            "required": [
+                "notMatch"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -808,11 +1030,13 @@
                 "in": {
                     "type": "array",
                     "title": "In",
-                    "description": "Must equal one the values.",
-                    "markdownDescription": "Must equal one the values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#in)"
+                    "description": "Must equal one of the specified values.",
+                    "markdownDescription": "Must equal one of the specified values. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#in)"
                 }
             },
-            "required": ["in"],
+            "required": [
+                "in"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -825,11 +1049,13 @@
                 "notIn": {
                     "type": "array",
                     "title": "Not In",
-                    "description": "Must not equal any of the values.",
-                    "markdownDescription": "Must not equal one the values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#notin)"
+                    "description": "Must not equal any of the specified values.",
+                    "markdownDescription": "Must not equal any of the specified values. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#notin)"
                 }
             },
-            "required": ["notIn"],
+            "required": [
+                "notIn"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -843,17 +1069,19 @@
                     "type": "array",
                     "title": "SetOf",
                     "description": "Must include all of but only specified values.",
-                    "markdownDescription": "Must include all of but only values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#setof)"
+                    "markdownDescription": "Must include all of but only values. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#setof)"
                 },
                 "caseSensitive": {
                     "type": "boolean",
                     "title": "Case sensitive",
                     "description": "Determines if comparing values is case-sensitive.",
-                    "markdownDescription": "Determines if comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#setof)",
+                    "markdownDescription": "Determines if comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#setof)",
                     "default": false
                 }
             },
-            "required": ["setOf"],
+            "required": [
+                "setOf"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -867,24 +1095,26 @@
                     "type": "array",
                     "title": "Subset",
                     "description": "Must include all of the specified values.",
-                    "markdownDescription": "Must include all of the specified values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#subset)"
+                    "markdownDescription": "Must include all of the specified values. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#subset)"
                 },
                 "caseSensitive": {
                     "type": "boolean",
                     "title": "Case sensitive",
                     "description": "Determines if comparing values is case-sensitive.",
-                    "markdownDescription": "Determines if comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#subset)",
+                    "markdownDescription": "Determines if comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#subset)",
                     "default": false
                 },
                 "unique": {
                     "type": "boolean",
                     "title": "Unique",
                     "description": "Determines if each of the field values must be unique.",
-                    "markdownDescription": "Determines if each of the field values must be unique. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#subset)",
+                    "markdownDescription": "Determines if each of the field values must be unique. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#subset)",
                     "default": false
                 }
             },
-            "required": ["subset"],
+            "required": [
+                "subset"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -898,11 +1128,13 @@
                     "type": "integer",
                     "title": "Count",
                     "description": "Must include all of the specified values.",
-                    "markdownDescription": "Must include all of the specified values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#count)",
+                    "markdownDescription": "Must include all of the specified values. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#count)",
                     "minimum": 0
                 }
             },
-            "required": ["count"],
+            "required": [
+                "count"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -916,10 +1148,12 @@
                     "type": "integer",
                     "title": "Less",
                     "description": "Must be less then the specified value.",
-                    "markdownDescription": "Must be less then the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#less)"
+                    "markdownDescription": "Must be less then the specified value. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#less)"
                 }
             },
-            "required": ["less"],
+            "required": [
+                "less"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -933,10 +1167,12 @@
                     "type": "integer",
                     "title": "Less or Equal to",
                     "description": "Must be less or equal to the specified value.",
-                    "markdownDescription": "Must be less or equal to the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#lessorequals)"
+                    "markdownDescription": "Must be less or equal to the specified value. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#lessorequals)"
                 }
             },
-            "required": ["lessOrEquals"],
+            "required": [
+                "lessOrEquals"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -950,10 +1186,12 @@
                     "type": "integer",
                     "title": "Greater",
                     "description": "Must be greater then the specified value.",
-                    "markdownDescription": "Must be greater then the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#greater)"
+                    "markdownDescription": "Must be greater then the specified value. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#greater)"
                 }
             },
-            "required": ["greater"],
+            "required": [
+                "greater"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -967,10 +1205,12 @@
                     "type": "integer",
                     "title": "Greater or Equal to",
                     "description": "Must be greater or equal to the specified value.",
-                    "markdownDescription": "Must be greater or equal to the specified value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#greaterorequals)"
+                    "markdownDescription": "Must be greater or equal to the specified value. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#greaterorequals)"
                 }
             },
-            "required": ["greaterOrEquals"],
+            "required": [
+                "greaterOrEquals"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -983,11 +1223,13 @@
                 "startsWith": {
                     "title": "Starts with",
                     "description": "Must start with one of the specified values.",
-                    "markdownDescription": "Must start with one of the specified values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#startswith)",
+                    "markdownDescription": "Must start with one of the specified values. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#startswith)",
                     "$ref": "#/definitions/selectorExpressionValueMultiString"
                 }
             },
-            "required": ["startsWith"],
+            "required": [
+                "startsWith"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -1000,11 +1242,13 @@
                 "endsWith": {
                     "title": "Ends with",
                     "description": "Must end with one of the specified values.",
-                    "markdownDescription": "Must end with one of the specified values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#endswith)",
+                    "markdownDescription": "Must end with one of the specified values. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#endswith)",
                     "$ref": "#/definitions/selectorExpressionValueMultiString"
                 }
             },
-            "required": ["endsWith"],
+            "required": [
+                "endsWith"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -1017,11 +1261,13 @@
                 "contains": {
                     "title": "Contains",
                     "description": "Must contain one of the specified values.",
-                    "markdownDescription": "Must contain one of the specified values. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#contains)",
+                    "markdownDescription": "Must contain one of the specified values. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#contains)",
                     "$ref": "#/definitions/selectorExpressionValueMultiString"
                 }
             },
-            "required": ["contains"],
+            "required": [
+                "contains"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -1035,10 +1281,135 @@
                     "type": "boolean",
                     "title": "Is string",
                     "description": "Must be a string type.",
-                    "markdownDescription": "Must be a string type. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#isstring)"
+                    "markdownDescription": "Must be a string type. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isstring)"
                 }
             },
-            "required": ["isString"],
+            "required": [
+                "isString"
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertiesString"
+                }
+            ]
+        },
+        "selectorConditionIsArray": {
+            "type": "object",
+            "properties": {
+                "isArray": {
+                    "type": "boolean",
+                    "title": "Is array",
+                    "description": "Must be an array type.",
+                    "markdownDescription": "Must be an array type. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isarray)"
+                }
+            },
+            "required": [
+                "isArray"
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertiesString"
+                }
+            ]
+        },
+        "selectorConditionIsBoolean": {
+            "type": "object",
+            "properties": {
+                "isBoolean": {
+                    "type": "boolean",
+                    "title": "Is boolean",
+                    "description": "Must be a boolean type.",
+                    "markdownDescription": "Must be a boolean type. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isboolean)"
+                },
+                "convert": {
+                    "type": "boolean",
+                    "title": "Type conversion",
+                    "description": "Convert type to boolean.",
+                    "markdownDescription": "Convert type to boolean. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isboolean)",
+                    "default": false
+                }
+            },
+            "required": [
+                "isBoolean"
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertiesString"
+                }
+            ]
+        },
+        "selectorConditionIsDateTime": {
+            "type": "object",
+            "properties": {
+                "isDateTime": {
+                    "type": "boolean",
+                    "title": "Is datetime",
+                    "description": "Must be a datetime type.",
+                    "markdownDescription": "Must be a datetime type. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isdatetime)"
+                },
+                "convert": {
+                    "type": "boolean",
+                    "title": "Type conversion",
+                    "description": "Convert type to datetime.",
+                    "markdownDescription": "Convert type to datetime. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isdatetime)",
+                    "default": false
+                }
+            },
+            "required": [
+                "isDateTime"
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertiesString"
+                }
+            ]
+        },
+        "selectorConditionIsInteger": {
+            "type": "object",
+            "properties": {
+                "isInteger": {
+                    "type": "boolean",
+                    "title": "Is integer",
+                    "description": "Must be an integer type.",
+                    "markdownDescription": "Must be an integer type. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isinteger)"
+                },
+                "convert": {
+                    "type": "boolean",
+                    "title": "Type conversion",
+                    "description": "Convert type to integer.",
+                    "markdownDescription": "Convert type to integer. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isinteger)",
+                    "default": false
+                }
+            },
+            "required": [
+                "isInteger"
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertiesString"
+                }
+            ]
+        },
+        "selectorConditionIsNumeric": {
+            "type": "object",
+            "properties": {
+                "isNumeric": {
+                    "type": "boolean",
+                    "title": "Is numeric",
+                    "description": "Must be a numeric type.",
+                    "markdownDescription": "Must be a numeric type. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isnumeric)"
+                },
+                "convert": {
+                    "type": "boolean",
+                    "title": "Type conversion",
+                    "description": "Convert type to numeric.",
+                    "markdownDescription": "Convert type to numeric. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isnumeric)",
+                    "default": false
+                }
+            },
+            "required": [
+                "isNumeric"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -1052,10 +1423,12 @@
                     "type": "boolean",
                     "title": "Is Lowercase",
                     "description": "Must be a lowercase string.",
-                    "markdownDescription": "Must be a lowercase string. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#islower)"
+                    "markdownDescription": "Must be a lowercase string. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#islower)"
                 }
             },
-            "required": ["isLower"],
+            "required": [
+                "isLower"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -1069,10 +1442,12 @@
                     "type": "boolean",
                     "title": "Is Uppercase",
                     "description": "Must be an uppercase string.",
-                    "markdownDescription": "Must be an uppercase string. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#isupper)"
+                    "markdownDescription": "Must be an uppercase string. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#isupper)"
                 }
             },
-            "required": ["isUpper"],
+            "required": [
+                "isUpper"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorPropertiesString"
@@ -1086,13 +1461,13 @@
                     "type": "array",
                     "title": "Has schema",
                     "description": "Must use one of the specified schemas of the value of $schema. If an empty array is specified any non-empty $schema can be specified.",
-                    "markdownDescription": "Must use one of the specified schemas of the value of `$schema`. If an empty array is specified any non-empty `$schema` can be specified [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#hasschema)",
+                    "markdownDescription": "Must use one of the specified schemas of the value of `$schema`. If an empty array is specified any non-empty `$schema` can be specified [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#hasschema)",
                     "default": [],
                     "items": {
                         "type": "string",
                         "title": "Has schema",
                         "description": "Must use one of the specified schemas of the value of $schema. If an empty array is specified any non-empty $schema can be specified.",
-                        "markdownDescription": "Must use one of the specified schemas of the value of `$schema`. If an empty array is specified any non-empty `$schema` can be specified [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#hasschema)",
+                        "markdownDescription": "Must use one of the specified schemas of the value of `$schema`. If an empty array is specified any non-empty `$schema` can be specified [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#hasschema)",
                         "minLength": 1
                     },
                     "uniqueItems": true
@@ -1101,18 +1476,20 @@
                     "type": "boolean",
                     "title": "Ignore scheme",
                     "description": "Determines comparing values is case-sensitive.",
-                    "markdownDescription": "Determines comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#hasschema)",
+                    "markdownDescription": "Determines comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#hasschema)",
                     "default": false
                 },
                 "caseSensitive": {
                     "type": "boolean",
                     "title": "Case sensitive",
                     "description": "Determines if comparing schemas is case-sensitive.",
-                    "markdownDescription": "Determines if comparing schemas is case-sensitive. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#hasschema)",
+                    "markdownDescription": "Determines if comparing schemas is case-sensitive. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#hasschema)",
                     "default": false
                 }
             },
-            "required": ["hasSchema"],
+            "required": [
+                "hasSchema"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -1126,18 +1503,20 @@
                     "type": "string",
                     "title": "Version",
                     "description": "Must be a valid semantic version. A constraint can optionally be provided to require the semantic version to be within a range.",
-                    "markdownDescription": "Must be a valid semantic version. A constraint can optionally be provided to require the semantic version to be within a range. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#version)",
+                    "markdownDescription": "Must be a valid semantic version. A constraint can optionally be provided to require the semantic version to be within a range. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#version)",
                     "default": ""
                 },
                 "includePrerelease": {
                     "type": "boolean",
                     "title": "Include pre-release",
                     "description": "Determines if pre-release versions are included. By default, pre-release versions are not included.",
-                    "markdownDescription": "Determines if pre-release versions are included. By default, pre-release versions are not included. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#version)",
+                    "markdownDescription": "Determines if pre-release versions are included. By default, pre-release versions are not included. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#version)",
                     "default": false
                 }
             },
-            "required": ["version"],
+            "required": [
+                "version"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
@@ -1150,21 +1529,85 @@
                 "hasDefault": {
                     "title": "Has Default",
                     "description": "The field must either not exist or be set to the configured value.",
-                    "markdownDescription": "The field must either not exist or be set to the configured value. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#hasdefault)",
+                    "markdownDescription": "The field must either not exist or be set to the configured value. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#hasdefault)",
                     "$ref": "#/definitions/selectorExpressionValue"
                 },
                 "caseSensitive": {
                     "type": "boolean",
                     "title": "Case sensitive",
                     "description": "Determines if comparing values is case-sensitive.",
-                    "markdownDescription": "Determines if comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Selectors.html#hasdefault)",
+                    "markdownDescription": "Determines if comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#hasdefault)",
                     "default": false
                 }
             },
-            "required": ["hasDefault"],
+            "required": [
+                "hasDefault"
+            ],
             "oneOf": [
                 {
                     "$ref": "#/definitions/selectorProperties"
+                }
+            ]
+        },
+        "selectorConditionWithinPath": {
+            "type": "object",
+            "properties": {
+                "withinPath": {
+                    "type": "array",
+                    "title": "Within Path",
+                    "description": "The file path must exist within the required paths.",
+                    "markdownDescription": "The file path must exist within the required paths. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#withinpath)",
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "caseSensitive": {
+                    "type": "boolean",
+                    "title": "Case sensitive",
+                    "description": "Determines if comparing values is case-sensitive.",
+                    "markdownDescription": "Determines if comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#withinpath)",
+                    "default": false
+                }
+            },
+            "required": [
+                "withinPath"
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertiesString"
+                }
+            ]
+        },
+        "selectorConditionNotWithinPath": {
+            "type": "object",
+            "properties": {
+                "notWithinPath": {
+                    "type": "array",
+                    "title": "Not Within Path",
+                    "description": "The file path must not exist within the required paths.",
+                    "markdownDescription": "The file path must not exist within the required paths. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#notwithinpath)",
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "caseSensitive": {
+                    "type": "boolean",
+                    "title": "Case sensitive",
+                    "description": "Determines if comparing values is case-sensitive.",
+                    "markdownDescription": "Determines if comparing values is case-sensitive. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Expressions/#notwithinpath)",
+                    "default": false
+                }
+            },
+            "required": [
+                "notWithinPath"
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/selectorPropertiesString"
                 }
             ]
         },
