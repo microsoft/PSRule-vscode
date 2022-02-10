@@ -3,12 +3,20 @@
 #
 name: Analyze
 on:
-- pull_request
-- push
+  push:
+    branches: [ main, 'release/*', 'create-pull-request/*', 'dependencies/*' ]
+  pull_request:
+    branches: [ main, 'release/*' ]
+  schedule:
+  - cron: '54 20 * * 0' # At 8:54 PM, on Sunday each week
+  workflow_dispatch:
+
 jobs:
   analyze:
     name: Analyze repository
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
 
     - name: Checkout
