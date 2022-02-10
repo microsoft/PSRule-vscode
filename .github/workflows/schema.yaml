@@ -47,4 +47,4 @@ jobs:
           body: 'Updates to JSON schema files'
           delete-branch: true
           add-paths: |
-            *.schema.json
+            schemas/*.schema.json
