@@ -46,3 +46,5 @@ jobs:
           title: Sync PSRule Schema
           body: 'Updates to JSON schema files'
           delete-branch: true
+          add-paths: |
+            schemas/*.schema.json
