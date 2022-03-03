@@ -18,10 +18,10 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Checkout PSRule
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
         with:
           repository: microsoft/PSRule
           path: PSRule
