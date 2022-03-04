@@ -285,7 +285,7 @@
         "@typescript-eslint/eslint-plugin": "^5.13.0",
         "@typescript-eslint/parser": "^5.12.1",
         "esbuild": "^0.14.24",
-        "eslint": "^8.9.0",
+        "eslint": "^8.10.0",
         "glob": "^7.2.0",
         "lodash": ">=4.17.21",
         "markdown-it": "^12.3.2",
