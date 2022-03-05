@@ -14,11 +14,12 @@ Continue reading to see the changes included in the latest version.
 ## Unreleased
 
 - General improvements:
-  - Added resources snippets for JSON and JSONC files. [#477](https://github.com/microsoft/PSRule-vscode/issues/477)
-  - Update schema for suppression groups. [#574](https://github.com/microsoft/PSRule-vscode/issues/574)
-  - Add resource snippets for Suppression Groups. [#588](https://github.com/microsoft/PSRule-vscode/issues/588)
+  - Added resource snippets for JSON and JSONC files. [#477](https://github.com/microsoft/PSRule-vscode/issues/477)
+  - Added resource snippets for Suppression Groups. [#588](https://github.com/microsoft/PSRule-vscode/issues/588)
+  - Updated schema for suppression groups. [#574](https://github.com/microsoft/PSRule-vscode/issues/574)
 - Engineering:
-  -Added Add workflow to sync PSRule schemas. [#592](https://github.com/microsoft/PSRule-vscode/issues/592)
+  - Added workflow to sync PSRule schemas. [#592](https://github.com/microsoft/PSRule-vscode/issues/592)
+  - Bump vscode engine to v1.65.0. [#625](https://github.com/microsoft/PSRule-vscode/pull/625)
 
 ## v1.7.0
 
