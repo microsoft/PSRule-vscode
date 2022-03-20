@@ -8,7 +8,7 @@ This extension is available in two release channels for Visual Studio Code from 
   - This channel includes changes listed in the _Unreleased_ heading.
   - Versioning for _Preview_ follows an `year.month.revision` that increments for each release.
 - [Stable][ext-stable] - Less frequent releases, with more user testing, experimental features are disabled.
-  - Uses [semantic versioning](http://semver.org/) to declare changes.
+  - Uses [semantic versioning](https://semver.org/) to declare changes.
 Continue reading to see the changes included in the latest version.
 
 ## Unreleased
