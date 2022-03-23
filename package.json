@@ -289,7 +289,7 @@
         "glob": "^7.2.0",
         "lodash": ">=4.17.21",
         "markdown-it": "^12.3.2",
-        "minimist": ">=1.2.5",
+        "minimist": ">=1.2.6",
         "mocha": "^9.2.2",
         "typescript": "^4.6.2",
         "vsce": "^2.7.0",
