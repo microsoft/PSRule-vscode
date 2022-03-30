@@ -39,7 +39,7 @@ if ($Env:SYSTEM_DEBUG -eq 'true') {
     $VerbosePreference = 'Continue';
 }
 
-if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v1.*') {
+if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -like 'v2.*') {
     $Build = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
 }
 
@@ -168,8 +168,8 @@ task NuGet {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 1.3.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 1.3.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 2.0.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 2.0.0 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
