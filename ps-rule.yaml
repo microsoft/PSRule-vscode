@@ -1,9 +1,13 @@
 #
-# PSRule configuration for repository analysis
+# PSRule configuration
 #
 
-# GitHub Actions: https://github.com/marketplace/actions/psrule
-# PSRule options: https://github.com/microsoft/PSRule#concepts
+# Please see the documentation for all configuration options:
+# https://aka.ms/ps-rule/options
+
+requires:
+  PSRule: '@pre >=2.0.0'
+
 output:
   culture:
   - en-US

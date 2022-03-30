@@ -5,7 +5,7 @@
 # CI pipeline for PSRule-vscode
 
 variables:
-  version: '1'
+  version: '2'
 
  # Use build number format, i.e. 2021.5.10
 name: $(Year:yyyy).$(Month).$(rev:r)
@@ -18,6 +18,7 @@ trigger:
   tags:
     include:
     - 'v1.*'
+    - 'v2.*'
 
 pr:
   branches:
@@ -118,7 +119,7 @@ stages:
 - stage: Stable
   displayName: Stable
   dependsOn: [ 'Build', 'Analysis', 'Test' ]
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v1.')
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v2.')
   jobs:
   - template: jobs/publish-channel.yaml
     parameters:
