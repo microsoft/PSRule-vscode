@@ -23,7 +23,7 @@ Continue reading to see the changes included in the latest version.
   - Updated schema to support improved validation of resource names. [#638](https://github.com/microsoft/PSRule-vscode/pull/638)
 - Engineering:
   - Added workflow to sync PSRule schemas. [#592](https://github.com/microsoft/PSRule-vscode/issues/592)
-  - Bump vscode engine to v1.65.0. [#625](https://github.com/microsoft/PSRule-vscode/pull/625)
+  - Bump vscode engine to v1.66.0. [#653](https://github.com/microsoft/PSRule-vscode/pull/653)
 
 ## v1.7.0
 
