@@ -1,21 +1,14 @@
 {
     "scopeName": "PSRule-powershell-comments",
-    "injectionSelector": "L:comment.line.powershell",
+    "injectionSelector": "L:source.powershell",
     "patterns": [
         {
             "include": "#synopsis-comment"
-        },
-        {
-            "include": "#description-comment"
         }
     ],
     "repository": {
-        "description-comment": {
-            "match": "Description:",
-            "name": "keyword.operator.documentation.powershell"
-        },
         "synopsis-comment": {
-            "match": "Synopsis:",
+            "match": "(?<=^# )(Synopsis:|Description:)(?= )",
             "name": "keyword.operator.documentation.powershell"
         }
     }

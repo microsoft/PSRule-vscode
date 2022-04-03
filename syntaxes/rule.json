@@ -8,7 +8,7 @@
     ],
     "repository": {
         "rule-keyword": {
-            "match": "^(?:\\s*+)(?i)(rule)\\s+",
+            "match": "(?<=^)(?i)(rule)(?=\\s+)",
             "name": "storage.type.powershell"
         }
     }

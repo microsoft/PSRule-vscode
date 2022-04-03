@@ -24,6 +24,8 @@ Continue reading to see the changes included in the latest version.
 - Engineering:
   - Added workflow to sync PSRule schemas. [#592](https://github.com/microsoft/PSRule-vscode/issues/592)
   - Bump vscode engine to v1.66.0. [#653](https://github.com/microsoft/PSRule-vscode/pull/653)
+- Bug fixes:
+  - Fixed change syntax highlighting on PowerShell files. [#495](https://github.com/microsoft/PSRule-vscode/issues/495)
 
 ## v1.7.0
 
