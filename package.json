@@ -48,7 +48,8 @@
     "main": "./out/dist/main.js",
     "capabilities": {
         "untrustedWorkspaces": {
-            "supported": false
+            "supported": "limited",
+            "description": "PSRule in untrusted mode."
         }
     },
     "contributes": {
@@ -71,7 +72,13 @@
                     "PSRule.notifications.showChannelUpgrade": {
                         "type": "boolean",
                         "default": true,
-                        "description": "Specifies if a notification to switch to the stable channel is shown on start up.",
+                        "description": "Determines if a notification to switch to the stable channel is shown on start up.",
+                        "scope": "application"
+                    },
+                    "PSRule.notifications.showPowerShellExtension": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Determines if a notification to install the PowerShell extension is shown on start up.",
                         "scope": "application"
                     },
                     "PSRule.output.as": {
@@ -274,7 +281,6 @@
     },
     "extensionDependencies": [
         "vscode.powershell",
-        "ms-vscode.powershell",
         "redhat.vscode-yaml"
     ],
     "devDependencies": {
@@ -293,7 +299,7 @@
         "mocha": "^9.2.2",
         "typescript": "^4.6.3",
         "vsce": "^2.7.0",
-        "vscode-test": "^1.6.1",
+        "@vscode/test-electron": "^2.1.3",
         "nth-check": ">=2.0.1",
         "ansi-regex": ">=5.0.1"
     }

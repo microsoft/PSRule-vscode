@@ -19,7 +19,10 @@ export enum OutputAs {
  */
 export interface ISetting {
     executionNotProcessedWarning: boolean;
+    experimentalEnabled: boolean;
     outputAs: OutputAs;
+    notificationsShowChannelUpgrade: boolean;
+    notificationsShowPowerShellExtension: boolean;
 }
 
 /**
@@ -27,7 +30,10 @@ export interface ISetting {
  */
 const globalDefaults: ISetting = {
     executionNotProcessedWarning: false,
+    experimentalEnabled: false,
     outputAs: OutputAs.Summary,
+    notificationsShowChannelUpgrade: true,
+    notificationsShowPowerShellExtension: true,
 };
 
 /**
@@ -81,7 +87,18 @@ export class ConfigurationManager {
             config.get<boolean>('execution.notProcessedWarning') ??
             this.default.executionNotProcessedWarning;
 
+        this.current.experimentalEnabled =
+            config.get<boolean>('experimental.enabled') ?? this.default.experimentalEnabled;
+
         this.current.outputAs = config.get<OutputAs>('output.as') ?? this.default.outputAs;
+
+        this.current.notificationsShowChannelUpgrade =
+            config.get<boolean>('notifications.showChannelUpgrade') ??
+            this.default.notificationsShowChannelUpgrade;
+
+        this.current.notificationsShowPowerShellExtension =
+            config.get<boolean>('notifications.showPowerShellExtension') ??
+            this.default.notificationsShowPowerShellExtension;
 
         // Clear dirty settings flag
         this.pendingLoad = false;

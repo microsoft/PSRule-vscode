@@ -77,7 +77,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             PSRuleTaskProvider.taskType,
             this
         );
-        this.context.logger.verbose('Registered task provider');
+        this.context.logger.verbose('Registered task provider.');
     }
 
     /**
@@ -96,17 +96,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
     public resolveTask(_task: vscode.Task): vscode.Task | undefined {
         const definition: PSRuleTaskDefinition = <any>_task.definition;
         const scope = _task.scope as vscode.WorkspaceFolder;
-        return this.createTask(
-            'Run analysis',
-            scope,
-            definition.path,
-            definition.inputPath,
-            definition.baseline,
-            definition.modules,
-            definition.outcome,
-            undefined,
-            definition
-        );
+        return this.resolveTaskRunAnalysis(scope, definition);
     }
 
     /**
@@ -166,21 +156,41 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
 
         try {
             const result: vscode.Task[] = [];
-            let t = this.createTask(
-                'Run analysis',
-                folder,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined
-            );
-            result.push(t);
-
+            let t = this.createTaskRunAnalysis(folder);
+            if (t !== undefined) result.push(t);
             return result;
         } catch (e) {
             return emptyTasks;
         }
+    }
+
+    private resolveTaskRunAnalysis(
+        folder: vscode.WorkspaceFolder,
+        definition: PSRuleTaskDefinition
+    ): vscode.Task | undefined {
+        return this.createTask(
+            'Run analysis',
+            folder,
+            definition.path,
+            definition.inputPath,
+            definition.baseline,
+            definition.modules,
+            definition.outcome,
+            undefined,
+            definition
+        );
+    }
+
+    private createTaskRunAnalysis(folder: vscode.WorkspaceFolder): vscode.Task | undefined {
+        return this.createTask(
+            'Run analysis',
+            folder,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined
+        );
     }
 
     /**
@@ -264,6 +274,20 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         const executionNotProcessedWarning = configuration.get().executionNotProcessedWarning;
         const outputAs = configuration.get().outputAs;
 
+        if (!pwsh.isActive) {
+            return new vscode.Task(
+                definition,
+                folder ?? vscode.TaskScope.Workspace,
+                taskName,
+                PSRuleTaskProvider.taskType,
+                new vscode.CustomExecution(async (): Promise<vscode.Pseudoterminal> => {
+                    // When the task is executed, this callback will run. Here, we setup for running the task.
+                    return new NoPowerShellPseudoterminal();
+                }),
+                matcher
+            );
+        }
+
         // Return the task instance
         return new vscode.Task(
             definition,
@@ -285,5 +309,28 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             }),
             matcher
         );
+    }
+}
+
+class NoPowerShellPseudoterminal implements vscode.Pseudoterminal {
+    private writeEmitter = new vscode.EventEmitter<string>();
+    private closeEmitter = new vscode.EventEmitter<void>();
+
+    onDidWrite: vscode.Event<string> = this.writeEmitter.event;
+    onDidClose?: vscode.Event<void> = this.closeEmitter.event;
+
+    open(initialDimensions: vscode.TerminalDimensions | undefined): void {
+        this.run();
+    }
+    close(): void {}
+
+    private async run(): Promise<void> {
+        return new Promise<void>((resolve) => {
+            this.writeEmitter.fire(
+                'The extension PowerShell must be installed and enabled to run this task.'
+            );
+            this.closeEmitter.fire();
+            resolve();
+        });
     }
 }

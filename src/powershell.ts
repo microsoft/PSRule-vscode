@@ -4,7 +4,8 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { ExtensionInfo } from './extension';
+import { ext, ExtensionInfo } from './extension';
+import { configuration, ConfigurationManager } from './configuration';
 import { logger } from './logger';
 
 /**
@@ -35,9 +36,10 @@ export class PowerShellExtension implements vscode.Disposable {
 
     constructor() {
         this.extension = this.getExtension();
-        if (this.extension !== undefined && !this.extension.isActive) {
-            this.extension.activate();
-        }
+    }
+
+    public get isActive(): boolean {
+        return this.extension !== undefined && this.extension?.isActive;
     }
 
     public get path(): string {
@@ -45,11 +47,45 @@ export class PowerShellExtension implements vscode.Disposable {
     }
 
     public configure(info: ExtensionInfo): void {
-        const powerShellExtensionClient = this.extension!.exports as IPowerShellExtensionClient;
-        this.uuid = powerShellExtensionClient.registerExternalExtension(info.id, 'v1');
-        powerShellExtensionClient
-            .getPowerShellVersionDetails(this.uuid)
-            .then((v) => this.handlePowerShell(v));
+        // Determine if the install PowerShell extension notification is displayed
+        const showPowerShellExtension: boolean =
+            configuration.get().notificationsShowPowerShellExtension;
+
+        if (this.extension !== undefined && !this.extension.isActive) {
+            this.extension.activate().then((client) => {
+                this.uuid = client.registerExternalExtension(info.id, 'v1');
+                client.getPowerShellVersionDetails(this.uuid).then((v) => this.handlePowerShell(v));
+            });
+        } else if (this.extension === undefined && showPowerShellExtension) {
+            logger.verbose(`PowerShell extension is not installed.`);
+
+            const showExtension = 'Show Extension';
+            const alwaysIgnore = 'Always Ignore';
+
+            vscode.window
+                .showInformationMessage(
+                    `Some features require the PowerShell extension to be installed and enabled.`,
+                    showExtension,
+                    alwaysIgnore
+                )
+                .then((choice) => {
+                    if (choice === showExtension) {
+                        vscode.commands.executeCommand(
+                            'workbench.extensions.search',
+                            'ms-vscode.PowerShell'
+                        );
+                    }
+                    if (choice === alwaysIgnore) {
+                        vscode.workspace
+                            .getConfiguration('PSRule.notifications')
+                            .update(
+                                'showPowerShellExtension',
+                                false,
+                                vscode.ConfigurationTarget.Global
+                            );
+                    }
+                });
+        }
     }
 
     public dispose(): void {

@@ -21,6 +21,9 @@ Continue reading to see the changes included in the latest version.
     [#626](https://github.com/microsoft/PSRule-vscode/pull/626)
     [#630](https://github.com/microsoft/PSRule-vscode/pull/630)
   - Updated schema to support improved validation of resource names. [#638](https://github.com/microsoft/PSRule-vscode/pull/638)
+  - Improved compatibility with PowerShell extension. [#607](https://github.com/microsoft/PSRule-vscode/issues/607)
+    - Supports either PowerShell or PowerShell Preview installed for running tasks.
+    - If PowerShell extension is not installed or enabled, basic functions are still available.
 - Engineering:
   - Added workflow to sync PSRule schemas. [#592](https://github.com/microsoft/PSRule-vscode/issues/592)
   - Bump vscode engine to v1.66.0. [#653](https://github.com/microsoft/PSRule-vscode/pull/653)
