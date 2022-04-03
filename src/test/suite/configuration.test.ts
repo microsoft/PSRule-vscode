@@ -7,6 +7,6 @@ import { configuration, OutputAs } from '../../configuration';
 suite('ConfigurationManager tests', () => {
     test('Defaults', () => {
         assert.strictEqual(configuration.get().executionNotProcessedWarning, false);
-        assert.strictEqual(configuration.get().outputAs, OutputAs.Summary);
+        assert.strictEqual(configuration.get().outputAs, 'Summary');
     });
 });
