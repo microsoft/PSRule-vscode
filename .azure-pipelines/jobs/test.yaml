@@ -17,8 +17,8 @@ parameters:
 - name: imageName
   type: string
 - name: pwsh
-  type: string
-  default: 'true'
+  type: boolean
+  default: true
 
 jobs:
 - job: '${{ parameters.name }}'
@@ -53,7 +53,7 @@ jobs:
       script: |-
         npm install
         npm test
-      pwsh: ${{ eq(parameters.pwsh, 'true') }}
+      pwsh: ${{ parameters.pwsh }}
     displayName: 'Test extension'
     env:
       DISPLAY: ':99.0'
