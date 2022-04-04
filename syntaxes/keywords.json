@@ -1,11 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "scopeName": "PSRule-powershell-keywords",
-    "injectionSelector": "meta.scriptblock.powershell",
+    "injectionSelector": "L:meta.scriptblock.powershell",
     "patterns": [
-        {
-            "include": "source.powershell#commentLine"
-        },
         {
             "include": "#built-in-keyword"
         }

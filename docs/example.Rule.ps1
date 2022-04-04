@@ -11,7 +11,7 @@ Rule 'redis.NonSslPort' -If { ResourceType 'Microsoft.Cache/Redis' } {
 }
 
 # Synopsis: Redis Cache should reject TLS versions older then 1.2
-Rule 'redis.MinTLS' -Type 'Microsoft.Cache/Redis' {
+Rule 'redis.MinTLS' -Type 'Microsoft.Cache/Redis' { # Synopsis: ddd
     Recommend 'Enforce TLS 1.2 unless required to support older tools.'
 
     # Check that TLS is within range
