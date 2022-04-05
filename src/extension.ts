@@ -20,6 +20,7 @@ export interface ExtensionInfo {
 
 export class ExtensionManager implements vscode.Disposable {
     private _info!: ExtensionInfo;
+    private _context!: vscode.ExtensionContext;
 
     constructor() {}
 
@@ -40,15 +41,14 @@ export class ExtensionManager implements vscode.Disposable {
         });
     }
 
+    public get isTrusted(): boolean {
+        return vscode.workspace.isTrusted;
+    }
+
     public activate(context: vscode.ExtensionContext) {
+        this._context = context;
         this._info = this.checkExtension(context);
-
-        ConfigurationManager.configure(context);
-
-        pwsh.configure(this._info);
-
-        taskManager = new PSRuleTaskProvider(logger, context);
-        taskManager.register();
+        this.activateFeatures();
     }
 
     public dispose(): void {
@@ -60,6 +60,30 @@ export class ExtensionManager implements vscode.Disposable {
         }
         if (logger) {
             logger.dispose();
+        }
+    }
+
+    private activateFeatures(): void {
+        this.switchMode();
+        if (this._context) {
+            this._context.subscriptions.push(
+                vscode.workspace.onDidGrantWorkspaceTrust(() => {
+                    this.switchMode();
+                })
+            );
+        }
+    }
+
+    private switchMode(): void {
+        ConfigurationManager.configure(this._context);
+
+        if (this.isTrusted) {
+            pwsh.configure(this._info);
+        }
+
+        if (this.isTrusted) {
+            taskManager = new PSRuleTaskProvider(logger, this._context);
+            taskManager.register();
         }
     }
 

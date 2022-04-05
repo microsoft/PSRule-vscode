@@ -59,12 +59,13 @@ Channel | Description | Version/ downloads
 
 In addition to configuring the [ps-rule.yaml] options file, the following settings are available.
 
-Name                                      | Description
-----                                      | -----------
-`PSRule.execution.notProcessedWarning`    | Warn when objects are not processed by any rule.
-`PSRule.experimental.enabled`             | Enables experimental features in the PSRule extension.
-`PSRule.notifications.showChannelUpgrade` | Specifies if a notification to switch to the stable channel is shown on start up.
-`PSRule.output.as`                        | Configures the output of analysis tasks, either summary or detailed.
+Name                                           | Description
+----                                           | -----------
+`PSRule.execution.notProcessedWarning`         | Warn when objects are not processed by any rule.
+`PSRule.experimental.enabled`                  | Enables experimental features in the PSRule extension.
+`PSRule.notifications.showChannelUpgrade`      | Determines if a notification to switch to the stable channel is shown on start up.
+`PSRule.notifications.showPowerShellExtension` | Determines if a notification to install the PowerShell extension is shown on start up.
+`PSRule.output.as`                             | Configures the output of analysis tasks, either summary or detailed.
 
 ## Support
 
