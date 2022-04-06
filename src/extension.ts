@@ -9,13 +9,16 @@ import { logger } from './logger';
 import { PSRuleTaskProvider } from './tasks';
 import { ConfigurationManager } from './configuration';
 import { pwsh } from './powershell';
+import { DocumentationLensProvider } from './docLens';
 
 export let taskManager: PSRuleTaskProvider | undefined;
+export let docLensProvider: DocumentationLensProvider | undefined;
 
 export interface ExtensionInfo {
     id: string;
     version: string;
     channel: string;
+    path: string;
 }
 
 export class ExtensionManager implements vscode.Disposable {
@@ -52,6 +55,9 @@ export class ExtensionManager implements vscode.Disposable {
     }
 
     public dispose(): void {
+        if (docLensProvider) {
+            docLensProvider.dispose();
+        }
         if (taskManager) {
             taskManager.dispose();
         }
@@ -76,6 +82,11 @@ export class ExtensionManager implements vscode.Disposable {
 
     private switchMode(): void {
         ConfigurationManager.configure(this._context);
+
+        if (!docLensProvider) {
+            docLensProvider = new DocumentationLensProvider(logger, this._context);
+            docLensProvider.register();
+        }
 
         if (this.isTrusted) {
             pwsh.configure(this._info);
@@ -160,6 +171,7 @@ export class ExtensionManager implements vscode.Disposable {
             id: extensionId,
             version: extensionVersion,
             channel: extensionChannel,
+            path: context.extensionPath,
         };
         return result;
     }

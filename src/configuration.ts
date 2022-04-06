@@ -3,21 +3,26 @@
 
 'use strict';
 
-import { ConfigurationChangeEvent, ExtensionContext, workspace } from 'vscode';
+import { ConfigurationChangeEvent, ExtensionContext, env, workspace } from 'vscode';
 import { configurationItemPrefix } from './consts';
 
 /**
  * The output of analysis tasks.
  */
 export enum OutputAs {
-    Detail = 0,
-    Summary = 1,
+    Detail = 'Detail',
+    Summary = 'Summary',
 }
 
 /**
  * PSRule extension settings.
  */
 export interface ISetting {
+    codeLensRuleDocumentationLinks: boolean;
+    documentationCustomSnippetPath: string | undefined;
+    documentationSnippet: string;
+    documentationPath: string | undefined;
+    documentationLocalePath: string;
     executionNotProcessedWarning: boolean;
     experimentalEnabled: boolean;
     outputAs: OutputAs;
@@ -29,6 +34,11 @@ export interface ISetting {
  * Default configuration for PSRule extension settings.
  */
 const globalDefaults: ISetting = {
+    codeLensRuleDocumentationLinks: true,
+    documentationCustomSnippetPath: undefined,
+    documentationSnippet: 'Rule Doc',
+    documentationPath: undefined,
+    documentationLocalePath: env.language,
     executionNotProcessedWarning: false,
     experimentalEnabled: false,
     outputAs: OutputAs.Summary,
@@ -50,7 +60,7 @@ export class ConfigurationManager {
 
     constructor(setting?: ISetting) {
         this.default = setting ?? globalDefaults;
-        this.current = this.default;
+        this.current = { ...this.default };
         this.loadSettings();
     }
 
@@ -82,23 +92,49 @@ export class ConfigurationManager {
     private loadSettings(): void {
         const config = workspace.getConfiguration(configurationItemPrefix);
 
+        // Experimental
+        let experimental = (this.current.experimentalEnabled = config.get<boolean>(
+            'experimental.enabled',
+            this.default.experimentalEnabled
+        ));
+
         // Read settings
-        this.current.executionNotProcessedWarning =
-            config.get<boolean>('execution.notProcessedWarning') ??
-            this.default.executionNotProcessedWarning;
+        this.current.documentationCustomSnippetPath =
+            config.get<string>('documentation.customSnippetPath') ??
+            this.default.documentationCustomSnippetPath;
 
-        this.current.experimentalEnabled =
-            config.get<boolean>('experimental.enabled') ?? this.default.experimentalEnabled;
+        this.current.documentationSnippet =
+            config.get<string>('documentation.snippet') ?? this.default.documentationSnippet;
 
-        this.current.outputAs = config.get<OutputAs>('output.as') ?? this.default.outputAs;
+        this.current.documentationPath =
+            config.get<string>('documentation.path') ?? this.default.documentationPath;
 
-        this.current.notificationsShowChannelUpgrade =
-            config.get<boolean>('notifications.showChannelUpgrade') ??
-            this.default.notificationsShowChannelUpgrade;
+        this.current.documentationLocalePath =
+            config.get<string>('documentation.localePath') ?? this.default.documentationLocalePath;
 
-        this.current.notificationsShowPowerShellExtension =
-            config.get<boolean>('notifications.showPowerShellExtension') ??
-            this.default.notificationsShowPowerShellExtension;
+        this.current.codeLensRuleDocumentationLinks = !experimental
+            ? false
+            : config.get<boolean>(
+                  'codeLens.ruleDocumentationLinks',
+                  this.default.codeLensRuleDocumentationLinks
+              );
+
+        this.current.executionNotProcessedWarning = config.get<boolean>(
+            'execution.notProcessedWarning',
+            this.default.executionNotProcessedWarning
+        );
+
+        this.current.outputAs = config.get<OutputAs>('output.as', this.default.outputAs);
+
+        this.current.notificationsShowChannelUpgrade = config.get<boolean>(
+            'notifications.showChannelUpgrade',
+            this.default.notificationsShowChannelUpgrade
+        );
+
+        this.current.notificationsShowPowerShellExtension = config.get<boolean>(
+            'notifications.showPowerShellExtension',
+            this.default.notificationsShowPowerShellExtension
+        );
 
         // Clear dirty settings flag
         this.pendingLoad = false;
