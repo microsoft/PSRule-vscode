@@ -19,21 +19,4 @@ suite('ConfigurationManager tests', () => {
         assert.equal(config.get().notificationsShowChannelUpgrade, true);
         assert.equal(config.get().notificationsShowPowerShellExtension, true);
     });
-
-    test('With experimental', () => {
-        const setting: ISetting = { ...configuration.get() };
-        setting.experimentalEnabled = true;
-        const config = new ConfigurationManager(setting);
-
-        assert.equal(config.get().codeLensRuleDocumentationLinks, true);
-        assert.equal(config.get().documentationCustomSnippetPath, undefined);
-        assert.equal(config.get().documentationLocalePath, 'en');
-        assert.equal(config.get().documentationPath, undefined);
-        assert.equal(config.get().documentationSnippet, 'Rule Doc');
-        assert.equal(config.get().executionNotProcessedWarning, false);
-        assert.equal(config.get().experimentalEnabled, true);
-        assert.equal(config.get().outputAs, OutputAs.Summary);
-        assert.equal(config.get().notificationsShowChannelUpgrade, true);
-        assert.equal(config.get().notificationsShowPowerShellExtension, true);
-    });
 });
