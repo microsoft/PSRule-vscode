@@ -9,18 +9,24 @@ This extension is available in two release channels for Visual Studio Code from 
   - Versioning for _Preview_ follows an `year.month.revision` that increments for each release.
 - [Stable][ext-stable] - Less frequent releases, with more user testing, experimental features are disabled.
   - Uses [semantic versioning](https://semver.org/) to declare changes.
+  - Aligned to versioning of PSRule.
 Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
-- General improvements:
-  - Added resource snippets for JSON and JSONC files. [#477](https://github.com/microsoft/PSRule-vscode/issues/477)
+## v2.0.0
+
+What's changed since v1.7.0:
+
+- PSRule v2.0.0 support:
   - Added resource snippets for Suppression Groups. [#588](https://github.com/microsoft/PSRule-vscode/issues/588)
-  - Updated schema to support suppression groups. [#574](https://github.com/microsoft/PSRule-vscode/issues/574)
+  - Updated schema to support Suppression Groups. [#574](https://github.com/microsoft/PSRule-vscode/issues/574)
   - Updated schema to support convert and case sensitive properties.
     [#626](https://github.com/microsoft/PSRule-vscode/pull/626)
     [#630](https://github.com/microsoft/PSRule-vscode/pull/630)
   - Updated schema to support improved validation of resource names. [#638](https://github.com/microsoft/PSRule-vscode/pull/638)
+- General improvements:
+  - Added resource snippets for JSON and JSONC files. [#477](https://github.com/microsoft/PSRule-vscode/issues/477)
   - Improved compatibility with PowerShell extension. [#607](https://github.com/microsoft/PSRule-vscode/issues/607)
     - Supports either PowerShell or PowerShell Preview installed for running tasks.
     - If PowerShell extension is not installed or enabled, basic functions are still available.
