@@ -299,7 +299,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
                 shellArgs: ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command'],
                 env: {
                     PSRULE_OUTPUT_STYLE: 'VisualStudioCode',
-                    PSRULE_OUTPUT_AS: outputAs.toString(),
+                    PSRULE_OUTPUT_AS: outputAs,
                     PSRULE_OUTPUT_CULTURE: vscode.env.language,
                     PSRULE_OUTPUT_BANNER: 'Minimal',
                     PSRULE_EXECUTION_NOTPROCESSEDWARNING: executionNotProcessedWarning

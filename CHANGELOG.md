@@ -14,6 +14,18 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+What's changed since v2.0.0:
+
+- New features:
+  - **Experimental:** CodeLens provides links to open or create rule documentation.
+    [#227](https://github.com/microsoft/PSRule-vscode/issues/227)
+    - Link from rules allows markdown documentation to be created or edited.
+    - When existing markdown documentation exists, file is opened in editor.
+    - When documentation for a rule does not exist, a new file is created from a snippet.
+    - Added settings to configure the location for storing documentation,
+      and the snippet used to create documentation.
+    - To use try this feature, install the preview channel with experimental features enabled.
+
 ## v2.0.0
 
 What's changed since v1.7.0:

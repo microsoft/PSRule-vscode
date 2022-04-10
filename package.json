@@ -53,10 +53,48 @@
         }
     },
     "contributes": {
+        "commands": [
+            {
+                "command": "PSRule.createOrEditDocumentation",
+                "title": "Create or edit documentation",
+                "shortTitle": "Edit documentation",
+                "category": "PSRule"
+            }
+        ],
         "configuration": [
             {
                 "title": "PSRule",
                 "properties": {
+                    "PSRule.codeLens.ruleDocumentationLinks": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Enables Code Lens that displays links to rule documentation. This is an experimental feature that requires experimental features to be enabled.",
+                        "scope": "application"
+                    },
+                    "PSRule.documentation.path": {
+                        "type": "string",
+                        "default": null,
+                        "description": "The path to look for rule documentation. When not set, the path containing rules will be used.",
+                        "scope": "window"
+                    },
+                    "PSRule.documentation.localePath": {
+                        "type": "string",
+                        "default": null,
+                        "description": "The locale path to use for locating rule documentation. The VS Code locale will be used by default.",
+                        "scope": "window"
+                    },
+                    "PSRule.documentation.customSnippetPath": {
+                        "type": "string",
+                        "default": null,
+                        "description": "The path to a file containing a rule documentation snippet. When not set, built-in PSRule snippets will be used.",
+                        "scope": "window"
+                    },
+                    "PSRule.documentation.snippet": {
+                        "type": "string",
+                        "default": "Rule Doc",
+                        "markdownDescription": "The name of a snippet to use when creating new rule documentation. By default, the built-in `Rule Doc` snippet will be used.",
+                        "scope": "window"
+                    },
                     "PSRule.execution.notProcessedWarning": {
                         "type": "boolean",
                         "default": false,
@@ -277,7 +315,8 @@
         "esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch"
     },
     "dependencies": {
-        "vscode-languageclient": "^7.0.0"
+        "vscode-languageclient": "^7.0.0",
+        "fs-extra": "^10.0.0"
     },
     "extensionDependencies": [
         "vscode.powershell",
@@ -288,8 +327,9 @@
         "@types/mocha": "^9.1.0",
         "@types/node": "^17.0.23",
         "@types/vscode": "1.66.0",
-        "@typescript-eslint/eslint-plugin": "^5.17.0",
-        "@typescript-eslint/parser": "^5.17.0",
+        "@types/fs-extra": "^9.0.13",
+        "@typescript-eslint/eslint-plugin": "^5.18.0",
+        "@typescript-eslint/parser": "^5.18.0",
         "esbuild": "^0.14.34",
         "eslint": "^8.12.0",
         "glob": "^7.2.0",
