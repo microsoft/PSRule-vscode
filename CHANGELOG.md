@@ -14,6 +14,8 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+## v2.1.0
+
 What's changed since v2.0.0:
 
 - New features:
