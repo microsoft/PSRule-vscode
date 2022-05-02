@@ -7,7 +7,7 @@
 variables:
   version: '2'
 
- # Use build number format, i.e. 2021.5.10
+ # Use build number format, i.e. 2022.5.10
 name: $(Year:yyyy).$(Month).$(rev:r)
 
 trigger:
