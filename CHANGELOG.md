@@ -25,6 +25,9 @@ What's changed since v2.0.0:
     - Added settings to configure the location for storing documentation,
       and the snippet used to create documentation.
     - To use try this feature, install the preview channel with experimental features enabled.
+- Engineering:
+  - Bump fs-extra from v10.1.0 [#670](https://github.com/microsoft/PSRule-vscode/pull/670)
+  - Updated PSRule schema files. [#688](https://github.com/microsoft/PSRule-vscode/pull/688)
 
 ## v2.0.0
 
