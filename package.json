@@ -332,7 +332,7 @@
         "@typescript-eslint/parser": "^5.25.0",
         "esbuild": "^0.14.39",
         "eslint": "^8.15.0",
-        "glob": "^8.0.1",
+        "glob": "^8.0.3",
         "lodash": ">=4.17.21",
         "markdown-it": "^13.0.1",
         "minimist": ">=1.2.6",
