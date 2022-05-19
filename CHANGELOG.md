@@ -18,6 +18,7 @@ What's changed since v2.1.0:
 
 - Engineering:
   - Bump vscode engine to v1.67.0. [#696](https://github.com/microsoft/PSRule-vscode/pull/696)
+  - Bump vscode-languageclient from v8.0.1. [#703](https://github.com/microsoft/PSRule-vscode/pull/703)
 
 ## v2.1.0
 
