@@ -25,6 +25,8 @@ What's changed since v2.1.0:
     [#734](https://github.com/microsoft/PSRule-vscode/pull/734)
   - Bump vscode-languageclient from v8.0.1.
     [#703](https://github.com/microsoft/PSRule-vscode/pull/703)
+  - Updated PSRule schema files.
+    [#743](https://github.com/microsoft/PSRule-vscode/pull/743)
 
 ## v2.1.0
 
