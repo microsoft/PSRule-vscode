@@ -16,9 +16,15 @@ Continue reading to see the changes included in the latest version.
 
 What's changed since v2.1.0:
 
+- General improvements:
+  - Added command to create options file by @BernieWhite.
+    [#662](https://github.com/microsoft/PSRule-vscode/issues/662)
+    - From the command pallet choose _PSRule: Create options file_.
 - Engineering:
-  - Bump vscode engine to v1.68.0. [#734](https://github.com/microsoft/PSRule-vscode/pull/734)
-  - Bump vscode-languageclient from v8.0.1. [#703](https://github.com/microsoft/PSRule-vscode/pull/703)
+  - Bump vscode engine to v1.68.0.
+    [#734](https://github.com/microsoft/PSRule-vscode/pull/734)
+  - Bump vscode-languageclient from v8.0.1.
+    [#703](https://github.com/microsoft/PSRule-vscode/pull/703)
 
 ## v2.1.0
 
