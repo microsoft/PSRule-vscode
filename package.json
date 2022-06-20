@@ -8,7 +8,7 @@
         "name": "Bernie White"
     },
     "engines": {
-        "vscode": "^1.67.0"
+        "vscode": "^1.68.0"
     },
     "license": "SEE LICENSE IN LICENSE",
     "homepage": "https://github.com/Microsoft/PSRule-vscode/blob/main/README.md",
@@ -330,14 +330,14 @@
         "@types/fs-extra": "^9.0.13",
         "@typescript-eslint/eslint-plugin": "^5.28.0",
         "@typescript-eslint/parser": "^5.28.0",
-        "esbuild": "^0.14.45",
-        "eslint": "^8.17.0",
+        "esbuild": "^0.14.46",
+        "eslint": "^8.18.0",
         "glob": "^8.0.3",
         "lodash": ">=4.17.21",
         "markdown-it": "^13.0.1",
         "minimist": ">=1.2.6",
         "mocha": "^10.0.0",
-        "typescript": "^4.7.3",
+        "typescript": "^4.7.4",
         "vsce": "^2.9.1",
         "@vscode/test-electron": "^2.1.4",
         "nth-check": ">=2.1.1",
