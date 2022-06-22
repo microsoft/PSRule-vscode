@@ -61,7 +61,28 @@ export async function readDocumentationSnippet(
     }
 }
 
-function getActiveOrFirstWorkspace(): WorkspaceFolder | undefined {
+/**
+ * Get options snippet.
+ * @param name The name of the snippet to use. When name is an empty string no snippet is returned.
+ * @returns A possible matching snippet string.
+ */
+export async function readOptionsSnippet(name: string): Promise<SnippetString | undefined> {
+    if (name === '') return undefined;
+
+    // Try built-in snippet file
+    const info = await ext.info;
+    const snippetFile = info ? path.join(info.path, 'snippets/options.json') : undefined;
+
+    if (snippetFile && (await fse.pathExists(snippetFile))) {
+        let json = await fse.readJson(snippetFile, { encoding: 'utf-8' });
+        if (json) {
+            let body: string[] = json[name].body;
+            return new SnippetString(body.join(os.EOL));
+        }
+    }
+}
+
+export function getActiveOrFirstWorkspace(): WorkspaceFolder | undefined {
     if (window.activeTextEditor) {
         return workspace.getWorkspaceFolder(window.activeTextEditor.document.uri);
     }

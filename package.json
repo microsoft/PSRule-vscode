@@ -59,6 +59,11 @@
                 "title": "Create or edit documentation",
                 "shortTitle": "Edit documentation",
                 "category": "PSRule"
+            },
+            {
+                "command": "PSRule.createOptionsFile",
+                "title": "Create options file",
+                "category": "PSRule"
             }
         ],
         "configuration": [

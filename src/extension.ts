@@ -10,6 +10,7 @@ import { PSRuleTaskProvider } from './tasks';
 import { ConfigurationManager } from './configuration';
 import { pwsh } from './powershell';
 import { DocumentationLensProvider } from './docLens';
+import { createOptionsFile } from './commands/createOptionsFile';
 
 export let taskManager: PSRuleTaskProvider | undefined;
 export let docLensProvider: DocumentationLensProvider | undefined;
@@ -75,6 +76,11 @@ export class ExtensionManager implements vscode.Disposable {
             this._context.subscriptions.push(
                 vscode.workspace.onDidGrantWorkspaceTrust(() => {
                     this.switchMode();
+                })
+            );
+            this._context.subscriptions.push(
+                vscode.commands.registerCommand('PSRule.createOptionsFile', (name: string) => {
+                    createOptionsFile(name);
                 })
             );
         }
