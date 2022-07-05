@@ -14,6 +14,12 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+What's changed since v2.2.0:
+
+- Engineering:
+  - Updated PSRule schema files.
+    [#767](https://github.com/microsoft/PSRule-vscode/pull/767)
+
 ## v2.2.0
 
 What's changed since v2.1.0:
