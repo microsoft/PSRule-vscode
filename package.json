@@ -331,7 +331,7 @@
         "@types/glob": "^7.2.0",
         "@types/mocha": "^9.1.1",
         "@types/node": "^18.0.4",
-        "@types/vscode": "1.68.1",
+        "@types/vscode": "1.69.0",
         "@types/fs-extra": "^9.0.13",
         "@typescript-eslint/eslint-plugin": "^5.30.6",
         "@typescript-eslint/parser": "^5.30.6",
