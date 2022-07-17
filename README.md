@@ -85,6 +85,7 @@ Name                                            | Description
 `PSRule.notifications.showChannelUpgrade`       | Determines if a notification to switch to the stable channel is shown on start up.
 `PSRule.notifications.showPowerShellExtension`  | Determines if a notification to install the PowerShell extension is shown on start up.
 `PSRule.output.as`                              | Configures the output of analysis tasks, either summary or detailed.
+`PSRule.rule.baseline`                          | The name of the default baseline to use for executing rules. This setting can be overridden on individual PSRule tasks.
 
 ## Support
 

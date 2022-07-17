@@ -218,6 +218,10 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             };
         }
 
+        const executionNotProcessedWarning = configuration.get().executionNotProcessedWarning;
+        const outputAs = configuration.get().outputAs;
+        const ruleBaseline = configuration.get().ruleBaseline;
+
         function getTaskName() {
             return name;
         }
@@ -241,6 +245,8 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             // Baseline
             if (baseline !== undefined && baseline !== '') {
                 params += ` -Baseline '${baseline}'`;
+            } else if (ruleBaseline !== undefined && ruleBaseline !== '') {
+                params += ` -Baseline '${ruleBaseline}'`;
             }
 
             // Modules
@@ -271,8 +277,6 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         }
 
         const taskName = getTaskName();
-        const executionNotProcessedWarning = configuration.get().executionNotProcessedWarning;
-        const outputAs = configuration.get().outputAs;
 
         if (!pwsh.isActive) {
             return new vscode.Task(

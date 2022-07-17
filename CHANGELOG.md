@@ -16,12 +16,17 @@ Continue reading to see the changes included in the latest version.
 
 What's changed since v2.2.0:
 
+- General improvements:
+  - Added configuration option for baseline by @BernieWhite.
+    [#770](https://github.com/microsoft/PSRule-vscode/issues/770)
+    - Configure the default baseline in the extension settings.
+    - Baseline can be overridden using the `baseline` property on a PSRule task.
 - Engineering:
   - Updated PSRule schema files.
     [#767](https://github.com/microsoft/PSRule-vscode/pull/767)
   - Bump vscode-languageclient v8.0.2.
     [#777](https://github.com/microsoft/PSRule-vscode/pull/777)
-  - Bumps @types/vscode to v1.69.0.
+  - Bumps vscode engine to v1.69.0.
     [#772](https://github.com/microsoft/PSRule-vscode/pull/772)
 
 ## v2.2.0
