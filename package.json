@@ -133,6 +133,12 @@
                             "Summary"
                         ],
                         "scope": "window"
+                    },
+                    "PSRule.rule.baseline": {
+                        "type": "string",
+                        "default": null,
+                        "description": "The name of the default baseline to use for executing rules. This setting can be overridden on individual PSRule tasks.",
+                        "scope": "window"
                     }
                 }
             }
@@ -154,7 +160,7 @@
                     },
                     "baseline": {
                         "type": "string",
-                        "description": "The name of a PSRule baseline to use. Baselines can be used from modules or specified in a separate file."
+                        "description": "The name of a PSRule baseline to use. Baselines can be used from modules or specified in a separate file. This option overrides the default baseline setting set for a workspace or user."
                     },
                     "modules": {
                         "type": "array",

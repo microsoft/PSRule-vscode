@@ -19,7 +19,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             },
@@ -27,7 +29,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             }
@@ -47,7 +51,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             },
@@ -55,7 +61,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             }
@@ -75,7 +83,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             },
@@ -83,7 +93,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             }
@@ -103,7 +115,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             },
@@ -111,7 +125,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             }
@@ -132,7 +148,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             },
@@ -140,7 +158,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             }
@@ -155,7 +175,9 @@
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": ["$tsc"]
+            "problemMatcher": [
+                "$tsc"
+            ]
         },
         {
             "label": "Analyze repository",
@@ -173,7 +195,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             },
@@ -181,7 +205,9 @@
                 "options": {
                     "shell": {
                         "executable": "pwsh",
-                        "args": ["-c"]
+                        "args": [
+                            "-c"
+                        ]
                     }
                 }
             }
@@ -209,7 +235,27 @@
                 "panel": "dedicated",
                 "clear": true
             },
-            "problemMatcher": ["$tsc"]
+            "problemMatcher": [
+                "$tsc"
+            ]
+        },
+        {
+            "type": "PSRule",
+            "problemMatcher": [
+                "$PSRule"
+            ],
+            "outcome": [
+                "Fail",
+                "Error",
+                "Pass"
+            ],
+            "label": "PSRule: Run analysis",
+            "detail": "Run analysis on files within the repository.",
+            "presentation": {
+                "focus": false,
+                "panel": "dedicated",
+                "clear": true
+            }
         }
     ]
 }

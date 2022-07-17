@@ -6,7 +6,7 @@ import { configuration, ConfigurationManager, ISetting, OutputAs } from '../../c
 
 suite('ConfigurationManager tests', () => {
     test('Defaults', () => {
-        const config = new ConfigurationManager(undefined);
+        const config = new ConfigurationManager(undefined, 'PSRule_unit_test');
 
         assert.equal(config.get().codeLensRuleDocumentationLinks, false);
         assert.equal(config.get().documentationCustomSnippetPath, undefined);
@@ -18,5 +18,6 @@ suite('ConfigurationManager tests', () => {
         assert.equal(config.get().outputAs, OutputAs.Summary);
         assert.equal(config.get().notificationsShowChannelUpgrade, true);
         assert.equal(config.get().notificationsShowPowerShellExtension, true);
+        assert.equal(config.get().ruleBaseline, undefined);
     });
 });

@@ -5,8 +5,16 @@
 # Please see the documentation for all configuration options:
 # https://aka.ms/ps-rule/options
 
+repository:
+  url: https://github.com/microsoft/PSRule-vscode
+
 requires:
-  PSRule: '@pre >=2.0.0'
+  PSRule: '@pre >=2.2.0'
+  PSRule.Rules.MSFT.OSS: '@pre >=1.0.1'
+
+include:
+  module:
+  - PSRule.Rules.MSFT.OSS
 
 output:
   culture:

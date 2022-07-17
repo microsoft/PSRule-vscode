@@ -28,6 +28,11 @@ export interface ISetting {
     outputAs: OutputAs;
     notificationsShowChannelUpgrade: boolean;
     notificationsShowPowerShellExtension: boolean;
+
+    /**
+     * The name of the default baseline to use for executing rules.
+     */
+    ruleBaseline: string | undefined;
 }
 
 /**
@@ -44,6 +49,7 @@ const globalDefaults: ISetting = {
     outputAs: OutputAs.Summary,
     notificationsShowChannelUpgrade: true,
     notificationsShowPowerShellExtension: true,
+    ruleBaseline: undefined,
 };
 
 /**
@@ -52,13 +58,15 @@ const globalDefaults: ISetting = {
 export class ConfigurationManager {
     private current: ISetting;
     private readonly default: ISetting;
+    private readonly configurationItemPrefix: string;
 
     /**
      * A flag for when setting require reload.
      */
     private pendingLoad: boolean = true;
 
-    constructor(setting?: ISetting) {
+    constructor(setting?: ISetting, prefix?: string) {
+        this.configurationItemPrefix = prefix ?? configurationItemPrefix;
         this.default = setting ?? globalDefaults;
         this.current = { ...this.default };
         this.loadSettings();
@@ -83,14 +91,14 @@ export class ConfigurationManager {
     }
 
     private onConfigurationChanged(e: ConfigurationChangeEvent) {
-        if (!e.affectsConfiguration(configurationItemPrefix)) {
+        if (!e.affectsConfiguration(this.configurationItemPrefix)) {
             return;
         }
         this.pendingLoad = true;
     }
 
     private loadSettings(): void {
-        const config = workspace.getConfiguration(configurationItemPrefix);
+        const config = workspace.getConfiguration(this.configurationItemPrefix);
 
         // Experimental
         let experimental = (this.current.experimentalEnabled = config.get<boolean>(
@@ -135,6 +143,9 @@ export class ConfigurationManager {
             'notifications.showPowerShellExtension',
             this.default.notificationsShowPowerShellExtension
         );
+
+        this.current.ruleBaseline =
+            config.get<string>('rule.baseline') ?? this.default.ruleBaseline;
 
         // Clear dirty settings flag
         this.pendingLoad = false;
