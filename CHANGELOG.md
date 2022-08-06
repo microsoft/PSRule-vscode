@@ -14,6 +14,8 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+## v2.3.0
+
 What's changed since v2.2.0:
 
 - General improvements:
@@ -26,8 +28,8 @@ What's changed since v2.2.0:
     [#767](https://github.com/microsoft/PSRule-vscode/pull/767)
   - Bump vscode-languageclient v8.0.2.
     [#777](https://github.com/microsoft/PSRule-vscode/pull/777)
-  - Bumps vscode engine to v1.69.0.
-    [#772](https://github.com/microsoft/PSRule-vscode/pull/772)
+  - Bumps vscode engine to v1.69.1.
+    [#797](https://github.com/microsoft/PSRule-vscode/pull/797)
 
 ## v2.2.0
 
