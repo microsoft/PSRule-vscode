@@ -19,6 +19,8 @@ What's changed since v2.3.0:
 - Engineering:
   - Bumps vscode engine to v1.70.0.
     [#800](https://github.com/microsoft/PSRule-vscode/pull/800)
+  - Bump vsce to v2.10.2.
+    [#821](https://github.com/microsoft/PSRule-vscode/pull/821)
 
 ## v2.3.0
 
