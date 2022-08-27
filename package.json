@@ -25,7 +25,7 @@
         "color": "#0072c6",
         "theme": "dark"
     },
-    "icon": "images/icon256.png",
+    "icon": "media/icon256.png",
     "repository": {
         "type": "git",
         "url": "https://github.com/Microsoft/PSRule-vscode.git"
@@ -38,12 +38,18 @@
     "activationEvents": [
         "onLanguage:powershell",
         "workspaceContains:/ps-rule.yaml",
+        "workspaceContains:**/ps-rule.yaml",
         "workspaceContains:**/*.Rule.yaml",
         "workspaceContains:**/*.Rule.yml",
         "workspaceContains:**/*.Rule.json",
         "workspaceContains:**/*.Rule.jsonc",
         "workspaceContains:**/*.Rule.ps1",
-        "onCommand:workbench.action.tasks.runTask"
+        "onCommand:workbench.action.tasks.runTask",
+        "onCommand:PSRule.createOrEditDocumentation",
+        "onCommand:PSRule.openOptionsFile",
+        "onCommand:PSRule.createOptionsFile",
+        "onCommand:PSRule.configureSettings",
+        "onCommand:PSRule.walkthroughCopySnippet"
     ],
     "main": "./out/dist/main.js",
     "capabilities": {
@@ -61,8 +67,25 @@
                 "category": "PSRule"
             },
             {
+                "command": "PSRule.openOptionsFile",
+                "title": "Open options file",
+                "category": "PSRule"
+            },
+            {
                 "command": "PSRule.createOptionsFile",
                 "title": "Create options file",
+                "category": "PSRule"
+            },
+            {
+                "command": "PSRule.configureSettings",
+                "title": "Configure settings",
+                "category": "PSRule"
+            },
+            {
+                "$comment": "Only used by walkthrough.",
+                "command": "PSRule.walkthroughCopySnippet",
+                "title": "Copy walkthrough snippet",
+                "enablement": "false",
                 "category": "PSRule"
             }
         ],
@@ -307,6 +330,47 @@
                         "line": 3,
                         "column": 4,
                         "loop": true
+                    }
+                ]
+            }
+        ],
+        "walkthroughs": [
+            {
+                "id": "PSRule.getStarted",
+                "title": "Get Started with PSRule",
+                "description": "Learn about and start using PSRule with Visual Studio Code.",
+                "when": "config.PSRule.experimental.enabled",
+                "steps": [
+                    {
+                        "id": "configureOptions",
+                        "title": "Configure an options file",
+                        "description": "The options file **ps-rule.yaml** is used to initialize a workspace and configure features of PSRule.\n[Open an options file](command:PSRule.openOptionsFile)\n[Create an options file](command:PSRule.createOptionsFile)\nTip: [Close the side bar for more space](command:workbench.action.closeSidebar)",
+                        "media": {
+                            "markdown": "media/walkthroughs/getStarted/01_configureOptions.md"
+                        },
+                        "completionEvents": [
+                            "onCommand:PSRule.openOptionsFile",
+                            "onCommand:PSRule.createOptionsFile"
+                        ]
+                    },
+                    {
+                        "id": "configureSettings",
+                        "title": "Configure settings",
+                        "description": "In addition to **ps-rule.yaml**, some settings that affect how PSRule runs within Visual Studio Code can be configured per user or per workspace.\n[Configure settings](command:PSRule.configureSettings)\nTip: __You can sync some of these settings across devices.__",
+                        "media": {
+                            "markdown": "media/walkthroughs/getStarted/02_configureSettings.md"
+                        },
+                        "completionEvents": [
+                            "onCommand:PSRule.configureSettings"
+                        ]
+                    },
+                    {
+                        "id": "learnMore",
+                        "title": "Learn more",
+                        "description": "Check out our [PSRule documentation](https://aka.ms/ps-rule) to learn more about features and customization.",
+                        "media": {
+                            "markdown": "media/walkthroughs/getStarted/03_learnMore.md"
+                        }
                     }
                 ]
             }

@@ -12,10 +12,26 @@ This extension is available in two release channels for Visual Studio Code from 
   - Aligned to versioning of PSRule.
 Continue reading to see the changes included in the latest version.
 
+**Experimental features**:
+
+- CodeLens to create or edit documentation.
+  - Link from rules allows markdown documentation to be created or edited.
+  - When existing markdown documentation exists, file is opened in editor.
+  - When documentation for a rule does not exist, a new file is created from a snippet.
+  - Added settings to configure the location for storing documentation,
+    and the snippet used to create documentation.
+- Get started with PSRule walkthrough.
+  - Steps cover basic PSRule configuration and documentation.
+
 ## Unreleased
 
 What's changed since v2.3.0:
 
+- General improvements:
+  - **Experimental:** Added a walkthrough for getting started with PSRule by @BernieWhite.
+    [#771](https://github.com/microsoft/PSRule-vscode/issues/771)
+    - Added steps for basic configuration and documentation.
+    - To use try this feature, install the preview channel with experimental features enabled.
 - Engineering:
   - Updated PSRule schema files.
     [#812](https://github.com/microsoft/PSRule-vscode/pull/812)
@@ -62,7 +78,7 @@ What's changed since v2.1.0:
 What's changed since v2.0.0:
 
 - New features:
-  - **Experimental:** CodeLens provides links to open or create rule documentation.
+  - **Experimental:** CodeLens provides links to open or create rule documentation by @BernieWhite.
     [#227](https://github.com/microsoft/PSRule-vscode/issues/227)
     - Link from rules allows markdown documentation to be created or edited.
     - When existing markdown documentation exists, file is opened in editor.

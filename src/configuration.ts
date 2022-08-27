@@ -24,6 +24,10 @@ export interface ISetting {
     documentationPath: string | undefined;
     documentationLocalePath: string;
     executionNotProcessedWarning: boolean;
+
+    /**
+     * Determines if experimental features are enabled.
+     */
     experimentalEnabled: boolean;
     outputAs: OutputAs;
     notificationsShowChannelUpgrade: boolean;

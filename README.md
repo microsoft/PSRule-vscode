@@ -153,6 +153,4 @@ This project is [licensed under the MIT License][license].
 [contribution guide]: https://github.com/Microsoft/PSRule-vscode/blob/main/CONTRIBUTING.md
 [change log]: https://github.com/Microsoft/PSRule-vscode/blob/main/CHANGELOG.md
 [license]: https://github.com/Microsoft/PSRule-vscode/blob/main/LICENSE
-[chat]: https://gitter.im/PSRule/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-[chat-badge]: https://img.shields.io/static/v1.svg?label=chat&message=on%20gitter&color=informational&logo=gitter
-[ps-rule.yaml]: https://microsoft.github.io/PSRule/concepts/PSRule/en-US/about_PSRule_Options.html
+[ps-rule.yaml]: https://aka.ms/ps-rule/options
