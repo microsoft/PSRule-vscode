@@ -142,7 +142,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         });
     }
 
-    private async getWorkspaceTasks(folder: vscode.WorkspaceFolder): Promise<vscode.Task[]> {
+    public async getWorkspaceTasks(folder: vscode.WorkspaceFolder): Promise<vscode.Task[]> {
         if (folder.uri.scheme !== 'file') {
             return emptyTasks;
         }

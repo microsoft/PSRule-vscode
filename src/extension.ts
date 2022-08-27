@@ -11,6 +11,9 @@ import { ConfigurationManager } from './configuration';
 import { pwsh } from './powershell';
 import { DocumentationLensProvider } from './docLens';
 import { createOptionsFile } from './commands/createOptionsFile';
+import { openOptionsFile } from './commands/openOptionsFile';
+import { walkthroughCopySnippet } from './commands/walkthroughCopySnippet';
+import { configureSettings } from './commands/configureSettings';
 
 export let taskManager: PSRuleTaskProvider | undefined;
 export let docLensProvider: DocumentationLensProvider | undefined;
@@ -28,6 +31,9 @@ export class ExtensionManager implements vscode.Disposable {
 
     constructor() {}
 
+    /**
+     * Information about the extension.
+     */
     public get info(): Promise<ExtensionInfo> {
         const parent = this;
         return new Promise<ExtensionInfo>((resolve, reject) => {
@@ -47,6 +53,13 @@ export class ExtensionManager implements vscode.Disposable {
 
     public get isTrusted(): boolean {
         return vscode.workspace.isTrusted;
+    }
+
+    /**
+     * A task provider if the workspace is trusted, otherwise returns undefined.
+     */
+    public get tasks(): PSRuleTaskProvider | undefined {
+        return taskManager;
     }
 
     public activate(context: vscode.ExtensionContext) {
@@ -79,8 +92,23 @@ export class ExtensionManager implements vscode.Disposable {
                 })
             );
             this._context.subscriptions.push(
-                vscode.commands.registerCommand('PSRule.createOptionsFile', (name: string) => {
-                    createOptionsFile(name);
+                vscode.commands.registerCommand('PSRule.openOptionsFile', (path: string) => {
+                    openOptionsFile(path);
+                })
+            );
+            this._context.subscriptions.push(
+                vscode.commands.registerCommand('PSRule.createOptionsFile', (path: string) => {
+                    createOptionsFile(path);
+                })
+            );
+            this._context.subscriptions.push(
+                vscode.commands.registerCommand('PSRule.configureSettings', () => {
+                    configureSettings();
+                })
+            );
+            this._context.subscriptions.push(
+                vscode.commands.registerCommand('PSRule.walkthroughCopySnippet', (args: { snippet: string }) => {
+                    walkthroughCopySnippet(args.snippet);
                 })
             );
         }
@@ -95,6 +123,10 @@ export class ExtensionManager implements vscode.Disposable {
         }
 
         if (this.isTrusted) {
+            this.setContextVariables();
+        }
+
+        if (this.isTrusted) {
             pwsh.configure(this._info);
         }
 
@@ -102,6 +134,10 @@ export class ExtensionManager implements vscode.Disposable {
             taskManager = new PSRuleTaskProvider(logger, this._context);
             taskManager.register();
         }
+    }
+
+    private setContextVariables(): void {
+        vscode.commands.executeCommand('setContext', 'PSRule.workspaceTrusted', this.isTrusted);
     }
 
     /**

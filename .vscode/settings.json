@@ -3,13 +3,23 @@
         "node_modules/": true
     },
     "search.exclude": {
-        "out": true
+        "out/": true,
+        "node_modules/": true
     },
     "files.associations": {
         "**/.azure-pipelines/*.yaml": "azure-pipelines",
         "**/.azure-pipelines/jobs/*.yaml": "azure-pipelines"
     },
+    "json.schemas": [
+        {
+            "url": ".vscode/walkthrough.schema.json",
+            "fileMatch": [
+                "**/media/walkthroughs/**/snippets.json"
+            ]
+        }
+    ],
     "editor.insertSpaces": true,
+    "files.insertFinalNewline": true,
     "editor.tabSize": 4,
     "[yaml]": {
         "editor.tabSize": 2
@@ -19,7 +29,7 @@
     },
     "[json]": {
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[jsonc]": {
         "editor.formatOnSave": true,
