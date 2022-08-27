@@ -45,7 +45,7 @@ Channel | Description | Version/ downloads
 
 - Adds snippets for defining new rules.
   - **Define rules** with snippets and IntelliSense support.
-    - Trigger IntelliSense by typing `rule` in a `.Rule.ps1` file.
+    - Trigger IntelliSense by typing `rule` in a `.Rule.ps1`, `.Rule.yaml`, or `.Rule.jsonc` file.
     IntelliSense can also be triggered by using the shortcut `Ctrl+Space`.
 
 <p align="center">
@@ -64,10 +64,11 @@ Channel | Description | Version/ downloads
 </p>
 
 - Adds quick tasks for analysis directly from Visual Studio Code.
-  - **Run analysis** &mdash; Runs rules against files in the current workspace.
+  - **Run analysis** &mdash; runs rules against files in the current workspace.
     - _Input path_, _Baseline_, _Modules_, and _Outcome_ options can be configured per task.
     - _Output as_, and showing a _Not processed warning_ options can be configured by workspace or user.
     - Rule stored in `.ps-rule/` are automatically used by default.
+    - Use the built-in analysis task by running or configuring the task from the _Terminal_ menu.
 
 ## Configuration
 
