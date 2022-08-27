@@ -39,6 +39,8 @@ What's changed since v2.3.0:
     [#800](https://github.com/microsoft/PSRule-vscode/pull/800)
   - Bump vsce to v2.10.2.
     [#821](https://github.com/microsoft/PSRule-vscode/pull/821)
+  - Bumps typescript to v4.8.2.
+    [#830](https://github.com/microsoft/PSRule-vscode/pull/830)
 
 ## v2.3.0
 
