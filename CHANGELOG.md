@@ -30,6 +30,8 @@ What's changed since v2.4.0:
 - Engineering:
   - Bumps vscode engine to v1.71.0.
     [#843](https://github.com/microsoft/PSRule-vscode/pull/843)
+  - Bumps typescript to v4.8.3.
+    [#850](https://github.com/microsoft/PSRule-vscode/pull/850)
 
 ## v2.4.0
 
