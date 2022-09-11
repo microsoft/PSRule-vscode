@@ -37,6 +37,7 @@
     "preview": true,
     "activationEvents": [
         "onLanguage:powershell",
+        "onLanguage:yaml",
         "workspaceContains:/ps-rule.yaml",
         "workspaceContains:**/ps-rule.yaml",
         "workspaceContains:**/*.Rule.yaml",
@@ -221,7 +222,11 @@
             },
             {
                 "language": "yaml",
-                "path": "./snippets/github-actions.json"
+                "path": "./snippets/github-snippets.json"
+            },
+            {
+                "language": "yaml",
+                "path": "./snippets/pipelines-snippets.json"
             },
             {
                 "language": "json",
