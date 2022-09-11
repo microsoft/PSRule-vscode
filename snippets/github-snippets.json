@@ -1,7 +1,7 @@
 {
-    "PSRule GitHub Actions workflow": {
+    "PSRule in GitHub Actions workflow": {
         "prefix": "ps-rule-gh-action",
-        "description": "PSRule workflow snippet for GitHub Actions",
+        "description": "PSRule workflow snippet for GitHub Actions.",
         "body": [
             "#",
             "# Analyze repository with PSRule",
@@ -31,10 +31,10 @@
             "    steps:",
             "",
             "    - name: Checkout",
-            "      uses: actions/checkout@main",
+            "      uses: actions/checkout@v3",
             "",
             "    - name: Run PSRule analysis",
-            "      uses: Microsoft/ps-rule@main",
+            "      uses: Microsoft/ps-rule@v2.3.2",
             "      with:",
             "        modules: ${1}"
         ]

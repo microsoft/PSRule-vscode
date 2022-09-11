@@ -27,6 +27,9 @@ Continue reading to see the changes included in the latest version.
 
 What's changed since v2.4.0:
 
+- General improvements:
+  - Added starter pipeline snippet for Azure Pipelines by @BernieWhite.
+    [#851](https://github.com/microsoft/PSRule-vscode/issues/851)
 - Engineering:
   - Bumps vscode engine to v1.71.0.
     [#843](https://github.com/microsoft/PSRule-vscode/pull/843)
