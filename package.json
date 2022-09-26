@@ -405,7 +405,7 @@
     "devDependencies": {
         "@types/glob": "^8.0.0",
         "@types/mocha": "^9.1.1",
-        "@types/node": "^18.7.18",
+        "@types/node": "^18.7.21",
         "@types/vscode": "1.71.0",
         "@types/fs-extra": "^9.0.13",
         "@typescript-eslint/eslint-plugin": "^5.38.0",
