@@ -162,6 +162,28 @@
                                     }
                                 ]
                             }
+                        },
+                        "labels": {
+                            "type": "object",
+                            "title": "Labels",
+                            "description": "Require rules to have the following associated labels.",
+                            "markdownDescription": "Require rules to have the following associated labels.",
+                            "additionalProperties": {
+                                "oneOf": [
+                                    {
+                                        "type": "string",
+                                        "description": "A required reference."
+                                    },
+                                    {
+                                        "type": "array",
+                                        "description": "A required reference.",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "uniqueItems": true
+                                    }
+                                ]
+                            }
                         }
                     },
                     "additionalProperties": false
@@ -680,6 +702,40 @@
                 },
                 "tags": {
                     "$ref": "#/definitions/resourceTags"
+                },
+                "labels": {
+                    "type": "object",
+                    "title": "Labels",
+                    "description": "Any taxonomy references.",
+                    "additionalProperties": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "defaultSnippets": [
+                        {
+                            "label": "Reference key/ value",
+                            "body": {
+                                "${1:Key}": "${2:Value}"
+                            }
+                        },
+                        {
+                            "label": "Reference key/ multi-value",
+                            "body": {
+                                "${1:Key}": [
+                                    "${2:Value}"
+                                ]
+                            }
+                        }
+                    ]
                 }
             },
             "required": [
