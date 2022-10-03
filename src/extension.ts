@@ -23,6 +23,7 @@ export interface ExtensionInfo {
     version: string;
     channel: string;
     path: string;
+    disable: boolean;
 }
 
 export class ExtensionManager implements vscode.Disposable {
@@ -65,7 +66,9 @@ export class ExtensionManager implements vscode.Disposable {
     public activate(context: vscode.ExtensionContext) {
         this._context = context;
         this._info = this.checkExtension(context);
-        this.activateFeatures();
+        if (!this._info.disable) {
+            this.activateFeatures();
+        }
     }
 
     public dispose(): void {
@@ -150,6 +153,8 @@ export class ExtensionManager implements vscode.Disposable {
         // Get channel
         let extensionId = 'bewhite.psrule-vscode';
         let extensionChannel = 'stable';
+        const isStableInstalled = vscode.extensions.getExtension(extensionId) !== undefined;
+
         if (path.basename(context.globalStorageUri.fsPath) === 'bewhite.psrule-vscode-preview') {
             extensionId = 'bewhite.psrule-vscode-preview';
             extensionChannel = 'preview';
@@ -176,9 +181,9 @@ export class ExtensionManager implements vscode.Disposable {
             .getConfiguration('PSRule.notifications')
             .get('showChannelUpgrade', true);
 
+        const showExtension = 'Show Extension';
         if ((extensionChannel === 'preview' || extensionChannel === 'dev') && showChannelUpgrade) {
             const showReleaseNotes = 'Show Release Notes';
-            const showExtension = 'Show Extension';
             const alwaysIgnore = 'Always Ignore';
 
             vscode.window
@@ -209,11 +214,29 @@ export class ExtensionManager implements vscode.Disposable {
                 });
         }
 
+        let disable = false;
+        if ((extensionChannel === 'preview' || extensionChannel === 'dev') && isStableInstalled) {
+            disable = true;
+            vscode.window.showWarningMessage(
+                `You may experience issues running the ${extensionChannel} version of PSRule, side-by-side with the stable version. Please uninstall one of ${extensionChannel} or stable version and reload Visual Studio Code for the best experience.`,
+                showExtension,
+            )
+            .then((choice) => {
+                if (choice === showExtension) {
+                    vscode.commands.executeCommand(
+                        'workbench.extensions.search',
+                        'PSRule'
+                    );
+                }
+            });
+        }
+
         const result: ExtensionInfo = {
             id: extensionId,
             version: extensionVersion,
             channel: extensionChannel,
             path: context.extensionPath,
+            disable: disable,
         };
         return result;
     }

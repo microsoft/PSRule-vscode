@@ -2,6 +2,8 @@
 
 All notable changes to this extension will be documented in this file.
 This extension is available in two release channels for Visual Studio Code from the Visual Studio Marketplace.
+We recommend only installing one channel for the best experience.
+Installing both channels may cause unexpected behavior.
 
 - [Preview][ext-preview] - More frequent releases but more likely to contain bugs.
   - _Preview_ is where updates are available before they released to _Stable_.
@@ -30,6 +32,9 @@ What's changed since v2.4.0:
 - General improvements:
   - Added starter pipeline snippet for Azure Pipelines by @BernieWhite.
     [#851](https://github.com/microsoft/PSRule-vscode/issues/851)
+  - Added a warning when multiple channels are installed by @BernieWhite.
+    [#870](https://github.com/microsoft/PSRule-vscode/issues/870)
+    - Installing both the _Preview_ and _Stable_ channels is not supported and may cause issues.
 - Engineering:
   - Updated PSRule schema files.
     [#844](https://github.com/microsoft/PSRule-vscode/pull/844)
