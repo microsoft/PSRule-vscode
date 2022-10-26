@@ -408,7 +408,7 @@
         "@types/node": "^18.11.5",
         "@types/vscode": "1.72.0",
         "@types/fs-extra": "^9.0.13",
-        "@typescript-eslint/eslint-plugin": "^5.40.1",
+        "@typescript-eslint/eslint-plugin": "^5.41.0",
         "@typescript-eslint/parser": "^5.40.1",
         "esbuild": "^0.15.12",
         "eslint": "^8.26.0",
