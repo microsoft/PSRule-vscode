@@ -30,6 +30,8 @@ Continue reading to see the changes included in the latest version.
 What's changed since v2.5.0:
 
 - Engineering:
+  - Updated PSRule schema files.
+    [#920](https://github.com/microsoft/PSRule-vscode/pull/920)
   - Bumps vscode engine to v1.73.0.
     [#914](https://github.com/microsoft/PSRule-vscode/pull/914)
   - Bump vsce to v2.13.0.
