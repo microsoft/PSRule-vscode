@@ -27,6 +27,8 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+## v2.6.0
+
 What's changed since v2.5.0:
 
 - Engineering:
@@ -126,30 +128,40 @@ What's changed since v2.0.0:
       and the snippet used to create documentation.
     - To use try this feature, install the preview channel with experimental features enabled.
 - Engineering:
-  - Bump fs-extra to v10.1.0 [#670](https://github.com/microsoft/PSRule-vscode/pull/670)
-  - Updated PSRule schema files. [#688](https://github.com/microsoft/PSRule-vscode/pull/688)
+  - Bump fs-extra to v10.1.0.
+    [#670](https://github.com/microsoft/PSRule-vscode/pull/670)
+  - Updated PSRule schema files.
+    [#688](https://github.com/microsoft/PSRule-vscode/pull/688)
 
 ## v2.0.0
 
 What's changed since v1.7.0:
 
 - PSRule v2.0.0 support:
-  - Added resource snippets for Suppression Groups. [#588](https://github.com/microsoft/PSRule-vscode/issues/588)
-  - Updated schema to support Suppression Groups. [#574](https://github.com/microsoft/PSRule-vscode/issues/574)
+  - Added resource snippets for Suppression Groups.
+    [#588](https://github.com/microsoft/PSRule-vscode/issues/588)
+  - Updated schema to support Suppression Groups.
+    [#574](https://github.com/microsoft/PSRule-vscode/issues/574)
   - Updated schema to support convert and case sensitive properties.
     [#626](https://github.com/microsoft/PSRule-vscode/pull/626)
     [#630](https://github.com/microsoft/PSRule-vscode/pull/630)
-  - Updated schema to support improved validation of resource names. [#638](https://github.com/microsoft/PSRule-vscode/pull/638)
+  - Updated schema to support improved validation of resource names.
+    [#638](https://github.com/microsoft/PSRule-vscode/pull/638)
 - General improvements:
-  - Added resource snippets for JSON and JSONC files. [#477](https://github.com/microsoft/PSRule-vscode/issues/477)
-  - Improved compatibility with PowerShell extension. [#607](https://github.com/microsoft/PSRule-vscode/issues/607)
+  - Added resource snippets for JSON and JSONC files.
+    [#477](https://github.com/microsoft/PSRule-vscode/issues/477)
+  - Improved compatibility with PowerShell extension.
+    [#607](https://github.com/microsoft/PSRule-vscode/issues/607)
     - Supports either PowerShell or PowerShell Preview installed for running tasks.
     - If PowerShell extension is not installed or enabled, basic functions are still available.
 - Engineering:
-  - Added workflow to sync PSRule schemas. [#592](https://github.com/microsoft/PSRule-vscode/issues/592)
-  - Bump vscode engine to v1.66.0. [#653](https://github.com/microsoft/PSRule-vscode/pull/653)
+  - Added workflow to sync PSRule schemas.
+    [#592](https://github.com/microsoft/PSRule-vscode/issues/592)
+  - Bump vscode engine to v1.66.0.
+    [#653](https://github.com/microsoft/PSRule-vscode/pull/653)
 - Bug fixes:
-  - Fixed change syntax highlighting on PowerShell files. [#495](https://github.com/microsoft/PSRule-vscode/issues/495)
+  - Fixed change syntax highlighting on PowerShell files.
+    [#495](https://github.com/microsoft/PSRule-vscode/issues/495)
 
 ## v1.7.0
 
@@ -175,25 +187,33 @@ What's changed since v1.5.0:
 What's changed since v1.4.0:
 
 - General improvements:
-  - Added `Rule.Baseline` option configuration the default baseline with module configuration. [#475](https://github.com/microsoft/PSRule-vscode/issues/475)
-  - Added support for resources within `.Rule.json`, `.Rule.jsonc`, and `.Rule.yml` files. [#476](https://github.com/microsoft/PSRule-vscode/issues/476)
-  - Configured workspace trust. [#304](https://github.com/microsoft/PSRule-vscode/issues/304)
+  - Added `Rule.Baseline` option configuration the default baseline with module configuration.
+    [#475](https://github.com/microsoft/PSRule-vscode/issues/475)
+  - Added support for resources within `.Rule.json`, `.Rule.jsonc`, and `.Rule.yml` files.
+    [#476](https://github.com/microsoft/PSRule-vscode/issues/476)
+  - Configured workspace trust.
+    [#304](https://github.com/microsoft/PSRule-vscode/issues/304)
     - Currently the extension relies on PowerShell which only works when the workspace is trusted.
 - Engineering:
-  - Bump vscode engine to v1.62.0. [#473](https://github.com/microsoft/PSRule-vscode/pull/473)
+  - Bump vscode engine to v1.62.0.
+    [#473](https://github.com/microsoft/PSRule-vscode/pull/473)
 
 ## v1.4.0
 
 What's changed since v1.3.0:
 
 - General improvements:
-  - Added options schema to support additional options. [#395](https://github.com/microsoft/PSRule-vscode/issues/395) [#451](https://github.com/microsoft/PSRule-vscode/issues/451)
+  - Added options schema to support additional options.
+    [#395](https://github.com/microsoft/PSRule-vscode/issues/395)
+    [#451](https://github.com/microsoft/PSRule-vscode/issues/451)
     - Added support for `Input.IgnoreRepositoryCommon`, `Output.Footer`, `Output.JsonIndent`, and `Rule.IncludeLocal`.
-  - Added expressions improvements: [#452](https://github.com/microsoft/PSRule-vscode/issues/452)
+  - Added expressions improvements:
+    [#452](https://github.com/microsoft/PSRule-vscode/issues/452)
     - Added `SetOf`, `Subset`, and `Count` set conditions.
     - Added `name`, and `type` properties to `Expression` objects.
 - Engineering:
-  - Bump vscode engine to v1.61.0. [#432](https://github.com/microsoft/PSRule-vscode/pull/432)
+  - Bump vscode engine to v1.61.0.
+    [#432](https://github.com/microsoft/PSRule-vscode/pull/432)
 
 ## v1.3.0
 
