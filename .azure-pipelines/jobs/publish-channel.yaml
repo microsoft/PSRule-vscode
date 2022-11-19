@@ -12,7 +12,7 @@ parameters:
   default: 'Release'
 - name: vmImage
   type: string
-  default: 'ubuntu-20.04'
+  default: 'ubuntu-22.04'
 
 jobs:
 - job: 'publish_${{ parameters.channel }}'
