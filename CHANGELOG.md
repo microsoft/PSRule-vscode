@@ -34,8 +34,8 @@ What's changed since v2.5.0:
     [#920](https://github.com/microsoft/PSRule-vscode/pull/920)
   - Bumps vscode engine to v1.73.0.
     [#914](https://github.com/microsoft/PSRule-vscode/pull/914)
-  - Bump vsce to v2.13.0.
-    [#901](https://github.com/microsoft/PSRule-vscode/pull/901)
+  - Bump vsce to v2.14.0.
+    [#916](https://github.com/microsoft/PSRule-vscode/pull/916)
   - Bumps @vscode/test-electron to v2.2.0.
     [#902](https://github.com/microsoft/PSRule-vscode/pull/902)
 
