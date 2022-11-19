@@ -50,31 +50,31 @@ stages:
   - template: jobs/test.yaml
     parameters:
       name: macOS_10_15
-      displayName: 'PowerShell 7.2 - macOS-10.15'
-      imageName: 'macOS-10.15'
+      displayName: 'PowerShell 7.2 - macos-12'
+      imageName: 'macos-12'
       channel: preview
 
   - template: jobs/test.yaml
     parameters:
-      name: ps_5_1_windows_2019
-      displayName: 'PowerShell 5.1 - Windows 2019'
-      imageName: 'windows-2019'
+      name: ps_5_1_windows_2022
+      displayName: 'PowerShell 5.1 - Windows 2022'
+      imageName: 'windows-2022'
       channel: preview
       pwsh: false
 
   - template: jobs/test.yaml
     parameters:
-      name: ps_7_2_windows_2019
-      displayName: 'PowerShell 7.2 - Windows 2019'
-      imageName: 'windows-2019'
+      name: ps_7_2_windows_2022
+      displayName: 'PowerShell 7.2 - Windows 2022'
+      imageName: 'windows-2022'
       channel: preview
       pwsh: true
 
   - template: jobs/test.yaml
     parameters:
-      name: ubuntu_20_04
-      displayName: 'PowerShell 7.2 - ubuntu-20.04'
-      imageName: 'ubuntu-20.04'
+      name: ubuntu_22_04
+      displayName: 'PowerShell 7.2 - ubuntu-22.04'
+      imageName: 'ubuntu-22.04'
       channel: preview
 
 # Analysis pipeline
@@ -87,7 +87,7 @@ stages:
   jobs:
   - job: Secret_Scan
     pool:
-      vmImage: 'windows-2019'
+      vmImage: 'windows-2022'
     displayName: Secret scan
     steps:
     - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
@@ -129,7 +129,7 @@ stages:
   - job: update_github_release
     displayName: Update GitHub release
     pool:
-      vmImage: 'ubuntu-20.04'
+      vmImage: 'ubuntu-22.04'
     steps:
 
     # Update GitHub release
