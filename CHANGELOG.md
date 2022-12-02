@@ -27,6 +27,12 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+What's changed since v2.6.0:
+
+- Engineering:
+  - Bump fs-extra to v11.1.0.
+    [#939](https://github.com/microsoft/PSRule-vscode/pull/939)
+
 ## v2.6.0
 
 What's changed since v2.5.0:
