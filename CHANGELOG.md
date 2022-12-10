@@ -30,6 +30,8 @@ Continue reading to see the changes included in the latest version.
 What's changed since v2.6.0:
 
 - Engineering:
+  - Bump vscode engine to v1.74.0.
+    [#952](https://github.com/microsoft/PSRule-vscode/pull/952)
   - Bump fs-extra to v11.1.0.
     [#939](https://github.com/microsoft/PSRule-vscode/pull/939)
   - Bump vsce to v2.15.0.
@@ -44,7 +46,7 @@ What's changed since v2.5.0:
 - Engineering:
   - Updated PSRule schema files.
     [#920](https://github.com/microsoft/PSRule-vscode/pull/920)
-  - Bumps vscode engine to v1.73.1.
+  - Bump vscode engine to v1.73.1.
     [#922](https://github.com/microsoft/PSRule-vscode/pull/922)
   - Bump vsce to v2.14.0.
     [#916](https://github.com/microsoft/PSRule-vscode/pull/916)
