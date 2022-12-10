@@ -34,6 +34,8 @@ What's changed since v2.6.0:
     [#939](https://github.com/microsoft/PSRule-vscode/pull/939)
   - Bump vsce to v2.15.0.
     [#943](https://github.com/microsoft/PSRule-vscode/pull/943)
+  - Bump typescript to v4.9.4.
+    [#954](https://github.com/microsoft/PSRule-vscode/pull/954)
 
 ## v2.6.0
 
@@ -46,7 +48,7 @@ What's changed since v2.5.0:
     [#922](https://github.com/microsoft/PSRule-vscode/pull/922)
   - Bump vsce to v2.14.0.
     [#916](https://github.com/microsoft/PSRule-vscode/pull/916)
-  - Bumps @vscode/test-electron to v2.2.0.
+  - Bump @vscode/test-electron to v2.2.0.
     [#902](https://github.com/microsoft/PSRule-vscode/pull/902)
   - Bump typescript to v4.9.3.
     [#925](https://github.com/microsoft/PSRule-vscode/pull/925)
@@ -65,9 +67,9 @@ What's changed since v2.4.0:
   - Updated PSRule schema files.
     [#844](https://github.com/microsoft/PSRule-vscode/pull/844)
     [#863](https://github.com/microsoft/PSRule-vscode/pull/863)
-  - Bumps vscode engine to v1.71.0.
+  - Bump vscode engine to v1.71.0.
     [#843](https://github.com/microsoft/PSRule-vscode/pull/843)
-  - Bumps typescript to v4.8.4.
+  - Bump typescript to v4.8.4.
     [#873](https://github.com/microsoft/PSRule-vscode/pull/873)
 
 ## v2.4.0
@@ -82,11 +84,11 @@ What's changed since v2.3.0:
 - Engineering:
   - Updated PSRule schema files.
     [#812](https://github.com/microsoft/PSRule-vscode/pull/812)
-  - Bumps vscode engine to v1.70.0.
+  - Bump vscode engine to v1.70.0.
     [#800](https://github.com/microsoft/PSRule-vscode/pull/800)
   - Bump vsce to v2.10.2.
     [#821](https://github.com/microsoft/PSRule-vscode/pull/821)
-  - Bumps typescript to v4.8.2.
+  - Bump typescript to v4.8.2.
     [#830](https://github.com/microsoft/PSRule-vscode/pull/830)
 
 ## v2.3.0
@@ -103,7 +105,7 @@ What's changed since v2.2.0:
     [#767](https://github.com/microsoft/PSRule-vscode/pull/767)
   - Bump vscode-languageclient v8.0.2.
     [#777](https://github.com/microsoft/PSRule-vscode/pull/777)
-  - Bumps vscode engine to v1.69.1.
+  - Bum vscode engine to v1.69.1.
     [#797](https://github.com/microsoft/PSRule-vscode/pull/797)
 
 ## v2.2.0
