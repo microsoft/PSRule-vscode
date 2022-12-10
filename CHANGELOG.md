@@ -32,6 +32,8 @@ What's changed since v2.6.0:
 - Engineering:
   - Bump fs-extra to v11.1.0.
     [#939](https://github.com/microsoft/PSRule-vscode/pull/939)
+  - Bump vsce to v2.15.0.
+    [#943](https://github.com/microsoft/PSRule-vscode/pull/943)
 
 ## v2.6.0
 
