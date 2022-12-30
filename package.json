@@ -411,7 +411,7 @@
         "@typescript-eslint/eslint-plugin": "^5.46.1",
         "@typescript-eslint/parser": "^5.46.1",
         "esbuild": "^0.16.12",
-        "eslint": "^8.29.0",
+        "eslint": "^8.30.0",
         "glob": "^8.0.3",
         "lodash": ">=4.17.21",
         "markdown-it": "^13.0.1",
