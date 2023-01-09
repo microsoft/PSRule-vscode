@@ -33,6 +33,8 @@ What's changed since v2.6.0:
   - Update snippet versions and links by @BernieWhite
     [#955](https://github.com/microsoft/PSRule-vscode/issues/955)
 - Engineering:
+  - Updated PSRule schema files.
+    [#933](https://github.com/microsoft/PSRule-vscode/pull/933)
   - Bump vscode engine to v1.74.0.
     [#952](https://github.com/microsoft/PSRule-vscode/pull/952)
   - Bump fs-extra to v11.1.0.
