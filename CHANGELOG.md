@@ -34,6 +34,8 @@ What's changed since v2.7.0:
     [#957](https://github.com/microsoft/PSRule-vscode/pull/957)
   - Bump @vscode/test-electron to v2.2.2.
     [#983](https://github.com/microsoft/PSRule-vscode/pull/983)
+  - Bump @types/fs-extra to v11.0.1.
+    [#986](https://github.com/microsoft/PSRule-vscode/pull/986)
 
 ## v2.7.0
 
