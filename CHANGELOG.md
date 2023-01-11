@@ -45,6 +45,9 @@ What's changed since v2.6.0:
     [#954](https://github.com/microsoft/PSRule-vscode/pull/954)
   - Bump @vscode/test-electron to v2.2.1.
     [#946](https://github.com/microsoft/PSRule-vscode/pull/946)
+- Bug fixes:
+  - Fixed extension badge URL by @BernieWhite.
+    [#981](https://github.com/microsoft/PSRule-vscode/issues/981)
 
 ## v2.6.0
 
