@@ -27,6 +27,12 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+What's changed since v2.7.0:
+
+- Engineering:
+  - Bump mocha to v10.2.0.
+    [#957](https://github.com/microsoft/PSRule-vscode/pull/957)
+
 ## v2.7.0
 
 What's changed since v2.6.0:
