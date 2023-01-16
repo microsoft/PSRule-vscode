@@ -412,7 +412,7 @@
         "@typescript-eslint/parser": "^5.48.1",
         "esbuild": "^0.17.0",
         "eslint": "^8.32.0",
-        "glob": "^8.0.3",
+        "glob": "^8.1.0",
         "lodash": ">=4.17.21",
         "markdown-it": "^13.0.1",
         "minimist": ">=1.2.7",
