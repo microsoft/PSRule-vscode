@@ -36,6 +36,8 @@ What's changed since v2.7.0:
     [#983](https://github.com/microsoft/PSRule-vscode/pull/983)
   - Bump @types/fs-extra to v11.0.1.
     [#986](https://github.com/microsoft/PSRule-vscode/pull/986)
+  - Bump glob to v8.1.0.
+    [#990](https://github.com/microsoft/PSRule-vscode/pull/990)
 
 ## v2.7.0
 
