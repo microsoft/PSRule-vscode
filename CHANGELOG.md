@@ -38,6 +38,8 @@ What's changed since v2.7.0:
     [#986](https://github.com/microsoft/PSRule-vscode/pull/986)
   - Bump glob to v8.1.0.
     [#990](https://github.com/microsoft/PSRule-vscode/pull/990)
+  - Bump @types/glob to v8.0.1.
+    [#997](https://github.com/microsoft/PSRule-vscode/pull/997)
 
 ## v2.7.0
 
