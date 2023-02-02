@@ -40,6 +40,8 @@ What's changed since v2.7.0:
     [#990](https://github.com/microsoft/PSRule-vscode/pull/990)
   - Bump @types/glob to v8.0.1.
     [#997](https://github.com/microsoft/PSRule-vscode/pull/997)
+  - Bump typescript to v4.9.5.
+    [#1006](https://github.com/microsoft/PSRule-vscode/pull/1006)
 
 ## v2.7.0
 
