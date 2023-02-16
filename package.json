@@ -395,7 +395,7 @@
         "esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch"
     },
     "dependencies": {
-        "vscode-languageclient": "^8.0.2",
+        "vscode-languageclient": "^8.1.0",
         "fs-extra": "^11.1.0"
     },
     "extensionDependencies": [
