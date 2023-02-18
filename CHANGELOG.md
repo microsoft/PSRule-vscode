@@ -46,6 +46,8 @@ What's changed since v2.7.0:
     [#1006](https://github.com/microsoft/PSRule-vscode/pull/1006)
   - Bump minimist to v1.2.8.
     [#1014](https://github.com/microsoft/PSRule-vscode/pull/1014)
+  - Bump vscode-languageclient to v8.1.0.
+    [#1021](https://github.com/microsoft/PSRule-vscode/pull/1021)
 
 ## v2.7.0
 
