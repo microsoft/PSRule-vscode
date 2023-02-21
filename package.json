@@ -409,7 +409,7 @@
         "@types/vscode": "1.75.1",
         "@types/fs-extra": "^11.0.1",
         "@typescript-eslint/eslint-plugin": "^5.53.0",
-        "@typescript-eslint/parser": "^5.52.0",
+        "@typescript-eslint/parser": "^5.53.0",
         "esbuild": "^0.17.10",
         "eslint": "^8.34.0",
         "glob": "^8.1.0",
