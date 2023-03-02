@@ -12,12 +12,14 @@
 name: Analyze
 on:
   push:
-    branches: [ main, 'release/*', 'create-pull-request/*', 'dependencies/*' ]
+    branches: [main, 'release/*', 'dependencies/*']
   pull_request:
-    branches: [ main, 'release/*' ]
+    branches: [main, 'release/*']
   schedule:
-  - cron: '54 20 * * 0' # At 08:54 PM, on Sunday each week
-  workflow_dispatch:
+    - cron: '54 20 * * 0' # At 08:54 PM, on Sunday each week
+  workflow_dispatch: {}
+
+permissions: {}
 
 jobs:
   oss:
@@ -26,15 +28,14 @@ jobs:
     permissions:
       contents: read
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Run PSRule analysis
-      uses: microsoft/ps-rule@v2.7.0
-      with:
-        modules: PSRule.Rules.MSFT.OSS
-        prerelease: true
+      - name: Run PSRule analysis
+        uses: microsoft/ps-rule@v2.7.0
+        with:
+          modules: PSRule.Rules.MSFT.OSS
+          prerelease: true
 
   devskim:
     name: Analyze with DevSkim
@@ -44,7 +45,6 @@ jobs:
       contents: read
       security-events: write
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -66,17 +66,16 @@ jobs:
       contents: read
       security-events: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: 'javascript'
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: 'javascript'
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2

@@ -5,6 +5,7 @@ docs/
 out/package/
 out/dist/test/
 src/
+scripts/
 node_modules/
 reports/
 .ps-rule/
@@ -20,3 +21,4 @@ ps-project.yaml
 SECURITY.md
 SUPPORT.md
 .markdownlint.json
+out/updates.txt
