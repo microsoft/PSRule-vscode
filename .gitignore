@@ -4,3 +4,4 @@ reports/
 node_modules/
 .vscode-test/
 *.vsix
+PSRule/
