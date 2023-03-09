@@ -30,8 +30,8 @@ Continue reading to see the changes included in the latest version.
 What's changed since v2.7.0:
 
 - Engineering:
-  - Bump vscode engine to v1.75.1.
-    [#1020](https://github.com/microsoft/PSRule-vscode/pull/1020)
+  - Bump vscode engine to v1.76.0.
+    [#1036](https://github.com/microsoft/PSRule-vscode/pull/1036)
   - Bump mocha to v10.2.0.
     [#957](https://github.com/microsoft/PSRule-vscode/pull/957)
   - Bump @vscode/test-electron to v2.2.3.
