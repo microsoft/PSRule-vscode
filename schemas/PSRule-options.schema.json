@@ -33,6 +33,27 @@
           "minimum": 1,
           "maximum": 120
         },
+        "AZURE_BICEP_CHECK_TOOL": {
+          "type": "boolean",
+          "title": "Checking Bicep Tool",
+          "description": "This configuration option determines if the Azure Bicep CLI is checked during initialization. By default, this option is disabled. To enable, set this option to true.",
+          "markdownDescription": "This configuration option determines if the Azure Bicep CLI is checked during initialization.  By default, this option is disabled. To enable, set this option to `true`. [See help](https://azure.github.io/PSRule.Rules.Azure/setup/setup-bicep/#checking-bicep-version)\r\rApplies to: [PSRule for Azure](https://aka.ms/ps-rule-azure)",
+          "default": false
+        },
+        "AZURE_BICEP_MINIMUM_VERSION": {
+          "type": "string",
+          "title": "Bicep Minimum Version",
+          "description": "This configuration option determines the minimum version of the Bicep CLI that should be used. If the minimum version is less then the expected version an error is reported. By default, this is 0.4.451.",
+          "markdownDescription": "This configuration option determines the minimum version of the Bicep CLI that should be used. If the minimum version is less then the expected version an error is reported. By default, this is `0.4.451`. [See help](https://azure.github.io/PSRule.Rules.Azure/setup/setup-bicep/#configuring-minimum-version)\r\rApplies to: [PSRule for Azure](https://aka.ms/ps-rule-azure)",
+          "default": "0.4.451"
+        },
+        "AZURE_AKS_CLUSTER_MINIMUM_VERSION": {
+          "type": "string",
+          "title": "AKS cluster minimum version",
+          "description": "This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools. Rules that check the Kubernetes version fail when the version is older than the version specified.",
+          "markdownDescription": "This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools. Rules that check the Kubernetes version fail when the version is older than the version specified. [See help](https://azure.github.io/PSRule.Rules.Azure/setup/configuring-rules/#aks-minimum-kubernetes-version)\r\rApplies to: [PSRule for Azure](https://aka.ms/ps-rule-azure)",
+          "default": "1.25.4"
+        },
         "AZURE_PARAMETER_FILE_METADATA_LINK": {
           "type": "boolean",
           "title": "Bicep source expansion",
@@ -325,16 +346,43 @@
         },
         "suppressedRuleWarning": {
           "type": "boolean",
-          "title": "Warn on suppressed rules",
-          "description": "Enable or disable warnings for suppressed rules. The default is true.",
-          "markdownDescription": "Enable or disable warnings for suppressed rules. The default is `true`. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#executionsuppressedrulewarning)",
-          "default": true
+          "title": "Warn on suppressed rules | DEPRECATED",
+          "description": "This option has been deprecated and will be removed from v3 in favor of ruleSuppressed. Enable or disable warnings for suppressed rules. The default is true.",
+          "markdownDescription": "This option has been deprecated and will be removed from v3 in favor of `ruleSuppressed`.\n\nEnable or disable warnings for suppressed rules. The default is `true`. [See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#executionsuppressedrulewarning)",
+          "default": true,
+          "deprecated": true
         },
         "suppressionGroupExpired": {
           "type": "string",
           "title": "Expired suppression groups",
           "description": "Determines how to handle expired suppression groups. Regardless of the value, an expired suppression group will be ignored. By default, a warning is generated. When set to Error, an error is thrown. When set to Debug, a message is written to the debug log. When set to Ignore, no output will be displayed.",
           "markdownDescription": "Determines how to handle expired suppression groups.\n\nRegardless of the value, an expired suppression group will be ignored. By default, a warning is generated.\n\n- When set to `Error`, an error is thrown.\n- When set to `Debug`, a message is written to the debug log.\n- When set to `Ignore`, no output will be displayed.\n\n[See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#executionsuppressiongroupexpired)",
+          "enum": [
+            "Ignore",
+            "Warn",
+            "Error",
+            "Debug"
+          ],
+          "default": "Warn"
+        },
+        "ruleExcluded": {
+          "type": "string",
+          "title": "Rule excluded",
+          "description": "Determines how to handle excluded rules. Regardless of the value, excluded rules are ignored. By default, rules are excluded silently. When set to Error, an error is thrown. When set to Warn, a warning is generated. When set to Debug, a message is written to the debug log.",
+          "markdownDescription": "Determines how to handle excluded rules.\n\nRegardless of the value, excluded rules are ignored. By default, rules are excluded silently.\n\n- When set to `Error`, an error is thrown.\n- When set to `Warn`, a warning is generated.\n- When set to `Debug`, a message is written to the debug log.\n\n[See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#executionruleexecluded)",
+          "enum": [
+            "Ignore",
+            "Warn",
+            "Error",
+            "Debug"
+          ],
+          "default": "Ignore"
+        },
+        "ruleSuppressed": {
+          "type": "string",
+          "title": "Rule suppressed",
+          "description": "Determines how to handle suppressed rules. Regardless of the value, a suppressed rule is ignored. By default, a warning is generated. When set to Error, an error is thrown. When set to Debug, a message is written to the debug log. When set to Ignore, no output will be displayed. This option replaces suppressedRuleWarning. You do not need to configure both options. If suppressedRuleWarning is configured, it will override ruleSuppressed with Warn or Ignore until removal in PSRule v3.",
+          "markdownDescription": "Determines how to handle suppressed rules.\n\nRegardless of the value, a suppressed rule is ignored. By default, a warning is generated.\n\n- When set to `Error`, an error is thrown.\n- When set to `Debug`, a message is written to the debug log.\n- When set to `Ignore`, no output will be displayed.\n\nThis option replaces `suppressedRuleWarning`. You do not need to configure both options. If `suppressedRuleWarning` is configured, it will override `ruleSuppressed` with `Warn` or `Ignore` until removal in PSRule v3.\n\n[See help](https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#executionrulesuppressed)",
           "enum": [
             "Ignore",
             "Warn",
