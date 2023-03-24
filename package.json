@@ -417,7 +417,7 @@
     "markdown-it": "^13.0.1",
     "minimist": ">=1.2.8",
     "mocha": "^10.2.0",
-    "typescript": "^4.9.5",
+    "typescript": "^5.0.2",
     "vsce": "^2.15.0",
     "@vscode/test-electron": "^2.3.0",
     "nth-check": ">=2.1.1",
