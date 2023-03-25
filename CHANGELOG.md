@@ -34,20 +34,18 @@ What's changed since v2.7.0:
     [#1036](https://github.com/microsoft/PSRule-vscode/pull/1036)
   - Bump mocha to v10.2.0.
     [#957](https://github.com/microsoft/PSRule-vscode/pull/957)
-  - Bump @vscode/test-electron to v2.3.0.
-    [#1035](https://github.com/microsoft/PSRule-vscode/pull/1035)
-  - Bump @types/fs-extra to v11.0.1.
-    [#986](https://github.com/microsoft/PSRule-vscode/pull/986)
+  - Bump fs-extra to v11.1.1.
+    [#1058](https://github.com/microsoft/PSRule-vscode/pull/1058)
   - Bump glob to v8.1.0.
     [#990](https://github.com/microsoft/PSRule-vscode/pull/990)
-  - Bump @types/glob to v8.0.1.
-    [#997](https://github.com/microsoft/PSRule-vscode/pull/997)
   - Bump typescript to v5.0.2.
     [#1053](https://github.com/microsoft/PSRule-vscode/pull/1053)
   - Bump minimist to v1.2.8.
     [#1014](https://github.com/microsoft/PSRule-vscode/pull/1014)
   - Bump vscode-languageclient to v8.1.0.
     [#1021](https://github.com/microsoft/PSRule-vscode/pull/1021)
+  - Bump @vscode/test-electron to v2.3.0.
+    [#1035](https://github.com/microsoft/PSRule-vscode/pull/1035)
 
 ## v2.7.0
 
