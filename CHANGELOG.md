@@ -30,6 +30,9 @@ Continue reading to see the changes included in the latest version.
 What's changed since v2.7.0:
 
 - Engineering:
+  - Updated PSRule schema files.
+    [#1060](https://github.com/microsoft/PSRule-vscode/pull/1060)
+    [#1062](https://github.com/microsoft/PSRule-vscode/pull/1062)
   - Bump vscode engine to v1.76.0.
     [#1036](https://github.com/microsoft/PSRule-vscode/pull/1036)
   - Bump mocha to v10.2.0.
