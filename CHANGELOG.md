@@ -27,6 +27,12 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+What's changed since v2.8.0:
+
+- Engineering:
+  - Bump vscode engine to v1.77.0.
+    [#1072](https://github.com/microsoft/PSRule-vscode/pull/1072)
+
 ## v2.8.0
 
 What's changed since v2.7.0:
