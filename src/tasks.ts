@@ -8,7 +8,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { defaultOptionsFile } from './consts';
 import { ILogger } from './logger';
-import { configuration } from './configuration';
+import { configuration, ExecutionActionPreference } from './configuration';
 import { pwsh } from './powershell';
 
 const emptyTasks: vscode.Task[] = [];
@@ -219,6 +219,8 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         }
 
         const executionNotProcessedWarning = configuration.get().executionNotProcessedWarning;
+        const executionRuleExcluded = configuration.get().executionRuleExcluded;
+        const executionRuleSuppressed = configuration.get().executionRuleSuppressed;
         const outputAs = configuration.get().outputAs;
         const ruleBaseline = configuration.get().ruleBaseline;
 
@@ -292,7 +294,26 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             );
         }
 
-        // Return the task instance
+        // Set environment variables for the task.
+        let taskEnv: { [key: string]: string } = {
+            PSRULE_OUTPUT_STYLE: 'VisualStudioCode',
+            PSRULE_OUTPUT_AS: outputAs,
+            PSRULE_OUTPUT_CULTURE: vscode.env.language,
+            PSRULE_OUTPUT_BANNER: 'Minimal',
+            PSRULE_EXECUTION_NOTPROCESSEDWARNING: executionNotProcessedWarning
+                ? 'true'
+                : 'false',
+        };
+
+        if (executionRuleExcluded !== undefined && executionRuleExcluded !== ExecutionActionPreference.None) {
+            taskEnv.PSRULE_EXECUTION_RULEEXCLUDED = executionRuleExcluded;
+        }
+
+        if (executionRuleSuppressed !== undefined && executionRuleSuppressed !== ExecutionActionPreference.None) {
+            taskEnv.PSRULE_EXECUTION_RULESUPPRESSED = executionRuleSuppressed;
+        }
+
+        // Return the task instance.
         return new vscode.Task(
             definition,
             folder ?? vscode.TaskScope.Workspace,
@@ -301,15 +322,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             new vscode.ShellExecution(getCmd(), {
                 executable: pwsh.path,
                 shellArgs: ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command'],
-                env: {
-                    PSRULE_OUTPUT_STYLE: 'VisualStudioCode',
-                    PSRULE_OUTPUT_AS: outputAs,
-                    PSRULE_OUTPUT_CULTURE: vscode.env.language,
-                    PSRULE_OUTPUT_BANNER: 'Minimal',
-                    PSRULE_EXECUTION_NOTPROCESSEDWARNING: executionNotProcessedWarning
-                        ? 'true'
-                        : 'false',
-                },
+                env: taskEnv,
             }),
             matcher
         );
@@ -326,7 +339,7 @@ class NoPowerShellPseudoterminal implements vscode.Pseudoterminal {
     open(initialDimensions: vscode.TerminalDimensions | undefined): void {
         this.run();
     }
-    close(): void {}
+    close(): void { }
 
     private async run(): Promise<void> {
         return new Promise<void>((resolve) => {

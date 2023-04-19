@@ -45,12 +45,7 @@
     "workspaceContains:**/*.Rule.json",
     "workspaceContains:**/*.Rule.jsonc",
     "workspaceContains:**/*.Rule.ps1",
-    "onCommand:workbench.action.tasks.runTask",
-    "onCommand:PSRule.createOrEditDocumentation",
-    "onCommand:PSRule.openOptionsFile",
-    "onCommand:PSRule.createOptionsFile",
-    "onCommand:PSRule.configureSettings",
-    "onCommand:PSRule.walkthroughCopySnippet"
+    "onCommand:workbench.action.tasks.runTask"
   ],
   "main": "./out/dist/main.js",
   "capabilities": {
@@ -129,6 +124,40 @@
             "default": false,
             "description": "Warn when objects are not processed by any rule.",
             "scope": "window"
+          },
+          "PSRule.execution.ruleExcluded": {
+            "type": "string",
+            "default": "None",
+            "markdownDescription": "Determines how to handle [excluded rules](https://aka.ms/ps-rule/options#executionruleexcluded). When set to `None`, PSRule will use the default (`Ignore`), unless set by [PSRule options](https://aka.ms/ps-rule/options#executionruleexcluded).",
+            "markdownEnumDescriptions": [
+              "Excluded rules will not generate any notifications unless overridden.",
+              "Excluded rules will not generate any notifications.",
+              "Excluded rules will generate a warning.",
+              "Excluded rules will generate an error."
+            ],
+            "enum": [
+              "None",
+              "Ignore",
+              "Warn",
+              "Error"
+            ]
+          },
+          "PSRule.execution.ruleSuppressed": {
+            "type": "string",
+            "default": "None",
+            "markdownDescription": "Determines how to handle [suppressed rules](https://aka.ms/ps-rule/options#executionrulesuppressed). When set to `None`, PSRule will use the default (`Warn`), unless set by [PSRule options](https://aka.ms/ps-rule/options#executionrulesuppressed).",
+            "markdownEnumDescriptions": [
+              "Suppressed rules will generate a warning unless overridden.",
+              "Suppressed rules will not generate any notifications.",
+              "Suppressed rules will generate a warning.",
+              "Suppressed rules will generate an error."
+            ],
+            "enum": [
+              "None",
+              "Ignore",
+              "Warn",
+              "Error"
+            ]
           },
           "PSRule.experimental.enabled": {
             "type": "boolean",

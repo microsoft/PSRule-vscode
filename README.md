@@ -82,6 +82,8 @@ Name                                            | Description
 `PSRule.documentation.customSnippetPath`        | The path to a file containing a rule documentation snippet. When not set, built-in PSRule snippets will be used.
 `PSRule.documentation.snippet`                  | The name of a snippet to use when creating new rule documentation. By default, the built-in `Rule Doc` snippet will be used.
 `PSRule.execution.notProcessedWarning`          | Warn when objects are not processed by any rule.
+`PSRule.execution.ruleExcluded`                 | Determines how to handle excluded rules. When set to `None`, PSRule will use the default (`Ignore`), unless set by PSRule options.
+`PSRule.execution.ruleSuppressed`               | Determines how to handle suppressed rules. When set to `None`, PSRule will use the default (`Warn`), unless set by PSRule options.
 `PSRule.experimental.enabled`                   | Enables experimental features in the PSRule extension.
 `PSRule.notifications.showChannelUpgrade`       | Determines if a notification to switch to the stable channel is shown on start up.
 `PSRule.notifications.showPowerShellExtension`  | Determines if a notification to install the PowerShell extension is shown on start up.
@@ -141,7 +143,6 @@ This project is [licensed under the MIT License][license].
 
 [issue]: https://github.com/Microsoft/PSRule-vscode/issues
 [discussion]: https://github.com/microsoft/PSRule-vscode/discussions
-[ci-badge]: https://dev.azure.com/bewhite/PSRule-vscode/_apis/build/status/PSRule-vscode-CI?branchName=main
 [vscode-ext-gallery]: https://code.visualstudio.com/docs/editor/extension-gallery
 [ext-preview]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview
 [ext-preview-version-badge]: https://vsmarketplacebadges.dev/version/bewhite.psrule-vscode-preview.png
@@ -151,6 +152,5 @@ This project is [licensed under the MIT License][license].
 [ext-stable-installs-badge]: https://vsmarketplacebadges.dev/installs-short/bewhite.psrule-vscode.png
 [module-version-badge]: https://img.shields.io/powershellgallery/v/PSRule.png?label=PowerShell%20Gallery&color=brightgreen
 [contribution guide]: https://github.com/Microsoft/PSRule-vscode/blob/main/CONTRIBUTING.md
-[change log]: https://github.com/Microsoft/PSRule-vscode/blob/main/CHANGELOG.md
 [license]: https://github.com/Microsoft/PSRule-vscode/blob/main/LICENSE
 [ps-rule.yaml]: https://aka.ms/ps-rule/options
