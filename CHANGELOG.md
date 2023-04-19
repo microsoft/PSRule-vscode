@@ -30,6 +30,8 @@ Continue reading to see the changes included in the latest version.
 What's changed since v2.8.0:
 
 - Engineering:
+  - Updated PSRule schema files.
+    [#1092](https://github.com/microsoft/PSRule-vscode/pull/1092)
   - Bump vscode engine to v1.77.0.
     [#1072](https://github.com/microsoft/PSRule-vscode/pull/1072)
   - Bump typescript to v5.0.4.
