@@ -1,18 +1,18 @@
 [
-    {
-        "name": "01_requiresModules",
-        "snippet": [
-            "requires:",
-            "  PSRule: '>=2.6.0'",
-            "  PSRule.Rules.Azure: '>=1.22.1'"
-        ]
-    },
-    {
-        "name": "01_configureAzure",
-        "snippet": [
-            "configuration:",
-            "  AZURE_PARAMETER_FILE_EXPANSION: true",
-            "  AZURE_BICEP_FILE_EXPANSION: true"
-        ]
-    }
+  {
+    "name": "01_requiresModules",
+    "snippet": [
+      "requires:",
+      "  PSRule: '>=2.8.1'",
+      "  PSRule.Rules.Azure: '>=1.26.1'"
+    ]
+  },
+  {
+    "name": "01_configureAzure",
+    "snippet": [
+      "configuration:",
+      "  AZURE_PARAMETER_FILE_EXPANSION: true",
+      "  AZURE_BICEP_FILE_EXPANSION: true"
+    ]
+  }
 ]
