@@ -3,34 +3,41 @@
 // Hover to view descriptions of existing attributes.
 // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Extension",
-            "type": "extensionHost",
-            "request": "launch",
-            "runtimeExecutable": "${execPath}",
-            "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
-            "outFiles": ["${workspaceFolder}/out/**/*.js"],
-            "preLaunchTask": "Compile"
-        },
-        {
-            "name": "Extension Tests",
-            "type": "extensionHost",
-            "request": "launch",
-            "presentation": {
-                "hidden": false,
-                "group": "",
-                "order": 1
-            },
-            "internalConsoleOptions": "openOnSessionStart",
-            "runtimeExecutable": "${execPath}",
-            "args": [
-                "--extensionDevelopmentPath=${workspaceFolder}",
-                "--extensionTestsPath=${workspaceFolder}/out/dist/test/suite/index"
-            ],
-            "outFiles": ["${workspaceFolder}/out/dist/test/**/*.js"],
-            "preLaunchTask": "Compile"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--disable-extension=bewhite.psrule-vscode-preview,bewhite.psrule-vscode"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/out/**/*.js"
+      ],
+      "preLaunchTask": "Compile"
+    },
+    {
+      "name": "Extension Tests",
+      "type": "extensionHost",
+      "request": "launch",
+      "presentation": {
+        "hidden": false,
+        "group": "",
+        "order": 1
+      },
+      "internalConsoleOptions": "openOnSessionStart",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--extensionTestsPath=${workspaceFolder}/out/dist/test/suite/index"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/out/dist/test/**/*.js"
+      ],
+      "preLaunchTask": "Compile"
+    }
+  ]
 }

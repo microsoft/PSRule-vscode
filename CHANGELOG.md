@@ -29,6 +29,12 @@ Continue reading to see the changes included in the latest version.
 
 What's changed since v2.8.0:
 
+- New features:
+  - Added configuration to tune logging for excluded or suppressed rules by @BernieWhite.
+    [#1068](https://github.com/microsoft/PSRule-vscode/issues/1068)
+    - Use these options to reduce output noise when testing in Visual Studio Code.
+    - The `PSRule.execution.ruleExcluded` setting configures excluded rules.
+    - The `PSRule.execution.ruleSuppressed` setting configures suppressed rules.
 - Engineering:
   - Updated PSRule schema files.
     [#1092](https://github.com/microsoft/PSRule-vscode/pull/1092)

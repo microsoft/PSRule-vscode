@@ -14,6 +14,28 @@ export enum OutputAs {
     Summary = 'Summary',
 }
 
+export enum ExecutionActionPreference {
+    /**
+     * No preference.
+     * This will inherit from the default.
+     */
+    None = 'None',
+
+    /**
+     * Continue to execute silently.
+     */
+    Ignore = 'Ignore',
+    /**
+     * Continue to execute but log a warning.
+     */
+    Warn = 'Warn',
+
+    /**
+     * Generate an error.
+     */
+    Error = 'Error',
+}
+
 /**
  * PSRule extension settings.
  */
@@ -23,7 +45,13 @@ export interface ISetting {
     documentationSnippet: string;
     documentationPath: string | undefined;
     documentationLocalePath: string;
+
+    /**
+     * Execution options
+     */
     executionNotProcessedWarning: boolean;
+    executionRuleExcluded: ExecutionActionPreference;
+    executionRuleSuppressed: ExecutionActionPreference;
 
     /**
      * Determines if experimental features are enabled.
@@ -49,6 +77,8 @@ const globalDefaults: ISetting = {
     documentationPath: undefined,
     documentationLocalePath: env.language,
     executionNotProcessedWarning: false,
+    executionRuleExcluded: ExecutionActionPreference.None,
+    executionRuleSuppressed: ExecutionActionPreference.None,
     experimentalEnabled: false,
     outputAs: OutputAs.Summary,
     notificationsShowChannelUpgrade: true,
@@ -127,14 +157,16 @@ export class ConfigurationManager {
         this.current.codeLensRuleDocumentationLinks = !experimental
             ? false
             : config.get<boolean>(
-                  'codeLens.ruleDocumentationLinks',
-                  this.default.codeLensRuleDocumentationLinks
-              );
+                'codeLens.ruleDocumentationLinks',
+                this.default.codeLensRuleDocumentationLinks
+            );
 
         this.current.executionNotProcessedWarning = config.get<boolean>(
             'execution.notProcessedWarning',
             this.default.executionNotProcessedWarning
         );
+        this.current.executionRuleExcluded = config.get<ExecutionActionPreference>('execution.ruleExcluded', this.default.executionRuleExcluded);
+        this.current.executionRuleSuppressed = config.get<ExecutionActionPreference>('execution.ruleSuppressed', this.default.executionRuleSuppressed);
 
         this.current.outputAs = config.get<OutputAs>('output.as', this.default.outputAs);
 
