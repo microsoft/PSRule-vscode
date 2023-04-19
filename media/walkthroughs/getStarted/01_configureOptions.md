@@ -2,7 +2,7 @@
 
 - First, type `requires` and press Tab or Enter to complete the suggestion.
 - Continue typing to replace `Module` with `PSRule` and press Tab or Enter to move to the version constraint.
-- Replace `'>=1.0.0'` with the minimum version of PSRule you want to use, such as `'>=2.6.0'`.
+- Replace `'>=1.0.0'` with the minimum version of PSRule you want to use, such as `'>=2.8.1'`.
 
 ## Configure additional modules
 
@@ -13,8 +13,8 @@ For example:
 
 ```yaml
 requires:
-  PSRule: '>=2.6.0'
-  PSRule.Rules.Azure: '>=1.22.1'
+  PSRule: '>=2.8.1'
+  PSRule.Rules.Azure: '>=1.26.1'
 ```
 
 ### Configure other options
