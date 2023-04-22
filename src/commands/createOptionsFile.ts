@@ -7,6 +7,11 @@ import { Position, TextDocument, Uri, window, workspace } from 'vscode';
 import { logger } from '../logger';
 import { getActiveOrFirstWorkspace, readOptionsSnippet } from '../utils';
 
+/**
+ * Create a new options file.
+ * @param path The path to the options file.
+ * @returns A promise for the task.
+ */
 export async function createOptionsFile(path: string | undefined): Promise<void> {
     let defaultUri: Uri | undefined = getActiveOrFirstWorkspace()?.uri;
     if (defaultUri) {

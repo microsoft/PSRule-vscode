@@ -11,6 +11,11 @@ import { configuration } from '../configuration';
 const validNameExpression =
     /[^<>:/\\|?*"'`+@._\-\x00-\x1F][^<>:/\\|?*"'`+@\x00-\x1F]{1,126}[^<>:/\\|?*"'`+@._\-\x00-\x1F]+/g;
 
+/**
+ * Create or edit documentation for a rule.
+ * @param name The name of the rule.
+ * @returns A promise for the task.
+ */
 export async function createOrEditDocumentation(name: string | undefined): Promise<void> {
     if (name === '' || name === undefined) {
         name = await window.showInputBox({

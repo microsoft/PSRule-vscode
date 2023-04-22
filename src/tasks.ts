@@ -314,7 +314,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         }
 
         // Return the task instance.
-        return new vscode.Task(
+        const t = new vscode.Task(
             definition,
             folder ?? vscode.TaskScope.Workspace,
             taskName,
@@ -326,6 +326,8 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             }),
             matcher
         );
+        t.detail = 'Run analysis for current workspace.';
+        return t;
     }
 }
 

@@ -14,6 +14,8 @@ import { createOptionsFile } from './commands/createOptionsFile';
 import { openOptionsFile } from './commands/openOptionsFile';
 import { walkthroughCopySnippet } from './commands/walkthroughCopySnippet';
 import { configureSettings } from './commands/configureSettings';
+import { runAnalysisTask } from './commands/runAnalysisTask';
+import { showTasks } from './commands/showTasks';
 
 export let taskManager: PSRuleTaskProvider | undefined;
 export let docLensProvider: DocumentationLensProvider | undefined;
@@ -30,7 +32,7 @@ export class ExtensionManager implements vscode.Disposable {
     private _info!: ExtensionInfo;
     private _context!: vscode.ExtensionContext;
 
-    constructor() {}
+    constructor() { }
 
     /**
      * Information about the extension.
@@ -112,6 +114,16 @@ export class ExtensionManager implements vscode.Disposable {
             this._context.subscriptions.push(
                 vscode.commands.registerCommand('PSRule.walkthroughCopySnippet', (args: { snippet: string }) => {
                     walkthroughCopySnippet(args.snippet);
+                })
+            );
+            this._context.subscriptions.push(
+                vscode.commands.registerCommand('PSRule.runAnalysisTask', () => {
+                    runAnalysisTask();
+                })
+            );
+            this._context.subscriptions.push(
+                vscode.commands.registerCommand('PSRule.showTasks', () => {
+                    showTasks();
                 })
             );
         }
@@ -221,14 +233,14 @@ export class ExtensionManager implements vscode.Disposable {
                 `You may experience issues running the ${extensionChannel} version of PSRule, side-by-side with the stable version. Please uninstall one of ${extensionChannel} or stable version and reload Visual Studio Code for the best experience.`,
                 showExtension,
             )
-            .then((choice) => {
-                if (choice === showExtension) {
-                    vscode.commands.executeCommand(
-                        'workbench.extensions.search',
-                        'PSRule'
-                    );
-                }
-            });
+                .then((choice) => {
+                    if (choice === showExtension) {
+                        vscode.commands.executeCommand(
+                            'workbench.extensions.search',
+                            'PSRule'
+                        );
+                    }
+                });
         }
 
         const result: ExtensionInfo = {
