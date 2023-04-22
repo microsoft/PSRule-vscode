@@ -26,6 +26,9 @@ For example, the `PSRule.Rules.Azure` module has the following options:
 
 ```yaml
 configuration:
+  # Enable expansion of Azure Template parameter files.
   AZURE_PARAMETER_FILE_EXPANSION: true
+
+  # Enable expansion of Azure Bicep files.
   AZURE_BICEP_FILE_EXPANSION: true
 ```

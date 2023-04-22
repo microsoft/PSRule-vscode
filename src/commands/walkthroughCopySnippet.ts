@@ -7,6 +7,11 @@ import { env } from 'vscode';
 import { logger } from '../logger';
 import { ext } from '../extension';
 
+/**
+ * Copy a walkthrough snippet to the clipboard by name.
+ * @param name The name of a snippet to copy.
+ * @returns A promise for the task.
+ */
 export async function walkthroughCopySnippet(name: string | undefined): Promise<void> {
     // Clear the clipboard and load snippets.
     env.clipboard.writeText('');

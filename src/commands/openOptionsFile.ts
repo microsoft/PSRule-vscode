@@ -6,6 +6,11 @@ import { RelativePattern, TextDocument, Uri, window, workspace, WorkspaceFolder 
 import { logger } from '../logger';
 import { getActiveOrFirstWorkspace } from '../utils';
 
+/**
+ * Open an existing options file.
+ * @param path The path to the options file.
+ * @returns A promise for the task.
+ */
 export async function openOptionsFile(path: string | undefined): Promise<void> {
     const optionFilePath = await getOptionFile(path);
     if (optionFilePath === '' || optionFilePath === undefined) return;

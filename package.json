@@ -83,6 +83,17 @@
         "title": "Copy walkthrough snippet",
         "enablement": "false",
         "category": "PSRule"
+      },
+      {
+        "command": "PSRule.runAnalysisTask",
+        "title": "Run analysis",
+        "category": "PSRule"
+      },
+      {
+        "command": "PSRule.showTasks",
+        "title": "Show tasks",
+        "enablement": "false",
+        "category": "PSRule"
       }
     ],
     "configuration": [
@@ -373,7 +384,6 @@
         "id": "PSRule.getStarted",
         "title": "Get Started with PSRule",
         "description": "Learn about and start using PSRule with Visual Studio Code.",
-        "when": "config.PSRule.experimental.enabled",
         "steps": [
           {
             "id": "configureOptions",
@@ -399,13 +409,31 @@
             ]
           },
           {
+            "id": "runTasks",
+            "title": "Run analysis",
+            "description": "Tasks can be used to run analysis on files within your current Visual Studio Code workspace.\n[Show tasks](command:PSRule.showTasks)\nOr you can run the [analysis](command:PSRule.runAnalysisTask) task directly from the command palette.",
+            "media": {
+              "markdown": "media/walkthroughs/getStarted/03_runTasks.md"
+            },
+            "completionEvents": [
+              "command:PSRule.runAnalysisTask",
+              "command:PSRule.showTasks"
+            ]
+          },
+          {
             "id": "learnMore",
             "title": "Learn more",
             "description": "Check out our [PSRule documentation](https://aka.ms/ps-rule) to learn more about features and customization.",
             "media": {
-              "markdown": "media/walkthroughs/getStarted/03_learnMore.md"
+              "markdown": "media/walkthroughs/getStarted/04_learnMore.md"
             }
           }
+        ],
+        "featuredFor": [
+          "**/ps-rule.yaml",
+          "**/*.Rule.yaml",
+          "**/*.Rule.ps1",
+          "**/*.Rule.jsonc"
         ]
       }
     ]

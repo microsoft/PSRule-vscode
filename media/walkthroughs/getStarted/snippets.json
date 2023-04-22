@@ -11,7 +11,10 @@
     "name": "01_configureAzure",
     "snippet": [
       "configuration:",
+      "  # Enable expansion of Azure Template parameter files.",
       "  AZURE_PARAMETER_FILE_EXPANSION: true",
+      "",
+      "  # Enable expansion of Azure Bicep files.",
       "  AZURE_BICEP_FILE_EXPANSION: true"
     ]
   }
