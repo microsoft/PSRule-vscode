@@ -49,9 +49,10 @@ export interface ISetting {
     /**
      * Execution options
      */
-    executionNotProcessedWarning: boolean;
+    executionNotProcessedWarning: boolean | undefined;
     executionRuleExcluded: ExecutionActionPreference;
     executionRuleSuppressed: ExecutionActionPreference;
+    executionUnprocessedObject: ExecutionActionPreference;
 
     /**
      * Determines if experimental features are enabled.
@@ -76,9 +77,10 @@ const globalDefaults: ISetting = {
     documentationSnippet: 'Rule Doc',
     documentationPath: undefined,
     documentationLocalePath: env.language,
-    executionNotProcessedWarning: false,
+    executionNotProcessedWarning: undefined,
     executionRuleExcluded: ExecutionActionPreference.None,
     executionRuleSuppressed: ExecutionActionPreference.None,
+    executionUnprocessedObject: ExecutionActionPreference.None,
     experimentalEnabled: false,
     outputAs: OutputAs.Summary,
     notificationsShowChannelUpgrade: true,
@@ -161,12 +163,10 @@ export class ConfigurationManager {
                 this.default.codeLensRuleDocumentationLinks
             );
 
-        this.current.executionNotProcessedWarning = config.get<boolean>(
-            'execution.notProcessedWarning',
-            this.default.executionNotProcessedWarning
-        );
+        this.current.executionNotProcessedWarning = config.get<boolean>('execution.notProcessedWarning');
         this.current.executionRuleExcluded = config.get<ExecutionActionPreference>('execution.ruleExcluded', this.default.executionRuleExcluded);
         this.current.executionRuleSuppressed = config.get<ExecutionActionPreference>('execution.ruleSuppressed', this.default.executionRuleSuppressed);
+        this.current.executionUnprocessedObject = config.get<ExecutionActionPreference>('execution.unprocessedObject', this.default.executionUnprocessedObject);
 
         this.current.outputAs = config.get<OutputAs>('output.as', this.default.outputAs);
 
