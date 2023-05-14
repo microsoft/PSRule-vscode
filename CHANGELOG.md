@@ -39,6 +39,11 @@ What's changed since v2.8.0:
     - The `PSRule.execution.ruleSuppressed` setting configures suppressed rules.
   - Add running analysis to getting started walkthrough by @BernieWhite.
     [#1093](https://github.com/microsoft/PSRule-vscode/issues/1093)
+  - Added support for new unprocessed object option by @BernieWhite.
+    [#1127](https://github.com/microsoft/PSRule-vscode/issues/1127)
+    - The `PSRule.execution.unprocessedObject` setting configures what happens when objects are not processed.
+    - The `PSRule.execution.notProcessedWarning` setting has been deprecated inline with PSRule support.
+    - For more information see [deprecations](https://aka.ms/ps-rule/deprecations#execution-options).
 - Engineering:
   - Updated PSRule schema files.
     [#1092](https://github.com/microsoft/PSRule-vscode/pull/1092)

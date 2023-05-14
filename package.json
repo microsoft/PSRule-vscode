@@ -133,8 +133,9 @@
           "PSRule.execution.notProcessedWarning": {
             "type": "boolean",
             "default": false,
-            "description": "Warn when objects are not processed by any rule.",
-            "scope": "window"
+            "description": "Warn when objects are not processed by any rule. Supported on PSRule < v3.",
+            "scope": "window",
+            "markdownDeprecationMessage": "This option is replaced by [Unprocessed Object](https://aka.ms/ps-rule/options#executionunprocessedobject) from PSRule v2.9.0. This option will be removed from PSRule v3."
           },
           "PSRule.execution.ruleExcluded": {
             "type": "string",
@@ -151,7 +152,8 @@
               "Ignore",
               "Warn",
               "Error"
-            ]
+            ],
+            "scope": "application"
           },
           "PSRule.execution.ruleSuppressed": {
             "type": "string",
@@ -168,7 +170,26 @@
               "Ignore",
               "Warn",
               "Error"
-            ]
+            ],
+            "scope": "application"
+          },
+          "PSRule.execution.unprocessedObject": {
+            "type": "string",
+            "default": "None",
+            "markdownDescription": "Determines how to report objects that are [not processed by any rule](https://aka.ms/ps-rule/options#executionunprocessedobject). When set to `None`, PSRule will use the default (`Warn`), unless set by [PSRule options](https://aka.ms/ps-rule/options#executionunprocessedobject).",
+            "markdownEnumDescriptions": [
+              "Suppressed rules will generate a warning unless overridden.",
+              "Suppressed rules will not generate any notifications.",
+              "Suppressed rules will generate a warning.",
+              "Suppressed rules will generate an error."
+            ],
+            "enum": [
+              "None",
+              "Ignore",
+              "Warn",
+              "Error"
+            ],
+            "scope": "application"
           },
           "PSRule.experimental.enabled": {
             "type": "boolean",
