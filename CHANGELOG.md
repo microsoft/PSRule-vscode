@@ -43,8 +43,8 @@ What's changed since v2.8.0:
   - Updated PSRule schema files.
     [#1092](https://github.com/microsoft/PSRule-vscode/pull/1092)
     [#1110](https://github.com/microsoft/PSRule-vscode/pull/1110)
+    [#1125](https://github.com/microsoft/PSRule-vscode/pull/1125)
   - Bump vscode engine to v1.78.0.
-    [#1114](https://github.com/microsoft/PSRule-vscode/pull/1114)
   - Bump typescript to v5.0.4.
     [#1081](https://github.com/microsoft/PSRule-vscode/pull/1081)
   - Bump and rename vsce package to `@vscode/vsce` v2.19.0 by @BernieWhite.
