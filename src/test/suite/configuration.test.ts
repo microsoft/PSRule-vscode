@@ -8,7 +8,7 @@ suite('ConfigurationManager tests', () => {
     test('Defaults', () => {
         const config = new ConfigurationManager(undefined, 'PSRule_unit_test');
 
-        assert.equal(config.get().codeLensRuleDocumentationLinks, false);
+        assert.equal(config.get().codeLensRuleDocumentationLinks, true);
         assert.equal(config.get().documentationCustomSnippetPath, undefined);
         assert.equal(config.get().documentationLocalePath, 'en');
         assert.equal(config.get().documentationPath, undefined);

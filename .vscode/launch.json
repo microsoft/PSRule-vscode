@@ -11,8 +11,9 @@
       "request": "launch",
       "runtimeExecutable": "${execPath}",
       "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}",
-        "--disable-extension=bewhite.psrule-vscode-preview,bewhite.psrule-vscode"
+        "--disable-extension=bewhite.psrule-vscode-preview",
+        "--disable-extension=bewhite.psrule-vscode",
+        "--extensionDevelopmentPath=${workspaceFolder}"
       ],
       "outFiles": [
         "${workspaceFolder}/out/**/*.js"
@@ -31,6 +32,8 @@
       "internalConsoleOptions": "openOnSessionStart",
       "runtimeExecutable": "${execPath}",
       "args": [
+        "--disable-extension=bewhite.psrule-vscode-preview",
+        "--disable-extension=bewhite.psrule-vscode",
         "--extensionDevelopmentPath=${workspaceFolder}",
         "--extensionTestsPath=${workspaceFolder}/out/dist/test/suite/index"
       ],
