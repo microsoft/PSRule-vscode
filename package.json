@@ -497,7 +497,7 @@
     "mocha": "^10.2.0",
     "typescript": "^5.0.4",
     "@vscode/vsce": "^2.19.0",
-    "@vscode/test-electron": "^2.3.0",
+    "@vscode/test-electron": "^2.3.2",
     "nth-check": ">=2.1.1",
     "ansi-regex": ">=6.0.1"
   }
