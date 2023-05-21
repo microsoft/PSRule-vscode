@@ -229,10 +229,11 @@ export class ExtensionManager implements vscode.Disposable {
         let disable = false;
         if ((extensionChannel === 'preview' || extensionChannel === 'dev') && isStableInstalled) {
             disable = true;
-            vscode.window.showWarningMessage(
-                `You may experience issues running the ${extensionChannel} version of PSRule, side-by-side with the stable version. Please uninstall one of ${extensionChannel} or stable version and reload Visual Studio Code for the best experience.`,
-                showExtension,
-            )
+            vscode.window
+                .showWarningMessage(
+                    `You may experience issues running the ${extensionChannel} version of PSRule, side-by-side with the stable version. Please uninstall one of ${extensionChannel} or stable version and reload Visual Studio Code for the best experience.`,
+                    showExtension,
+                )
                 .then((choice) => {
                     if (choice === showExtension) {
                         vscode.commands.executeCommand(

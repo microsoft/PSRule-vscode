@@ -103,7 +103,7 @@
           "PSRule.codeLens.ruleDocumentationLinks": {
             "type": "boolean",
             "default": true,
-            "description": "Enables Code Lens that displays links to rule documentation. This is an experimental feature that requires experimental features to be enabled.",
+            "description": "Enables Code Lens that displays links to rule documentation.",
             "scope": "application"
           },
           "PSRule.documentation.path": {

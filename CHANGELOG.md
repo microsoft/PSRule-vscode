@@ -12,18 +12,8 @@ Installing both channels may cause unexpected behavior.
 - [Stable][ext-stable] - Less frequent releases, with more user testing, experimental features are disabled.
   - Uses [semantic versioning](https://semver.org/) to declare changes.
   - Aligned to versioning of PSRule.
+
 Continue reading to see the changes included in the latest version.
-
-**Experimental features**:
-
-- CodeLens to create or edit documentation.
-  - Link from rules allows markdown documentation to be created or edited.
-  - When existing markdown documentation exists, file is opened in editor.
-  - When documentation for a rule does not exist, a new file is created from a snippet.
-  - Added settings to configure the location for storing documentation,
-    and the snippet used to create documentation.
-- Get started with PSRule walkthrough.
-  - Steps cover basic PSRule configuration and documentation.
 
 ## Unreleased
 
@@ -32,6 +22,8 @@ What's changed since v2.8.0:
 - New features:
   - Getting started walkthrough in Visual Studio Code is now generally available by @BernieWhite
     [#1099](https://github.com/microsoft/PSRule-vscode/issues/1099)
+  - CodeLens for open or editing documentation for a rule is now generally available by @BernieWhite
+    [#1139](https://github.com/microsoft/PSRule-vscode/issues/1139)
   - Added configuration to tune logging for excluded or suppressed rules by @BernieWhite.
     [#1068](https://github.com/microsoft/PSRule-vscode/issues/1068)
     - Use these options to reduce output noise when testing in Visual Studio Code.

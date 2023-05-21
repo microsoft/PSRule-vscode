@@ -156,12 +156,10 @@ export class ConfigurationManager {
         this.current.documentationLocalePath =
             config.get<string>('documentation.localePath') ?? this.default.documentationLocalePath;
 
-        this.current.codeLensRuleDocumentationLinks = !experimental
-            ? false
-            : config.get<boolean>(
-                'codeLens.ruleDocumentationLinks',
-                this.default.codeLensRuleDocumentationLinks
-            );
+        this.current.codeLensRuleDocumentationLinks = config.get<boolean>(
+            'codeLens.ruleDocumentationLinks',
+            this.default.codeLensRuleDocumentationLinks
+        );
 
         this.current.executionNotProcessedWarning = config.get<boolean>('execution.notProcessedWarning');
         this.current.executionRuleExcluded = config.get<ExecutionActionPreference>('execution.ruleExcluded', this.default.executionRuleExcluded);
