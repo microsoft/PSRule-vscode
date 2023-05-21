@@ -54,6 +54,8 @@ What's changed since v2.8.0:
     [#1081](https://github.com/microsoft/PSRule-vscode/pull/1081)
   - Bump and rename vsce package to `@vscode/vsce` v2.19.0 by @BernieWhite.
     [#1090](https://github.com/microsoft/PSRule-vscode/issues/1090)
+  - Bump @vscode/test-electron to v2.3.2
+    [#1124](https://github.com/microsoft/PSRule-vscode/pull/1124)
 
 ## v2.8.0
 
