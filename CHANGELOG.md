@@ -41,6 +41,7 @@ What's changed since v2.8.0:
     [#1092](https://github.com/microsoft/PSRule-vscode/pull/1092)
     [#1110](https://github.com/microsoft/PSRule-vscode/pull/1110)
     [#1125](https://github.com/microsoft/PSRule-vscode/pull/1125)
+    [#1156](https://github.com/microsoft/PSRule-vscode/pull/1156)
   - Bump vscode engine to v1.78.1.
     [#1146](https://github.com/microsoft/PSRule-vscode/pull/1146)
   - Bump typescript to v5.1.3.
