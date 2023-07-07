@@ -17,14 +17,9 @@ trigger:
     - 'release/*'
   tags:
     include:
-    - 'v1.*'
     - 'v2.*'
 
-pr:
-  branches:
-    include:
-    - 'main'
-    - 'release/*'
+pr: none
 
 stages:
 
