@@ -45,13 +45,13 @@ jobs:
       - name: Build module
         timeout-minutes: 3
         run: |
-          npm run package
+          npm run package -- 0.0.1
 
       - name: Upload extension
         uses: actions/upload-artifact@v3
         with:
-          name: Extension-official
-          path: ./out/package/psrule-*.vsix
+          name: Extension
+          path: out/package/psrule-*.vsix
           retention-days: 3
           if-no-files-found: error
 
