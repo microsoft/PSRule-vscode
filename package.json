@@ -462,8 +462,10 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pack": "vsce package",
+    "package": "vsce package --dependencies --pre-release --no-git-tag-version --no-update-package-json --githubBranch main --out out/package/",
+    "package:stable": "vsce package --dependencies --no-git-tag-version --no-update-package-json --githubBranch main --out out/package/",
     "publish": "vsce publish",
+    "publish:stable": "vsce publish --dependencies --no-git-tag-version --no-update-package-json --githubBranch main --packagePath out/package/*.vsix",
     "lint": "eslint . --ext .ts,.tsx",
     "pretest": "npm run compile",
     "test": "node ./out/dist/test/runTest.js",

@@ -8,7 +8,8 @@
   },
   "files.associations": {
     "**/.azure-pipelines/*.yaml": "azure-pipelines",
-    "**/.azure-pipelines/jobs/*.yaml": "azure-pipelines"
+    "**/.azure-pipelines/jobs/*.yaml": "azure-pipelines",
+    "**/CODEOWNERS": "text"
   },
   "json.schemas": [
     {
