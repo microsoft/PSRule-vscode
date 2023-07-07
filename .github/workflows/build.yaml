@@ -39,13 +39,13 @@ jobs:
       - name: Install dependencies
         timeout-minutes: 3
         run: |
-          npm install --global @vscode/vsce
+          npm install --global @vscode/vsce --force
           npm install
 
       - name: Build module
         timeout-minutes: 3
         run: |
-          mkdir out/package/ --force
+          mkdir -p out/package/
           npm run package -- 0.0.1
 
       - name: Upload extension
