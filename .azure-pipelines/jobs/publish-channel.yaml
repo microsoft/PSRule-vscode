@@ -29,7 +29,7 @@ jobs:
       downloadPath: $(Build.SourcesDirectory)/out/package
 
   # Install pipeline dependencies
-  - powershell: ./.azure-pipelines/pipeline-deps.ps1
+  - powershell: ./scripts/pipeline-deps.ps1
     displayName: 'Install dependencies'
 
   # Install pipeline dependencies and build module

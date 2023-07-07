@@ -146,12 +146,12 @@ This project is [licensed under the MIT License][license].
 [discussion]: https://github.com/microsoft/PSRule-vscode/discussions
 [vscode-ext-gallery]: https://code.visualstudio.com/docs/editor/extension-gallery
 [ext-preview]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode-preview
-[ext-preview-version-badge]: https://vsmarketplacebadges.dev/version/bewhite.psrule-vscode-preview.png
-[ext-preview-installs-badge]: https://vsmarketplacebadges.dev/installs-short/bewhite.psrule-vscode-preview.png
+[ext-preview-version-badge]: https://img.shields.io/visual-studio-marketplace/v/bewhite.psrule-vscode-preview?label=Version
+[ext-preview-installs-badge]: https://img.shields.io/visual-studio-marketplace/i/bewhite.psrule-vscode-preview?label=Installs
 [ext-stable]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode
-[ext-stable-version-badge]: https://vsmarketplacebadges.dev/version/bewhite.psrule-vscode.png
-[ext-stable-installs-badge]: https://vsmarketplacebadges.dev/installs-short/bewhite.psrule-vscode.png
-[module-version-badge]: https://img.shields.io/powershellgallery/v/PSRule.png?label=PowerShell%20Gallery&color=brightgreen
+[ext-stable-version-badge]: https://img.shields.io/visual-studio-marketplace/v/bewhite.psrule-vscode?label=Version
+[ext-stable-installs-badge]: https://img.shields.io/visual-studio-marketplace/i/bewhite.psrule-vscode?label=Installs
+[module-version-badge]: https://img.shields.io/powershellgallery/v/PSRule?label=PowerShell%20Gallery
 [contribution guide]: https://github.com/Microsoft/PSRule-vscode/blob/main/CONTRIBUTING.md
 [license]: https://github.com/Microsoft/PSRule-vscode/blob/main/LICENSE
 [ps-rule.yaml]: https://aka.ms/ps-rule/options

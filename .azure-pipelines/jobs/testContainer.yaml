@@ -43,7 +43,7 @@ jobs:
     condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
 
   # Install pipeline dependencies
-  - powershell: ./.azure-pipelines/pipeline-deps.ps1
+  - powershell: ./scripts/pipeline-deps.ps1
     displayName: 'Install dependencies'
 
   # Download module

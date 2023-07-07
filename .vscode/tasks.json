@@ -1,261 +1,261 @@
 // See https://go.microsoft.com/fwlink/?LinkId=733558
 // for the documentation about the tasks.json format
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Build: dev",
-            "detail": "Locally build the extension as the 'dev' channel.",
-            "type": "shell",
-            "command": "Invoke-Build Build -Channel dev",
-            "group": "build",
-            "presentation": {
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [],
-            "osx": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "Install: preview",
-            "detail": "Build and install the extension as the 'preview' channel.",
-            "type": "shell",
-            "command": "Invoke-Build Install",
-            "presentation": {
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [],
-            "osx": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "Install: stable",
-            "detail": "Build and install the extension as the 'stable' channel.",
-            "type": "shell",
-            "command": "Invoke-Build Install -Channel stable",
-            "presentation": {
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [],
-            "osx": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "Install: dev",
-            "detail": "Build and install the extension as the 'dev' channel.",
-            "type": "shell",
-            "command": "Invoke-Build Install -Channel dev",
-            "presentation": {
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [],
-            "osx": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "Clean",
-            "detail": "Remove temporary working files and directories.",
-            "type": "shell",
-            "command": "Invoke-Build Clean",
-            "presentation": {
-                "reveal": "never",
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [],
-            "osx": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "Compile",
-            "detail": "Run TypeScript compile.",
-            "type": "npm",
-            "script": "compile",
-            "presentation": {
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [
-                "$tsc"
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build: dev",
+      "detail": "Locally build the extension as the 'dev' channel.",
+      "type": "shell",
+      "command": "Invoke-Build Build -Channel dev",
+      "group": "build",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
             ]
-        },
-        {
-            "label": "Analyze repository",
-            "detail": "Run analysis on files within the repository.",
-            "type": "shell",
-            "command": "Invoke-Build Rules -AssertStyle Client",
-            "group": "build",
-            "presentation": {
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [],
-            "osx": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "type": "npm",
-            "detail": "Run TypeScript compile and watch for changes.",
-            "script": "watch",
-            "problemMatcher": "$tsc-watch",
-            "isBackground": true,
-            "presentation": {
-                "reveal": "never"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "Compile",
-            "type": "npm",
-            "script": "compile",
-            "presentation": {
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [
-                "$tsc"
-            ]
-        },
-        {
-            "type": "PSRule",
-            "problemMatcher": [
-                "$PSRule"
-            ],
-            "outcome": [
-                "Fail",
-                "Error",
-                "Pass"
-            ],
-            "label": "PSRule: Run analysis",
-            "detail": "Run analysis on files within the repository.",
-            "presentation": {
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            }
+          }
         }
-    ]
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "Install: preview",
+      "detail": "Build and install the extension as the 'preview' channel.",
+      "type": "shell",
+      "command": "Invoke-Build Install",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "Install: stable",
+      "detail": "Build and install the extension as the 'stable' channel.",
+      "type": "shell",
+      "command": "Invoke-Build Install -Channel stable",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "Install: dev",
+      "detail": "Build and install the extension as the 'dev' channel.",
+      "type": "shell",
+      "command": "Invoke-Build Install -Channel dev",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "Clean",
+      "detail": "Remove temporary working files and directories.",
+      "type": "shell",
+      "command": "Invoke-Build Clean",
+      "presentation": {
+        "reveal": "never",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "Compile",
+      "detail": "Run TypeScript compile.",
+      "type": "npm",
+      "script": "compile",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [
+        "$tsc"
+      ]
+    },
+    {
+      "label": "Analyze repository",
+      "detail": "Run analysis on files within the repository.",
+      "type": "shell",
+      "command": "Invoke-Build Rules -AssertStyle Client",
+      "group": "build",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "npm",
+      "detail": "Run TypeScript compile and watch for changes.",
+      "script": "watch",
+      "problemMatcher": "$tsc-watch",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "never"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Compile",
+      "type": "npm",
+      "script": "compile",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [
+        "$tsc"
+      ]
+    },
+    {
+      "type": "PSRule",
+      "problemMatcher": [
+        "$PSRule"
+      ],
+      "outcome": [
+        "Fail",
+        "Error",
+        "Pass"
+      ],
+      "label": "PSRule: Run analysis",
+      "detail": "Run analysis on files within the repository.",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      }
+    }
+  ]
 }

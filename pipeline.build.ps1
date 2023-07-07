@@ -113,7 +113,7 @@ task PackageExtension {
     if (!(Test-Path -Path $packageRoot)) {
         $Null = New-Item -Path $packageRoot -ItemType Directory -Force;
     }
-    exec { & npm run pack -- --out $packagePath }
+    exec { & npm run package -- --out $packagePath }
 }
 
 # Synopsis: Install the extension in Visual Studio Code

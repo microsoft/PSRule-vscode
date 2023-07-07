@@ -9,7 +9,7 @@ repository:
   url: https://github.com/microsoft/PSRule-vscode
 
 requires:
-  PSRule: '@pre >=2.2.0'
+  PSRule: '@pre >=2.9.0'
   PSRule.Rules.MSFT.OSS: '@pre >=1.0.1'
 
 include:

@@ -125,23 +125,3 @@ stages:
   - template: jobs/publish-channel.yaml
     parameters:
       channel: stable
-
-  - job: update_github_release
-    displayName: Update GitHub release
-    pool:
-      vmImage: 'ubuntu-22.04'
-    steps:
-
-    # Update GitHub release
-    - task: GitHubRelease@0
-      displayName: 'GitHub release'
-      inputs:
-        gitHubConnection: 'AzureDevOps-PSRule-vscode'
-        repositoryName: '$(Build.Repository.Name)'
-        action: edit
-        tag: '$(Build.SourceBranchName)'
-        releaseNotesSource: input
-        releaseNotes: 'See [change log](https://github.com/Microsoft/PSRule-vscode/blob/main/CHANGELOG.md)'
-        assetUploadMode: replace
-        addChangeLog: false
-        isPreRelease: false

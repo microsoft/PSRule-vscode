@@ -22,3 +22,4 @@ SECURITY.md
 SUPPORT.md
 .markdownlint.json
 out/updates.txt
+GitVersion.yml
