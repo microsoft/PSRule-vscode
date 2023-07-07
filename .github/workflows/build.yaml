@@ -85,10 +85,15 @@ jobs:
         run: |
           npm install
 
+      - name: Configure environment
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: |
+          /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          echo ">>> Started xvfb"
+
       - name: Run tests
         timeout-minutes: 5
         run: |
-          npm run compile
           npm test
         env:
           DISPLAY: ':99.0'
