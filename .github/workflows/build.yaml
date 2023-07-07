@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies
         timeout-minutes: 3
         run: |
-          npm install --global @vscode/vsce --force
+          npm install --global @vscode/vsce
           npm install
 
       - name: Build module
