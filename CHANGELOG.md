@@ -22,6 +22,8 @@ What's changed since v2.9.0:
 - Engineering:
   - Bump vscode engine to v1.78.1.
     [#1167](https://github.com/microsoft/PSRule-vscode/pull/1167)
+  - Bump @vscode/test-electron to v2.3.3.
+    [#1159](https://github.com/microsoft/PSRule-vscode/pull/1159)
 
 ## v2.9.0
 
@@ -56,7 +58,7 @@ What's changed since v2.8.0:
     [#1152](https://github.com/microsoft/PSRule-vscode/pull/1152)
   - Bump and rename vsce package to `@vscode/vsce` v2.19.0 by @BernieWhite.
     [#1090](https://github.com/microsoft/PSRule-vscode/issues/1090)
-  - Bump @vscode/test-electron to v2.3.2
+  - Bump @vscode/test-electron to v2.3.2.
     [#1124](https://github.com/microsoft/PSRule-vscode/pull/1124)
 
 ## v2.8.0
