@@ -3,14 +3,14 @@ info:
   name: PSRule
   description: |
     Visual Studio Code extension for PSRule.
-  url: https://github.com/Microsoft/PSRule-vscode
+  url: https://github.com/microsoft/PSRule-vscode
 
 repository:
   type: git
-  url: https://github.com/Microsoft/PSRule-vscode.git
+  url: https://github.com/microsoft/PSRule-vscode.git
 
 bugs:
-  url: https://github.com/Microsoft/PSRule-vscode/issues
+  url: https://github.com/microsoft/PSRule-vscode/issues
 
 tasks:
   clear:
