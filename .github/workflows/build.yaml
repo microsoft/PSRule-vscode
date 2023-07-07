@@ -57,7 +57,7 @@ jobs:
           if-no-files-found: error
 
   test:
-    name: Test (${{ matrix.rid }}-${{ matrix.shell }})
+    name: Test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     needs: build
     permissions:
@@ -84,9 +84,11 @@ jobs:
         timeout-minutes: 3
         run: |
           npm install
-          npm test
 
       - name: Run tests
         timeout-minutes: 5
         run: |
+          npm run compile
           npm test
+        env:
+          DISPLAY: ':99.0'
