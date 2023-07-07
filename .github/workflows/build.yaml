@@ -45,6 +45,7 @@ jobs:
       - name: Build module
         timeout-minutes: 3
         run: |
+          mkdir out/package/ --force
           npm run package -- 0.0.1
 
       - name: Upload extension
