@@ -8,20 +8,20 @@
 version: 2
 updates:
   # Maintain dependencies for GitHub Actions
-  - package-ecosystem: 'github-actions'
+  - package-ecosystem: github-actions
     directory: '/'
     schedule:
-      interval: 'daily'
+      interval: daily
     labels:
       - 'ci-quality'
     reviewers:
       - 'microsoft/psrule'
 
   # Maintain dependencies for npm
-  - package-ecosystem: 'npm'
+  - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: 'daily'
+      interval: daily
     labels:
       - 'dependencies'
     reviewers:
