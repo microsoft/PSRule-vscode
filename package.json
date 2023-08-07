@@ -1,11 +1,11 @@
 {
-  "name": "psrule-vscode-dev",
-  "displayName": "PSRule (Dev)",
+  "name": "vscode",
+  "displayName": "PSRule",
   "version": "0.0.1",
-  "publisher": "bewhite",
+  "publisher": "ps-rule",
   "description": "Validate infrastructure as code (IaC) and DevOps repositories using PSRule.",
   "author": {
-    "name": "Bernie White"
+    "name": "Microsoft"
   },
   "engines": {
     "vscode": "^1.81.0"
