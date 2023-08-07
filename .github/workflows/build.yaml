@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Extension
-          path: out/package/psrule-*.vsix
+          path: out/package/vscode-*.vsix
           retention-days: 3
           if-no-files-found: error
 
