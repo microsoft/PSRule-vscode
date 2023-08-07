@@ -19,6 +19,9 @@ Continue reading to see the changes included in the latest version.
 
 What's changed since v2.9.0:
 
+- General improvements:
+  - Updated published to be under Microsoft by @BernieWhite.
+    [#1215](https://github.com/microsoft/PSRule-vscode/issues/1215)
 - Engineering:
   - Updated PSRule schema files.
     [#1209](https://github.com/microsoft/PSRule-vscode/pull/1209)
