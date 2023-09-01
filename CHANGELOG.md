@@ -31,8 +31,8 @@ What's changed since v2.9.0:
     [#1185](https://github.com/microsoft/PSRule-vscode/pull/1185)
   - Bump @vscode/test-electron to v2.3.4.
     [#1211](https://github.com/microsoft/PSRule-vscode/pull/1211)
-  - Bump @vscode/vsce to v2.20.0.
-    [#1210](https://github.com/microsoft/PSRule-vscode/pull/1210)
+  - Bump @vscode/vsce to v2.21.0.
+    [#1235](https://github.com/microsoft/PSRule-vscode/pull/1235)
 
 ## v2.9.0
 
