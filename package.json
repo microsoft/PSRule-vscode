@@ -8,7 +8,7 @@
     "name": "Microsoft"
   },
   "engines": {
-    "vscode": "^1.81.0"
+    "vscode": "^1.82.0"
   },
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://github.com/microsoft/PSRule-vscode/blob/main/README.md",
@@ -485,13 +485,13 @@
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^20.5.9",
-    "@types/vscode": "1.81.0",
+    "@types/node": "^20.6.0",
+    "@types/vscode": "1.82.0",
     "@types/fs-extra": "^11.0.1",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "esbuild": "^0.19.2",
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "glob": "^10.3.4",
     "lodash": ">=4.17.21",
     "markdown-it": "^13.0.1",
