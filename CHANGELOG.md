@@ -27,8 +27,8 @@ What's changed since v2.9.0:
     [#1209](https://github.com/microsoft/PSRule-vscode/pull/1209)
   - Bump vscode engine to v1.81.0.
     [#1213](https://github.com/microsoft/PSRule-vscode/pull/1213)
-  - Bump typescript to v5.1.6.
-    [#1185](https://github.com/microsoft/PSRule-vscode/pull/1185)
+  - Bump typescript to v5.2.2.
+    [#1231](https://github.com/microsoft/PSRule-vscode/pull/1231)
   - Bump @vscode/test-electron to v2.3.4.
     [#1211](https://github.com/microsoft/PSRule-vscode/pull/1211)
   - Bump @vscode/vsce to v2.21.0.
