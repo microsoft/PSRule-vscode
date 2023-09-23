@@ -33,8 +33,8 @@ What's changed since v2.9.0:
     [#1211](https://github.com/microsoft/PSRule-vscode/pull/1211)
   - Bump @vscode/vsce to v2.21.0.
     [#1235](https://github.com/microsoft/PSRule-vscode/pull/1235)
-  - Bump glob to v10.3.4.
-    [#1234](https://github.com/microsoft/PSRule-vscode/pull/1234)
+  - Bump glob to v10.3.6.
+    [#1246](https://github.com/microsoft/PSRule-vscode/pull/1246)
 
 ## v2.9.0
 
