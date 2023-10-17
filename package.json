@@ -8,7 +8,7 @@
     "name": "Microsoft"
   },
   "engines": {
-    "vscode": "^1.82.0"
+    "vscode": "^1.83.0"
   },
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://github.com/microsoft/PSRule-vscode/blob/main/README.md",
