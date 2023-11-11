@@ -130,13 +130,6 @@
             "markdownDescription": "The name of a snippet to use when creating new rule documentation. By default, the built-in `Rule Doc` snippet will be used.",
             "scope": "window"
           },
-          "PSRule.execution.notProcessedWarning": {
-            "type": "boolean",
-            "default": false,
-            "description": "Warn when objects are not processed by any rule. Supported on PSRule < v3.",
-            "scope": "window",
-            "markdownDeprecationMessage": "This option is replaced by [Unprocessed Object](https://aka.ms/ps-rule/options#executionunprocessedobject) from PSRule v2.9.0. This option will be removed from PSRule v3."
-          },
           "PSRule.execution.ruleExcluded": {
             "type": "string",
             "default": "None",
