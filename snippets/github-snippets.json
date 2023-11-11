@@ -31,10 +31,10 @@
       "    steps:",
       "",
       "    - name: Checkout",
-      "      uses: actions/checkout@v3",
+      "      uses: actions/checkout@v4",
       "",
       "    - name: Run PSRule analysis",
-      "      uses: Microsoft/ps-rule@v2.8.1",
+      "      uses: microsoft/ps-rule@v2.9.0",
       "      with:",
       "        modules: ${1}"
     ]
