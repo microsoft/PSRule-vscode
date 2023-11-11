@@ -62,7 +62,7 @@ Write-Host -Object "[Pipeline] -- Using channelSuffix: $channelSuffix" -Foregrou
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
 
 $packageRoot = Join-Path -Path $OutputPath -ChildPath 'package';
-$packageName = "psrule-vscode$channelSuffix";
+$packageName = "vscode$channelSuffix";
 $packagePath = Join-Path -Path $packageRoot -ChildPath "$packageName.vsix";
 
 function Get-RepoRuleData {
@@ -168,8 +168,8 @@ task NuGet {
 
 # Synopsis: Install PSRule
 task PSRule NuGet, {
-    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 2.0.0 -ErrorAction Ignore)) {
-        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 2.0.0 -Scope CurrentUser -Force;
+    if ($Null -eq (Get-InstalledModule -Name PSRule -MinimumVersion 2.9.0 -ErrorAction Ignore)) {
+        Install-Module -Name PSRule -Repository PSGallery -MinimumVersion 2.9.0 -Scope CurrentUser -Force;
     }
     Import-Module -Name PSRule -Verbose:$False;
 }
@@ -201,17 +201,10 @@ task ReleaseExtension {
     exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
 }
 
-# Synopsis: Add shipit build tag
-task TagBuild {
-    if ($Null -ne $Env:BUILD_DEFINITIONNAME) {
-        Write-Host "`#`#vso[build.addbuildtag]shipit";
-    }
-}
-
 task Build Clean, PackageRestore, VersionExtension, PackageExtension
 
 task Install Build, InstallExtension
 
 task . Build
 
-task Release VersionExtension, ReleaseExtension, TagBuild
+task Release VersionExtension, ReleaseExtension

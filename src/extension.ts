@@ -163,16 +163,16 @@ export class ExtensionManager implements vscode.Disposable {
         const extensionVersionKey = 'ps-rule-extension-version';
 
         // Get channel
-        let extensionId = 'bewhite.psrule-vscode';
+        let extensionId = 'ps-rule.vscode';
         let extensionChannel = 'stable';
         const isStableInstalled = vscode.extensions.getExtension(extensionId) !== undefined;
 
-        if (path.basename(context.globalStorageUri.fsPath) === 'bewhite.psrule-vscode-preview') {
-            extensionId = 'bewhite.psrule-vscode-preview';
+        if (path.basename(context.globalStorageUri.fsPath) === 'ps-rule.vscode-preview') {
+            extensionId = 'ps-rule.vscode-preview';
             extensionChannel = 'preview';
         }
-        if (path.basename(context.globalStorageUri.fsPath) === 'bewhite.psrule-vscode-dev') {
-            extensionId = 'bewhite.psrule-vscode-dev';
+        if (path.basename(context.globalStorageUri.fsPath) === 'ps-rule.vscode-dev') {
+            extensionId = 'ps-rule.vscode-dev';
             extensionChannel = 'dev';
         }
         logger.verbose(`Running extension channel: ${extensionChannel}`);
