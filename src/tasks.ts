@@ -218,7 +218,6 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             };
         }
 
-        const executionNotProcessedWarning = configuration.get().executionNotProcessedWarning;
         const executionRuleExcluded = configuration.get().executionRuleExcluded;
         const executionRuleSuppressed = configuration.get().executionRuleSuppressed;
         const executionUnprocessedObject = configuration.get().executionUnprocessedObject;
@@ -302,12 +301,6 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             PSRULE_OUTPUT_CULTURE: vscode.env.language,
             PSRULE_OUTPUT_BANNER: 'Minimal',
         };
-
-        if (executionNotProcessedWarning !== undefined) {
-            taskEnv.PSRULE_EXECUTION_NOTPROCESSEDWARNING = executionNotProcessedWarning
-                ? 'true'
-                : 'false';
-        }
 
         if (executionRuleExcluded !== undefined && executionRuleExcluded !== ExecutionActionPreference.None) {
             taskEnv.PSRULE_EXECUTION_RULEEXCLUDED = executionRuleExcluded;

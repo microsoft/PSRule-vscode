@@ -11,7 +11,7 @@
       "# https://aka.ms/ps-rule/options",
       "",
       "requires:",
-      "  PSRule: '@pre >=2.8.1'",
+      "  PSRule: '@pre >=2.9.0'",
       "",
       "output:",
       "  culture:",
