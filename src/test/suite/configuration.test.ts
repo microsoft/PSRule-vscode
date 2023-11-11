@@ -13,7 +13,6 @@ suite('ConfigurationManager tests', () => {
         assert.equal(config.get().documentationLocalePath, 'en');
         assert.equal(config.get().documentationPath, undefined);
         assert.equal(config.get().documentationSnippet, 'Rule Doc');
-        assert.equal(config.get().executionNotProcessedWarning, undefined);
         assert.equal(config.get().executionRuleExcluded, ExecutionActionPreference.None);
         assert.equal(config.get().executionRuleSuppressed, ExecutionActionPreference.None);
         assert.equal(config.get().executionUnprocessedObject, ExecutionActionPreference.None);

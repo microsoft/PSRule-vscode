@@ -13,6 +13,9 @@
       "args": [
         "--disable-extension=bewhite.psrule-vscode-preview",
         "--disable-extension=bewhite.psrule-vscode",
+        "--disable-extension=ps-rule.vscode",
+        "--disable-extension=ps-rule.vscode-preview",
+        "--disable-extension=ps-rule.vscode-dev",
         "--extensionDevelopmentPath=${workspaceFolder}"
       ],
       "outFiles": [
@@ -34,6 +37,9 @@
       "args": [
         "--disable-extension=bewhite.psrule-vscode-preview",
         "--disable-extension=bewhite.psrule-vscode",
+        "--disable-extension=ps-rule.vscode",
+        "--disable-extension=ps-rule.vscode-preview",
+        "--disable-extension=ps-rule.vscode-dev",
         "--extensionDevelopmentPath=${workspaceFolder}",
         "--extensionTestsPath=${workspaceFolder}/out/dist/test/suite/index"
       ],

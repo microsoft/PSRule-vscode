@@ -47,11 +47,21 @@ export interface ISetting {
     documentationLocalePath: string;
 
     /**
-     * Execution options
+     * Set `Execution.RuleExcluded`.
+     * See help: https://microsoft.github.io/PSRule/v3/concepts/PSRule/en-US/about_PSRule_Options/#executionruleexcluded
      */
-    executionNotProcessedWarning: boolean | undefined;
     executionRuleExcluded: ExecutionActionPreference;
+
+    /**
+     * Set `Execution.RuleSuppressed`.
+     * See help: https://microsoft.github.io/PSRule/v3/concepts/PSRule/en-US/about_PSRule_Options/#executionrulesuppressed
+     */
     executionRuleSuppressed: ExecutionActionPreference;
+
+    /**
+     * Set `Execution.UnprocessedObject`.
+     * See help: https://microsoft.github.io/PSRule/v3/concepts/PSRule/en-US/about_PSRule_Options/#executionunprocessedobject
+     */
     executionUnprocessedObject: ExecutionActionPreference;
 
     /**
@@ -77,7 +87,6 @@ const globalDefaults: ISetting = {
     documentationSnippet: 'Rule Doc',
     documentationPath: undefined,
     documentationLocalePath: env.language,
-    executionNotProcessedWarning: undefined,
     executionRuleExcluded: ExecutionActionPreference.None,
     executionRuleSuppressed: ExecutionActionPreference.None,
     executionUnprocessedObject: ExecutionActionPreference.None,
@@ -161,7 +170,6 @@ export class ConfigurationManager {
             this.default.codeLensRuleDocumentationLinks
         );
 
-        this.current.executionNotProcessedWarning = config.get<boolean>('execution.notProcessedWarning');
         this.current.executionRuleExcluded = config.get<ExecutionActionPreference>('execution.ruleExcluded', this.default.executionRuleExcluded);
         this.current.executionRuleSuppressed = config.get<ExecutionActionPreference>('execution.ruleSuppressed', this.default.executionRuleSuppressed);
         this.current.executionUnprocessedObject = config.get<ExecutionActionPreference>('execution.unprocessedObject', this.default.executionUnprocessedObject);

@@ -10,7 +10,7 @@ suite('Extension tests', () => {
             .then((info) => {
                 assert.strictEqual('dev', info.channel);
                 assert.strictEqual('0.0.1', info.version);
-                assert.strictEqual('bewhite.psrule-vscode-dev', info.id);
+                assert.strictEqual('ps-rule.vscode-dev', info.id);
             })
             .catch((reason) => {
                 assert.fail(`Failed to get extension info. ${reason}`);
