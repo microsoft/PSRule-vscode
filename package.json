@@ -480,7 +480,7 @@
     "@types/mocha": "^10.0.4",
     "@types/node": "^20.9.1",
     "@types/vscode": "1.84.1",
-    "@types/fs-extra": "^11.0.2",
+    "@types/fs-extra": "^11.0.4",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "esbuild": "^0.19.5",
