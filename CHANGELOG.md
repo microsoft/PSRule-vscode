@@ -38,6 +38,8 @@ What's changed since v2.9.0:
     [#1254](https://github.com/microsoft/PSRule-vscode/pull/1254)
   - Bump vscode-languageclient to v9.0.1.
     [#1252](https://github.com/microsoft/PSRule-vscode/pull/1252)
+  - Bump fs-extra to v11.2.0.
+    [#1298](https://github.com/microsoft/PSRule-vscode/pull/1298)
 
 ## v2.9.0
 
