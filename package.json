@@ -1,6 +1,6 @@
 {
-  "name": "vscode-dev",
-  "displayName": "PSRule (Dev)",
+  "name": "vscode",
+  "displayName": "PSRule",
   "version": "0.0.1",
   "publisher": "ps-rule",
   "description": "Validate infrastructure as code (IaC) and DevOps repositories using PSRule.",
