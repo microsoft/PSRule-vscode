@@ -1,12 +1,17 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+import * as cp from 'child_process';
 import * as fse from 'fs-extra';
 import * as os from 'os';
 import * as path from 'path';
-import { SnippetString, Uri, WorkspaceFolder, window, workspace } from 'vscode';
+import { SnippetString, Uri, WorkspaceFolder, window, workspace, commands } from 'vscode';
 import { configuration } from './configuration';
 import { ext } from './extension';
+import { logger } from './logger';
+
+const dotnetVersion = '7.0';
+const toolVersion = '3.0.0-b0122';
 
 /**
  * Calculates the file path of rule documentation for a specific rule based on settings.
@@ -89,4 +94,41 @@ export function getActiveOrFirstWorkspace(): WorkspaceFolder | undefined {
     return workspace.workspaceFolders && workspace.workspaceFolders.length > 0
         ? workspace.workspaceFolders[0]
         : undefined;
+}
+
+export async function getTool(): Promise<void> {
+    const binPath = await acquireDotnet();
+    if (binPath) {
+        const args = ['tool', 'install', '--global', 'Microsoft.PSRule.Tool', '--version', `${toolVersion}`, '--prerelease']
+        const result = cp.spawnSync(binPath, args);
+
+        const tool = cp.spawnSync('ps-rule', ['--version']);
+        const installedVersion = tool.stdout.toString().trim();
+        logger.verbose(`Acquired PSRule tool v${installedVersion}.`);
+    }
+}
+
+/**
+ * Attempts to acquire .NET runtime.
+ * @returns The path to the .NET runtime.
+ */
+export async function acquireDotnet(): Promise<string> {
+    logger.verbose(`Acquiring .NET runtime v${dotnetVersion}.`);
+    const extensionId = (await ext.info).id;
+
+    const result = await commands.executeCommand<{ dotnetPath: string }>(
+        'dotnet.acquire',
+        {
+            version: dotnetVersion,
+            requestingExtensionId: extensionId,
+        }
+    );
+
+    if (!result) {
+        const errorMessage = `Failed to install .NET runtime v${dotnetVersion}. Please see the .NET install tool error dialog for more detailed information, or to report an issue.`;
+        logger.log(errorMessage);
+        throw new Error(errorMessage);
+    }
+    logger.verbose(`Using .NET runtime from: ${result.dotnetPath}`);
+    return path.resolve(result.dotnetPath);
 }

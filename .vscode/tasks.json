@@ -37,6 +37,71 @@
       }
     },
     {
+      "label": "Install: dev",
+      "detail": "Build and install the extension as the 'dev' channel.",
+      "type": "shell",
+      "command": "Invoke-Build Install -Channel dev",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "Build: preview",
+      "detail": "Locally build the extension as the 'preview' channel.",
+      "type": "shell",
+      "command": "Invoke-Build Build",
+      "group": "build",
+      "presentation": {
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
       "label": "Install: preview",
       "detail": "Build and install the extension as the 'preview' channel.",
       "type": "shell",
@@ -73,38 +138,6 @@
       "detail": "Build and install the extension as the 'stable' channel.",
       "type": "shell",
       "command": "Invoke-Build Install -Channel stable",
-      "presentation": {
-        "focus": false,
-        "panel": "dedicated",
-        "clear": true
-      },
-      "problemMatcher": [],
-      "osx": {
-        "options": {
-          "shell": {
-            "executable": "pwsh",
-            "args": [
-              "-c"
-            ]
-          }
-        }
-      },
-      "linux": {
-        "options": {
-          "shell": {
-            "executable": "pwsh",
-            "args": [
-              "-c"
-            ]
-          }
-        }
-      }
-    },
-    {
-      "label": "Install: dev",
-      "detail": "Build and install the extension as the 'dev' channel.",
-      "type": "shell",
-      "command": "Invoke-Build Install -Channel dev",
       "presentation": {
         "focus": false,
         "panel": "dedicated",

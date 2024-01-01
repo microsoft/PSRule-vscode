@@ -68,6 +68,7 @@ export interface ISetting {
      * Determines if experimental features are enabled.
      */
     experimentalEnabled: boolean;
+
     outputAs: OutputAs;
     notificationsShowChannelUpgrade: boolean;
     notificationsShowPowerShellExtension: boolean;

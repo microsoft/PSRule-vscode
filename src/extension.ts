@@ -16,6 +16,8 @@ import { walkthroughCopySnippet } from './commands/walkthroughCopySnippet';
 import { configureSettings } from './commands/configureSettings';
 import { runAnalysisTask } from './commands/runAnalysisTask';
 import { showTasks } from './commands/showTasks';
+import { getTool } from './utils';
+import { restore } from './commands/restore';
 
 export let taskManager: PSRuleTaskProvider | undefined;
 export let docLensProvider: DocumentationLensProvider | undefined;
@@ -126,6 +128,11 @@ export class ExtensionManager implements vscode.Disposable {
                     showTasks();
                 })
             );
+            this._context.subscriptions.push(
+                vscode.commands.registerCommand('PSRule.restore', () => {
+                    restore();
+                })
+            );
         }
     }
 
@@ -149,6 +156,10 @@ export class ExtensionManager implements vscode.Disposable {
             taskManager = new PSRuleTaskProvider(logger, this._context);
             taskManager.register();
         }
+
+        if (this.isTrusted) {
+            getTool();
+        }
     }
 
     private setContextVariables(): void {
@@ -164,22 +175,18 @@ export class ExtensionManager implements vscode.Disposable {
 
         // Get channel
         let extensionId = 'ps-rule.vscode';
-        let extensionChannel = 'stable';
-        const isStableInstalled = vscode.extensions.getExtension(extensionId) !== undefined;
+        let isMainstreamInstalled = vscode.extensions.getExtension(extensionId) !== undefined;
 
-        if (path.basename(context.globalStorageUri.fsPath) === 'ps-rule.vscode-preview') {
-            extensionId = 'ps-rule.vscode-preview';
-            extensionChannel = 'preview';
-        }
         if (path.basename(context.globalStorageUri.fsPath) === 'ps-rule.vscode-dev') {
             extensionId = 'ps-rule.vscode-dev';
-            extensionChannel = 'dev';
         }
-        logger.verbose(`Running extension channel: ${extensionChannel}`);
 
         // Get current version
         const extension = vscode.extensions.getExtension(extensionId)!;
         const extensionVersion: string = extension.packageJSON.version;
+        const extensionChannel: string = extension.packageJSON.channel;
+
+        logger.verbose(`Running extension channel: ${extensionChannel}`);
         logger.verbose(`Running extension version: ${extensionVersion}`);
 
         // Get last version
@@ -200,7 +207,7 @@ export class ExtensionManager implements vscode.Disposable {
 
             vscode.window
                 .showInformationMessage(
-                    `You are running the ${extensionChannel} version of PSRule. A stable version is available.`,
+                    `You are running the ${extensionChannel} version of PSRule.`,
                     showReleaseNotes,
                     showExtension,
                     alwaysIgnore
@@ -215,7 +222,7 @@ export class ExtensionManager implements vscode.Disposable {
                     if (choice === showExtension) {
                         vscode.commands.executeCommand(
                             'workbench.extensions.search',
-                            'bewhite.psrule-vscode'
+                            'ps-rule.vscode'
                         );
                     }
                     if (choice === alwaysIgnore) {
@@ -227,7 +234,7 @@ export class ExtensionManager implements vscode.Disposable {
         }
 
         let disable = false;
-        if ((extensionChannel === 'preview' || extensionChannel === 'dev') && isStableInstalled) {
+        if (extensionChannel === 'dev' && isMainstreamInstalled) {
             disable = true;
             vscode.window
                 .showWarningMessage(
