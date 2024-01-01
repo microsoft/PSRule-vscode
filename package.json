@@ -349,12 +349,15 @@
     ],
     "jsonValidation": [
       {
-        "fileMatch": "*.Rule.json",
+        "fileMatch": [
+          "*.Rule.json",
+          "*.Rule.jsonc"
+        ],
         "url": "./schemas/PSRule-resources.schema.json"
       },
       {
-        "fileMatch": "*.Rule.jsonc",
-        "url": "./schemas/PSRule-resources.schema.json"
+        "fileMatch": "ps-rule.lock.json",
+        "url": "./schemas/PSRule-lock.schema.json"
       }
     ],
     "problemMatchers": [

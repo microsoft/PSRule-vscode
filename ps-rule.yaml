@@ -10,21 +10,21 @@ repository:
 
 requires:
   PSRule: '@pre >=2.9.0'
-  PSRule.Rules.MSFT.OSS: '@pre >=1.0.1'
+  PSRule.Rules.MSFT.OSS: '@pre >=1.1.0'
 
 include:
   module:
-  - PSRule.Rules.MSFT.OSS
+    - PSRule.Rules.MSFT.OSS
 
 output:
   culture:
-  - en-US
+    - en-US
 
 input:
   pathIgnore:
-  - '*.md'
-  - 'schemas/*.json'
-  - 'syntaxes/*.json'
-  - 'snippets/*.json'
-  - '.vscode/'
-  - '**/node_modules/'
+    - '*.md'
+    - 'schemas/*.json'
+    - 'syntaxes/*.json'
+    - 'snippets/*.json'
+    - '.vscode/'
+    - '**/node_modules/'
