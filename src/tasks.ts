@@ -10,6 +10,7 @@ import { defaultOptionsFile } from './consts';
 import { ILogger } from './logger';
 import { configuration, ExecutionActionPreference } from './configuration';
 import { pwsh } from './powershell';
+import { getActiveOrFirstWorkspace } from './utils';
 
 const emptyTasks: vscode.Task[] = [];
 
@@ -228,54 +229,46 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             return name;
         }
 
-        function getCmd(): string {
+        function getCmdTooling(): string {
             let params = '';
 
             // Path
             if (path !== undefined && path !== '') {
-                params += ` -Path '${path}'`;
-            } else {
-                params += " -Path './.ps-rule/'";
+                params += ` --path '${path}'`;
             }
 
+            // Input Path
             if (inputPath !== undefined && inputPath !== '') {
-                params += ` -InputPath '${inputPath}'`;
+                params += ` --input-path '${inputPath}'`;
             } else {
-                params += ` -InputPath .`;
+                params += ` --input-path .`;
             }
 
             // Baseline
             if (baseline !== undefined && baseline !== '') {
-                params += ` -Baseline '${baseline}'`;
+                params += ` --baseline '${baseline}'`;
             } else if (ruleBaseline !== undefined && ruleBaseline !== '') {
-                params += ` -Baseline '${ruleBaseline}'`;
+                params += ` --baseline '${ruleBaseline}'`;
             }
 
             // Modules
             if (modules !== undefined && modules.length > 0) {
                 for (let i = 0; i < modules.length; i++) {
-                    if (i > 0) {
-                        params += `, ${modules[i]}`;
-                    } else {
-                        params += ` -Module ${modules[i]}`;
-                    }
+                    params += ` --module ${modules[i]}`;
                 }
             }
 
             // Outcome
             if (outcome !== undefined && outcome.length > 0) {
                 for (let i = 0; i < outcome.length; i++) {
-                    if (i > 0) {
-                        params += `, ${outcome[i]}`;
-                    } else {
-                        params += ` -Outcome ${outcome[i]}`;
-                    }
+                    params += ` --outcome ${outcome[i]}`;
                 }
-            } else {
-                params += ' -Outcome Fail, Error';
+            }
+            else {
+                params += ' --outcome Fail --outcome Error';
             }
 
-            return `Assert-PSRule -Format File${params};`;
+            return `ps-rule run${params}`;
         }
 
         const taskName = getTaskName();
@@ -314,15 +307,16 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             taskEnv.PSRULE_EXECUTION_UNPROCESSEDOBJECT = executionUnprocessedObject;
         }
 
+        const cwd = folder?.uri.fsPath ?? getActiveOrFirstWorkspace()?.uri.fsPath;
+
         // Return the task instance.
         const t = new vscode.Task(
             definition,
             folder ?? vscode.TaskScope.Workspace,
             taskName,
             PSRuleTaskProvider.taskType,
-            new vscode.ShellExecution(getCmd(), {
-                executable: pwsh.path,
-                shellArgs: ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command'],
+            new vscode.ShellExecution(getCmdTooling(), {
+                cwd: cwd,
                 env: taskEnv,
             }),
             matcher

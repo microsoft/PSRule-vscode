@@ -11,7 +11,7 @@ param (
 
     [Parameter(Mandatory = $False)]
     [ValidateSet('preview', 'stable', 'dev')]
-    [String]$Channel,
+    [String]$Channel = 'preview',
 
     [Parameter(Mandatory = $False)]
     [String]$Configuration = 'Debug',
@@ -49,12 +49,13 @@ $version = $Build;
 if ([String]::IsNullOrEmpty('Channel')) {
     $Channel = 'preview';
 }
-$channelSuffix = '-preview';
-$channelDisplayName = 'PSRule (Preview)';
+$channelSuffix = '';
+$channelDisplayName = 'PSRule';
+$channelCommand = '';
 switch ($Channel) {
     'dev' { $channelSuffix = '-dev'; $channelDisplayName = 'PSRule (Dev)'; }
-    'stable' { $channelSuffix = ''; $channelDisplayName = 'PSRule'; }
-    default { $channelSuffix = '-preview'; $channelDisplayName = 'PSRule (Preview)'; }
+    'stable' { $channelSuffix = ''; $channelDisplayName = 'PSRule'; $channelCommand = ':stable' }
+    default { $channelSuffix = ''; $channelDisplayName = 'PSRule'; }
 }
 
 Write-Host -Object "[Pipeline] -- Using channel: $Channel" -ForegroundColor Green;
@@ -113,7 +114,7 @@ task PackageExtension {
     if (!(Test-Path -Path $packageRoot)) {
         $Null = New-Item -Path $packageRoot -ItemType Directory -Force;
     }
-    exec { & npm run package -- --out $packagePath }
+    exec { & npm run package$channelCommand -- --out $packagePath }
 }
 
 # Synopsis: Install the extension in Visual Studio Code
@@ -123,6 +124,13 @@ task InstallExtension {
 }
 
 task VersionExtension {
+    # Set channel
+    $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
+    if ($package.channel -ne $Channel) {
+        $package.channel = $Channel;
+        $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
+    }
+
     # Update channel name
     $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
     if ($package.name -ne $packageName) {
@@ -131,12 +139,12 @@ task VersionExtension {
     }
 
     # Update channel flag
-    $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
-    $previewFlag = $Channel -ne 'stable';
-    if ($package.preview -ne $previewFlag) {
-        $package.preview = $previewFlag;
-        $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
-    }
+    # $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
+    # $previewFlag = $Channel -notin 'stable', 'preview';
+    # if ($package.preview -ne $previewFlag) {
+    #     $package.preview = $previewFlag;
+    #     $package | ConvertTo-Json -Depth 99 | Set-Content ./package.json;
+    # }
 
     # Update channel display name
     $package = Get-Content ./package.json -Raw | ConvertFrom-Json;
@@ -197,8 +205,7 @@ task PackageRestore {
 }
 
 task ReleaseExtension {
-    exec { & npm install vsce --no-save }
-    exec { & npm run publish -- --packagePath $packagePath --pat $ApiKey }
+    exec { & npm run publish$channelCommand -- --packagePath $packagePath --pat $ApiKey }
 }
 
 task Build Clean, PackageRestore, VersionExtension, PackageExtension
