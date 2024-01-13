@@ -201,7 +201,7 @@ export class ExtensionManager implements vscode.Disposable {
             .get('showChannelUpgrade', true);
 
         const showExtension = 'Show Extension';
-        if ((extensionChannel === 'preview' || extensionChannel === 'dev') && showChannelUpgrade) {
+        if (extensionChannel === 'dev' && showChannelUpgrade) {
             const showReleaseNotes = 'Show Release Notes';
             const alwaysIgnore = 'Always Ignore';
 
@@ -223,6 +223,30 @@ export class ExtensionManager implements vscode.Disposable {
                         vscode.commands.executeCommand(
                             'workbench.extensions.search',
                             'ps-rule.vscode'
+                        );
+                    }
+                    if (choice === alwaysIgnore) {
+                        vscode.workspace
+                            .getConfiguration('PSRule.notifications')
+                            .update('showChannelUpgrade', false, vscode.ConfigurationTarget.Global);
+                    }
+                });
+        }
+        if (extensionChannel === 'stable' && extensionVersion != lastVersion && showChannelUpgrade) {
+            const showReleaseNotes = 'Show Release Notes';
+            const alwaysIgnore = 'Always Ignore';
+
+            vscode.window
+                .showInformationMessage(
+                    `Welcome to v${extensionVersion} of PSRule.`,
+                    showReleaseNotes,
+                    alwaysIgnore
+                )
+                .then((choice) => {
+                    if (choice === showReleaseNotes) {
+                        vscode.commands.executeCommand(
+                            'markdown.showPreview',
+                            vscode.Uri.file(path.resolve(__dirname, '../../CHANGELOG.md'))
                         );
                     }
                     if (choice === alwaysIgnore) {
