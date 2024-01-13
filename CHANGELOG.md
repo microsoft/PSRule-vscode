@@ -46,6 +46,9 @@ What's changed since v2.9.0:
     [#1252](https://github.com/microsoft/PSRule-vscode/pull/1252)
   - Bump fs-extra to v11.2.0.
     [#1298](https://github.com/microsoft/PSRule-vscode/pull/1298)
+- Bug fixes:
+  - Fixed notification of preview version by @BernieWhite.
+    [#1324](https://github.com/microsoft/PSRule-vscode/issues/1324)
 
 ## v2.9.0
 
