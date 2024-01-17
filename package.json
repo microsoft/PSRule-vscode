@@ -487,11 +487,11 @@
   ],
   "devDependencies": {
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.0",
+    "@types/node": "^20.11.5",
     "@types/vscode": "1.85.0",
     "@types/fs-extra": "^11.0.4",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.18.1",
+    "@typescript-eslint/parser": "^6.19.0",
     "esbuild": "^0.19.11",
     "eslint": "^8.56.0",
     "glob": "^10.3.10",
