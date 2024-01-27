@@ -39,8 +39,8 @@ What's changed since v2.9.0:
     [#1301](https://github.com/microsoft/PSRule-vscode/pull/1301)
   - Bump @vscode/test-electron to v2.3.8.
     [#1297](https://github.com/microsoft/PSRule-vscode/pull/1297)
-  - Bump @vscode/vsce to v2.22.0.
-    [#1277](https://github.com/microsoft/PSRule-vscode/pull/1277)
+  - Bump @vscode/vsce to v2.23.0.
+    [#1336](https://github.com/microsoft/PSRule-vscode/pull/1336)
   - Bump glob to v10.3.10.
     [#1254](https://github.com/microsoft/PSRule-vscode/pull/1254)
   - Bump vscode-languageclient to v9.0.1.
