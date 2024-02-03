@@ -3,7 +3,7 @@
 #
 
 # NOTES:
-# Autoamtically bump PSRule schemas.
+# Automatically bump PSRule schemas.
 
 name: Schemas
 on:

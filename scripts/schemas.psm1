@@ -26,7 +26,7 @@ function Update-Schemas {
         $updates = @(git status --porcelain);
         if ($Null -ne $Env:WORKING_BRANCH -and $Null -ne $updates -and $updates.Length -gt 0) {
             git add schemas/*;
-            git commit -m "Update schemas/";
+            git commit -m "Bump schemas";
             git push --force -u origin $Env:WORKING_BRANCH;
 
             $updates | ForEach-Object {
