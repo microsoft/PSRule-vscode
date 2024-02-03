@@ -8,7 +8,7 @@
     "name": "Microsoft"
   },
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.86.0"
   },
   "channel": "stable",
   "license": "SEE LICENSE IN LICENSE",
@@ -487,12 +487,12 @@
   ],
   "devDependencies": {
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.7",
-    "@types/vscode": "1.85.0",
+    "@types/node": "^20.11.16",
+    "@types/vscode": "1.86.0",
     "@types/fs-extra": "^11.0.4",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.19.1",
-    "esbuild": "^0.19.12",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "esbuild": "^0.20.0",
     "eslint": "^8.56.0",
     "glob": "^10.3.10",
     "mocha": "^10.2.0",
