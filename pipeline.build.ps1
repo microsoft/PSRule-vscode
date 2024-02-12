@@ -63,7 +63,7 @@ Write-Host -Object "[Pipeline] -- Using channelSuffix: $channelSuffix" -Foregrou
 Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Green;
 
 $packageRoot = Join-Path -Path $OutputPath -ChildPath 'package';
-$packageName = "vscode$channelSuffix";
+$packageName = "code$channelSuffix";
 $packagePath = Join-Path -Path $packageRoot -ChildPath "$packageName.vsix";
 
 function Get-RepoRuleData {

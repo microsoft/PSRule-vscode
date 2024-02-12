@@ -174,11 +174,11 @@ export class ExtensionManager implements vscode.Disposable {
         const extensionVersionKey = 'ps-rule-extension-version';
 
         // Get channel
-        let extensionId = 'ps-rule.vscode';
+        let extensionId = 'ps-rule.code';
         let isMainstreamInstalled = vscode.extensions.getExtension(extensionId) !== undefined;
 
-        if (path.basename(context.globalStorageUri.fsPath) === 'ps-rule.vscode-dev') {
-            extensionId = 'ps-rule.vscode-dev';
+        if (path.basename(context.globalStorageUri.fsPath) === 'ps-rule.code-dev') {
+            extensionId = 'ps-rule.code-dev';
         }
 
         // Get current version
@@ -222,7 +222,7 @@ export class ExtensionManager implements vscode.Disposable {
                     if (choice === showExtension) {
                         vscode.commands.executeCommand(
                             'workbench.extensions.search',
-                            'ps-rule.vscode'
+                            'ps-rule.code'
                         );
                     }
                     if (choice === alwaysIgnore) {
