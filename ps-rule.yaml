@@ -23,6 +23,13 @@ output:
 input:
   pathIgnore:
     - '*.md'
+    - '*.Designer.cs'
+    - '*.png'
+    - '*.csproj'
+    - '*.sln'
+    - '*.json'
+    - '*.resx'
+    - '*.svg'
     - 'schemas/*.json'
     - 'syntaxes/*.json'
     - 'snippets/*.json'
