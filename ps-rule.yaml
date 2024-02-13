@@ -29,6 +29,8 @@ input:
     - '*.sln'
     - '*.json'
     - '*.resx'
+    - '*.yaml'
+    - '*.yml'
     - '*.svg'
     - 'schemas/*.json'
     - 'syntaxes/*.json'
