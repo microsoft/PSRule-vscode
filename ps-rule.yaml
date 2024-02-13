@@ -37,3 +37,7 @@ input:
     - 'snippets/*.json'
     - '.vscode/'
     - '**/node_modules/'
+    - '.editorconfig'
+    - '.prettierrc'
+    - '.eslintignore'
+    - '.vscodeignore'
