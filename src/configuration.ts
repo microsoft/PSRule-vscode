@@ -77,6 +77,11 @@ export interface ISetting {
      * The name of the default baseline to use for executing rules.
      */
     ruleBaseline: string | undefined;
+
+    /**
+     * The path to the PSRule language server.
+     */
+    // languageServerPath: string | undefined;
 }
 
 /**
@@ -96,6 +101,7 @@ const globalDefaults: ISetting = {
     notificationsShowChannelUpgrade: true,
     notificationsShowPowerShellExtension: true,
     ruleBaseline: undefined,
+    // languageServerPath: undefined,
 };
 
 /**
@@ -189,6 +195,10 @@ export class ConfigurationManager {
 
         this.current.ruleBaseline =
             config.get<string>('rule.baseline') ?? this.default.ruleBaseline;
+
+        // this.current.languageServerPath =
+        //     config.get<string>('languageServer.path') ??
+        //     this.default.languageServerPath;
 
         // Clear dirty settings flag
         this.pendingLoad = false;

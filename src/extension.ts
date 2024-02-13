@@ -16,7 +16,7 @@ import { walkthroughCopySnippet } from './commands/walkthroughCopySnippet';
 import { configureSettings } from './commands/configureSettings';
 import { runAnalysisTask } from './commands/runAnalysisTask';
 import { showTasks } from './commands/showTasks';
-import { getTool } from './utils';
+import { PSRuleLanguageServer, getLanguageServer } from './utils';
 import { restore } from './commands/restore';
 
 export let taskManager: PSRuleTaskProvider | undefined;
@@ -33,6 +33,7 @@ export interface ExtensionInfo {
 export class ExtensionManager implements vscode.Disposable {
     private _info!: ExtensionInfo;
     private _context!: vscode.ExtensionContext;
+    private _server!: PSRuleLanguageServer | undefined;
 
     constructor() { }
 
@@ -67,6 +68,10 @@ export class ExtensionManager implements vscode.Disposable {
         return taskManager;
     }
 
+    public get server(): PSRuleLanguageServer | undefined {
+        return this._server;
+    }
+
     public activate(context: vscode.ExtensionContext) {
         this._context = context;
         this._info = this.checkExtension(context);
@@ -90,8 +95,8 @@ export class ExtensionManager implements vscode.Disposable {
         }
     }
 
-    private activateFeatures(): void {
-        this.switchMode();
+    private async activateFeatures(): Promise<void> {
+        await this.switchMode();
         if (this._context) {
             this._context.subscriptions.push(
                 vscode.workspace.onDidGrantWorkspaceTrust(() => {
@@ -136,7 +141,7 @@ export class ExtensionManager implements vscode.Disposable {
         }
     }
 
-    private switchMode(): void {
+    private async switchMode(): Promise<void> {
         ConfigurationManager.configure(this._context);
 
         if (!docLensProvider) {
@@ -158,7 +163,7 @@ export class ExtensionManager implements vscode.Disposable {
         }
 
         if (this.isTrusted) {
-            getTool();
+            this._server = await getLanguageServer(this._context);
         }
     }
 

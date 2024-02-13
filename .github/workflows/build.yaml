@@ -36,13 +36,20 @@ jobs:
         with:
           node-version: 20
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
       - name: Install dependencies
         timeout-minutes: 3
         run: |
           npm install --global @vscode/vsce --force
           npm install
 
-      - name: Build module
+          dotnet restore
+
+      - name: Build extension
         timeout-minutes: 3
         run: |
           mkdir -p out/package/
@@ -97,3 +104,61 @@ jobs:
           npm test
         env:
           DISPLAY: ':99.0'
+
+  oss:
+    name: Analyze with PSRule
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run PSRule analysis
+        uses: microsoft/ps-rule@v2.9.0
+        with:
+          modules: PSRule.Rules.MSFT.OSS
+          prerelease: true
+
+  devskim:
+    name: Analyze with DevSkim
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run DevSkim scanner
+        uses: microsoft/DevSkim-Action@v1
+        with:
+          directory-to-scan: .
+
+      - name: Upload results to security tab
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: devskim-results.sarif
+
+  codeql:
+    name: Analyze with CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: typescript, csharp
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3

@@ -21,5 +21,6 @@ suite('ConfigurationManager tests', () => {
         assert.equal(config.get().notificationsShowChannelUpgrade, true);
         assert.equal(config.get().notificationsShowPowerShellExtension, true);
         assert.equal(config.get().ruleBaseline, undefined);
+        //assert.equal(config.get().languageServerPath, false);
     });
 });

@@ -5,13 +5,20 @@ import * as cp from 'child_process';
 import * as fse from 'fs-extra';
 import * as os from 'os';
 import * as path from 'path';
-import { SnippetString, Uri, WorkspaceFolder, window, workspace, commands } from 'vscode';
+import { existsSync } from 'fs';
+import { SnippetString, Uri, WorkspaceFolder, window, workspace, commands, ExtensionContext } from 'vscode';
 import { configuration } from './configuration';
 import { ext } from './extension';
 import { logger } from './logger';
 
-const dotnetVersion = '7.0';
-const toolVersion = '3.0.0-b0122';
+const dotnetVersion = '8.0';
+const packagedPath = 'server/Microsoft.PSRule.EditorServices.dll';
+const toolVersion = '3.0.0-B0151';
+
+export interface PSRuleLanguageServer {
+    binPath: string;
+    languageServerPath: string;
+}
 
 /**
  * Calculates the file path of rule documentation for a specific rule based on settings.
@@ -96,23 +103,47 @@ export function getActiveOrFirstWorkspace(): WorkspaceFolder | undefined {
         : undefined;
 }
 
-export async function getTool(): Promise<void> {
+export async function getLanguageServer(context: ExtensionContext): Promise<PSRuleLanguageServer | undefined> {
     const binPath = await acquireDotnet();
-    if (binPath) {
-        const args = ['tool', 'install', '--global', 'Microsoft.PSRule.Tool', '--version', `${toolVersion}`, '--prerelease']
-        const result = cp.spawnSync(binPath, args);
+    const languageServerPath = getLanguageServerPath(context);
 
-        const tool = cp.spawnSync('ps-rule', ['--version']);
+    // Run the language server.
+    if (binPath && languageServerPath) {
+        const tool = cp.spawnSync(binPath, [languageServerPath, '--version']);
         const installedVersion = tool.stdout.toString().trim();
-        logger.verbose(`Acquired PSRule tool v${installedVersion}.`);
+        const shortVersion = installedVersion.split('+')[0];
+
+        logger.verbose(`Using PSRule ${shortVersion} from: ${languageServerPath}.`);
+
+        return { binPath, languageServerPath };
+
     }
+    return undefined;
+}
+
+/**
+ * Get the path to the language server.
+ * @param context A context for the extension.
+ * @returns A path to the language server, or undefined if it does not exist under the extension path.
+ */
+function getLanguageServerPath(context: ExtensionContext): string | undefined {
+    const languageServerPath =
+        process.env.PSRULE_LANGUAGE_SERVER_PATH ?? // Local server for debugging.
+        context.asAbsolutePath(packagedPath); // Packaged server.
+
+    // Check if the language server binary exists.
+    if (!existsSync(languageServerPath)) {
+        logger.error(`Failed to find language server at: ${languageServerPath}`);
+        return undefined;
+    }
+    return path.resolve(languageServerPath);
 }
 
 /**
  * Attempts to acquire .NET runtime.
  * @returns The path to the .NET runtime.
  */
-export async function acquireDotnet(): Promise<string> {
+async function acquireDotnet(): Promise<string> {
     logger.verbose(`Acquiring .NET runtime v${dotnetVersion}.`);
     const extensionId = (await ext.info).id;
 

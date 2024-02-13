@@ -11,6 +11,7 @@ import { ILogger } from './logger';
 import { configuration, ExecutionActionPreference } from './configuration';
 import { pwsh } from './powershell';
 import { getActiveOrFirstWorkspace } from './utils';
+import { ext } from './extension';
 
 const emptyTasks: vscode.Task[] = [];
 

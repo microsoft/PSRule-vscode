@@ -20,12 +20,12 @@ Continue reading to see the changes included in the latest version.
 What's changed since v2.9.0:
 
 - New features
-  - Automatically acquire and install PSRule CLI by @BernieWhite.
+  - Automatically acquire PSRule runtime components by @BernieWhite.
     [#1315](https://github.com/microsoft/PSRule-vscode/issues/1315)
-    - Extension will automatically download and install PSRule CLI when it is not available.
+    - PSRule runtime support is now included within the extension.
     - Installing PSRule PowerShell module is no longer required for the extension to work.
 - General improvements:
-  - Updated published to be under Microsoft by @BernieWhite.
+  - Updated publisher to be under Microsoft by @BernieWhite.
     [#1215](https://github.com/microsoft/PSRule-vscode/issues/1215)
 - Engineering:
   - Updated PSRule schema files.

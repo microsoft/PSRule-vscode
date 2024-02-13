@@ -16,6 +16,8 @@ export enum LogLevel {
 export interface ILogger {
     verbose(message: string, ...additionalMessages: string[]): void;
 
+    error(message: string, ...additionalMessages: string[]): void;
+
     log(message: string, ...additionalMessages: string[]): void;
 
     dispose(): void;
@@ -35,6 +37,10 @@ export class Logger implements ILogger {
 
     public verbose(message: string, ...additionalMessages: string[]): void {
         this.write(LogLevel.Verbose, message, ...additionalMessages);
+    }
+
+    public error(message: string, ...additionalMessages: string[]): void {
+        this.write(LogLevel.Error, message, ...additionalMessages);
     }
 
     public log(message: string, ...additionalMessages: string[]): void {

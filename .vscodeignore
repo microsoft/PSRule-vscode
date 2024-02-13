@@ -1,9 +1,13 @@
+**/bin/
+**/obj/
 .azure-pipelines/
 .github/
 .vscode/
+.vs/
 docs/
 out/package/
 out/dist/test/
+dotnet/
 src/
 scripts/
 node_modules/
@@ -23,3 +27,5 @@ SUPPORT.md
 .markdownlint.json
 out/updates.txt
 GitVersion.yml
+ps-rule.lock.json
+*.sln
