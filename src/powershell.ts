@@ -99,7 +99,7 @@ export class PowerShellExtension implements vscode.Disposable {
         this._version = value.version;
         this._path = value.exePath;
 
-        logger.verbose(`Using PowerShell ${this._version} from ${this._path}`);
+        logger.verbose(`Using PowerShell ${this._version} from: ${this._path}`);
     }
 
     private getExtension(): vscode.Extension<IPowerShellExtensionClient> | undefined {

@@ -7,6 +7,16 @@
 
 version: 2
 updates:
+  # Maintain dependencies for NuGet
+  - package-ecosystem: nuget
+    directory: '/'
+    schedule:
+      interval: daily
+    labels:
+      - dependencies
+    reviewers:
+      - microsoft/psrule
+
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: github-actions
     directory: '/'

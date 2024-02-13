@@ -1,7 +1,11 @@
-
+**/bin/
+**/obj/
+.vs/
 out/
 reports/
+server/
 node_modules/
 .vscode-test/
 *.vsix
+*.user
 PSRule/

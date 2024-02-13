@@ -18,6 +18,9 @@
         "--disable-extension=ps-rule.vscode-dev",
         "--extensionDevelopmentPath=${workspaceFolder}"
       ],
+      "env": {
+        "PSRULE_LANGUAGE_SERVER_PATH": "${workspaceFolder}/bin/net8.0/Microsoft.PSRule.EditorServices.dll"
+      },
       "outFiles": [
         "${workspaceFolder}/out/**/*.js"
       ],
