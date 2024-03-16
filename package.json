@@ -487,7 +487,7 @@
   ],
   "devDependencies": {
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.25",
+    "@types/node": "^20.11.28",
     "@types/vscode": "1.87.0",
     "@types/fs-extra": "^11.0.4",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
