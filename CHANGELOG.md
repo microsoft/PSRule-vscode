@@ -48,8 +48,8 @@ What's changed since v2.9.0:
     [#1252](https://github.com/microsoft/PSRule-vscode/pull/1252)
   - Bump fs-extra to v11.2.0.
     [#1298](https://github.com/microsoft/PSRule-vscode/pull/1298)
-  - Bump mocha to v10.3.0.
-    [#1346](https://github.com/microsoft/PSRule-vscode/pull/1346)
+  - Bump mocha to v10.4.0.
+    [#1383](https://github.com/microsoft/PSRule-vscode/pull/1383)
 - Bug fixes:
   - Fixed notification of preview version by @BernieWhite.
     [#1324](https://github.com/microsoft/PSRule-vscode/issues/1324)
