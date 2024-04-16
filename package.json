@@ -497,7 +497,7 @@
     "glob": "^10.3.10",
     "mocha": "^10.4.0",
     "typescript": "^5.4.4",
-    "@vscode/vsce": "^2.24.0",
+    "@vscode/vsce": "^2.25.0",
     "@vscode/test-electron": "^2.3.9"
   }
 }
