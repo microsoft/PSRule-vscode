@@ -42,8 +42,8 @@ What's changed since v2.9.0:
     [#1334](https://github.com/microsoft/PSRule-vscode/pull/1334)
   - Bump @vscode/vsce to v2.25.0.
     [#1397](https://github.com/microsoft/PSRule-vscode/pull/1397)
-  - Bump glob to v10.3.10.
-    [#1254](https://github.com/microsoft/PSRule-vscode/pull/1254)
+  - Bump glob to v10.3.12.
+    [#1384](https://github.com/microsoft/PSRule-vscode/pull/1384)
   - Bump vscode-languageclient to v9.0.1.
     [#1252](https://github.com/microsoft/PSRule-vscode/pull/1252)
   - Bump fs-extra to v11.2.0.
