@@ -8,7 +8,7 @@
     "name": "Microsoft"
   },
   "engines": {
-    "vscode": "^1.88.0"
+    "vscode": "^1.89.0"
   },
   "channel": "stable",
   "license": "SEE LICENSE IN LICENSE",
