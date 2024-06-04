@@ -36,11 +36,15 @@
     "editor.tabSize": 4,
     "editor.formatOnSave": false
   },
+  "[csharp]": {
+    "editor.tabSize": 4
+  },
   // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
   "typescript.tsc.autoDetect": "off",
   "cSpell.words": [
     "Arity",
     "Pseudoterminal",
+    "PSRULE",
     "pwsh"
   ],
   "git.branchProtection": [

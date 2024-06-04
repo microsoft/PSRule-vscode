@@ -36,6 +36,18 @@ export enum ExecutionActionPreference {
     Error = 'Error',
 }
 
+export enum TraceLevelPreference {
+    /**
+     * Output no trace information.
+     */
+    Off = 'Off',
+
+    /**
+     * Output verbose information.
+     */
+    Verbose = 'Verbose',
+}
+
 /**
  * PSRule extension settings.
  */
@@ -82,6 +94,11 @@ export interface ISetting {
      * The path to the PSRule language server.
      */
     // languageServerPath: string | undefined;
+
+    /**
+     * Determines if verbose logging is enabled for task output.
+     */
+    traceTask: TraceLevelPreference;
 }
 
 /**
@@ -102,6 +119,7 @@ const globalDefaults: ISetting = {
     notificationsShowPowerShellExtension: true,
     ruleBaseline: undefined,
     // languageServerPath: undefined,
+    traceTask: TraceLevelPreference.Off,
 };
 
 /**
@@ -199,6 +217,11 @@ export class ConfigurationManager {
         // this.current.languageServerPath =
         //     config.get<string>('languageServer.path') ??
         //     this.default.languageServerPath;
+
+        this.current.traceTask = config.get<TraceLevelPreference>(
+            'trace.task',
+            this.default.traceTask
+        );
 
         // Clear dirty settings flag
         this.pendingLoad = false;

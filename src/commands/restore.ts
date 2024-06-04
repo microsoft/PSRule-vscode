@@ -41,4 +41,7 @@ export async function restore(): Promise<void> {
         logger.log(`Failed to restore modules. Exit code: ${tool.status}`);
         return;
     }
+    else {
+        logger.log('Modules restored.');
+    }
 }

@@ -8,8 +8,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { defaultOptionsFile } from './consts';
 import { ILogger } from './logger';
-import { configuration, ExecutionActionPreference } from './configuration';
-import { pwsh } from './powershell';
+import { configuration, ExecutionActionPreference, TraceLevelPreference } from './configuration';
 import { getActiveOrFirstWorkspace } from './utils';
 import { ext } from './extension';
 
@@ -225,56 +224,72 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         const executionUnprocessedObject = configuration.get().executionUnprocessedObject;
         const outputAs = configuration.get().outputAs;
         const ruleBaseline = configuration.get().ruleBaseline;
+        const traceTask = configuration.get().traceTask;
 
         function getTaskName() {
             return name;
         }
 
-        function getCmdTooling(): string {
-            let params = '';
+        function getCmdTooling(): string[] {
+            let params: string[] = [];
 
             // Path
             if (path !== undefined && path !== '') {
-                params += ` --path '${path}'`;
+                params.push('--path');
+                params.push(`'${path}'`);
+            } else {
+                params.push('--path');
+                params.push('.');
             }
 
             // Input Path
             if (inputPath !== undefined && inputPath !== '') {
-                params += ` --input-path '${inputPath}'`;
+                params.push('--input-path');
+                params.push(inputPath);
             } else {
-                params += ` --input-path .`;
+                params.push('--input-path');
+                params.push('.');
             }
 
             // Baseline
             if (baseline !== undefined && baseline !== '') {
-                params += ` --baseline '${baseline}'`;
+                params.push('--baseline');
+                params.push(`'${baseline}'`);
             } else if (ruleBaseline !== undefined && ruleBaseline !== '') {
-                params += ` --baseline '${ruleBaseline}'`;
+                params.push('--baseline');
+                params.push(`'${ruleBaseline}'`);
             }
 
             // Modules
             if (modules !== undefined && modules.length > 0) {
                 for (let i = 0; i < modules.length; i++) {
-                    params += ` --module ${modules[i]}`;
+                    params.push('--module');
+                    params.push(`'${modules[i]}'`);
                 }
             }
 
             // Outcome
             if (outcome !== undefined && outcome.length > 0) {
                 for (let i = 0; i < outcome.length; i++) {
-                    params += ` --outcome ${outcome[i]}`;
+                    params.push('--outcome');
+                    params.push(outcome[i]);
                 }
             }
             else {
-                params += ' --outcome Fail --outcome Error';
+                params.push('--outcome');
+                params.push('Fail');
+                params.push('--outcome');
+                params.push('Error');
             }
 
-            return `ps-rule run${params}`;
+            return params;
         }
 
         const taskName = getTaskName();
+        const binPath = ext.server?.binPath;
+        const languageServerPath = ext.server?.languageServerPath
 
-        if (!pwsh.isActive) {
+        if (!binPath || !languageServerPath) {
             return new vscode.Task(
                 definition,
                 folder ?? vscode.TaskScope.Workspace,
@@ -282,7 +297,7 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
                 PSRuleTaskProvider.taskType,
                 new vscode.CustomExecution(async (): Promise<vscode.Pseudoterminal> => {
                     // When the task is executed, this callback will run. Here, we setup for running the task.
-                    return new NoPowerShellPseudoterminal();
+                    return new NoLanguageServerPseudoterminal();
                 }),
                 matcher
             );
@@ -309,6 +324,11 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         }
 
         const cwd = folder?.uri.fsPath ?? getActiveOrFirstWorkspace()?.uri.fsPath;
+        const args = [languageServerPath, 'run'];
+        args.push(...getCmdTooling());
+        if (traceTask === TraceLevelPreference.Verbose) {
+            args.push('--verbose');
+        }
 
         // Return the task instance.
         const t = new vscode.Task(
@@ -316,18 +336,25 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             folder ?? vscode.TaskScope.Workspace,
             taskName,
             PSRuleTaskProvider.taskType,
-            new vscode.ShellExecution(getCmdTooling(), {
-                cwd: cwd,
-                env: taskEnv,
-            }),
-            matcher
+            new vscode.ProcessExecution(
+                binPath,
+                args,
+                { cwd: cwd, env: taskEnv },
+            ),
+            matcher,
         );
         t.detail = 'Run analysis for current workspace.';
+        t.presentationOptions = {
+            echo: false,
+        }
         return t;
     }
 }
 
-class NoPowerShellPseudoterminal implements vscode.Pseudoterminal {
+/**
+ * A pseudoterminal that returns a message to the user when the language server is not available.
+ */
+class NoLanguageServerPseudoterminal implements vscode.Pseudoterminal {
     private writeEmitter = new vscode.EventEmitter<string>();
     private closeEmitter = new vscode.EventEmitter<void>();
 
@@ -342,7 +369,7 @@ class NoPowerShellPseudoterminal implements vscode.Pseudoterminal {
     private async run(): Promise<void> {
         return new Promise<void>((resolve) => {
             this.writeEmitter.fire(
-                'The extension PowerShell must be installed and enabled to run this task.'
+                'A problem with the language server prevented the PSRule run.'
             );
             this.closeEmitter.fire();
             resolve();
