@@ -6,6 +6,7 @@
     "ms-azure-devops.azure-pipelines",
     "ms-devlabs.extension-manifest-editor",
     "github.vscode-pull-request-github",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "ms-dotnettools.csdevkit"
   ]
 }
