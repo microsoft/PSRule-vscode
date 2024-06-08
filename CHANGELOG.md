@@ -38,8 +38,8 @@ What's changed since v2.9.0:
     [#1440](https://github.com/microsoft/PSRule-vscode/pull/1440)
   - Bump typescript to v5.4.5.
     [#1396](https://github.com/microsoft/PSRule-vscode/pull/1396)
-  - Bump @vscode/test-electron to v2.3.9.
-    [#1334](https://github.com/microsoft/PSRule-vscode/pull/1334)
+  - Bump @vscode/test-electron to v2.4.0.
+    [#1429](https://github.com/microsoft/PSRule-vscode/pull/1429)
   - Bump @vscode/vsce to v2.27.0.
     [#1438](https://github.com/microsoft/PSRule-vscode/pull/1438)
   - Bump glob to v10.4.1.
