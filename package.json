@@ -501,7 +501,7 @@
     "@types/node": "^20.14.9",
     "@types/vscode": "1.90.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.14.1",
+    "@typescript-eslint/parser": "^7.15.0",
     "@vscode/test-electron": "^2.4.0",
     "@vscode/vsce": "^2.27.0",
     "esbuild": "^0.23.0",
