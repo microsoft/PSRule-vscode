@@ -34,7 +34,7 @@ What's changed since v2.9.0:
     [#1314](https://github.com/microsoft/PSRule-vscode/pull/1314)
     [#1330](https://github.com/microsoft/PSRule-vscode/pull/1330)
     [#1344](https://github.com/microsoft/PSRule-vscode/pull/1344)
-  - Bump vscode engine to v1.91.0.
+  - Bump vscode engine to v1.92.0.
     [#1469](https://github.com/microsoft/PSRule-vscode/pull/1469)
   - Bump typescript to v5.4.5.
     [#1396](https://github.com/microsoft/PSRule-vscode/pull/1396)
@@ -48,8 +48,6 @@ What's changed since v2.9.0:
     [#1252](https://github.com/microsoft/PSRule-vscode/pull/1252)
   - Bump fs-extra to v11.2.0.
     [#1298](https://github.com/microsoft/PSRule-vscode/pull/1298)
-  - Bump mocha to v10.7.0.
-    [#1479](https://github.com/microsoft/PSRule-vscode/pull/1479)
 - Bug fixes:
   - Fixed notification of preview version by @BernieWhite.
     [#1324](https://github.com/microsoft/PSRule-vscode/issues/1324)
