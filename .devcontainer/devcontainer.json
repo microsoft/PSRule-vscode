@@ -21,8 +21,11 @@
       "extensions": [
         "github.vscode-pull-request-github",
         "ms-dotnettools.csdevkit",
-        "ms-vscode.vscode-typescript-tslint-plugin",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "MS-SarifVSCode.sarif-viewer",
+        "dbaeumer.vscode-eslint",
+        "github.vscode-github-actions",
+        "redhat.vscode-yaml"
       ]
     }
   }
