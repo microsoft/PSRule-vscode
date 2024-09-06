@@ -508,6 +508,6 @@
     "eslint": "^9.9.1",
     "glob": "^11.0.0",
     "mocha": "^10.7.3",
-    "typescript": "5.4.5"
+    "typescript": "5.5.4"
   }
 }
