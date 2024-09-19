@@ -194,7 +194,7 @@ internal sealed class ClientBuilder
             CmdStrings.Module_Init_Description
         );
         init.AddOption(_Module_Init_Force);
-        init.SetHandler((invocation) =>
+        init.SetHandler(async (invocation) =>
         {
             var option = new ModuleOptions
             {
@@ -205,7 +205,7 @@ internal sealed class ClientBuilder
             };
 
             var client = GetClientContext(invocation);
-            invocation.ExitCode = ModuleCommand.ModuleInit(option, client);
+            invocation.ExitCode = await ModuleCommand.ModuleInitAsync(option, client);
         });
 
         // List
@@ -214,7 +214,7 @@ internal sealed class ClientBuilder
             "list",
             CmdStrings.Module_List_Description
         );
-        list.SetHandler((invocation) =>
+        list.SetHandler(async (invocation) =>
         {
             var option = new ModuleOptions
             {
@@ -225,7 +225,7 @@ internal sealed class ClientBuilder
             };
 
             var client = GetClientContext(invocation);
-            invocation.ExitCode = ModuleCommand.ModuleList(option, client);
+            invocation.ExitCode = await ModuleCommand.ModuleListAsync(option, client);
         });
 
         // Add
@@ -238,7 +238,7 @@ internal sealed class ClientBuilder
         add.AddOption(_Module_Add_Version);
         add.AddOption(_Module_Add_Force);
         add.AddOption(_Module_Add_SkipVerification);
-        add.SetHandler((invocation) =>
+        add.SetHandler(async (invocation) =>
         {
             var option = new ModuleOptions
             {
@@ -250,7 +250,7 @@ internal sealed class ClientBuilder
             };
 
             var client = GetClientContext(invocation);
-            invocation.ExitCode = ModuleCommand.ModuleAdd(option, client);
+            invocation.ExitCode = await ModuleCommand.ModuleAddAsync(option, client);
         });
 
         // Remove
@@ -260,7 +260,7 @@ internal sealed class ClientBuilder
             CmdStrings.Module_Remove_Description
         );
         remove.AddArgument(moduleArg);
-        remove.SetHandler((invocation) =>
+        remove.SetHandler(async (invocation) =>
         {
             var option = new ModuleOptions
             {
@@ -269,7 +269,7 @@ internal sealed class ClientBuilder
             };
 
             var client = GetClientContext(invocation);
-            invocation.ExitCode = ModuleCommand.ModuleRemove(option, client);
+            invocation.ExitCode = await ModuleCommand.ModuleRemoveAsync(option, client);
         });
 
         // Upgrade
@@ -278,7 +278,7 @@ internal sealed class ClientBuilder
             "upgrade",
             CmdStrings.Module_Upgrade_Description
         );
-        upgrade.SetHandler((invocation) =>
+        upgrade.SetHandler(async (invocation) =>
         {
             var option = new ModuleOptions
             {
@@ -286,14 +286,14 @@ internal sealed class ClientBuilder
             };
 
             var client = GetClientContext(invocation);
-            invocation.ExitCode = ModuleCommand.ModuleUpgrade(option, client);
+            invocation.ExitCode = await ModuleCommand.ModuleUpgradeAsync(option, client);
         });
 
         // Restore
         var restore = new Command("restore", CmdStrings.Module_Restore_Description);
         // restore.AddOption(_Path);
         restore.AddOption(_Module_Restore_Force);
-        restore.SetHandler((invocation) =>
+        restore.SetHandler(async (invocation) =>
         {
             var option = new RestoreOptions
             {
@@ -301,7 +301,7 @@ internal sealed class ClientBuilder
                 Force = invocation.ParseResult.GetValueForOption(_Module_Restore_Force),
             };
             var client = GetClientContext(invocation);
-            invocation.ExitCode = ModuleCommand.ModuleRestore(option, client);
+            invocation.ExitCode = await ModuleCommand.ModuleRestoreAsync(option, client);
         });
 
         cmd.AddCommand(init);
