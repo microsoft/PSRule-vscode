@@ -30,7 +30,7 @@
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.4.5" />
     <!-- <PackageReference Include="System.Management.Automation" Version="7.4.1" /> -->
     <PackageReference Include="Microsoft.PSRule.SDK" Version="3.0.0-B0267" />
-    <PackageReference Include="Microsoft.PSRule.CommandLine" Version="3.0.0-B0203" />
+    <PackageReference Include="Microsoft.PSRule.CommandLine" Version="3.0.0-B0267" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
