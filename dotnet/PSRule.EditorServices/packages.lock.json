@@ -40,11 +40,11 @@
       },
       "Microsoft.PSRule.CommandLine": {
         "type": "Direct",
-        "requested": "[3.0.0-B0267, )",
-        "resolved": "3.0.0-B0267",
-        "contentHash": "ijz7tBLi/uWLx7d+5qsOc7A6JJaVYQaUf25HiGn2JH6rc/C5w9JPDDdu0r/ZUJPInAJtFdvOG3JP6gby7TqtEQ==",
+        "requested": "[3.0.0-B0275, )",
+        "resolved": "3.0.0-B0275",
+        "contentHash": "nVbNZY7sQJO8o94UW6qgGMKZi3WrB0E1a0fec+HDiySrqv+2+j2bhVET7SRm8KQ59khtTdeKEl6A1oFudG02ag==",
         "dependencies": {
-          "Microsoft.PSRule.SDK": "3.0.0-B0267",
+          "Microsoft.PSRule.SDK": "3.0.0-B0275",
           "Microsoft.PowerShell.SDK": "7.4.5",
           "NuGet.Protocol": "6.11.0",
           "System.CommandLine": "2.0.0-beta4.22272.1"
@@ -52,11 +52,11 @@
       },
       "Microsoft.PSRule.SDK": {
         "type": "Direct",
-        "requested": "[3.0.0-B0267, )",
-        "resolved": "3.0.0-B0267",
-        "contentHash": "X5jmClcQRYOaqZ/jwqLkUrGKPLqB6em40fPt/CJHJDew4b/heeV00+nQ9mYAR0bhr21J6+Uew2spN//YY+oP9Q==",
+        "requested": "[3.0.0-B0275, )",
+        "resolved": "3.0.0-B0275",
+        "contentHash": "FhqArTu4tne0cfUz+OhY46WrvhltJbLLAuHyOfodRMNsSKQkDxM6XiWAYswobLty2z4wdBK1uhSi+HdsXVjNYg==",
         "dependencies": {
-          "Microsoft.PSRule.Core": "3.0.0-B0267"
+          "Microsoft.PSRule.Core": "3.0.0-B0275"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -554,22 +554,22 @@
       },
       "Microsoft.PSRule.Badges": {
         "type": "Transitive",
-        "resolved": "3.0.0-B0267",
-        "contentHash": "OGSYTx6mK+kqAD1Bqagibj4mKS4WUy7L7YXnKj8PpuQQcB79sOy4eUayZ4SeMRFRdJLPKWRsYSd7+j2jitgOrw==",
+        "resolved": "3.0.0-B0275",
+        "contentHash": "hvgrxfYbcGCFuqmPme6C2PuIw4V5SRtNBkxCZOzD1g3jGpNPNBUKeYn94H/wFZqm9Q79Zg3bm+hNoKMhdCYvXQ==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         }
       },
       "Microsoft.PSRule.Core": {
         "type": "Transitive",
-        "resolved": "3.0.0-B0267",
-        "contentHash": "2eGG2fcD3FWmJwKiqjz20FnNVorocmi1m083QC0JG9NNMOAXudFTQveHu7AGf5vwi5vIaXXU6SBfHOQhFPu9hg==",
+        "resolved": "3.0.0-B0275",
+        "contentHash": "3HLIt+X0JOc2klA17hQO4ApS8vmT+VKZOZSS5kUFRijU2knM+2L5ugn+qQ9WIyFUxneNHLiTSoxNx1PL16xo8Q==",
         "dependencies": {
           "Manatee.Json": "13.0.5",
           "Microsoft.Extensions.DependencyInjection": "8.0.0",
           "Microsoft.Extensions.Hosting": "8.0.0",
-          "Microsoft.PSRule.Badges": "3.0.0-B0267",
-          "Microsoft.PSRule.Types": "3.0.0-B0267",
+          "Microsoft.PSRule.Badges": "3.0.0-B0275",
+          "Microsoft.PSRule.Types": "3.0.0-B0275",
           "Sarif.Sdk": "2.4.16",
           "System.Net.Http": "4.3.4",
           "System.Text.Json": "8.0.4"
@@ -577,8 +577,8 @@
       },
       "Microsoft.PSRule.Types": {
         "type": "Transitive",
-        "resolved": "3.0.0-B0267",
-        "contentHash": "AtIjUCi/lU+no3hUf+OUOtHkcg5COp3kvJ4DSwHkOWSnhFU9NfEQQbVEUmcwMLd4ess7fl3gLtSrNZBXS7PhGg==",
+        "resolved": "3.0.0-B0275",
+        "contentHash": "/jAo6u6fV7/slpiuy2hpo4NZnmv+2urFh8JrqeT2n7zjrHv6YQzGZ6uhjaZFbz048bd9CtJ+gm8J0KIiT+/k3g==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "YamlDotNet": "15.3.0"
