@@ -47,6 +47,8 @@ updates:
       dev-types:
         patterns:
           - '@types/*'
+        exclude-patterns:
+          - '@types/vscode'
 
   # Maintain dev containers.
   - package-ecosystem: devcontainers
