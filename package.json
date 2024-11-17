@@ -484,7 +484,9 @@
     "vscode:prepublish": "npm run -S esbuild-base -- --minify && dotnet publish ./dotnet/PSRule.EditorServices/ --output server/",
     "esbuild-base": "esbuild ./src/main.ts --bundle --outfile=out/dist/main.js --external:vscode --format=cjs --platform=node",
     "esbuild": "npm run -S esbuild-base -- --sourcemap",
-    "esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch"
+    "esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch",
+    "build": "npm run check-types && dotnet build && node build.mjs",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "fs-extra": "^11.2.0",

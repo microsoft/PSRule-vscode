@@ -3,6 +3,9 @@
 
 using System;
 using System.CommandLine;
+using System.CommandLine.Parsing;
+using System.IO;
+using System.Management.Automation;
 using System.Threading.Tasks;
 
 namespace PSRule.EditorServices;
@@ -14,9 +17,12 @@ static class Program
     /// </summary>
     static async Task<int> Main(string[] args)
     {
-        var user = System.Management.Automation.ModuleIntrinsics.GetPSModulePath(System.Management.Automation.ModuleIntrinsics.PSModulePathScope.User);
-        System.Environment.SetEnvironmentVariable("PSModulePath", user, EnvironmentVariableTarget.Process);
+        var modulePath = Environment.CombineEnvironmentVariable(
+           ModuleIntrinsics.GetPSModulePath(ModuleIntrinsics.PSModulePathScope.User),
+           Path.Combine(Path.GetFullPath(AppContext.BaseDirectory), "Modules")
+       );
 
+        System.Environment.SetEnvironmentVariable("PSModulePath", modulePath, EnvironmentVariableTarget.Process);
         return await ClientBuilder.New().InvokeAsync(args);
     }
 }

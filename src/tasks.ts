@@ -7,7 +7,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { defaultOptionsFile } from './consts';
-import { ILogger } from './logger';
+import { ILogger, logger } from './logger';
 import { configuration, ExecutionActionPreference, TraceLevelPreference } from './configuration';
 import { getActiveOrFirstWorkspace } from './utils';
 import { ext } from './extension';
@@ -237,9 +237,6 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
             if (path !== undefined && path !== '') {
                 params.push('--path');
                 params.push(`'${path}'`);
-            } else {
-                params.push('--path');
-                params.push('.');
             }
 
             // Input Path
@@ -346,7 +343,10 @@ export class PSRuleTaskProvider implements vscode.TaskProvider {
         t.detail = 'Run analysis for current workspace.';
         t.presentationOptions = {
             echo: false,
-        }
+        };
+
+        const parameterArgs = args.slice(1);
+        logger.verbose(`Preparing task '${taskName}' with arguments: ${parameterArgs.join(' ')}`);
         return t;
     }
 }

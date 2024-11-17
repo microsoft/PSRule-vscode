@@ -64,7 +64,11 @@ Write-Host -Object "[Pipeline] -- Using version: $version" -ForegroundColor Gree
 
 $packageRoot = Join-Path -Path $OutputPath -ChildPath 'package';
 $packageName = "code$channelSuffix";
-$packagePath = Join-Path -Path $packageRoot -ChildPath "$packageName.vsix";
+$packagePath = Join-Path -Path $packageRoot -ChildPath "$packageName-$version.vsix";
+
+Write-Host -Object "[Pipeline] -- packageRoot: $packageRoot" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- packageName: $packageName" -ForegroundColor Green;
+Write-Host -Object "[Pipeline] -- packagePath: $packagePath" -ForegroundColor Green;
 
 function Get-RepoRuleData {
     [CmdletBinding()]
@@ -114,7 +118,7 @@ task PackageExtension {
     if (!(Test-Path -Path $packageRoot)) {
         $Null = New-Item -Path $packageRoot -ItemType Directory -Force;
     }
-    exec { & npm run package$channelCommand -- --out $packagePath }
+    exec { & npm run package$channelCommand }
 }
 
 # Synopsis: Install the extension in Visual Studio Code

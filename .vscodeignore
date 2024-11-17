@@ -29,3 +29,5 @@ out/updates.txt
 GitVersion.yml
 ps-rule.lock.json
 *.sln
+build.mjs
+.devcontainer/
