@@ -8,7 +8,6 @@ import {
     CancellationToken,
     CodeLens,
     CodeLensProvider,
-    Command,
     Disposable,
     Event,
     EventEmitter,

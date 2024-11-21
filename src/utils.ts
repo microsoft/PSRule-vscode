@@ -13,7 +13,6 @@ import { logger } from './logger';
 
 const dotnetVersion = '8.0';
 const packagedPath = 'server/Microsoft.PSRule.EditorServices.dll';
-const toolVersion = '3.0.0-B0151';
 
 export interface PSRuleLanguageServer {
     binPath: string;
