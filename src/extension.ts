@@ -46,7 +46,7 @@ export class ExtensionManager implements vscode.Disposable {
             if (parent._info) {
                 resolve(parent._info);
             } else {
-                setTimeout(function (): void {
+                setTimeout(() => {
                     if (parent._info) {
                         resolve(parent._info);
                     } else {
