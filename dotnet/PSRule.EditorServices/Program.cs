@@ -18,8 +18,8 @@ static class Program
     static async Task<int> Main(string[] args)
     {
         var modulePath = Environment.CombineEnvironmentVariable(
-           ModuleIntrinsics.GetPSModulePath(ModuleIntrinsics.PSModulePathScope.User),
-           Path.Combine(Path.GetFullPath(AppContext.BaseDirectory), "Modules")
+            ModuleIntrinsics.GetPSModulePath(ModuleIntrinsics.PSModulePathScope.User),
+            Path.Combine(Environment.GetRootedBasePath(AppContext.BaseDirectory), "Modules")
        );
 
         System.Environment.SetEnvironmentVariable("PSModulePath", modulePath, EnvironmentVariableTarget.Process);

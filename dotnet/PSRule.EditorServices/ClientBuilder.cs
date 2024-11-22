@@ -146,7 +146,7 @@ internal sealed class ClientBuilder
         cmd.AddOption(_Run_Module);
         cmd.AddOption(_Run_Baseline);
         cmd.AddOption(_Run_Outcome);
-        cmd.SetHandler((invocation) =>
+        cmd.SetHandler(async (invocation) =>
         {
             var option = new RunOptions
             {
@@ -168,7 +168,7 @@ internal sealed class ClientBuilder
                 invocation.Console.WriteLine($"VERBOSE: Using language server: {client.Path}");
             }
 
-            invocation.ExitCode = RunCommand.Run(option, client);
+            invocation.ExitCode = await RunCommand.RunAsync(option, client);
         });
         Command.AddCommand(cmd);
     }
