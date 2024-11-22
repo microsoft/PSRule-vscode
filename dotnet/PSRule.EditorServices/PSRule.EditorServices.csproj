@@ -28,8 +28,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.4.6" />
-    <PackageReference Include="Microsoft.PSRule.SDK" Version="3.0.0-B0275" />
-    <PackageReference Include="Microsoft.PSRule.CommandLine" Version="3.0.0-B0275" />
+    <PackageReference Include="Microsoft.PSRule.SDK" Version="3.0.0-B0315" />
+    <PackageReference Include="Microsoft.PSRule.CommandLine" Version="3.0.0-B0315" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
