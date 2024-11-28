@@ -11,7 +11,7 @@
     "vscode": "^1.78.0"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "homepage": "https://github.com/microsoft/PSRule-vscode/blob/main/README.md",
+  "homepage": "https://github.com/microsoft/PSRule-vscode/blob/release/v2.9.x/extension.md",
   "categories": [
     "Programming Languages",
     "Snippets"
@@ -31,7 +31,7 @@
     "url": "https://github.com/microsoft/PSRule-vscode.git"
   },
   "bugs": {
-    "url": "https://github.com/microsoft/PSRule-vscode/issues"
+    "url": "https://github.com/microsoft/PSRule/issues"
   },
   "private": true,
   "preview": false,
@@ -462,7 +462,7 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pack": "vsce package --no-git-tag-version --no-update-package-json --out out/package",
+    "pack": "vsce package --no-git-tag-version --no-update-package-json --readme-path extension.md --out out/package",
     "publish": "vsce publish",
     "lint": "eslint . --ext .ts,.tsx",
     "pretest": "npm run compile",

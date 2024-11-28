@@ -17,6 +17,13 @@ Continue reading to see the changes included in the latest version.
 
 ## Unreleased
 
+## v2.9.1
+
+What's changed since v2.9.0:
+
+- Engineering:
+  - Updated display name to clearly indicate this extension is V2 in the marketplace by @BernieWhite.
+
 ## v2.9.0
 
 What's changed since v2.8.0:
