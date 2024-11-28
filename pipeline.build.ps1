@@ -52,9 +52,9 @@ if ([String]::IsNullOrEmpty('Channel')) {
 $channelSuffix = '-preview';
 $channelDisplayName = 'PSRule (Preview)';
 switch ($Channel) {
-    'dev' { $channelSuffix = '-dev'; $channelDisplayName = 'PSRule (Dev)'; }
-    'stable' { $channelSuffix = ''; $channelDisplayName = 'PSRule'; }
-    default { $channelSuffix = '-preview'; $channelDisplayName = 'PSRule (Preview)'; }
+    'dev' { $channelSuffix = '-dev'; $channelDisplayName = 'PSRule V2 (Dev)'; }
+    'stable' { $channelSuffix = ''; $channelDisplayName = 'PSRule V2'; }
+    default { $channelSuffix = '-preview'; $channelDisplayName = 'PSRule V2 (Preview)'; }
 }
 
 Write-Host -Object "[Pipeline] -- Using channel: $Channel" -ForegroundColor Green;
@@ -113,7 +113,7 @@ task PackageExtension {
     if (!(Test-Path -Path $packageRoot)) {
         $Null = New-Item -Path $packageRoot -ItemType Directory -Force;
     }
-    exec { & npm run pack -- --out $packagePath }
+    exec { & npm run pack -- $version }
 }
 
 # Synopsis: Install the extension in Visual Studio Code
