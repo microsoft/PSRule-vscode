@@ -3,12 +3,7 @@
 Validate infrastructure as code (IaC) and DevOps repositories using the PSRule PowerShell module.
 PSRule is powerful, feature rich, and highly customizable to meet your needs.
 
-> [!NOTE]
-> This extension is being migrated into <https://github.com/microsoft/PSRule>.
-> Currently this repository reflects the last stable release of v2.9.x.
-> An improve PSRule extension for V3 will be release from the new repository.
-> Please log an new issues at <https://github.com/microsoft/PSRule/issues>
----
+![module-version-badge]
 
 This extension is available in two release channels:
 
@@ -156,6 +151,7 @@ This project is [licensed under the MIT License][license].
 [ext-stable]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode
 [ext-stable-version-badge]: https://vsmarketplacebadges.dev/version/bewhite.psrule-vscode.png
 [ext-stable-installs-badge]: https://vsmarketplacebadges.dev/installs-short/bewhite.psrule-vscode.png
+[module-version-badge]: https://img.shields.io/powershellgallery/v/PSRule.png?label=PowerShell%20Gallery&color=brightgreen
 [contribution guide]: https://github.com/Microsoft/PSRule-vscode/blob/main/CONTRIBUTING.md
 [license]: https://github.com/Microsoft/PSRule-vscode/blob/main/LICENSE
 [ps-rule.yaml]: https://aka.ms/ps-rule/options

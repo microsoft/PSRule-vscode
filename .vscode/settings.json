@@ -42,6 +42,7 @@
     "pwsh"
   ],
   "git.branchProtection": [
-    "main"
+    "main",
+    "release/*"
   ]
 }
