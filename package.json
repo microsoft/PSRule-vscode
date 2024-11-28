@@ -1,7 +1,7 @@
 {
-  "name": "psrule-vscode-dev",
-  "displayName": "PSRule (Dev)",
-  "version": "0.0.1",
+  "name": "psrule-vscode",
+  "displayName": "PSRule V2",
+  "version": "2.9.1",
   "publisher": "bewhite",
   "description": "Validate infrastructure as code (IaC) and DevOps repositories using PSRule.",
   "author": {
@@ -34,7 +34,7 @@
     "url": "https://github.com/microsoft/PSRule-vscode/issues"
   },
   "private": true,
-  "preview": true,
+  "preview": false,
   "activationEvents": [
     "onLanguage:powershell",
     "onLanguage:yaml",
@@ -462,7 +462,7 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pack": "vsce package",
+    "pack": "vsce package --no-git-tag-version --no-update-package-json --out out/package",
     "publish": "vsce publish",
     "lint": "eslint . --ext .ts,.tsx",
     "pretest": "npm run compile",
@@ -496,7 +496,7 @@
     "minimist": ">=1.2.8",
     "mocha": "^10.2.0",
     "typescript": "^5.1.3",
-    "@vscode/vsce": "^2.19.0",
+    "@vscode/vsce": "^3.2.1",
     "@vscode/test-electron": "^2.3.2",
     "nth-check": ">=2.1.1",
     "ansi-regex": ">=6.0.1"
