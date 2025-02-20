@@ -4,7 +4,8 @@ Validate infrastructure as code (IaC) and DevOps repositories using the PSRule P
 PSRule is powerful, feature rich, and highly customizable to meet your needs.
 
 > [!NOTE]
-> This extension is being migrated into <https://github.com/microsoft/PSRule>.
+> This extension has being migrated into <https://github.com/microsoft/PSRule>
+> and this repository will be archived in the future.
 > Currently this repository reflects the last stable release of v2.9.x.
 > An improve PSRule extension for V3 will be release from the new repository.
 > Please log an new issues at <https://github.com/microsoft/PSRule/issues>
