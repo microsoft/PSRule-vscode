@@ -486,7 +486,7 @@
     "@types/node": "^22.15.3",
     "@types/vscode": "1.78.1",
     "@types/fs-extra": "^11.0.4",
-    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
     "esbuild": "^0.25.2",
     "eslint": "^9.25.1",
