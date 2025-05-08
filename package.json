@@ -494,7 +494,7 @@
     "lodash": ">=4.17.21",
     "markdown-it": "^14.1.0",
     "minimist": ">=1.2.8",
-    "mocha": "^11.1.0",
+    "mocha": "^11.2.2",
     "typescript": "^5.8.3",
     "@vscode/vsce": "^3.3.2",
     "@vscode/test-electron": "^2.5.2",
