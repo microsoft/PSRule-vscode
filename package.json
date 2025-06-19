@@ -488,7 +488,7 @@
     "@types/fs-extra": "^11.0.4",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
-    "esbuild": "^0.25.2",
+    "esbuild": "^0.25.5",
     "eslint": "^9.27.0",
     "glob": "^11.0.2",
     "lodash": ">=4.17.21",
