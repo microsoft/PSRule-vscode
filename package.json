@@ -489,7 +489,7 @@
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.37.0",
     "esbuild": "^0.25.5",
-    "eslint": "^9.29.0",
+    "eslint": "^9.32.0",
     "glob": "^11.0.3",
     "lodash": ">=4.17.21",
     "markdown-it": "^14.1.0",
