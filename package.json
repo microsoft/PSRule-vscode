@@ -483,7 +483,7 @@
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.15.21",
+    "@types/node": "^24.3.1",
     "@types/vscode": "1.78.1",
     "@types/fs-extra": "^11.0.4",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
