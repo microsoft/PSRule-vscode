@@ -54,7 +54,7 @@ jobs:
                   directory-to-scan: .
 
             - name: Upload results to security tab
-              uses: github/codeql-action/upload-sarif@76621b61decf072c1cee8dd1ce2d2a82d33c17ed # v3.29.5
+              uses: github/codeql-action/upload-sarif@0499de31b99561a6d14a36a5f662c2a54f91beee # v3.29.5
               with:
                   sarif_file: devskim-results.sarif
 
@@ -70,12 +70,12 @@ jobs:
               uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
             - name: Initialize CodeQL
-              uses: github/codeql-action/init@76621b61decf072c1cee8dd1ce2d2a82d33c17ed # v3.29.5
+              uses: github/codeql-action/init@0499de31b99561a6d14a36a5f662c2a54f91beee # v3.29.5
               with:
                   languages: 'javascript'
 
             - name: Autobuild
-              uses: github/codeql-action/autobuild@76621b61decf072c1cee8dd1ce2d2a82d33c17ed # v3.29.5
+              uses: github/codeql-action/autobuild@0499de31b99561a6d14a36a5f662c2a54f91beee # v3.29.5
 
             - name: Perform CodeQL Analysis
-              uses: github/codeql-action/analyze@76621b61decf072c1cee8dd1ce2d2a82d33c17ed # v3.29.5
+              uses: github/codeql-action/analyze@0499de31b99561a6d14a36a5f662c2a54f91beee # v3.29.5
