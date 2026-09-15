@@ -16,6 +16,8 @@ updates:
       - 'ci-quality'
     reviewers:
       - 'microsoft/psrule'
+    cooldown:
+      default-days: 7
 
   # Maintain dependencies for npm
   - package-ecosystem: 'npm'
